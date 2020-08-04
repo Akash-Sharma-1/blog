@@ -16,14 +16,14 @@
 title: Akash Sharma's Blog
 subtitle: Blogs on Data Science, Deep Learning, Algorithms and much more.
 description: A blog sharing my learnings spanning across various domains.
-baseurl: /akash-sharma's-blog
+baseurl: /blog
 timezone: Asia/Kolkata
 sidebar_repository_limit: 5
 paginate: 10
 publication_date: 2020
 
 # Uncomment the line below if you use this theme as a GitHub Page's remote theme.
-remote_theme: Akash-Sharma-1/Akash-Sharma-Blog
+remote_theme: Akash-Sharma-1/blog
 
 # Author settings
 author: Akash Sharma
