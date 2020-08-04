@@ -13,10 +13,10 @@
 # you will see them accessed via {{ site.title }}, {{ site.subtitle }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Akash Sharma's Blog
+title: Akash Sharma Blog
 subtitle: Blogs on Data Science, Deep Learning, Algorithms and much more.
 description: A blog sharing my learnings spanning across various domains.
-baseurl: /blog
+baseurl: "/blog"
 timezone: Asia/Kolkata
 sidebar_repository_limit: 5
 paginate: 10
