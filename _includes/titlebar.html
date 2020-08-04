@@ -1,0 +1,59 @@
+<div class="titlebar text-light">
+    <div class="container">
+        {% if page.name == "index.html" %}
+            <!-- Home page title -->
+            <div class="title-big pt-sm-3 pt-md-4">{{ site.subtitle }}</div>
+            <div class="meta pb-1 pb-2 pb-sm-3 pb-md-4">
+                <span class="pr-3">
+                    {% if site.social.github %}
+                        <span class="iconify" data-icon="octicon:mark-github"></span>
+                        <a class="text-light" href="https://github.com/{{ site.social.github }}"><span>{{ site.social.github }}</span></a>
+                    {% endif %}
+                </span>
+
+                <span class="pr-3">
+                    {% if site.organization %}
+                        <span class="iconify" data-icon="octicon:organization"></span>
+                        <a class="text-light" href="https://github.com/{{ site.organization }}"><span>{{ site.organization }}</span></a>
+                    {% endif %}
+                </span>
+
+                <span class="pr-3">
+                    {% if site.location %}
+                        <span class="iconify" data-icon="octicon:location"></span>
+                        <a class="text-light" href="https://www.google.com/maps/search/?api=1&query={{ site.location }}"><span>{{ site.location }}</span></a>
+                    {% endif %}
+                </span>
+            </div>
+        {% elsif page.collection == "posts" %}
+            <!-- Post article title -->
+            <div class="title pt-3">{{ page.title }}</div>
+            <div class="meta pb-3">
+                <span class="pr-3">
+                    {% if page.date %}
+                        <span class="iconify" data-icon="octicon:calendar"></span>
+                        <span>{{ page.date | date: "%Y/%m/%d" }}</span>
+                    {% endif %}
+                </span>
+
+                {% for tag in page.tags %}
+                    <span class="titlebar-info pr-3">
+                        <span class="iconify" data-icon="octicon:tag"></span>
+                        <a class="text-light" href="{{ site.baseurl }}/archive/#{{ tag }}">{{ tag }}</a>
+                    </span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <!-- Default title -->
+            <div class="title py-2 py-md-3">{{ page.title }}</div>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+    {% if page.name == "index.html" %}
+        $(".titlebar").addClass("bg-primary");
+    {% else %}
+        $(".titlebar").geopattern("{{ page.title }}");
+    {% endif %}
+</script>

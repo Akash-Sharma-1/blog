@@ -1,0 +1,30 @@
+<header>
+    <nav class="container navbar navbar-expand-sm py-2">
+        <a class="navbar-brand title p-0" href="{{ site.baseurl }}/">
+            <span class="iconify" data-icon="octicon:mark-github"></span>
+            <span>{{ site.title }}</span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="navbar-nav ml-auto">
+                {% for item in site.navigation %}
+                    <a class="nav-item nav-link text-right" href="{{ site.baseurl }}{{ item.link }}">{{ item.name }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </nav>
+</header>
+
+<script>
+    {% if page.name == "index.html" %}
+        $("header").addClass("bg-primary");
+        $(".navbar").addClass("navbar-dark");
+    {% else %}
+        $(".navbar").addClass("navbar-light");
+        $("a[href$='{{ site.baseurl }}{{ page.url }}']").addClass("active");
+    {% endif %}
+</script>

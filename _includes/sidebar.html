@@ -1,0 +1,16 @@
+{% include modules/search-box.html %}
+
+{% if page.layout == "post" %}
+    {% include modules/toc.html %}
+{% endif %}
+
+{% if page.layout != "post" and page.url != "/archive/" %}
+    {% include modules/tag-cloud.html %}
+    {% if site.github.public_repositories != null %}
+        {% include modules/repository-list.html %}
+    {% endif %}
+{% endif %}
+
+{% if page.url == "/archive/" %}
+    {% include modules/tag-list-group.html %}
+{% endif %}

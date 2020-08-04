@@ -1,0 +1,319 @@
+// Override Bootstrap's variables
+// Must come before importing Bootstrap
+$primary: #4183c4;
+$secondary: #d26911;
+
+// Bootstrap and its default variables
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+// Github style syntax highlighting Rouge stylesheet
+@import "rouge";
+
+// Custom variables
+$sidebar-border: 1px solid lightgray;
+$sidebar-border-radius: .25rem;
+$shadow: 0 0 12px rgba(33, 33, 33, .2);
+
+
+// Global style
+
+// Disable breakpoint of large screen
+.container {
+    max-width: var(--breakpoint-lg);
+}
+
+// Center content in a element
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    * {
+        max-width: 100%;
+    }
+}
+
+
+// Header
+
+header {
+    font-family: "Quattrocento Sans", sans-serif;
+
+    .title {
+        font-size: 20px;
+        font-weight: 300;
+    }
+}
+
+// Add underline to navigation item
+.nav-item.active {
+    border-bottom: 2px solid theme-color(secondary);
+}
+
+
+// Titlebar
+
+.titlebar {
+    font-family: "Quattrocento Sans", sans-serif;
+
+    .title,
+    .title-big {
+        font-size: 20px;
+        font-weight: 300;
+    }
+
+    .meta {
+        font-size: 12px;
+        font-weight: 200;
+        display: inline-block;
+    }
+}
+
+
+// Post list
+
+.post-list {
+    list-style-type: none;
+
+    .title {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .excerpt {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+
+    .info {
+        font-size: 14px;
+    }
+}
+
+
+// Image
+
+p img {
+    filter: drop-shadow($shadow);
+}
+
+
+// Comments
+
+.utterances {
+    max-width: 100%;
+}
+
+
+// Sidebar
+
+.sidebar {
+    .name {
+        font-size: 16px;
+        margin-bottom: 6px;
+    }
+}
+
+
+// Search box
+
+#search-box ul {
+    font-size: 14px;
+    list-style-type: none;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+
+// Repository card
+
+.repository-card {
+    width: 100%;
+    opacity: .8;
+
+    .name {
+        height: 120px;
+        font-size: 24px;
+    }
+
+    .info {
+        height: 80px;
+        font-size: 12px;
+
+        .iconify {
+            font-size: 14px;
+        }
+    }
+
+    .description {
+        line-height: 1.5em;
+        max-height: 3em;
+        overflow: hidden;
+    }
+}
+
+.repository-card:hover {
+    opacity: 1;
+    box-shadow: $shadow;
+}
+
+.repository-card.btn {
+    border: none;
+}
+
+
+// Table of contents
+
+.toc-container {
+    display: block;
+    top: 42px;
+    position: sticky;
+    position: -webkit-sticky;
+
+    .name {
+        margin-bottom: 6px;
+    }
+
+    .toc {
+        border: $sidebar-border;
+        border-radius: $border-radius;
+        font-size: 12px;
+        color: gray;
+
+        a.toc-link {
+            height: 0%;
+            text-decoration:none;
+        }
+
+        .toc-list {
+            padding-left: 15px;
+        }
+
+        > .toc-list {
+            > .toc-list-item {
+                margin-bottom: 8px;
+
+                > a {
+                    font-size: 14px;
+                }
+            }
+
+            > .toc-list-item:last-child {
+                margin-bottom: 0px;
+            }
+        }
+
+        .is-active-link {
+            color: theme-color(primary);
+        }
+    }
+}
+
+
+// tag list
+
+.tag-list {
+    .name {
+        font-size: 20px;
+    }
+
+    .post {
+        border-bottom: 1px dashed lightgray;
+
+        .date {
+            font-size: 14px;
+        }
+
+        .title {
+            font-size: 16px;
+        }
+    }
+}
+
+
+// Footer
+
+footer {
+    font-size: 12px;
+
+    .feed {
+        font-size: 16px;
+    }
+
+    .github {
+        font-size: 30px;
+        opacity: .5;
+    }
+
+    .github:hover {
+        opacity: 1;
+    }
+}
+
+
+// Responsive text
+
+@include media-breakpoint-up(sm) {
+    header .title {
+        font-size: 28px;
+    }
+
+    .titlebar {
+        .title,
+        .title-big {
+            font-size: 28px;
+        }
+
+        .meta {
+            font-size: 14px;
+        }
+    }
+
+    .tag-list .name {
+        font-size: 22px;
+    }
+}
+
+@include media-breakpoint-up(md) {
+    header .title {
+        font-size: 34px;
+    }
+
+    .titlebar {
+        .title {
+            font-size: 32px;
+        }
+
+        .title-big {
+            font-size: 34px;
+        }
+
+        .meta {
+            font-size: 16px;
+        }
+    }
+
+    .tag-list .name {
+        font-size: 24px;
+    }
+}
+
+
+// Responsive iframe
+// Modified from https://github.com/nathancy/jekyll-embed-video
+
+.iframe-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+
+    iframe, object, embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
