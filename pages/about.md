@@ -3,8 +3,8 @@ title: About
 permalink: /about/
 ---
 <link rel="stylesheet" type="text/css" media="all" href="https://akash-sharma-1.github.io/blog/pages/about_markdown_styles.css" />
-<center> <h3> Welcome to my Blogs !</h3> </center>
-<!-- <div align="center">
+<center> <h4> Welcome to my Blogs !</h4> </center>
+<div align="center">
 <a href="https://www.akashsharma.live/" target="_blank">
   <img alt="'Website" width="22px" style="padding-left:10px;paading-right:10px" src="https://image.flaticon.com/icons/svg/2301/2301129.svg" />
 </a>
@@ -23,7 +23,7 @@ permalink: /about/
 <a href="mailto:akashthegreatlegend@gmail.com" target="_blank">
   <img alt="'Gmail" width="22px" style="padding-left:10px;paading-right:10px" src="https://cdn.jsdelivr.net/npm/simple-icons@3.1.0/icons/gmail.svg" />
 </a>
-</div> -->
+</div>
 <br>
 Hi👋 I'm Akash, a programmer, a developer and a tech-enthusiast. 👨🏻‍💻 I absolutely adore programming and developing new things ⚙. I'm passionate about solving problems through code🚀helping the world🌎 and making the lives of people 👨‍👨‍👧 around me easier!
 <div align="center">
@@ -44,4 +44,4 @@ Hi👋 I'm Akash, a programmer, a developer and a tech-enthusiast. 👨🏻‍�
 - 📫 Reach me via twitter, telegram, mail ...
 - 😄 Pronouns: He/Him/His
 - 👀 Check out my [Website](https://www.akashsharma.live/) and my [Curriculum Vitae](https://www.akashsharma.live/resume/Akash_Sharma_One_Page_CV.pdf) to get more info.
-- ⚡ Fun fact: My Github Profile has more information about me than my Insta, FB, LinkedIn & other social media combined 😂
+- ⚡ Fun fact: This Profile has more information about me than my Insta, FB, LinkedIn & other social media combined 😂
