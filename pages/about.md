@@ -2,8 +2,9 @@
 title: About
 permalink: /about/
 ---
-<div align="center">
+
 ## Hi, there! Welcome to my Blogs !👋
+<div align="center">
 <a href="https://www.akashsharma.live/" target="_blank">
   <img alt="'Website" width="22px" src="https://image.flaticon.com/icons/svg/2301/2301129.svg" />
 </a>
@@ -24,12 +25,10 @@ permalink: /about/
 </a>
 </div>
 
-<br />
-<br />
-
 Hi, I'm Akash 😉, a programmer, a developer and a tech-enthusiast. 👨🏻‍💻 I absolutely adore programming and developing new things ⚙. I'm passionate about solving problems through code🚀helping the world🌎 and making the lives of people 👨‍👨‍👧 around me easier!
-
+<div align="center">
 <img align="center" alt="GIF" src="https://media.giphy.com/media/iIqmM5tTjmpOB9mpbn/giphy.gif" />
+</div>
 
 **Current Status Quo**
 
