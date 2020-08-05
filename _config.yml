@@ -34,7 +34,7 @@ social:
 
 # Comments settings (https://utteranc.es/)
 # You must use your own repository, otherwise it won't work.
-comments_repository:
+comments_repository: Akash-Sharma-1/Utteranc-Comments-Repo-Blog
 
 # Google Analytics settings (https://analytics.google.com/)
 ga_measurement_id:
