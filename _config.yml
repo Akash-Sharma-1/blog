@@ -13,7 +13,7 @@
 # you will see them accessed via {{ site.title }}, {{ site.subtitle }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Akash Sharma Blog
+title: Akash Sharma's Blog
 subtitle: Blogs on Data Science, Deep Learning, Algorithms and much more.
 description: A blog sharing my learnings spanning across various domains.
 baseurl: "/blog"
@@ -23,7 +23,7 @@ paginate: 10
 publication_date: 2020
 
 # Uncomment the line below if you use this theme as a GitHub Page's remote theme.
-remote_theme: lynn9388/light-blog
+remote_theme: Akash-Sharma-1/blog
 
 # Author settings
 author: Akash Sharma
@@ -34,7 +34,7 @@ social:
 
 # Comments settings (https://utteranc.es/)
 # You must use your own repository, otherwise it won't work.
-comments_repository: lynn9388/comments
+comments_repository:
 
 # Google Analytics settings (https://analytics.google.com/)
 ga_measurement_id:
