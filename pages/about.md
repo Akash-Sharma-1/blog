@@ -2,11 +2,13 @@
 title: About
 permalink: /about/
 ---
-
+<div align="center">
 ## Hi, there! Welcome to my Blogs !👋
-
 <a href="https://www.akashsharma.live/" target="_blank">
   <img alt="'Website" width="22px" src="https://image.flaticon.com/icons/svg/2301/2301129.svg" />
+</a>
+<a href="https://github.com/Akash-Sharma-1" target="_blank">
+  <img alt="GitHub" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/github.svg">
 </a>
 <a href="https://twitter.com/AkashTheGreat_1" target="_blank">
   <img alt="Twitter" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/twitter.svg">
@@ -20,7 +22,7 @@ permalink: /about/
 <a href="mailto:akashthegreatlegend@gmail.com" target="_blank">
   <img alt="'Gmail" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@3.1.0/icons/gmail.svg" />
 </a>
-
+</div>
 
 <br />
 <br />
