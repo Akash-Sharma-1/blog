@@ -3,7 +3,7 @@ title: About
 permalink: /about/
 ---
 
-<center> <h3>Hi, there! Welcome to my Blogs !👋</h3> </center>
+<center> <h3>Hi, there! Welcome to my Blogs !</h3> </center>
 <div align="center">
 <a href="https://www.akashsharma.live/" target="_blank">
   <img alt="'Website" width="22px" src="https://image.flaticon.com/icons/svg/2301/2301129.svg" />
@@ -25,9 +25,9 @@ permalink: /about/
 </a>
 </div>
 <br>
-Hi, I'm Akash 😉, a programmer, a developer and a tech-enthusiast. 👨🏻‍💻 I absolutely adore programming and developing new things ⚙. I'm passionate about solving problems through code🚀helping the world🌎 and making the lives of people 👨‍👨‍👧 around me easier!
+Hi👋 I'm Akash , a programmer, a developer and a tech-enthusiast. 👨🏻‍💻 I absolutely adore programming and developing new things ⚙. I'm passionate about solving problems through code🚀helping the world🌎 and making the lives of people 👨‍👨‍👧 around me easier!
 
-![Coder](https://akash-sharma-1.github.io/blog/assets/images/profile_GIF.gif)
+![Coder](https://akash-sharma-1.github.io/blog/assets/images/profile_GIF.gif?style=centerme)
 
 <br>
 
@@ -45,3 +45,9 @@ Hi, I'm Akash 😉, a programmer, a developer and a tech-enthusiast. 👨🏻‍
 - 😄 Pronouns: He/Him/His
 - 👀 Check out my [Website](https://www.akashsharma.live/) and my [Curriculum Vitae](https://www.akashsharma.live/resume/Akash_Sharma_One_Page_CV.pdf) to get more info.
 - ⚡ Fun fact: My Github Profile has more information about me than my Insta, FB, LinkedIn & other social media combined 😂
+<style>
+img[src$="centerme"] {
+  display:block;
+  margin: 0 auto;
+}
+</style>
