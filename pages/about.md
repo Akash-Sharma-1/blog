@@ -3,13 +3,10 @@ title: About
 permalink: /about/
 ---
 
-### Hi, there! Welcome to my Blogs 👋
+Hi, there! Welcome to my  profile👋
 <div align="center">
 <a href="https://www.akashsharma.live/" target="_blank">
   <img align="left" alt="'Website" width="22px" src="https://image.flaticon.com/icons/svg/2301/2301129.svg" />
-</a>
-<a href="https://github.com/Akash-Sharma-1" target="_blank">
-  <img align="left" alt="'Website" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/github.svg" />
 </a>
 <a href="https://twitter.com/AkashTheGreat_1" target="_blank">
   <img align="left" alt="Twitter" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/twitter.svg">
@@ -26,14 +23,12 @@ permalink: /about/
 </div>
 
 
-
 <br />
 <br />
 
 Hi, I'm Akash 😉, a programmer, a developer and a tech-enthusiast. 👨🏻‍💻 I absolutely adore programming and developing new things ⚙. I'm passionate about solving problems through code🚀helping the world🌎 and making the lives of people 👨‍👨‍👧 around me easier!
 
-  <img align="right" alt="GIF" src="https://media.giphy.com/media/iIqmM5tTjmpOB9mpbn/giphy.gif" />
-
+<img align="center" alt="GIF" src="https://media.giphy.com/media/iIqmM5tTjmpOB9mpbn/giphy.gif" />
 
 **Current Status Quo**
 
@@ -48,4 +43,4 @@ Hi, I'm Akash 😉, a programmer, a developer and a tech-enthusiast. 👨🏻‍
 - 📫 Reach me via twitter, telegram, mail ...
 - 😄 Pronouns: He/Him/His
 - 👀 Check out my [Website](https://www.akashsharma.live/) and my [Curriculum Vitae](https://www.akashsharma.live/resume/Akash_Sharma_One_Page_CV.pdf) to get more info.
-- ⚡ Fun fact: This profile has more information about me than my Insta, FB, LinkedIn & other social media combined 😂
+- ⚡ Fun fact: My Github Profile has more information about me than my Insta, FB, LinkedIn & other social media combined 😂
