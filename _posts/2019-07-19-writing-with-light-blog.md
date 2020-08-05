@@ -1,10 +1,10 @@
 ---
-title: Writing with Light Blog
+title: Testing this blog and also JekyllMarkDown101
 tags: [Jekyll, Markdown]
 ---
 
 
-## Chose an Editor
+## Chose an Editor for markdown based language
 
 The post in website based on Jekyll is typically written with Markdown, which is just a lightweight markup language with plain text formatting syntax. That means you can write it with any text editor like [Notepad++](https://notepad-plus-plus.org), [Sublime Text](https://www.sublimetext.com), and [Atom](https://atom.io), but I recommend [Visual Studio Code](https://code.visualstudio.com/) (aka VS Code).
 
@@ -28,12 +28,9 @@ YEAR-MONTH-DAY-name-of-post.md
 Where `YEAR` is a four-digit number, `MONTH` and `DAY` are both two-digit numbers. For example, the following are examples of valid post filenames:
 
 
-
-All blog post files must begin with [front matter](https://jekyllrb.com/docs/front-matter/) which is typically used to set a [layout](https://jekyllrb.com/docs/layouts/) or other metadata. So far the [Light Blog](https://github.com/lynn9388/light-blog) supports `title` and `tags` variables, and only `title` is required for every post. For example, the post you are reading now is like this:
-
 ```markdown
 ---
-title: Writing with Light Blog
+title: Writing this Blog
 tags: [Jekyll, Markdown]
 ---
 
@@ -258,7 +255,7 @@ If you want to embed images of yourself, just put your images in `/assets/images
 
 #### YouTube Videos
 
-Light Blog provides a simple `include` tag for YouTube video, which is easy to embed and responsive. You just need to find out the id of a video in YouTube, which is a combination of numbers and letters after an equal sign (`=`) at the end of video page's URL. And don't forget the double quotes (`"`) on both sides of the id.
+U can provide a simple `include` tag for YouTube video, which is easy to embed and responsive. You just need to find out the id of a video in YouTube, which is a combination of numbers and letters after an equal sign (`=`) at the end of video page's URL. And don't forget the double quotes (`"`) on both sides of the id.
 
 ```markdown
 {% raw %}{% include youtube.html id="gUZpjXwbqvM" %}{% endraw %}
@@ -292,7 +289,7 @@ You may want to use a [table generator](https://www.tablesgenerator.com/markdown
 
 #### MathJax
 
-Light Blog supports [MathJax](https://www.mathjax.org), which means you can embed mathematics with $$\rm\LaTeX$$.
+Markdown supports [MathJax](https://www.mathjax.org), which means you can embed mathematics with $$\rm\LaTeX$$.
 
 ```markdown
 $$E = mc^2$$
