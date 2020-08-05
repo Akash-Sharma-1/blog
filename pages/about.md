@@ -25,10 +25,16 @@ permalink: /about/
 </a>
 </div>
 <br>
-Hi👋 I'm Akash , a programmer, a developer and a tech-enthusiast. 👨🏻‍💻 I absolutely adore programming and developing new things ⚙. I'm passionate about solving problems through code🚀helping the world🌎 and making the lives of people 👨‍👨‍👧 around me easier!
-
-![Coder](https://akash-sharma-1.github.io/blog/assets/images/profile_GIF.gif?style=centerme)
-
+Hi👋 I'm Akash, a programmer, a developer and a tech-enthusiast. 👨🏻‍💻 I absolutely adore programming and developing new things ⚙. I'm passionate about solving problems through code🚀helping the world🌎 and making the lives of people 👨‍👨‍👧 around me easier!
+<div align="center">
+<img align="center" alt="GIF" src="https://media.giphy.com/media/iIqmM5tTjmpOB9mpbn/giphy.gif" />
+<style>
+  img {
+    max-width: 60%;
+    height: auto;
+  }
+</style>
+</div>
 <br>
 
 **Current Status Quo**
@@ -45,9 +51,3 @@ Hi👋 I'm Akash , a programmer, a developer and a tech-enthusiast. 👨🏻‍�
 - 😄 Pronouns: He/Him/His
 - 👀 Check out my [Website](https://www.akashsharma.live/) and my [Curriculum Vitae](https://www.akashsharma.live/resume/Akash_Sharma_One_Page_CV.pdf) to get more info.
 - ⚡ Fun fact: My Github Profile has more information about me than my Insta, FB, LinkedIn & other social media combined 😂
-<style>
-img[src$="centerme"] {
-  display:block;
-  margin: 0 auto;
-}
-</style>
