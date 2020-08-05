@@ -1,6 +1,5 @@
 # Light Blog
 
-![Screenshot](screenshot.png)
 
 Light Blog is a light and responsive Jekyll theme, and it's easy to be used as a [remote theme](https://github.blog/2017-11-29-use-any-theme-with-github-pages/).
 
