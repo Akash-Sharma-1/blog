@@ -2,8 +2,8 @@
 title: About
 permalink: /about/
 ---
-<link rel="stylesheet" type="text/css" media="all" href="./about_markdown_styles.css" />
-<center> <h3>Hi, there! Welcome to my Blogs !</h3> </center>
+<link rel="stylesheet" type="text/css" media="all" href="https://akash-sharma-1.github.io/blog/pages/about_markdown_styles.css" />
+<center> <h3> Welcome to my Blogs !</h3> </center>
 <div align="center">
 <a href="https://www.akashsharma.live/" target="_blank">
   <img alt="'Website" width="22px" src="https://image.flaticon.com/icons/svg/2301/2301129.svg" />
