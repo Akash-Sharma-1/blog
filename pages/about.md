@@ -6,22 +6,21 @@ permalink: /about/
 ## Hi, there! Welcome to my Blogs !👋
 <div align="center">
 <a href="https://www.akashsharma.live/" target="_blank">
-  <img align="left" alt="'Website" width="22px" src="https://image.flaticon.com/icons/svg/2301/2301129.svg" />
+  <img alt="'Website" width="22px" src="https://image.flaticon.com/icons/svg/2301/2301129.svg" />
 </a>
 <a href="https://twitter.com/AkashTheGreat_1" target="_blank">
-  <img align="left" alt="Twitter" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/twitter.svg">
+  <img alt="Twitter" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/twitter.svg">
 </a>
 <a href="https://www.linkedin.com/in/akash-sharma-246b67165" target="_blank">
-  <img align="left" alt="LinkedIn" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@3.1.0/icons/linkedin.svg" />
+  <img alt="LinkedIn" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@3.1.0/icons/linkedin.svg" />
 </a>
 <a href="https://t.me/AkashTheGreat" target="_blank">
-  <img align="left" alt="Telegram" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/telegram.svg" />
+  <img alt="Telegram" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/telegram.svg" />
 </a>
 <a href="mailto:akashthegreatlegend@gmail.com" target="_blank">
-  <img align="left" alt="'Gmail" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@3.1.0/icons/gmail.svg" />
+  <img alt="'Gmail" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@3.1.0/icons/gmail.svg" />
 </a>
 </div>
-
 
 <br />
 <br />
