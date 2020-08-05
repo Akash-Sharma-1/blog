@@ -3,7 +3,6 @@ title: Writing with Light Blog
 tags: [Jekyll, Markdown]
 ---
 
-In "[Getting Started with Light Blog]({{ site.baseurl }}{% post_url 2019-04-18-getting-started-with-light-blog %})", I have presented how to build a new blog with [Light Blog](https://github.com/lynn9388/light-blog). The next step is how to write a post for it.
 
 ## Chose an Editor
 
@@ -28,10 +27,7 @@ YEAR-MONTH-DAY-name-of-post.md
 
 Where `YEAR` is a four-digit number, `MONTH` and `DAY` are both two-digit numbers. For example, the following are examples of valid post filenames:
 
-```bash
-2019-04-18-getting-started-with-light-blog.md
-2019-07-19-writing-with-light-blog.md
-```
+
 
 All blog post files must begin with [front matter](https://jekyllrb.com/docs/front-matter/) which is typically used to set a [layout](https://jekyllrb.com/docs/layouts/) or other metadata. So far the [Light Blog](https://github.com/lynn9388/light-blog) supports `title` and `tags` variables, and only `title` is required for every post. For example, the post you are reading now is like this:
 
@@ -206,11 +202,7 @@ We use [Linguist](http://https://github.com/github/linguist) to perform language
     >
     > [Linking to posts](https://jekyllrb.com/docs/liquid/tags/#linking-to-posts)
 
-    ```markdown
-    {% raw %}[Getting Started with Light Blog]({{ site.baseurl }}{% post_url 2019-04-18-getting-started-with-light-blog %}){% endraw %}
-    ```
 
-    [Getting Started with Light Blog]({{ site.baseurl }}{% post_url 2019-04-18-getting-started-with-light-blog %})
 
     `site.baseurl` is required before GitHub Pages' [Jekyll dependency version](https://pages.github.com/versions/) updates to `v4.0`.
 
@@ -221,12 +213,6 @@ We use [Linguist](http://https://github.com/github/linguist) to perform language
 - Anchor Links for Another Post
 
     If you want to link a specific place in another post, just combine anchor links and post links showed above. There is a simple example:
-
-    ```markdown
-    {% raw %}[Usage of Light Blog]({{ site.baseurl }}{% post_url 2019-04-18-getting-started-with-light-blog %}#usage){% endraw %}
-    ```
-
-    [Usage of Light Blog]({{ site.baseurl }}{% post_url 2019-04-18-getting-started-with-light-blog %}#usage)
 
 #### Text Formatting
 
