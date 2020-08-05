@@ -1,9 +1,9 @@
 ---
-title: Testing Blog Generation
+title: Writing with Light Blog
 tags: [Jekyll, Markdown]
 ---
 
-<!-- In "[Getting Started with Light Blog]({{ site.baseurl }}{% post_url 2019-04-18-getting-started-with-light-blog %})", I have presented how to build a new blog with [Light Blog](https://github.com/lynn9388/light-blog). The next step is how to write a post for it. -->
+In "[Getting Started with Light Blog]({{ site.baseurl }}{% post_url 2019-04-18-getting-started-with-light-blog %})", I have presented how to build a new blog with [Light Blog](https://github.com/lynn9388/light-blog). The next step is how to write a post for it.
 
 ## Chose an Editor
 
@@ -18,6 +18,35 @@ The main reason I recommend VS Code is to have an active community that develops
 - [Markdown Preview Github Styling](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-preview-github-styles)
 - [Markdown yaml Preamble](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-yaml-preamble)
 
+## Create a Post
+
+To create a post, add a file to your `_posts` directory with the following format:
+
+```bash
+YEAR-MONTH-DAY-name-of-post.md
+```
+
+Where `YEAR` is a four-digit number, `MONTH` and `DAY` are both two-digit numbers. For example, the following are examples of valid post filenames:
+
+```bash
+2019-04-18-getting-started-with-light-blog.md
+2019-07-19-writing-with-light-blog.md
+```
+
+All blog post files must begin with [front matter](https://jekyllrb.com/docs/front-matter/) which is typically used to set a [layout](https://jekyllrb.com/docs/layouts/) or other metadata. So far the [Light Blog](https://github.com/lynn9388/light-blog) supports `title` and `tags` variables, and only `title` is required for every post. For example, the post you are reading now is like this:
+
+```markdown
+---
+title: Writing with Light Blog
+tags: [Jekyll, Markdown]
+---
+
+More content here.
+```
+
+## Add More Content
+
+After you create the post file, it's time to add some content. Below is a simple list of Markdown syntax and extensions.
 
 ### Block Elements
 
@@ -103,7 +132,7 @@ if (2 > 1) {
 }
 ```
 
-I use [Linguist](http://https://github.com/github/linguist) to perform language detection and syntax highlighting. You can find out which keywords are valid in the [languages YAML file](https://github.com/github/linguist/blob/master/lib/linguist/languages.yml).
+We use [Linguist](http://https://github.com/github/linguist) to perform language detection and syntax highlighting. You can find out which keywords are valid in the [languages YAML file](https://github.com/github/linguist/blob/master/lib/linguist/languages.yml).
 
 #### Blockquotes
 
@@ -154,10 +183,10 @@ I use [Linguist](http://https://github.com/github/linguist) to perform language 
 - Hyperlinks
 
     ```markdown
-    [Akash Blog](https://akash-sharma-1.github.io/blog/)
+    [Lynn's Blog](https://lynn9388.github.io)
     ```
 
-    [Akash   Blog](https://akash-sharma-1.github.io/blog/)
+    [Lynn's Blog](https://lynn9388.github.io)
 
 - Anchor Links
 
@@ -171,17 +200,17 @@ I use [Linguist](http://https://github.com/github/linguist) to perform language 
 
     Note that the link must be a lowercase header, even if the original header contains uppercase letters. If the header contains multiple words, they must be connected by `-`. If your header contains complex symbols, you should pre-generate the HTML page from Markdown and see what the `id` attribute of that header with your browser's [web developer tools](https://en.wikipedia.org/wiki/Web_development_tools).
 
-- Jekyll based Post Links
+- Post Links
 
     > If you want to include a link to a post on your site, the `post_url` tag will generate the correct permalink URL for the post you specify.
     >
     > [Linking to posts](https://jekyllrb.com/docs/liquid/tags/#linking-to-posts)
 
     ```markdown
-    {% raw %}[Getting Started with Google]({{ site.baseurl }}{% post_url 2019-04-18-getting-started-with-google %}){% endraw %}
+    {% raw %}[Getting Started with Light Blog]({{ site.baseurl }}{% post_url 2019-04-18-getting-started-with-light-blog %}){% endraw %}
     ```
 
-    [Getting Started with Google]({{ site.baseurl }}{% post_url 2019-04-18-getting-started-with-google %})
+    [Getting Started with Light Blog]({{ site.baseurl }}{% post_url 2019-04-18-getting-started-with-light-blog %})
 
     `site.baseurl` is required before GitHub Pages' [Jekyll dependency version](https://pages.github.com/versions/) updates to `v4.0`.
 
@@ -194,10 +223,10 @@ I use [Linguist](http://https://github.com/github/linguist) to perform language 
     If you want to link a specific place in another post, just combine anchor links and post links showed above. There is a simple example:
 
     ```markdown
-    {% raw %}[Usage of Google]({{ site.baseurl }}{% post_url 2019-04-18-getting-started-with-google %}#usage){% endraw %}
+    {% raw %}[Usage of Light Blog]({{ site.baseurl }}{% post_url 2019-04-18-getting-started-with-light-blog %}#usage){% endraw %}
     ```
 
-    [Usage of Google]({{ site.baseurl }}{% post_url 2019-04-18-getting-started-with-google %}#usage)
+    [Usage of Light Blog]({{ site.baseurl }}{% post_url 2019-04-18-getting-started-with-light-blog %}#usage)
 
 #### Text Formatting
 
@@ -277,7 +306,7 @@ You may want to use a [table generator](https://www.tablesgenerator.com/markdown
 
 #### MathJax
 
-Support for [MathJax](https://www.mathjax.org) has been added in some cases (like in this blog), which means you can embed mathematics with $$\rm\LaTeX$$.
+Light Blog supports [MathJax](https://www.mathjax.org), which means you can embed mathematics with $$\rm\LaTeX$$.
 
 ```markdown
 $$E = mc^2$$
