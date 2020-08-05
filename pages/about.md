@@ -3,7 +3,7 @@ title: About
 permalink: /about/
 ---
 
--> ### Hi, there! Welcome to my Blogs !👋 <-
+<center> <h1>Hi, there! Welcome to my Blogs !👋</h1> </center> 
 <div align="center">
 <a href="https://www.akashsharma.live/" target="_blank">
   <img alt="'Website" width="22px" src="https://image.flaticon.com/icons/svg/2301/2301129.svg" />
