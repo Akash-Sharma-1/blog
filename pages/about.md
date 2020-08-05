@@ -26,9 +26,9 @@ permalink: /about/
 </div>
 <br>
 Hi, I'm Akash 😉, a programmer, a developer and a tech-enthusiast. 👨🏻‍💻 I absolutely adore programming and developing new things ⚙. I'm passionate about solving problems through code🚀helping the world🌎 and making the lives of people 👨‍👨‍👧 around me easier!
-<div align="center">
-![Coder](profile_GIF.gif)
-</div>
+
+![Coder](./assets/images/profile_GIF.gif)
+
 <br>
 
 **Current Status Quo**
