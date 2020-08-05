@@ -2,7 +2,7 @@
 title: About
 permalink: /about/
 ---
-
+<link rel="stylesheet" type="text/css" media="all" href="about_markdown_styles.css" />
 <center> <h3>Hi, there! Welcome to my Blogs !</h3> </center>
 <div align="center">
 <a href="https://www.akashsharma.live/" target="_blank">
@@ -28,12 +28,6 @@ permalink: /about/
 Hi👋 I'm Akash, a programmer, a developer and a tech-enthusiast. 👨🏻‍💻 I absolutely adore programming and developing new things ⚙. I'm passionate about solving problems through code🚀helping the world🌎 and making the lives of people 👨‍👨‍👧 around me easier!
 <div align="center">
 <img align="center" alt="GIF" src="https://media.giphy.com/media/iIqmM5tTjmpOB9mpbn/giphy.gif" />
-<style>
-  img {
-    max-width: 60%;
-    height: auto;
-  }
-</style>
 </div>
 <br>
 
