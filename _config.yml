@@ -48,7 +48,7 @@ collections:
 navigation:
   - name: Home
     link: /
-  - name: Archive
+  - name: Classification
     link: /archive/
   - name: Wiki
     link: /wiki/
