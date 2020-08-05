@@ -4,7 +4,7 @@ permalink: /about/
 ---
 
 ## Hi, there! Welcome to my Blogs !👋
-<div align="center">
+
 <a href="https://www.akashsharma.live/" target="_blank">
   <img alt="'Website" width="22px" src="https://image.flaticon.com/icons/svg/2301/2301129.svg" />
 </a>
@@ -20,7 +20,7 @@ permalink: /about/
 <a href="mailto:akashthegreatlegend@gmail.com" target="_blank">
   <img alt="'Gmail" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@3.1.0/icons/gmail.svg" />
 </a>
-</div>
+
 
 <br />
 <br />
