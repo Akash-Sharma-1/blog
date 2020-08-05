@@ -1,5 +1,5 @@
 ---
-title: MARKDOWN 101 
+title: Testing Blog Generation
 tags: [Jekyll, Markdown]
 ---
 
