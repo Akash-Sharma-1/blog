@@ -258,10 +258,10 @@ If you want to embed images of yourself, just put your images in `/assets/images
 U can provide a simple `include` tag for YouTube video, which is easy to embed and responsive. You just need to find out the id of a video in YouTube, which is a combination of numbers and letters after an equal sign (`=`) at the end of video page's URL. And don't forget the double quotes (`"`) on both sides of the id.
 
 ```markdown
-{% raw %}{% include youtube.html id="gUZpjXwbqvM" %}{% endraw %}
+{% raw %}{% include youtube.html id="gocwRvLhDf8" %}{% endraw %}
 ```
 
-{% include youtube.html id="gUZpjXwbqvM" %}
+{% include youtube.html id="gocwRvLhDf8" %}
 
 ### Extras
 
