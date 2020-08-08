@@ -5,10 +5,19 @@
 {% endif %}
 
 {% if page.layout != "post" and page.url != "/archive/" %}
-    {% include modules/tag-cloud.html %}
-    {% if site.github.public_repositories != null %}
-        {% include modules/repository-list.html %}
+    {% if page.url != "/about/" %}
+      {% include modules/tag-cloud.html %}
+      {% if site.github.public_repositories != null %}
+          {% include modules/repository-list.html %}
+      {% endif %}
     {% endif %}
+    {% if page.url == "/about/" %}
+      {% include modules/connect-with-me.html %}
+      {% if site.github.public_repositories != null %}
+          {% include modules/repository-list.html %}
+      {% endif %}
+    {% endif %}
+
 {% endif %}
 
 {% if page.url == "/archive/" %}
