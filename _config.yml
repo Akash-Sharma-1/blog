@@ -52,8 +52,10 @@ navigation:
     link: /archive/
   - name: Wiki
     link: /wiki/
-  - name: About
+  - name: About Me
     link: /about/
+  - name: Portfolio
+    link: https://www.akashsharma.live/
 defaults:
   - scope:
       path: pages

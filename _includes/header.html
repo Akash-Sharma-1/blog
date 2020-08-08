@@ -12,7 +12,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="navbar-nav ml-auto">
                 {% for item in site.navigation %}
+                  {% if item.name != "Portfolio" %}
                     <a class="nav-item nav-link text-right" href="{{ site.baseurl }}{{ item.link }}">{{ item.name }}</a>
+                  {% endif %}
+                  {% if item.name == "Portfolio" %}
+                    <a class="nav-item nav-link text-right" href="{{ item.link }}">{{ item.name }}🌐</a>
+                  {% endif %}
+
                 {% endfor %}
             </div>
         </div>
