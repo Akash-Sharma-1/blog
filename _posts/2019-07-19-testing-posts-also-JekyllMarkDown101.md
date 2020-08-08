@@ -176,10 +176,10 @@ We use [Linguist](http://https://github.com/github/linguist) to perform language
 - Hyperlinks
 
     ```markdown
-    [Lynn's Blog](https://lynn9388.github.io)
+    [Repo](https://github.com/Akash-Sharma-1/blog)
     ```
 
-    [Lynn's Blog](https://lynn9388.github.io)
+    [Repo](https://github.com/Akash-Sharma-1/blog)
 
 - Anchor Links
 
@@ -303,3 +303,5 @@ $$E = mc^2$$
 - [Daring Fireball](https://daringfireball.net/projects/markdown/syntax)
 - [GitHub](https://guides.github.com/features/mastering-markdown/)
 - [GitHub Markdown Cheatsheet](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf)
+
+---
