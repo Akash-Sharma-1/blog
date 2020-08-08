@@ -37,15 +37,15 @@ tags: Blockchain
 1. Check the environment configuration with `go env`
 
     ```sh
-    lynn@192.168.127.100 ~ $ go env
+    akashsharma@192.168.127.100 ~ $ go env
     GOARCH="amd64"
     GOBIN=""
-    GOCACHE="/home/lynn/.cache/go-build"
+    GOCACHE="/home/akashsharma/.cache/go-build"
     GOEXE=""
     GOHOSTARCH="amd64"
     GOHOSTOS="linux"
     GOOS="linux"
-    GOPATH="/home/lynn/Documents/Go"
+    GOPATH="/home/akashsharma/Documents/Go"
     HOT = ""
     GOROOT="/usr/local/go"
     GOTMPDIR=""
@@ -63,7 +63,7 @@ tags: Blockchain
     GOGCCFLAGS="-fPIC -m64 -pthread -fmessage-length=0 -fdebug-prefix-map=/tmp/go-build200491170=/tmp/go-build -gno-record-gcc-switches"
     ```
 
-> 参考 [Install the Go tools](https://golang.org/doc/install#install)
+> [Install the Go tools](https://golang.org/doc/install#install)
 
 #### GoLand configuration debugging
 
@@ -82,10 +82,10 @@ Sia source code can generate two executable binary files *siad* and *siac*. When
     | Run kind          | Package                                                                                |
     | Package path      | github.com/NebulousLabs/Sia/cmd/siad                                                   |
     | Run after build   | Checked                                                                                |
-    | Program arguments | --modules=g --sia-directory=/home/lynn/sia --profile-directory=/home/lynn/sia/profiles |
+    | Program arguments | --modules=g --sia-directory=/home/akashsharma/sia --profile-directory=/home/akashsharma/sia/profiles |
     | Module | Let |
 
-    >-Start debugging with the above configuration, which is equivalent to running `siad --modules=g --sia-directory=/home/lynn/sia --profile-directory=/home/lynn/ after compiling *siad* Debug when sia/profiles`
+    >-Start debugging with the above configuration, which is equivalent to running `siad --modules=g --sia-directory=/home/akashsharma/sia --profile-directory=/home/akashsharma/ after compiling *siad* Debug when sia/profiles`
     >-The configuration of `Go tool arguments` is consistent with *Makefile*, `DEBUG_COMMIT` and `DEBUG_TIME` can be replaced with actual values ​​according to the settings in *Makefile*
     >-`Package path` and `Program arguments` can be compiled and run according to the actual package of the `main` function to be run (for example, set to `github.com/NebulousLabs/Sia/cmd/siac` when debugging *siac*) and start Set the actual operating parameters of the corresponding program
 
@@ -128,13 +128,13 @@ Assuming that the network adapter of the virtual machine is set to NAT, and the 
     sudo netplan apply
     ```
 
-> 参考 [Configure Static IP Addresses On Ubuntu 18.04 LTS Server](https://websiteforstudents.com/configure-static-ip-addresses-on-ubuntu-18-04-beta/)、[配置脚本](https://github.com/lynn9388/script-tools/blob/master/ubuntu/config-ip.sh)
+> [Configure Static IP Addresses On Ubuntu 18.04 LTS Server](https://websiteforstudents.com/configure-static-ip-addresses-on-ubuntu-18-04-beta/)、[Ubuntu Config File](https://github.com/Akash-Sharma-1/script-tools/blob/master/ubuntu/config-ip.sh)
 
 ## Compile the source code
 
 *Makefile* files include `release` (standard version), `dev` (development version), and `debug` (debugging version) by default. Three conventional compilation targets and compilation targets each containing data competition detection are included in the development process. `dev` version
 
-> 参考 [Build Sia](https://github.com/NebulousLabs/Sia/blob/master/doc/Guide%20to%20Contributing%20to%20Sia.md#build-sia)
+> [Build Sia](https://github.com/NebulousLabs/Sia/blob/master/doc/Guide%20to%20Contributing%20to%20Sia.md#build-sia)
 
 ### Local compilation
 
@@ -177,7 +177,7 @@ dev:
     GOOS=windows GOARCH=amd64 go install -tags='dev debug profile netgo' -ldflags='$(ldflags)' $(pkgs)
 ```
 
-> 参考 [Building windows go programs on linux](https://github.com/golang/go/wiki/WindowsCrossCompiling)、[Optional environment variables](https://golang.org/doc/install/source#environment)
+> [Building windows go programs on linux](https://github.com/golang/go/wiki/WindowsCrossCompiling)、[Optional environment variables](https://golang.org/doc/install/source#environment)
 
 ## Build a private test network
 
@@ -217,7 +217,7 @@ Since hard-coded Bootstrap nodes are not used, the *Node 0* node in the cluster 
 1. Upload the `dev` version *siad* and *siac* of [Compile](#Compile source code) to each virtual machine (you can use [scp](https://linux.die.net/man/1/scp ) Command)
 
     ```sh
-    lynn@192.168.127.100 bin $ scp siac siad lynn@192.168.127.21: ~ / sia
+    akashsharma@192.168.127.100 bin $ scp siac siad akashsharma@192.168.127.21: ~ / sia
     siac                                          100%   12MB  54.5MB/s   00:00
     siad                                          100%   18MB  65.7MB/s   00:00
     ```
@@ -233,7 +233,7 @@ Run the Sia instance through *siad*, start the background service process of eac
 1. View related commands and parameter setting information through `./siad --help`
 
     ```sh
-    lynn@192.168.127.21 sia $ ./siad --help
+    akashsharma@192.168.127.21 sia $ ./siad --help
     Running with debugging enabled
     Both Daemon v1.3.3
 
@@ -266,7 +266,7 @@ Run the Sia instance through *siad*, start the background service process of eac
 1. Check whether the compiled version is the `dev` version through `./siad version`
 
     ```sh
-    lynn@192.168.127.21 sia $ ./siad version
+    akashsharma@192.168.127.21 sia $ ./siad version
     Running with debugging enabled
     Sia Daemon v1.3.3-dev
     ```
@@ -275,7 +275,7 @@ Run the Sia instance through *siad*, start the background service process of eac
     - Node 0 - Bootstrap
 
         ```sh
-        lynn@192.168.127.21 sia $ ./siad --modules=g --no-bootstrap --sia-directory=bootstrap
+        akashsharma@192.168.127.21 sia $ ./siad --modules=g --no-bootstrap --sia-directory=bootstrap
         Running with debugging enabled
         Both Daemon v1.3.3
         Git Revision 4c73a7dd
@@ -288,7 +288,7 @@ Run the Sia instance through *siad*, start the background service process of eac
     - Node 1 - Miner
 
         ```sh
-        lynn@192.168.127.21 sia $ ./siad --modules=gctwm --no-bootstrap --api-addr=localhost:9990 --rpc-addr=:9991 --sia-directory=miner
+        akashsharma@192.168.127.21 sia $ ./siad --modules=gctwm --no-bootstrap --api-addr=localhost:9990 --rpc-addr=:9991 --sia-directory=miner
         Running with debugging enabled
         Both Daemon v1.3.3
         Git Revision 4c73a7dd
@@ -305,7 +305,7 @@ Run the Sia instance through *siad*, start the background service process of eac
     - Node 2 - Host
 
         ```sh
-        lynn@192.168.127.22 sia $ ./siad --modules=gctwh --no-bootstrap --sia-directory=host
+        akashsharma@192.168.127.22 sia $ ./siad --modules=gctwh --no-bootstrap --sia-directory=host
         ...
         (5/5) Loading host...
         Finished loading in 0.013928993 seconds
@@ -314,7 +314,7 @@ Run the Sia instance through *siad*, start the background service process of eac
     - Node 3 - Renter
 
         ```sh
-        lynn@192.168.127.23 sia $ ./siad --modules=gctwr --no-bootstrap --sia-directory=renter
+        akashsharma@192.168.127.23 sia $ ./siad --modules=gctwr --no-bootstrap --sia-directory=renter
         ...
         (5/5) Loading renter...
         Finished loading in 0.021479162 seconds
@@ -329,7 +329,7 @@ Through the commands provided by *siac*, interact with the background service pr
 1. View relevant help information through `./siac --help` (APIs provided by *siad* can be called through related commands)
 
     ```sh
-    lynn@192.168.127.21 and $ ./siac --help
+    akashsharma@192.168.127.21 and $ ./siac --help
     Both Client v1.3.3
 
     Usage:
@@ -364,9 +364,9 @@ Through the commands provided by *siac*, interact with the background service pr
     - Node 1 - Miner
 
         ```sh
-        lynn@192.168.127.21 sia $ ./siac --addr=localhost:9990 gateway connect 192.168.127.21:9981
+        akashsharma@192.168.127.21 sia $ ./siac --addr=localhost:9990 gateway connect 192.168.127.21:9981
         Added 192.168.127.21:9981 to peer list.
-        lynn@192.168.127.21 sia $ ./siac --addr=localhost:9990 gateway list
+        akashsharma@192.168.127.21 sia $ ./siac --addr=localhost:9990 gateway list
         1 active peers:
         Version  Outbound  Address
         1.3.3    Yes       192.168.127.21:9981
@@ -375,9 +375,9 @@ Through the commands provided by *siac*, interact with the background service pr
     - Node 2 - Host
 
         ```sh
-        lynn@192.168.127.22 sia $ ./siac gateway connect 192.168.127.21:9981
+        akashsharma@192.168.127.22 sia $ ./siac gateway connect 192.168.127.21:9981
         Added 192.168.127.21:9981 to peer list.
-        lynn@192.168.127.22 sia $ ./siac gateway list
+        akashsharma@192.168.127.22 sia $ ./siac gateway list
         2 active peers:
         Version  Outbound  Address
         1.3.3    Yes       192.168.127.21:9981
@@ -387,9 +387,9 @@ Through the commands provided by *siac*, interact with the background service pr
     - Node 3 - Renter
 
         ```sh
-        lynn@192.168.127.23 sia $ ./siac gateway connect 192.168.127.21:9981
+        akashsharma@192.168.127.23 sia $ ./siac gateway connect 192.168.127.21:9981
         Added 192.168.127.21:9981 to peer list.
-        lynn@192.168.127.23 sia $ ./siac gateway list
+        akashsharma@192.168.127.23 sia $ ./siac gateway list
         3 active peers:
         Version  Outbound  Address
         1.3.3    Yes       192.168.127.21:9981
@@ -406,7 +406,7 @@ Through the commands provided by *siac*, interact with the background service pr
 For nodes that use the *wallet* module (Miner saves mining rewards, Host needs to provide mortgages before launching shared storage services, and Renter needs to pay a prepayment before using shared storage), initialize via `./siac wallet init --password` Wallet and set password
 
 ```sh
-lynn@192.168.127.21 sia $ ./siac --addr=localhost:9990 wallet init --password
+akashsharma@192.168.127.21 sia $ ./siac --addr=localhost:9990 wallet init --password
 Wallet password:
 Confirm:
 Recovery seed:
@@ -422,7 +422,7 @@ Wallet encrypted with given password
 The wallet must be used for node-related operations, or the wallet must be unlocked through `./siac wallet unlock` before performing any operations on the wallet, otherwise the related operations will not work properly. If the Miner node does not unlock the wallet before starting the first mining, it will not be possible Receiving mining rewards
 
 ```sh
-lynn@192.168.127.21 sia $ ./siac --addr=localhost:9990 wallet unlock
+akashsharma@192.168.127.21 sia $ ./siac --addr=localhost:9990 wallet unlock
 Wallet password:
 ```
 
@@ -431,9 +431,9 @@ Wallet password:
 When the [transfer](#transfer-miner---host) operation is required, the recipient of the transfer needs to create a new account address for the wallet through `./siac wallet address` in advance, and can use `./siac wallet addresses` View all account addresses in the wallet
 
 ```sh
-lynn@192.168.127.22 sia $ ./siac wallet address
+akashsharma@192.168.127.22 sia $ ./siac wallet address
 Created new address: 17d05e536d6cd6ccfcfeb0688325464f69b75b960df6dd1a5caded822ee80f98e47654dd8181
-lynn@192.168.127.22 sia $ ./siac wallet addresses
+akashsharma@192.168.127.22 sia $ ./siac wallet addresses
 17d05e536d6cd6ccfcfeb0688325464f69b75b960df6dd1a5caded822ee80f98e47654dd8181
 ```
 
@@ -444,7 +444,7 @@ lynn@192.168.127.22 sia $ ./siac wallet addresses
 For nodes that use the *wallet* module, you can check the balance in the wallet through `./siac wallet balance`
 
 ```sh
-lynn@192.168.127.21 sia $ ./siac --addr=localhost:9990 wallet balance
+akashsharma@192.168.127.21 sia $ ./siac --addr=localhost:9990 wallet balance
 Wallet status:
 Encrypted, Unlocked
 Height:              0
@@ -466,21 +466,21 @@ The Miner node obtains Siacoin through mining, and performs [transfer](#transfer
 1. Miner node runs *miner* module through `./siac miner start` to start mining
 
     ```sh
-    lynn@192.168.127.21 sia $ ./siac --addr=localhost:9990 miner start
+    akashsharma@192.168.127.21 sia $ ./siac --addr=localhost:9990 miner start
     CPU Miner is now running.
     ```
 
 1. Miner node ends mining through `./siac miner stop`
 
     ```sh
-    lynn@192.168.127.21 sia $ ./siac --addr=localhost:9990 miner stop
+    akashsharma@192.168.127.21 sia $ ./siac --addr=localhost:9990 miner stop
     Stopped mining.
     ```
 
 1. Each node ((Miner, Host, Renter) checks the synchronization of the blockchain through `./siac consensus` (Because the Bootstrap node does not start the *consensus* module, the blockchain is not synchronized, and the blocks of other nodes The chain is completely synchronized, and the query results are exactly the same)
 
     ```sh
-    lynn@192.168.127.21 sia $ ./siac --addr=localhost:9990 consensus
+    akashsharma@192.168.127.21 sia $ ./siac --addr=localhost:9990 consensus
     Synced: Yes
     Block:      0000007573fc48b79136a60f5597fc34f34603c5e816a241d9b2390db18b0219
     Height:     500
@@ -491,7 +491,7 @@ The Miner node obtains Siacoin through mining, and performs [transfer](#transfer
 1. Miner node [check the balance in the wallet] (#check the balance)
 
     ```sh
-    lynn@192.168.127.21 sia $ ./siac --addr=localhost:9990 wallet balance
+    akashsharma@192.168.127.21 sia $ ./siac --addr=localhost:9990 wallet balance
     Wallet status:
     Encrypted, Unlocked
     Height:              500
@@ -512,7 +512,7 @@ The Miner node transfers the Siacoin obtained by [Mining](# Mining-miner) to the
 1. The Miner node sends Siacoins to the Host node through `./siac wallet send siacoins [amount] [dest]`
 
     ```sh
-    lynn@192.168.127.21 sia $ ./siac --addr=localhost:9990 wallet send siacoins 50MS 17d05e536d6cd6ccfcfeb0688325464f69b75b960df6dd1a5caded822ee80f98e47654dd8181
+    akashsharma@192.168.127.21 sia $ ./siac --addr=localhost:9990 wallet send siacoins 50MS 17d05e536d6cd6ccfcfeb0688325464f69b75b960df6dd1a5caded822ee80f98e47654dd8181
     Sent 50000000000000000000000000000000 hastings to 17d05e536d6cd6ccfcfeb0688325464f69b75b960df6dd1a5caded822ee80f98e47654dd8181
     ```
 
@@ -520,7 +520,7 @@ The Miner node transfers the Siacoin obtained by [Mining](# Mining-miner) to the
     -When the Miner node does not start mining, the transaction is not recorded in the blockchain and the transfer is not completed
 
         ```sh
-        lynn@192.168.127.22 sia $ ./siac wallet balance
+        akashsharma@192.168.127.22 sia $ ./siac wallet balance
         Wallet status:
         Encrypted, Unlocked
         Height:              500
@@ -531,7 +531,7 @@ The Miner node transfers the Siacoin obtained by [Mining](# Mining-miner) to the
         Siafund Claims:      0 H
 
         Estimated Fee:       30 mS / KB
-        lynn@192.168.127.22 sia $ ./siac wallet transactions
+        akashsharma@192.168.127.22 sia $ ./siac wallet transactions
                     [timestamp]    [height]                                                   [transaction id]    [net siacoins]   [net siafunds]
                     unconfirmed unconfirmed   b7b37e7293b9e17867b076f11441e3fbc2dbd5195da05f64e8dc40d235a0c06c    50000000.00 SC             0 SF
         ```
@@ -539,7 +539,7 @@ The Miner node transfers the Siacoin obtained by [Mining](# Mining-miner) to the
     -After the Miner node starts mining, the transaction is confirmed and the transfer is completed
 
         ```sh
-        lynn@192.168.127.22 sia $ ./siac wallet balance
+        akashsharma@192.168.127.22 sia $ ./siac wallet balance
         Wallet status:
         Encrypted, Unlocked
         Height:              504
@@ -550,7 +550,7 @@ The Miner node transfers the Siacoin obtained by [Mining](# Mining-miner) to the
         Siafund Claims:      0 H
 
         Estimated Fee:       30 mS / KB
-        lynn@192.168.127.22 sia $ ./siac wallet transactions
+        akashsharma@192.168.127.22 sia $ ./siac wallet transactions
                     [timestamp]    [height]                                                   [transaction id]    [net siacoins]   [net siafunds]
         2018-07-05 04:43:45+0800         501   b7b37e7293b9e17867b076f11441e3fbc2dbd5195da05f64e8dc40d235a0c06c    50000000.00 SC             0 SF
         ```
@@ -562,20 +562,20 @@ The Host node announces the shared storage to the network and accepts the contra
 1. Create a new folder on the Host node as the data storage path for shared storage
 
     ```sh
-    lynn@192.168.127.22 sia $ mkdir share_storage
+    akashsharma@192.168.127.22 sia $ mkdir share_storage
     ```
 
 1. The Host node adds a shared storage data storage path through `./siac host folder add [path] [size]` and sets the shared space size
 
     ```sh
-    lynn@192.168.127.22 sia $ ./siac host folder add ~/sia/share_storage 512MB
-    Added folder /home/lynn/sia/share_storage
+    akashsharma@192.168.127.22 sia $ ./siac host folder add ~/sia/share_storage 512MB
+    Added folder /home/akashsharma/sia/share_storage
     ```
 
 1. The Host node announces the start of shared storage service to the network through `./siac host announce [address]`
 
     ```sh
-    lynn@192.168.127.22 sia $ ./siac host announce 192.168.127.22:9982
+    akashsharma@192.168.127.22 sia $ ./siac host announce 192.168.127.22:9982
     Host announcement submitted to network.
     The host has also been configured to accept contracts.
     To revert this, run:
@@ -597,7 +597,7 @@ The Host node announces the shared storage to the network and accepts the contra
 1. The Host node uses `./siac host` to view the current settings of shared storage
 
     ```sh
-    lynn@192.168.127.22 and $ ./siac host
+    akashsharma@192.168.127.22 and $ ./siac host
     Host info:
         Connectability Status: Host is not connectable (re-checks every few minutes).
 
@@ -612,13 +612,13 @@ The Host node announces the shared storage to the network and accepts the contra
 
     Storage Folders:
         Used    Capacity     % Used    Path
-        0 B     503.32 MB    0.00      /home/lynn/sia/share_storage
+        0 B     503.32 MB    0.00      /home/akashsharma/sia/share_storage
     ```
 
 1. The Renter node uses `./siac hostdb` to view the information of the Host node that announced the provision of shared storage services in the current network
 
     ```sh
-    lynn@192.168.127.23 and $ ./siac hostdb
+    akashsharma@192.168.127.23 and $ ./siac hostdb
     1 Active Hosts:
         Address Price (per TB per Mo)
     1:  192.168.127.22:9982  50 SC
@@ -632,7 +632,7 @@ The Renter node obtains the shared storage service by presetting the allowance (
 1. The Renter node uses `./siac renter prices` to view the shared storage prices in the network
 
     ```sh
-    lynn@192.168.127.23 sia $ ./siac renter prices
+    akashsharma@192.168.127.23 sia $ ./siac renter prices
     Renter Prices (estimated):
     Fees for Creating a Set of Contracts:   3.96 SC
     Download 1 TB:                          25 SC
@@ -643,7 +643,7 @@ The Renter node obtains the shared storage service by presetting the allowance (
 1. The Renter node uses `./siac renter setallowance [amount] [period] [hosts] [renew window]` to set the total amount of Siacoin that can be spent in a given period when using the shared storage service provided by the Host node, that is According to the price of shared storage in the network, the prepayment that needs to be paid before using the shared storage service
 
     ```sh
-    lynn@192.168.127.23 sia $ ./siac renter setallowance 100SC 100b 1 10b
+    akashsharma@192.168.127.23 sia $ ./siac renter setallowance 100SC 100b 1 10b
     Allowance updated.
     ```
 
@@ -656,9 +656,9 @@ The Renter node obtains the shared storage service by presetting the allowance (
 1. The Renter node uploads files via `./siac renter upload [source] [path]`, and checks the status of all files via `./siac renter list`
 
     ```sh
-    lynn@192.168.127.23 sia $ ./siac renter upload test_file test
-    Uploaded '/home/lynn/sia/test_file' as test.
-    lynn@192.168.127.23 sia $ ./siac renter list
+    akashsharma@192.168.127.23 sia $ ./siac renter upload test_file test
+    Uploaded '/home/akashsharma/sia/test_file' as test.
+    akashsharma@192.168.127.23 sia $ ./siac renter list
     Tracking 1 files:
     Total uploaded:  12.09 MB
     12.09 MB  test
@@ -667,17 +667,17 @@ The Renter node obtains the shared storage service by presetting the allowance (
 1. The Host node uses `./siac host` to view the shared storage space usage
 
     ```sh
-    lynn@192.168.127.22 and $ ./siac host
+    akashsharma@192.168.127.22 and $ ./siac host
     ...
     Storage Folders:
         Used        Capacity     % Used    Path
-        12.32 MB    503.32 MB    2.45      /home/lynn/sia/share_storage
+        12.32 MB    503.32 MB    2.45      /home/akashsharma/sia/share_storage
     ```
 
 1. The Renter node downloads files through `./siac renter download [path] [destination]`
 
     ```sh
-    lynn@192.168.127.23 sia $ ./siac renter download test test_file2
+    akashsharma@192.168.127.23 sia $ ./siac renter download test test_file2
     Downloading...  95.4% of 12.09 MB, 1s elapsed, 61.42 Mbps
-    Downloaded 'test' to /home/lynn/sia/test_file2.
+    Downloaded 'test' to /home/akashsharma/sia/test_file2.
     ```
