@@ -681,3 +681,5 @@ The Renter node obtains the shared storage service by presetting the allowance (
     Downloading...  95.4% of 12.09 MB, 1s elapsed, 61.42 Mbps
     Downloaded 'test' to /home/akashsharma/sia/test_file2.
     ```
+
+---
