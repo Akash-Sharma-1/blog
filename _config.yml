@@ -14,8 +14,8 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: Akash Sharma's Blog
-subtitle: Blogs on Data Science, Deep Learning, Algorithms and much more.
-description: A blog sharing my learnings spanning across various domains.
+subtitle: Blogs on Data Science, Deep Learning, Algorithms <br> and much more.
+description: Reading, Learning, Thinking and Writing.
 baseurl: "/blog"
 timezone: Asia/Kolkata
 sidebar_repository_limit: 5
