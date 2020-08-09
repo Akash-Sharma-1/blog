@@ -45,6 +45,12 @@ header {
     }
 }
 
+header-primary {
+  background-color: #48dbfb;
+  background-image: linear-gradient(315deg, #48dbfb 0%, #d3d3d3 74%);
+
+}
+
 // Add underline to navigation item
 .nav-item.active {
     border-bottom: 2px solid theme-color(secondary);
