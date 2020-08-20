@@ -7,7 +7,3 @@ This blog is built on a customised light and responsive Jekyll theme. I deployed
 ## Usage
 U can simply visit https://akash-sharma-1.github.io/blog for viewing the blog and its content.
 I'll also try to make a revised Jekyll template in a separate repo available for cloning and getting started with a differnt blog for others to use it.
-
-## License
-
-The theme is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
