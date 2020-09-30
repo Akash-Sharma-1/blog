@@ -1,12 +1,14 @@
 ---
-title: Testing this blog and also JekyllMarkDown101
+title: MarkDown101 and how to use them in your webpages? 
 tags: [Jekyll, Markdown]
 ---
+
+This post is a basic cheat-sheet on how to write a markdown based document with proper syntax and formatting. Markdown is an easy-to-remember which is just a lightweight markup language with plain text formatting syntax. We will also explore on how to extend upon its capabilities to work in web page just like this one ! :P
 
 
 ## Chose an Editor for markdown based language
 
-The post in website based on Jekyll is typically written with Markdown, which is just a lightweight markup language with plain text formatting syntax. That means you can write it with any text editor like [Notepad++](https://notepad-plus-plus.org), [Sublime Text](https://www.sublimetext.com), and [Atom](https://atom.io), but I recommend [Visual Studio Code](https://code.visualstudio.com/) (aka VS Code).
+The post in website based on Jekyll is typically written with Markdown, which is just a lightweight markup language with plain text formatting syntax. You can write Markdown with any text editor like [Notepad++](https://notepad-plus-plus.org), [Sublime Text](https://www.sublimetext.com), and [Atom](https://atom.io), but I recommend [Visual Studio Code](https://code.visualstudio.com/) (aka VS Code).
 
 ### Extensions
 
@@ -17,29 +19,6 @@ The main reason I recommend VS Code is to have an active community that develops
 - [Markdown Preview Github Styling](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-preview-github-styles)
 - [Markdown yaml Preamble](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-yaml-preamble)
 
-## Create a Post
-
-To create a post, add a file to your `_posts` directory with the following format:
-
-```bash
-YEAR-MONTH-DAY-name-of-post.md
-```
-
-Where `YEAR` is a four-digit number, `MONTH` and `DAY` are both two-digit numbers. For example, the following are examples of valid post filenames:
-
-
-```markdown
----
-title: Writing this Blog
-tags: [Jekyll, Markdown]
----
-
-More content here.
-```
-
-## Add More Content
-
-After you create the post file, it's time to add some content. Below is a simple list of Markdown syntax and extensions.
 
 ### Block Elements
 
@@ -125,7 +104,7 @@ if (2 > 1) {
 }
 ```
 
-We use [Linguist](http://https://github.com/github/linguist) to perform language detection and syntax highlighting. You can find out which keywords are valid in the [languages YAML file](https://github.com/github/linguist/blob/master/lib/linguist/languages.yml).
+Additionally, you could use [Linguist](http://https://github.com/github/linguist) to perform language detection and syntax highlighting. You can find out which keywords are valid in the [languages YAML file](https://github.com/github/linguist/blob/master/lib/linguist/languages.yml).
 
 #### Blockquotes
 
@@ -235,6 +214,7 @@ Inline `code` has `backticks` around it.
 
 Inline `code` has `backticks` around it.
 
+
 ### Multimedia Elements
 
 #### Images
@@ -245,7 +225,7 @@ The image syntax is very similar to hyperlinks, except that there is an exclamat
 ![Alt Text](link)
 ```
 
-If you want to embed images of yourself, just put your images in `/assets/images/` folder, and reference it like this:
+If you want to embed images of yourself for your site, just put your images in `/assets/images/` folder, and reference it like this:
 
 ```markdown
 {% raw %}![Stones on the beach]({{ site.baseurl }}/assets/images/Stones on the beach.jpeg){% endraw %}
@@ -255,7 +235,7 @@ If you want to embed images of yourself, just put your images in `/assets/images
 
 #### YouTube Videos
 
-U can provide a simple `include` tag for YouTube video, which is easy to embed and responsive. You just need to find out the id of a video in YouTube, which is a combination of numbers and letters after an equal sign (`=`) at the end of video page's URL. And don't forget the double quotes (`"`) on both sides of the id.
+You can provide a simple `include` tag for YouTube video, which is easy to embed and responsive. You just need to find out the id of a video in YouTube, which is a combination of numbers and letters after an equal sign (`=`) at the end of video page's URL. And don't forget the double quotes (`"`) on both sides of the id.
 
 ```markdown
 {% raw %}{% include youtube.html id="gocwRvLhDf8" %}{% endraw %}
@@ -297,11 +277,15 @@ $$E = mc^2$$
 
 $$E = mc^2$$
 
+# How is the vanilla Markdown different from webpage processed Markdown ?
+This website uses Jekyll to render Markdown based web pages and uses “kramdown” flavor of Markdown, which is what GitHub Pages supports. (There are various “flavors” of Markdown that have subtle differences in what various symbols do, but for the most part frequently used symbols like those that create heading formatting are the same—so you’re actually probably okay using  this markdown cheatsheet). I've linked a good resource for kramdown in the references section.
+
 ## References
 
 - [Posts](https://jekyllrb.com/docs/posts/#including-images-and-resources)
 - [Daring Fireball](https://daringfireball.net/projects/markdown/syntax)
 - [GitHub](https://guides.github.com/features/mastering-markdown/)
 - [GitHub Markdown Cheatsheet](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf)
+- [Kramdown](http://kramdown.gettalong.org/quickref.html)
 
 ---
