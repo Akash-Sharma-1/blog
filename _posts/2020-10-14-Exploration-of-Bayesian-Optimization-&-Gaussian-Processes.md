@@ -2,551 +2,452 @@
 title: Exploration of Bayesian Optimization and Gaussian Processes
 tags: [Machine Learning, Optimization, Probability, Statistics]
 ---
-## Motivation behind these optimization techniques
+## Introduction
 
-For many optimization problems, function evaluations can be quite expensive. For example, deep learning parameters may require a week of GPU training. A common approach to build a _surrogate model_, which is a model of the optimization problem that can be efficiently optimized in lieu of the true objective function. Further evaluations of the true objective function can be used to improve the model. Fitting such models requires an initial set of points
+Many optimization problems in machine learning are black box optimization problems where the objective function $f(\mathbf{x})$ is a black box function<sup>[1][2]</sup>. We do not have an analytical expression for $f$ nor do we know its derivatives. Evaluation of the function is restricted to sampling at a point $\mathbf{x}$ and getting a possibly noisy response.
 
-## Sampling plans
+If $f$ is cheap to evaluate we could sample at many points e.g. via grid search, random search or numeric gradient estimation. However, if function evaluation is expensive e.g. tuning hyperparameters of  a deep neural network, probe drilling for oil at given geographic coordinates or evaluating the effectiveness of a drug candidate taken from a chemical search space then it is important to minimize the number of samples drawn from the black box function $f$.
 
-These are sampling plans for covering the search space when we have limited resources.
+This is the domain where Bayesian optimization techniques are most useful. They attempt to find the global optimimum in a minimum number of steps. Bayesian optimization incorporates prior belief about $f$ and updates the prior with samples drawn from $f$ to get a posterior that better approximates $f$. The model used for approximating the objective function is called *surrogate model*. Bayesian optimization also uses an *acquisition function* that directs sampling to areas where an improvement over the current best observation is likely.
 
-### Full factorial
+### Surrogate model
 
-The _full factorial_ sampling plan places a grid of evenly spaced points over the search space. This approach is easy to implement, does not rely on randomness, and covers the space, but it uses a large number of points. Sampling grid is bounded as shown in the picture
+A popular surrogate model for Bayesian optimization are [Gaussian processes](https://en.wikipedia.org/wiki/Gaussian_process) (GPs). I wrote about Gaussian processes in a [previous post](/2018/03/19/gaussian-processes/). If you are not familiar with GPs I recommend reading it first. GPs define a prior over functions and we can use them to incorporate prior beliefs about the objective function (smoothness, ...). The GP posterior is cheap to evaluate and is used to propose points in the search space where sampling is likely to yield an improvement.
 
-![image](https://cdn.mathpix.com/snip/images/0vpLGVPhZB1DnjFeZUd7XPn03bpK17u0ZbIMdYpBuPM.original.fullsize.png)
+### Acquisition functions
 
-**Exponentially increase design points when the dimensionality high.**
+Proposing sampling points in the search space is done by acquisition functions. They trade off exploitation and exploration. Exploitation means sampling where the surrogate model predicts a high objective and exploration means sampling at locations where the prediction uncertainty is high. Both correspond to high acquisition function values and the goal is to maximize the acquisition function to determine the next sampling point.
 
-### Random sampling
+More formally, the objective function $f$ will be sampled at $\mathbf{x}\_t = \operatorname{argmax}\_{\mathbf{x}} u(\mathbf{x} \lvert \mathcal{D}\_{1:t-1})$ where $u$ is the acquisition function and $\mathcal{D}\_{1:t-1} = \{(\mathbf{x}\_1, y_1),...,(\mathbf{x}\_{t-1}, y\_{t-1})\}$ are the $t-1$ samples drawn from $f$ so far. Popular acquisition functions are *maximum probability of improvement* (MPI), *expected improvement* (EI) and *upper confidence bound* (UCB)<sup>[1]</sup>. In the following, we will use the expected improvement (EI) which is most widely used and described further below.
 
-Draw m random samples over the design space.
+### Optimization algorithm
 
+The Bayesian optimization procedure is as follows. For $t = 1,2,...$ repeat:
 
-A uniform projection plan is a sampling plan over a discrete grid where the dis- tribution over each dimension is uniform.
+- Find the next sampling point $\mathbf{x}\_{t}$ by optimizing the acquisition function over the GP: $\mathbf{x}\_t = \operatorname{argmax}\_{\mathbf{x}} u(\mathbf{x} \lvert \mathcal{D}\_{1:t-1})$
+- Obtain a possibly noisy sample $y_t = f(\mathbf{x}_t) + \epsilon_t$ from the objective function $f$.
+- Add the sample to previous samples $\mathcal{D}\_{1:t} = \{\mathcal{D}\_{1:t-1}, (\mathbf{x}\_t,y\_t)\}$ and update the GP.
 
-![image](https://cdn.mathpix.com/snip/images/o_0tCEn2Rb6fSu52cE72G_lRFSC69D1wjyN1d1vE_M0.original.fullsize.png)
+### Expected improvement
 
-### Stratified sampling
+Expected improvement is defined as
 
-An $m \times m$ grid could miss important information due to systematic regularities. Cells are sampled at a point chosen uni- formly at random from within the cell rather than at the cell’s center
+$$\operatorname{EI}(\mathbf{x}) = \mathbb{E}\max(f(\mathbf{x}) - f(\mathbf{x}^+), 0)\tag{1}$$
 
-![image](https://cdn.mathpix.com/snip/images/hchZo2Qlz8EyP5bTXzv3vrly-u_VYjYSio_LuyLoPw0.original.fullsize.png)
+where $f(\mathbf{x}^+)$ is the value of the best sample so far and $\mathbf{x}^+$ is the location of that sample i.e. $\mathbf{x}^+ = \operatorname{argmax}\_{\mathbf{x}\_i \in \mathbf{x}\_{1:t}} f(\mathbf{x}\_i)$. The expected improvement can be evaluated analytically under the GP model<sup>[3]</sup>:
 
-There are several other sampling plans. We skip for now.
+$$
+\operatorname{EI}(\mathbf{x}) =
+\begin{cases}
+(\mu(\mathbf{x}) - f(\mathbf{x}^+) - \xi)\Phi(Z) + \sigma(\mathbf{x})\phi(Z)  &\text{if}\ \sigma(\mathbf{x}) > 0 \\
+0 & \text{if}\ \sigma(\mathbf{x}) = 0
+\end{cases}\tag{2}
+$$
 
-## Surrogate models
+where
 
-Now we discuss how to use these samples to construct models of the objective function that can be used in place of the real objective function. These _surrogate_ models are inexpensive to calculate
+$$
+Z =
+\begin{cases}
+\frac{\mu(\mathbf{x}) - f(\mathbf{x}^+) - \xi}{\sigma(\mathbf{x})} &\text{if}\ \sigma(\mathbf{x}) > 0 \\
+0 & \text{if}\ \sigma(\mathbf{x}) = 0
+\end{cases}
+$$
 
-### Fitting models
+where $\mu(\mathbf{x})$ and $\sigma(\mathbf{x})$ are the mean and the standard deviation of the GP posterior predictive at $\mathbf{x}$, respectively. $\Phi$ and $\phi$ are the CDF and PDF of the standard normal distribution, respectively. The first summation term in Equation (2) is the exploitation term and second summation term is the exploration term.
 
-Suppose we have $m$ design points $$X=\left\\{\mathbf{x}^{(1)},\mathbf{x}^{(2)},\ldots,\mathbf{x}^{(m)}\right\\}$$ and function evaluations $$\mathbf{y}=\left\\{y^{(1)}, y^{(2)}, \ldots, y^{(m)}\right\\}$$, the model will predict
+Parameter $\xi$ in Equation (2) determines the amount of exploration during optimization and higher $\xi$ values lead to more exploration. In other words, with increasing $\xi$ values, the importance of improvements predicted by the GP posterior mean $\mu(\mathbf{x})$ decreases relative to the importance of potential improvements in regions of high prediction uncertainty, represented by large $\sigma(\mathbf{x})$ values. A recommended default value for $\xi$ is $0.01$.
 
-```latex
-\hat{\mathbf{y}}=\left\{\hat{f}_{\mathbf{\theta}}\left(\mathbf{x}^{(1)}\right), \hat{f}_{\mathbf{\theta}}\left(\mathbf{x}^{(2)}\right), \ldots, \hat{f}_{\mathbf{\theta}}\left(\mathbf{x}^{(m)}\right)\right\}
-```
+With this minimum of theory we can start implementing Bayesian optimization. The next section shows a basic implementation with plain NumPy and SciPy, later sections demonstrate how to use existing libraries. Finally, Bayesian optimization is used to tune the hyperparameters of a tree-based regression model.
 
-A surrogate model $\hat{f}$ parameterized by $\theta$ is designed to mimic the true objective function $f$. The parameters $\theta$ can be adjusted to fit the model based on samples collected from $f$
-```latex
-\underset{\theta}{\operatorname{minimize}} \quad\|\mathbf{y}-\hat{\mathbf{y}}\|_{p}
-```
+## Implementation with NumPy and SciPy
 
-This penalizes the deviation of the model only at the data points. There is no guarantee that the model will continue to fit well away from observed data, and model accuracy typically decreases the farther we go from the sampled points. This form of model fitting is called **regression**.
+In this section, we will implement the acquisition function and its optimization in plain NumPy and SciPy and use scikit-learn for the Gaussian process implementation. Although we have an analytical expression of the optimization objective `f` in the following example, we treat is as black box and iteratively approximate it with a Gaussian process during Bayesian optimization. Furthermore, samples drawn from the objective function are noisy and the noise level is given by the `noise` variable. Optimization is done within given `bounds`. We also assume that there exist two initial samples in `X_init` and `Y_init`.
 
-### Linear models
-
-A simple surrogate model is the linear model, which has the form
-
-$$\hat{f}=w_{0}+\mathbf{w}^{\top} \mathbf{x} \quad \boldsymbol{\theta}=\left\\{w_{0}, \mathbf{w}\right\\}$$
-
-For an n-dimensional design space, the linear model has n + 1 parameters, and thus requires at least n + 1 samples to fit unambiguously.
-
-$$\hat{f}=\boldsymbol{\theta}^{\top} \mathbf{x}$$
-
-Finding an optimal θ requires solving a linear regression problem:
-
-```latex
-\operatorname{minimize}_{\Theta}\|\mathbf{y}-\mathbf{X} \boldsymbol{\theta}\|_{2}^{2}
-```
-
-where $X$ is a design matrix formed from $m$ data points
-
-```latex
-\mathbf{X}=\left[\begin{array}{c}
-\left(\mathbf{x}^{(1)}\right)^{\top} \\
-\left(\mathbf{x}^{(2)}\right)^{\top} \\
-\vdots \\
-\left(\mathbf{x}^{(m)}\right)^{\top}
-\end{array}\right]
-```
-
-Linear regression has an analytic solution
-
-$$\theta=X^{+} y$$
-
-where $X^+$ is the Moore-Penrose pseudoinverse of $X$. In Julia, this is `pinv`
-
-$$\mathbf{X}^{+}=\mathbf{X}^{\top}\left(\mathbf{X} \mathbf{X}^{\top}\right)^{-1}$$
-
-
-### Basis functions
-
-The linear model is a linear combination of the components of $x$:
-
-$$\hat{f}(\mathbf{x})=\theta_{1} x_{1}+\cdots+\theta_{n} x_{n}=\sum_{i=1}^{n} \theta_{i} x_{i}=\theta^{\top} \mathbf{x}$$
-
-which is a specific example of a more general linear combination of basis functions
-
-$$\hat{f}(\mathbf{x})=\theta_{1} b_{1}(\mathbf{x})+\cdots+\theta_{q} b_{q}(\mathbf{x})=\sum_{i=1}^{q} \theta_{i} b_{i}(\mathbf{x})=\theta^{\top} \mathbf{b}(\mathbf{x})$$
-
-This solves this problem
-```latex
-\operatorname{minimize}_{\mathbf{\theta}}\|\mathbf{y}-\mathbf{B} \theta\|_{2}^{2}
-```
-
-### Other methods
-
-There are polynomial basis functions, sinosoidal and radial basis functions. All of these have their own curve fitting properties
-
-### Fitting Noisy Objective Functions
-
-Models fit using regression will pass as close as possible to every design point. When the objective function evaluations are noisy, complex models are likely to excessively contort themselves to pass through every point. However, smoother fits are often better predictors of the true underlying objective function.
-
-We add _regularization_ (L2) term to linear models specified above.
-```latex
-\operatorname{minimize}_{\theta}\|\mathbf{y}-\mathbf{B} \theta\|_{2}^{2}+\lambda\|\mathbf{\theta}\|_{2}^{2}
-```
-
-
-### Which model to choose?
-
-Generalization error can be estimated using techniques such as holdout, k-fold cross validation, and the bootstrap.
-
-
-## Probablistic surrogate models
-
-When using surrogate models for the purpose of optimization, it is often useful to quantify our confidence in the predictions of these models. One way to quantify our confidence is by taking a probabilistic approach to surrogate modeling. Most common one is **Guassian Process** which represents a distribution over functions.
-
-We use Gaussian processes to infer a distribution over the values of different design points given the values of previously evaluated design points. We can incorporate gradient information and noisy measurements of the objective functions.
-
-### Guassian distribution
-
-n-dimensional is parameterized
-
-$$\mathcal{N}(\mathbf{x} | \boldsymbol{\mu}, \mathbf{\Sigma})=(2 \pi)^{-n / 2}|\mathbf{\Sigma}|^{-1 / 2} \exp \left(-\frac{1}{2}(\mathbf{x}-\boldsymbol{\mu})^{\top} \boldsymbol{\Sigma}^{-1}(\mathbf{x}-\boldsymbol{\mu})\right)$$
-
-Covariance matrices are always positive semidefinite. Sampled value is
-```latex
-\mathbf{x} \sim \mathcal{N}(\boldsymbol{\mu}, \mathbf{\Sigma})
-```
-
-Some examples
-
-![image](https://cdn.mathpix.com/snip/images/bqFWltlkHv4WeYGf9lP0Ms4vLbmyhFxNdYidfbS6_n8.original.fullsize.png)
-
-
-Two jointly Gaussian random variables a and b can be written
-
-```latex
-\left[\begin{array}{l}
-\mathbf{a} \\
-\mathbf{b}
-\end{array}\right] \sim \mathcal{N}\left(\left[\begin{array}{l}
-\boldsymbol{\mu}_{\mathbf{a}} \\
-\boldsymbol{\mu}_{\mathbf{b}}
-\end{array}\right],\left[\begin{array}{ll}
-\mathbf{A} & \mathbf{C} \\
-\mathbf{C}^{\top} & \mathbf{B}
-\end{array}\right]\right)
-```
-
-
-We choose `MvNormal` because _marginal distribution_ for a vector of random variables is given by its corresponding mean and covariance
-
-```latex
-\mathbf{a} \sim \mathcal{N}\left(\boldsymbol{\mu}_{\mathrm{a}}, \mathbf{A}\right) \quad \mathbf{b} \sim \mathcal{N}\left(\boldsymbol{\mu}_{\mathbf{b}}, \mathbf{B}\right)
-```
-
-and conditional distribution has a convenient closed form
-
-```latex
-\begin{array}{l}
-\mathbf{a} | \mathbf{b} \sim \mathcal{N}\left(\mu_{\mathrm{a} | \mathbf{b}}, \mathbf{\Sigma}_{\mathrm{a} | \mathbf{b}}\right) \\
-\boldsymbol{\mu}_{\mathrm{a} | \mathbf{b}}=\boldsymbol{\mu}_{\mathrm{a}}+\mathbf{C B}^{-1}\left(\mathbf{b}-\boldsymbol{\mu}_{\mathbf{b}}\right) \\
-\mathbf{\Sigma}_{\mathrm{a} | \mathbf{b}}=\mathbf{A}-\mathbf{C B}^{-1} \mathbf{C}^{\top}
-\end{array}
-```
-
-Simple example
-
-```latex
-\left[\begin{array}{l}
-x_{1} \\
-x_{2}
-\end{array}\right] \sim \mathcal{N}\left(\left[\begin{array}{l}
-0 \\
-1
-\end{array}\right],\left[\begin{array}{ll}
-3 & 1 \\
-1 & 2
-\end{array}\right]\right)
-```
-
-The marginal distribution for $x_1$ is N (0, 3), and the marginal distribution for $x_2$ is $N (1, 2)$.
-
-The conditional distribution for $x_1$ given $x_2 = 2$ is
-
-```latex
-\begin{aligned}
-\boldsymbol{\mu}_{x_{1} | x_{2}=2} &=0+1 \cdot 2^{-1} \cdot(2-1)=0.5 \\
-\boldsymbol{\Sigma}_{x_{1} | x_{2}=2} &=3-1 \cdot 1^{-1} \cdot 1=2.5 \\
-x_{1} |\left(x_{2}=2\right) & \sim \mathcal{N}(0.5,2.5)
-\end{aligned}
-```
-
-### Guassian processes
-
-we approximated the objective function f using a surrogate model function $f^{hat}$ fitted to previously evaluated design points. A special type of surrogate model known as a Gaussian process allows us not only to predict $f$ but also to quantify our uncertainty in that prediction using a probability distribution
-
-A Gaussian process is a distribution over functions. For any finite set of points $\left\\{\mathbf{x}^{(1)}, \ldots, \mathbf{x}^{(m)}\right\\}$, the associated function evaluations $\left\\{y_{1}, \ldots, y_{m}\right\\}$ are distributed according to:
-
-```latex
-\left[\begin{array}{c}
-y_{1} \\
-\vdots \\
-y_{m}
-\end{array}\right] \sim \mathcal{N}\left(\left[\begin{array}{c}
-m\left(\mathbf{x}^{(1)}\right) \\
-\vdots \\
-m\left(\mathbf{x}^{(m)}\right)
-\end{array}\right],\left[\begin{array}{ccc}
-k\left(\mathbf{x}^{(1)}, \mathbf{x}^{(1)}\right) & \cdots & k\left(\mathbf{x}^{(1)}, \mathbf{x}^{(m)}\right) \\
-\vdots & \ddots & \vdots \\
-k\left(\mathbf{x}^{(m)}, \mathbf{x}^{(1)}\right) & \cdots & k\left(\mathbf{x}^{(m)}, \mathbf{x}^{(m)}\right)
-\end{array}\right]\right)
-```
-
-where m(x) ($m(\mathbf{x})=\mathbb{E}[f(\mathbf{x})]$ ) is _mean function_ and k(x, x') ( $k\left(\mathbf{x}, \mathbf{x}^{\prime}\right)=$
-$\mathbb{E}\left[(f(\mathbf{x})-m(\mathbf{x}))\left(f\left(\mathbf{x}^{\prime}\right)-m\left(\mathbf{x}^{\prime}\right)\right)\right]$ ) is _covariance function_ or _**kernel**_. The mean function can represent prior knowledge about the function. The kernel controls the smoothness of the functions.
-
-Example psuedo code
-
-![image](https://cdn.mathpix.com/snip/images/xknDFDS7v7rpHb8GLvDsCm_Z3BzWYulKP4MnYryx1mw.original.fullsize.png)
-
-Common kernel function is squared exponential. There are several others, usually they use `r` which is euclidean distance between x and x'. Matern Kernel uses gamma function and and Kν(x) is the modified Bessel function of the second kind, for example
-```latex
-\frac{2^{1-v}}{\Gamma(v)}\left(\sqrt{2 v} \frac{r}{\ell}\right)^{v} K_{v}\left(\sqrt{2 v} \frac{r}{\ell}\right)
-```
-
-
-### Prediction
-
-Suppose we already have a set of points X and the corresponding y, but we wish to predict the values yˆ at points $X^{*}$. The joint distribution is
-
-```latex
-\left[\begin{array}{l}
-\hat{\mathbf{y}} \\
-\mathbf{y}
-\end{array}\right] \sim \mathcal{N}\left(\left[\begin{array}{l}
-\mathbf{m}\left(X^{*}\right) \\
-\mathbf{m}(X)
-\end{array}\right],\left[\begin{array}{ll}
-\mathbf{K}\left(X^{*}, X^{*}\right) & \mathbf{K}\left(X^{*}, X\right) \\
-\mathbf{K}\left(X, X^{*}\right) & \mathbf{K}(X, X)
-\end{array}\right]\right)
-```
-
-where m and k are
-```latex
-\begin{aligned}
-\mathbf{m}(X) &=\left[m\left(\mathbf{x}^{(1)}\right), \ldots, m\left(\mathbf{x}^{(n)}\right)\right] \\
-\mathbf{K}\left(X, X^{\prime}\right) &=\left[\begin{array}{ccc}
-k\left(\mathbf{x}^{(1)}, \mathbf{x}^{\prime}(1)\right. & \cdots & k\left(\mathbf{x}^{(1)}, \mathbf{x}^{\prime(m)}\right) \\
-\vdots & \ddots & \vdots \\
-k\left(\mathbf{x}^{(n)}, \mathbf{x}^{\prime(1)}\right) & \cdots & k\left(\mathbf{x}^{(n)}, \mathbf{x}^{\prime(m)}\right)
-\end{array}\right]
-\end{aligned}
-```
-
-Therefore the conditional distribution is given by,
-
-```latex
-\hat{\mathbf{y}} | \mathbf{y} \sim \mathcal{N}(\underbrace{\mathbf{m}\left(X^{*}\right)+\mathbf{K}\left(X^{*}, X\right) \mathbf{K}(X, X)^{-1}(\mathbf{y}-\mathbf{m}(X))}_{\text {mean }}, \underbrace{\mathbf{K}\left(X^{*}, X^{*}\right)-\mathbf{K}\left(X^{*}, X\right) \mathbf{K}(X, X)^{-1} \mathbf{K}\left(X, X^{*}\right)}_{\text {covariance }})
-```
-
-Note, that the covariance is not dependent on y. This distribution is often referred to as the posterior distribution. In julia, `mvnrand(μ(X, GP.m), Σ(X, GP.k))`. The predicted mean
-
-
-```latex
-\begin{aligned}
-\hat{\mu}(\mathbf{x}) &=m(\mathbf{x})+\mathbf{K}(\mathbf{x}, X) \mathbf{K}(X, X)^{-1}(\mathbf{y}-\mathbf{m}(X)) \\
-&=m(\mathbf{x})+\boldsymbol{\theta}^{\top} \mathbf{K}(X, \mathbf{x})
-\end{aligned}
-```
-
-where $\boldsymbol{\theta}=\mathbf{K}(X, X)^{-1}(\mathbf{y}-\mathbf{m}(X))$
-
-_The value of the Gaussian process beyond the surrogate models discussed previously is that it also quantifies our uncertainty in our predictions._
-
-The variance of the predicted mean can also be obtained as a function of x: $\hat{v}(\mathbf{x})=\mathbf{K}(\mathbf{x}, \mathbf{x})-\mathbf{K}(\mathbf{x}, X) \mathbf{K}(X, X)^{-1} \mathbf{K}(X, \mathbf{x})$
-
-
-### Incorporating gradient measurements
-
-Gaussian processes can be extended to incorporate gradients
-
-```latex
-\left[\begin{array}{c}
-\mathbf{y} \\
-\nabla \mathbf{y}
-\end{array}\right] \sim \mathcal{N}\left(\left[\begin{array}{c}
-\mathbf{m}_{f} \\
-\mathbf{m}_{\nabla}
-\end{array}\right],\left[\begin{array}{cc}
-\mathbf{K}_{f f} & \mathbf{K}_{f \nabla} \\
-\mathbf{K}_{\nabla f} & \mathbf{K}_{\nabla \nabla}
-\end{array}\right]\right)
-```
-
-where $\mathbf{y} \sim \mathcal{N}\left(\mathbf{m}\_{f}, \mathbf{K}\_{f f}\right)$ is a traditional guassian process, $m_{\nabla}$ is a mean function of the gradient, $K_{\nabla f}$ is covariance matrix between function values and gradients etc.
-
-
-The linearity of Gaussians causes these covariance functions to be related
-
-$\begin{aligned} k_{f f}\left(\mathbf{x}, \mathbf{x}^{\prime}\right) &=k\left(\mathbf{x}, \mathbf{x}^{\prime}\right) \\ k_{\nabla f}\left(\mathbf{x}, \mathbf{x}^{\prime}\right) &=\nabla_{\mathbf{x}} k\left(\mathbf{x}, \mathbf{x}^{\prime}\right) \\ k_{f \nabla}\left(\mathbf{x}, \mathbf{x}^{\prime}\right) &=\nabla_{\mathbf{x}^{\prime}} k\left(\mathbf{x}, \mathbf{x}^{\prime}\right) \\ k_{\nabla \nabla}\left(\mathbf{x}, \mathbf{x}^{\prime}\right) &=\nabla_{\mathbf{x}} \nabla_{\mathbf{x}^{\prime}} k\left(\mathbf{x}, \mathbf{x}^{\prime}\right) \end{aligned}$
-
-Prediction can be accomplished in the same manner as with a traditional Gaussian process. We first construct the joint distribution
-```latex
-\left[\begin{array}{c}
-\hat{\mathbf{y}} \\
-\mathbf{y} \\
-\nabla \mathbf{y}
-\end{array}\right] \sim \mathcal{N}\left(\left[\begin{array}{c}
-\mathbf{m}_{f}\left(X^{*}\right) \\
-\mathbf{m}_{f}(X) \\
-\mathbf{m}_{\nabla}(X)
-\end{array}\right],\left[\begin{array}{ccc}
-\mathbf{K}_{f f}\left(X^{*}, X^{*}\right) & \mathbf{K}_{f f}\left(X^{*}, X\right) & \mathbf{K}_{f \nabla}\left(X^{*}, X\right) \\
-\mathbf{K}_{f f}\left(X, X^{*}\right) & \mathbf{K}_{f f}(X, X) & \mathbf{K}_{f \nabla}(X, X) \\
-\mathbf{K}_{\nabla f}\left(X, X^{*}\right) & \mathbf{K}_{\nabla f}(X, X) & \mathbf{K}_{\nabla \nabla}(X, X)
-\end{array}\right]\right)
-```
-
-The conditional distribution follows the same Gaussian relations as in equation
-```latex
-\hat{\mathbf{y}} | \mathbf{y}, \nabla \mathbf{y} \sim \mathcal{N}\left(\boldsymbol{\mu}_{\nabla}, \mathbf{\Sigma}_{\nabla}\right)
-```
-
-```latex
-\begin{aligned}
-&\boldsymbol{\mu}_{\nabla}=\mathbf{m}_{f}\left(X^{*}\right)+\left[\begin{array}{c}
-\mathbf{K}_{f f}\left(X, X^{*}\right) \\
-\mathbf{K}_{\nabla f}\left(X, X^{*}\right)
-\end{array}\right]^{\top}\left[\begin{array}{cc}
-\mathbf{K}_{f f}(X, X) & \mathbf{K}_{f \nabla}(X, X) \\
-\mathbf{K}_{\nabla f}(X, X) & \mathbf{K}_{\nabla \nabla}(X, X)
-\end{array}\right]^{-1}\left[\begin{array}{c}
-\mathbf{y}-\mathbf{m}_{f}(X) \\
-\nabla \mathbf{y}-\mathbf{m}_{\nabla}(X)
-\end{array}\right]\\
-&\boldsymbol{\Sigma}_{\nabla}=\mathbf{K}_{f f}\left(X^{*}, X^{*}\right)-\left[\begin{array}{cc}
-\mathbf{K}_{f f}\left(X, X^{*}\right) \\
-\mathbf{K}_{\nabla f}\left(X, X^{*}\right)
-\end{array}\right]^{\top}\left[\begin{array}{cc}
-\mathbf{K}_{f f}(X, X) & \mathbf{K}_{f \nabla}(X, X) \\
-\mathbf{K}_{\nabla f}(X, X) & \mathbf{K}_{\nabla \nabla}(X, X)
-\end{array}\right]^{-1}\left[\begin{array}{c}
-\mathbf{K}_{f f}\left(X, X^{*}\right) \\
-\mathbf{K}_{\nabla f}\left(X, X^{*}\right)
-\end{array}\right]
-\end{aligned}
-```
-
-
-### Incorporating noisy measurements
-
-Joint distribution
-
-```latex
-\left[\begin{array}{l}
-\hat{\mathbf{y}} \\
-\mathbf{y}
-\end{array}\right] \sim \mathcal{N}\left(\left[\begin{array}{l}
-\mathbf{m}\left(X^{*}\right) \\
-\mathbf{m}(X)
-\end{array}\right],\left[\begin{array}{ll}
-\mathbf{K}\left(X^{*}, X^{*}\right) & \mathbf{K}\left(X^{*}, X\right) \\
-\mathbf{K}\left(X, X^{*}\right) & \mathbf{K}(X, X)+v \mathbf{I}
-\end{array}\right]\right)
-```
-
-with conditional distribution
-```latex
-\begin{aligned}
-\hat{\mathbf{y}} | \mathbf{y}, \nu & \sim \mathcal{N}\left(\boldsymbol{\mu}^{*}, \mathbf{\Sigma}^{*}\right) \\
-\boldsymbol{\mu}^{*} &=\mathbf{m}\left(X^{*}\right)+\mathbf{K}\left(X^{*}, X\right)(\mathbf{K}(X, X)+v \mathbf{I})^{-1}(\mathbf{y}-\mathbf{m}(X)) \\
-\boldsymbol{\Sigma}^{*} &=\mathbf{K}\left(X^{*}, X^{*}\right)-\mathbf{K}\left(X^{*}, X\right)(\mathbf{K}(X, X)+v \mathbf{I})^{-1} \mathbf{K}\left(X, X^{*}\right)
-\end{aligned}
-```
-
-
-### Fitting guassian processes
-
-The choice of kernel and parameters has a large effect on the form of the Gaussian process between evaluated design points.
-
-Kernels and their parameters can be chosen using cross validation introduced in the previous chapter. Instead of minimizing the squared error on the test data, we maximize the likelihood of the data.
-
-> Likelihood math is hand-written in Cross Entropy method
-
-
-We want the parameters $\theta$ that maximizes $p(\mathbf{y} | X, \boldsymbol{\theta})$. The likelihood of the data is the probability that the observed points were drawn from the model.
-
-We use log likelihood,
-
-```latex
-\log p(\mathbf{y} | X, v, \mathbf{\theta})=-\frac{n}{2} \log 2 \pi-\frac{1}{2} \log \left|\mathbf{K}_{\mathbf{\theta}}(X, X)+v \mathbf{I}\right|-\frac{1}{2}\left(\mathbf{y}-\mathbf{m}_{\mathbf{\theta}}(X)\right)^{\top}\left(\mathbf{K}_{\mathbf{\theta}}(X, X)+v \mathbf{I}\right)^{-1}\left(\mathbf{y}-\mathbf{m}_{\mathbf{\theta}}(X)\right)
-```
-
-Let us assume a zero mean such that $\mathbf{m}_{\theta}(X)=\mathbf{0}$ and $\theta$ refers only to the parameters for the Gaussian process covariance function. We can arrive at a maximum likelihood estimate by gradient ascent.
-
-```latex
-\frac{\partial}{\partial \theta_{j}} \log p(\mathbf{y} | X, \theta)=\frac{1}{2} \mathbf{y}^{\top} \mathbf{K}^{-1} \frac{\partial \mathbf{K}}{\partial \theta_{j}} \mathbf{K}^{-1} \mathbf{y}-\frac{1}{2} \operatorname{tr}\left(\mathbf{\Sigma}_{\mathbf{\theta}}^{-1} \frac{\partial \mathbf{K}}{\partial \theta_{j}}\right)
-```
-
-```latex
-\mathbf{\Sigma}_{\mathbf{\theta}}=\mathbf{K}_{\mathbf{\theta}}(X, X)+v \mathbf{I}
-```
-
-Results:
-
-```latex
-\begin{aligned}
-\frac{\partial \mathbf{K}^{-1}}{\partial \boldsymbol{\theta}_{j}} &=-\mathbf{K}^{-1} \frac{\partial \mathbf{K}}{\partial \boldsymbol{\theta}_{j}} \mathbf{K}^{-1} \\
-\frac{\partial \log |\mathbf{K}|}{\partial \boldsymbol{\theta}_{j}} &=\operatorname{tr}\left(\mathbf{K}^{-1} \frac{\partial \mathbf{K}}{\partial \boldsymbol{\theta}_{j}}\right)
-\end{aligned}
-```
-
-
-## Optimization using Guassian process optimization
-
-The last section discusses how to predict at a new point. We derived equations for estimating yhat at any new point. But how do we know which point to evaluate?
-We want to move to a design point that minimizes our objective function.
-
-### Prediction based exploration
-
-In prediction-based exploration, we select the minimizer of the surrogate function.
-An example of this approach is the quadratic fit. With quadratic fit search, we use a quadratic surrogate model to fit the last three bracketing points and then select the point at the minimum of the quadratic function.
-
-If we use a Gaussian process surrogate model, prediction-based optimization has us select the minimizer of the mean function
-
-```latex
-\begin{aligned}
-&\mathbf{x}^{(m+1)}=\arg \min _{x \in \mathcal{X}} \hat{\mu}(\mathbf{x})
-\end{aligned}
-```
-
-where $\hat{\mu}(\mathbf{x})$ is the predicted mean of a Gaussian process at a design point x based on the previous m design points. This is not efficient. Prediction-based optimization does not take uncertainty into account, and new samples can be generated very close to existing samples rendering function evalutions useless.
-
-
-### Error based exploration
-
-Error-based exploration seeks to increase confidence in the true function. A Gaussian process can tell us both the mean and standard deviation at every point. A large standard deviation indicates low confidence, so error-based exploration samples at design points with maximum uncertainty.
-
-The next sample point
-
-```latex
-\begin{aligned}
-&\mathbf{x}^{(m+1)}=\arg \min _{x \in \mathcal{X}} \hat{\sigma}(\mathbf{x})
-\end{aligned}
-```
-
-Optimization problems with unbounded feasible sets will always have high uncertainty far away from sampled points, making it impossible to become confident in the true underlying function over the entire domain
-
-
-### Lower confidence bound exploration
-
-Lower confidence bound exploration trades off between greedy minimization employed by prediction-based optimization and uncertainty reduction employed by error-based exploration. The next sample minimizes the lower confidence bound of the objective function
-
-```latex
-L B(\mathbf{x})=\hat{\mu}(\mathbf{x})-\alpha \hat{\sigma}(\mathbf{x})
-```
-
-where α ≥ 0 is a constant that controls the trade-off between exploration and exploitation. Exploration involves minimizing uncertainty, and exploitation involves minimizing the predicted mean
-
-![image](https://cdn.mathpix.com/snip/images/hTnw50c9dDwDJHh7c_Y4LTBuh6zdA1s5Y2jVxcqj17g.original.fullsize.png)
-
-
-## Summary
-
-In essence, we have initial y, X for original objective function. We approximate using Guassian process using the formula
-
-```latex
-\left[\begin{array}{c}
-y_{1} \\
-\vdots \\
-y_{m}
-\end{array}\right] \sim \mathcal{N}\left(\left[\begin{array}{c}
-m\left(\mathbf{x}^{(1)}\right) \\
-\vdots \\
-m\left(\mathbf{x}^{(m)}\right)
-\end{array}\right],\left[\begin{array}{ccc}
-k\left(\mathbf{x}^{(1)}, \mathbf{x}^{(1)}\right) & \cdots & k\left(\mathbf{x}^{(1)}, \mathbf{x}^{(m)}\right) \\
-\vdots & \ddots & \vdots \\
-k\left(\mathbf{x}^{(m)}, \mathbf{x}^{(1)}\right) & \cdots & k\left(\mathbf{x}^{(m)}, \mathbf{x}^{(m)}\right)
-\end{array}\right]\right)
-```
-
-We get next sample design point and evaluate/update our gaussian process model (x, y) using yhat formula above. Then we get another design point, evaluate/update our surrogate model.
-
-Remember the equation shown below has $m(x^{\*})$ which is $E[f(x^{\*})]$ which requires main objective function evaluation for updating posterior.
-
-> Hence, updating posterior requires finding new design point and updating our gaussian process model. We use xnew and it's evaluation on out main objective function. Once we make our gaussian process model more robust after adequate iterations, our new design point is our minimum. For sampling new design point, refer to Lower confidence bound exploration.
-
-
-Taken from BO link.
 
 ```python
-def update_posterior(x_new):
-    y = f(x_new) # evaluate f at new point.
-    X = torch.cat([gpmodel.X, x_new]) # incorporate new evaluation
-    y = torch.cat([gpmodel.y, y])
-    gpmodel.set_data(X, y)
-    # optimize the GP hyperparameters using Adam with lr=0.001
-    optimizer = torch.optim.Adam(gpmodel.parameters(), lr=0.001)
-    gp.util.train(gpmodel, optimizer)
+import numpy as np
 
+%matplotlib inline
+
+bounds = np.array([[-1.0, 2.0]])
+noise = 0.2
+
+def f(X, noise=noise):
+    return -np.sin(3*X) - X**2 + 0.7*X + noise * np.random.randn(*X.shape)
+
+X_init = np.array([[-0.9], [1.1]])
+Y_init = f(X_init)
 ```
 
-same as
+The following plot shows the noise-free objective function, the amount of noise by plotting a large number of samples and the two initial samples.
 
-```latex
-\hat{\mathbf{y}} | \mathbf{y} \sim \mathcal{N}(\underbrace{\mathbf{m}\left(X^{*}\right)+\mathbf{K}\left(X^{*}, X\right) \mathbf{K}(X, X)^{-1}(\mathbf{y}-\mathbf{m}(X))}_{\text {mean }}, \underbrace{\mathbf{K}\left(X^{*}, X^{*}\right)-\mathbf{K}\left(X^{*}, X\right) \mathbf{K}(X, X)^{-1} \mathbf{K}\left(X, X^{*}\right)}_{\text {covariance }})
+
+```python
+import matplotlib.pyplot as plt
+
+# Dense grid of points within bounds
+X = np.arange(bounds[:, 0], bounds[:, 1], 0.01).reshape(-1, 1)
+
+# Noise-free objective function values at X
+Y = f(X,0)
+
+# Plot optimization objective with noise level
+plt.plot(X, Y, 'y--', lw=2, label='Noise-free objective')
+plt.plot(X, f(X), 'bx', lw=1, alpha=0.1, label='Noisy samples')
+plt.plot(X_init, Y_init, 'kx', mew=3, label='Initial samples')
+plt.legend();
 ```
-Note that the covariance does not depend on y. This distribution is often referred to as the posterior distribution.
 
 
-After doing this for a multiple points, we finally converge to our global minimum on our main objective function.
+![png](/img/2018-03-21/output_4_0.png)
 
-[Bayesian optimization in Pyro](https://pyro.ai/examples/bo.html) discusses the code for this. It's very helpful.
 
-The Bayesian optimization strategy works as follows:
+Goal is to find the global optimum on the left in a small number of steps. The next step is to implement the acquisition function defined in Equation (2) as `expected_improvement` function.
 
-- Place a prior on the objective function $f$
 
-- Each time we evaluate $f$ at a new point $x_{n}$, we update our model for $f(x)$. This model serves as a surrogate objective function and reflects our beliefs about $f$ (in particular it reflects our beliefs about where we expect $f(x)$ to be close to $f(x^{*})$
+```python
+from scipy.stats import norm
 
-- Since we are being Bayesian, our beliefs are encoded in a posterior that allows us to systematically reason about the uncertainty of our model predictions.
+def expected_improvement(X, X_sample, Y_sample, gpr, xi=0.01):
+    '''
+    Computes the EI at points X based on existing samples X_sample
+    and Y_sample using a Gaussian process surrogate model.
 
-- Use the posterior to derive an “acquisition” (prediction based, error based or lower bound) function $\alpha(x)$ that is easy to evaluate and differentiate (so that optimizing $\alpha(x)$ is easy). In contrast to $f(x)$, we will generally evaluate $\alpha(x)$ at many points $x$, since doing so will be cheap.
+    Args:
+        X: Points at which EI shall be computed (m x d).
+        X_sample: Sample locations (n x d).
+        Y_sample: Sample values (n x 1).
+        gpr: A GaussianProcessRegressor fitted to samples.
+        xi: Exploitation-exploration trade-off parameter.
 
-- Repeat until convergence
+    Returns:
+        Expected improvements at points X.
+    '''
+    mu, sigma = gpr.predict(X, return_std=True)
+    mu_sample = gpr.predict(X_sample)
 
-Next design point:
+    sigma = sigma.reshape(-1, 1)
 
-- Use the acquisition function to derive the next query point according to $x_{n+1}=\arg \min \alpha(x)$
+    # Needed for noise-based model,
+    # otherwise use np.max(Y_sample).
+    # See also section 2.4 in [...]
+    mu_sample_opt = np.max(mu_sample)
 
-- Evaluate $f(x_{n+1})$ and update the posterior.
+    with np.errstate(divide='warn'):
+        imp = mu - mu_sample_opt - xi
+        Z = imp / sigma
+        ei = imp * norm.cdf(Z) + sigma * norm.pdf(Z)
+        ei[sigma == 0.0] = 0.0
+
+    return ei
+```
+
+We also need a function that proposes the next sampling point by computing the location of the acquisition function maximum. Optimization is restarted `n_restarts` times to avoid local optima.
+
+
+```python
+from scipy.optimize import minimize
+
+def propose_location(acquisition, X_sample, Y_sample, gpr, bounds, n_restarts=25):
+    '''
+    Proposes the next sampling point by optimizing the acquisition function.
+
+    Args:
+        acquisition: Acquisition function.
+        X_sample: Sample locations (n x d).
+        Y_sample: Sample values (n x 1).
+        gpr: A GaussianProcessRegressor fitted to samples.
+
+    Returns:
+        Location of the acquisition function maximum.
+    '''
+    dim = X_sample.shape[1]
+    min_val = 1
+    min_x = None
+
+    def min_obj(X):
+        # Minimization objective is the negative acquisition function
+        return -acquisition(X.reshape(-1, dim), X_sample, Y_sample, gpr)
+
+    # Find the best optimum by starting from n_restart different random points.
+    for x0 in np.random.uniform(bounds[:, 0], bounds[:, 1], size=(n_restarts, dim)):
+        res = minimize(min_obj, x0=x0, bounds=bounds, method='L-BFGS-B')        
+        if res.fun < min_val:
+            min_val = res.fun[0]
+            min_x = res.x           
+
+    return min_x.reshape(-1, 1)
+```
+
+Now we have all components needed to run Bayesian optimization with the [algorithm](#Optimization-algorithm) outlined above. The Gaussian process in the following example is configured with a [Matérn kernel](http://scikit-learn.org/stable/modules/gaussian_process.html#matern-kernel) which is a generalization of the squared exponential kernel or RBF kernel. The known noise level is configured with the `alpha` parameter.
+
+Bayesian optimization runs for 10 iterations. In each iteration, a row with two plots is produced. The left plot shows the noise-free objective function, the surrogate function which is the GP posterior predictive mean, the 95% confidence interval of the mean and the noisy samples obtained from the objective function so far. The right plot shows the acquisition function. The vertical dashed line in both plots shows the proposed sampling point for the next iteration which corresponds to the maximum of the acquisition function.
+
+
+```python
+from sklearn.gaussian_process import GaussianProcessRegressor
+from sklearn.gaussian_process.kernels import ConstantKernel, Matern
+from bayesian_optimization_util import plot_approximation, plot_acquisition
+
+# Gaussian process with Mat??rn kernel as surrogate model
+m52 = ConstantKernel(1.0) * Matern(length_scale=1.0, nu=2.5)
+gpr = GaussianProcessRegressor(kernel=m52, alpha=noise**2)
+
+# Initialize samples
+X_sample = X_init
+Y_sample = Y_init
+
+# Number of iterations
+n_iter = 10
+
+plt.figure(figsize=(12, n_iter * 3))
+plt.subplots_adjust(hspace=0.4)
+
+for i in range(n_iter):
+    # Update Gaussian process with existing samples
+    gpr.fit(X_sample, Y_sample)
+
+    # Obtain next sampling point from the acquisition function (expected_improvement)
+    X_next = propose_location(expected_improvement, X_sample, Y_sample, gpr, bounds)
+
+    # Obtain next noisy sample from the objective function
+    Y_next = f(X_next, noise)
+
+    # Plot samples, surrogate function, noise-free objective and next sampling location
+    plt.subplot(n_iter, 2, 2 * i + 1)
+    plot_approximation(gpr, X, Y, X_sample, Y_sample, X_next, show_legend=i==0)
+    plt.title(f'Iteration {i+1}')
+
+    plt.subplot(n_iter, 2, 2 * i + 2)
+    plot_acquisition(X, expected_improvement(X, X_sample, Y_sample, gpr), X_next, show_legend=i==0)
+
+    # Add sample to previous samples
+    X_sample = np.vstack((X_sample, X_next))
+    Y_sample = np.vstack((Y_sample, Y_next))
+```
+
+
+![png](/img/2018-03-21/output_10_0.png)
+
+
+Note how the two initial samples initially drive search into the direction of the local maximum on the right side but exploration allows the algorithm to escape from that local optimum and find the global optimum on the left side. Also note how sampling point proposals often fall within regions of high uncertainty (exploration) and are not only driven by the highest surrogate function values (exploitation).
+
+A convergence plot reveals how many iterations are needed the find a maximum and if the sampling point proposals stay around that maximum i.e. converge to small proposal differences between consecutive steps.
+
+
+```python
+from bayesian_optimization_util import plot_convergence
+
+plot_convergence(X_sample, Y_sample)
+```
+
+
+![png](/img/2018-03-21/output_12_0.png)
+
+
+## Bayesian optimization libraries
+
+There are numerous Bayesian optimization libraries out there and giving a comprehensive overview is not the goal of this article. Instead, I'll pick two that I used in the past and show the minimum setup needed to get the previous example running.
+
+### Scikit-optimize
+
+[Scikit-optimize](https://scikit-optimize.github.io/) is a library for sequential model-based optimization that is based on [scikit-learn](http://scikit-learn.org/). It also supports Bayesian optimization using Gaussian processes. The API is designed around minimization, hence, we have to provide negative objective function values.  The results obtained here slightly differ from previous results because of non-deterministic optimization behavior and different noisy samples drawn from the objective function.
+
+
+```python
+from sklearn.base import clone
+from skopt import gp_minimize
+from skopt.learning import GaussianProcessRegressor
+from skopt.learning.gaussian_process.kernels import ConstantKernel, Matern
+
+# Use custom kernel and estimator to match previous example
+m52 = ConstantKernel(1.0) * Matern(length_scale=1.0, nu=2.5)
+gpr = GaussianProcessRegressor(kernel=m52, alpha=noise**2)
+
+r = gp_minimize(lambda x: -f(np.array(x))[0],
+                bounds.tolist(),
+                base_estimator=gpr,
+                acq_func='EI',      # expected improvement
+                xi=0.01,            # exploitation-exploration trade-off
+                n_calls=10,         # number of iterations
+                n_random_starts=0,  # initial samples are provided
+                x0=X_init.tolist(), # initial samples
+                y0=-Y_init.ravel())
+
+# Fit GP model to samples for plotting results
+gpr.fit(r.x_iters, -r.func_vals)
+
+# Plot the fitted model and the noisy samples
+plot_approximation(gpr, X, Y, r.x_iters, -r.func_vals, show_legend=True)
+```
+
+
+![png](/img/2018-03-21/output_14_0.png)
+
+
+
+```python
+plot_convergence(np.array(r.x_iters), -r.func_vals)
+```
+
+
+![png](/img/2018-03-21/output_15_0.png)
+
+
+## GPyOpt
+
+[GPyOpt](http://sheffieldml.github.io/GPyOpt/) is a Bayesian optimization library based on [GPy](https://sheffieldml.github.io/GPy/). The abstraction level of the API is comparable to that of scikit-optimize. The `BayesianOptimization` API provides a `maximize` parameter to configure whether the objective function shall be maximized or minimized (default). In version 1.2.1, this seems to be ignored when providing initial samples, so we have to negate their target values manually in the following example. Also, the built-in `plot_acquisition` and `plot_convergence` methods display the minimization result in any case. Again, the results obtained here slightly differ from previous results because of non-deterministic optimization behavior and different noisy samples drawn from the objective function.
+
+
+```python
+import GPy
+import GPyOpt
+
+from GPyOpt.methods import BayesianOptimization
+
+kernel = GPy.kern.Matern52(input_dim=1, variance=1.0, lengthscale=1.0)
+bds = [{'name': 'X', 'type': 'continuous', 'domain': bounds.ravel()}]
+
+optimizer = BayesianOptimization(f=f,
+                                 domain=bds,
+                                 model_type='GP',
+                                 kernel=kernel,
+                                 acquisition_type ='EI',
+                                 acquisition_jitter = 0.01,
+                                 X=X_init,
+                                 Y=-Y_init,
+                                 noise_var = noise**2,
+                                 exact_feval=False,
+                                 normalize_Y=False,
+                                 maximize=True)
+
+optimizer.run_optimization(max_iter=10)
+optimizer.plot_acquisition()
+```
+
+
+![png](/img/2018-03-21/output_17_0.png)
+
+
+
+```python
+optimizer.plot_convergence()
+```
+
+
+![png](/img/2018-03-21/output_18_0.png)
+
+
+## Application
+
+This section demonstrates how to optimize the hyperparameters of an `XGBRegressor` with GPyOpt and how Bayesian optimization performance compares to random search. `XGBRegressor` is part of [XGBoost](https://xgboost.readthedocs.io/), a flexible and scalable gradient boosting library. `XGBRegressor` implements the scikit-learn estimator API and can be applied to regression problems. Regression is performed on a small [toy dataset](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_diabetes.html#sklearn.datasets.load_diabetes) that is part of scikit-learn.
+
+
+```python
+from sklearn import datasets
+from sklearn.model_selection import RandomizedSearchCV, cross_val_score
+
+from scipy.stats import uniform
+from xgboost import XGBRegressor
+
+# Load the diabetes dataset (for regression)
+X, Y = datasets.load_diabetes(return_X_y=True)
+
+# Instantiate an XGBRegressor with default hyperparameter settings
+xgb = XGBRegressor()
+
+# and compute a baseline to beat with hyperparameter optimization
+baseline = cross_val_score(xgb, X, Y, scoring='neg_mean_squared_error').mean()
+```
+
+### Hyperparameter tuning with random search
+
+For hyperparameter tuning with random search, we use `RandomSearchCV` of scikit-learn and compute a cross-validation score for each randomly selected point in hyperparameter space. Results will be discussed below.
+
+
+```python
+# Hyperparameters to tune and their ranges
+param_dist = {"learning_rate": uniform(0, 1),
+              "gamma": uniform(0, 5),
+              "max_depth": range(1,50),
+              "n_estimators": range(1,300),
+              "min_child_weight": range(1,10)}
+
+rs = RandomizedSearchCV(xgb, param_distributions=param_dist,
+                        scoring='neg_mean_squared_error', n_iter=25)
+
+# Run random search for 25 iterations
+rs.fit(X, Y);
+```
+
+### Hyperparameter tuning with Bayesian optimization
+
+To tune hyperparameters with Bayesian optimization we implement an objective function `cv_score` that takes hyperparameters as input and returns a cross-validation score. Here, we assume that cross-validation at a given point in hyperparameter space is deterministic and therefore set the `exact_feval` parameter of `BayesianOptimization` to `True`. Depending on model fitting and cross-validation details this might not be the case but we ignore that here.
+
+
+```python
+bds = [{'name': 'learning_rate', 'type': 'continuous', 'domain': (0, 1)},
+        {'name': 'gamma', 'type': 'continuous', 'domain': (0, 5)},
+        {'name': 'max_depth', 'type': 'discrete', 'domain': (1, 50)},
+        {'name': 'n_estimators', 'type': 'discrete', 'domain': (1, 300)},
+        {'name': 'min_child_weight', 'type': 'discrete', 'domain': (1, 10)}]
+
+# Optimization objective
+def cv_score(parameters):
+    parameters = parameters[0]
+    score = cross_val_score(
+                XGBRegressor(learning_rate=parameters[0],
+                              gamma=int(parameters[1]),
+                              max_depth=int(parameters[2]),
+                              n_estimators=int(parameters[3]),
+                              min_child_weight = parameters[4]),
+                X, Y, scoring='neg_mean_squared_error').mean()
+    score = np.array(score)
+    return score
+
+optimizer = BayesianOptimization(f=cv_score,
+                                 domain=bds,
+                                 model_type='GP',
+                                 acquisition_type ='EI',
+                                 acquisition_jitter = 0.05,
+                                 exact_feval=True,
+                                 maximize=True)
+
+# Only 20 iterations because we have 5 initial random points
+optimizer.run_optimization(max_iter=20)
+```
+
+### Results
+
+On average, Bayesian optimization finds a better optimium in a smaller number of steps than random search and beats the baseline in almost every run. This trend becomes even more prominent in higher-dimensional search spaces. Here, the search space is 5-dimensional which is rather low to substantially profit from Bayesian optimization. One advantage of random search is that it is trivial to parallelize. Parallelization of Bayesian optimization is much harder and subject to research (see \[4\], for example).
+
+
+```python
+y_rs = np.maximum.accumulate(rs.cv_results_['mean_test_score'])
+y_bo = np.maximum.accumulate(-optimizer.Y).ravel()
+
+print(f'Baseline neg. MSE = {baseline:.2f}')
+print(f'Random search neg. MSE = {y_rs[-1]:.2f}')
+print(f'Bayesian optimization neg. MSE = {y_bo[-1]:.2f}')
+
+plt.plot(y_rs, 'ro-', label='Random search')
+plt.plot(y_bo, 'bo-', label='Bayesian optimization')
+plt.xlabel('Iteration')
+plt.ylabel('Neg. MSE')
+plt.ylim(-5000, -3000)
+plt.title('Value of the best sampled CV score');
+plt.legend();
+```
+
+    Baseline neg. MSE = -3498.95
+    Random search neg. MSE = -3678.77
+    Bayesian optimization neg. MSE = -3185.50
+
+
+
+![png](/img/2018-03-21/output_26_1.png)
+
 
 ## References
 \[1\] Kevin P. Murphy. [Machine Learning, A Probabilistic Perspective](https://mitpress.mit.edu/books/machine-learning-0), Chapters 4, 14 and 15.  
