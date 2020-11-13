@@ -4,11 +4,11 @@ tags: [Machine Learning, Optimization, Probability, Statistics]
 ---
 ## Introduction
 
-Many optimization problems in machine learning are black box optimization problems where the objective function $f(\mathbf{x})$ is a black box function<sup>[1][2]</sup>. We do not have an analytical expression for $f$ nor do we know its derivatives. Evaluation of the function is restricted to sampling at a point $\mathbf{x}$ and getting a possibly noisy response.
+Many optimization problems in machine learning are black box optimization problems where the objective function $$f(\mathbf{x})$$ is a black box function<sup>[1][2]</sup>. We do not have an analytical expression for $$f$$ nor do we know its derivatives. Evaluation of the function is restricted to sampling at a point $$\mathbf{x}$$ and getting a possibly noisy response.
 
-If $f$ is cheap to evaluate we could sample at many points e.g. via grid search, random search or numeric gradient estimation. However, if function evaluation is expensive e.g. tuning hyperparameters of  a deep neural network, probe drilling for oil at given geographic coordinates or evaluating the effectiveness of a drug candidate taken from a chemical search space then it is important to minimize the number of samples drawn from the black box function $f$.
+If $$f$$ is cheap to evaluate we could sample at many points e.g. via grid search, random search or numeric gradient estimation. However, if function evaluation is expensive e.g. tuning hyperparameters of  a deep neural network, probe drilling for oil at given geographic coordinates or evaluating the effectiveness of a drug candidate taken from a chemical search space then it is important to minimize the number of samples drawn from the black box function $$f$$.
 
-This is the domain where Bayesian optimization techniques are most useful. They attempt to find the global optimimum in a minimum number of steps. Bayesian optimization incorporates prior belief about $f$ and updates the prior with samples drawn from $f$ to get a posterior that better approximates $f$. The model used for approximating the objective function is called *surrogate model*. Bayesian optimization also uses an *acquisition function* that directs sampling to areas where an improvement over the current best observation is likely.
+This is the domain where Bayesian optimization techniques are most useful. They attempt to find the global optimimum in a minimum number of steps. Bayesian optimization incorporates prior belief about $$f$$ and updates the prior with samples drawn from $$f$$ to get a posterior that better approximates $$f$$. The model used for approximating the objective function is called *surrogate model*. Bayesian optimization also uses an *acquisition function* that directs sampling to areas where an improvement over the current best observation is likely.
 
 ### Surrogate model
 
@@ -18,15 +18,15 @@ A popular surrogate model for Bayesian optimization are [Gaussian processes](htt
 
 Proposing sampling points in the search space is done by acquisition functions. They trade off exploitation and exploration. Exploitation means sampling where the surrogate model predicts a high objective and exploration means sampling at locations where the prediction uncertainty is high. Both correspond to high acquisition function values and the goal is to maximize the acquisition function to determine the next sampling point.
 
-More formally, the objective function $f$ will be sampled at $\mathbf{x}\_t = \operatorname{argmax}\_{\mathbf{x}} u(\mathbf{x} \lvert \mathcal{D}\_{1:t-1})$ where $u$ is the acquisition function and $\mathcal{D}\_{1:t-1} = \{(\mathbf{x}\_1, y_1),...,(\mathbf{x}\_{t-1}, y\_{t-1})\}$ are the $t-1$ samples drawn from $f$ so far. Popular acquisition functions are *maximum probability of improvement* (MPI), *expected improvement* (EI) and *upper confidence bound* (UCB)<sup>[1]</sup>. In the following, we will use the expected improvement (EI) which is most widely used and described further below.
+More formally, the objective function $$f$$ will be sampled at $$\mathbf{x}\_t = \operatorname{argmax}\_{\mathbf{x}} u(\mathbf{x} \lvert \mathcal{D}\_{1:t-1})$$ where $$u$$ is the acquisition function and $$\mathcal{D}\_{1:t-1} = \{(\mathbf{x}\_1, y_1),...,(\mathbf{x}\_{t-1}, y\_{t-1})\}$$ are the $$t-1$$ samples drawn from $$f$$ so far. Popular acquisition functions are *maximum probability of improvement* (MPI), *expected improvement* (EI) and *upper confidence bound* (UCB)<sup>[1]</sup>. In the following, we will use the expected improvement (EI) which is most widely used and described further below.
 
 ### Optimization algorithm
 
-The Bayesian optimization procedure is as follows. For $t = 1,2,...$ repeat:
+The Bayesian optimization procedure is as follows. For $$t = 1,2,...$$ repeat:
 
-- Find the next sampling point $\mathbf{x}\_{t}$ by optimizing the acquisition function over the GP: $\mathbf{x}\_t = \operatorname{argmax}\_{\mathbf{x}} u(\mathbf{x} \lvert \mathcal{D}\_{1:t-1})$
-- Obtain a possibly noisy sample $y_t = f(\mathbf{x}_t) + \epsilon_t$ from the objective function $f$.
-- Add the sample to previous samples $\mathcal{D}\_{1:t} = \{\mathcal{D}\_{1:t-1}, (\mathbf{x}\_t,y\_t)\}$ and update the GP.
+- Find the next sampling point $$\mathbf{x}\_{t}$$ by optimizing the acquisition function over the GP: $$\mathbf{x}\_t = \operatorname{argmax}\_{\mathbf{x}} u(\mathbf{x} \lvert \mathcal{D}\_{1:t-1})$$
+- Obtain a possibly noisy sample $$y_t = f(\mathbf{x}_t) + \epsilon_t$$ from the objective function $$f$$.
+- Add the sample to previous samples $$\mathcal{D}\_{1:t} = \{\mathcal{D}\_{1:t-1}, (\mathbf{x}\_t,y\_t)\}$$ and update the GP.
 
 ### Expected improvement
 
@@ -34,7 +34,7 @@ Expected improvement is defined as
 
 $$\operatorname{EI}(\mathbf{x}) = \mathbb{E}\max(f(\mathbf{x}) - f(\mathbf{x}^+), 0)\tag{1}$$
 
-where $f(\mathbf{x}^+)$ is the value of the best sample so far and $\mathbf{x}^+$ is the location of that sample i.e. $\mathbf{x}^+ = \operatorname{argmax}\_{\mathbf{x}\_i \in \mathbf{x}\_{1:t}} f(\mathbf{x}\_i)$. The expected improvement can be evaluated analytically under the GP model<sup>[3]</sup>:
+where $$f(\mathbf{x}^+)$$ is the value of the best sample so far and $$\mathbf{x}^+$$ is the location of that sample i.e. $$\mathbf{x}^+ = \operatorname{argmax}\_{\mathbf{x}\_i \in \mathbf{x}\_{1:t}} f(\mathbf{x}\_i)$$. The expected improvement can be evaluated analytically under the GP model<sup>[3]</sup>:
 
 $$
 \operatorname{EI}(\mathbf{x}) =
@@ -54,9 +54,9 @@ Z =
 \end{cases}
 $$
 
-where $\mu(\mathbf{x})$ and $\sigma(\mathbf{x})$ are the mean and the standard deviation of the GP posterior predictive at $\mathbf{x}$, respectively. $\Phi$ and $\phi$ are the CDF and PDF of the standard normal distribution, respectively. The first summation term in Equation (2) is the exploitation term and second summation term is the exploration term.
+where $$\mu(\mathbf{x})$$ and $$\sigma(\mathbf{x})$$ are the mean and the standard deviation of the GP posterior predictive at $$\mathbf{x}$$, respectively. $$\Phi$$ and $$\phi$$ are the CDF and PDF of the standard normal distribution, respectively. The first summation term in Equation (2) is the exploitation term and second summation term is the exploration term.
 
-Parameter $\xi$ in Equation (2) determines the amount of exploration during optimization and higher $\xi$ values lead to more exploration. In other words, with increasing $\xi$ values, the importance of improvements predicted by the GP posterior mean $\mu(\mathbf{x})$ decreases relative to the importance of potential improvements in regions of high prediction uncertainty, represented by large $\sigma(\mathbf{x})$ values. A recommended default value for $\xi$ is $0.01$.
+Parameter $$\xi$$ in Equation (2) determines the amount of exploration during optimization and higher $$\xi$$ values lead to more exploration. In other words, with increasing $$\xi$$ values, the importance of improvements predicted by the GP posterior mean $$\mu(\mathbf{x})$$ decreases relative to the importance of potential improvements in regions of high prediction uncertainty, represented by large $$\sigma(\mathbf{x})$$ values. A recommended default value for $$\xi$$ is $$0.01$$.
 
 With this minimum of theory we can start implementing Bayesian optimization. The next section shows a basic implementation with plain NumPy and SciPy, later sections demonstrate how to use existing libraries. Finally, Bayesian optimization is used to tune the hyperparameters of a tree-based regression model.
 
