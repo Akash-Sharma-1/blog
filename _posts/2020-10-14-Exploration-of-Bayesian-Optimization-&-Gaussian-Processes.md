@@ -453,8 +453,10 @@ plt.legend();
 
 
 ## References
-\[1\] Kevin P. Murphy. [Machine Learning, A Probabilistic Perspective](https://mitpress.mit.edu/books/machine-learning-0), Chapters 4, 14 and 15.  
-\[2\] Christopher M. Bishop. [Pattern Recognition and Machine Learning](http://www.springer.com/de/book/9780387310732), Chapter 6.  
-\[3\] Carl Edward Rasmussen and Christopher K. I. Williams. [Gaussian Processes for Machine Learning](http://www.gaussianprocess.org/gpml/).
-\[4\] [Algorithms for optimization](https://mitpress.mit.edu/books/algorithms-optimization) book
-\[5\][Pyro](https://pyro.ai/examples/bo.html)'s documentation
+- Kevin P. Murphy. [Machine Learning, A Probabilistic Perspective](https://mitpress.mit.edu/books/machine-learning-0), Chapters 4, 14 and 15.  
+- Christopher M. Bishop. [Pattern Recognition and Machine Learning](http://www.springer.com/de/book/9780387310732), Chapter 6.  
+- Carl Edward Rasmussen and Christopher K. I. Williams. [Gaussian Processes for Machine Learning](http://www.gaussianprocess.org/gpml/).
+- [Algorithms for optimization](https://mitpress.mit.edu/books/algorithms-optimization) book.
+- [Pyro](https://pyro.ai/examples/bo.html)'s documentation.
+
+---
