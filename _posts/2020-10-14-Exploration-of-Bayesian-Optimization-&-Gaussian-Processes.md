@@ -41,7 +41,7 @@ Now we discuss how to use these samples to construct models of the objective fun
 
 ### Fitting models
 
-Suppose we have $m$ design points $X=\left\\{\mathbf{x}^{(1)},\mathbf{x}^{(2)},\ldots,\mathbf{x}^{(m)}\right\\}$ and function evaluations $\mathbf{y}=\left\\{y^{(1)}, y^{(2)}, \ldots, y^{(m)}\right\\}$, the model will predict
+Suppose we have $m$ design points $$X=\left\\{\mathbf{x}^{(1)},\mathbf{x}^{(2)},\ldots,\mathbf{x}^{(m)}\right\\}$ and function evaluations $\mathbf{y}=\left\\{y^{(1)}, y^{(2)}, \ldots, y^{(m)}\right\\}$$, the model will predict
 
 ```latex
 \hat{\mathbf{y}}=\left\{\hat{f}_{\mathbf{\theta}}\left(\mathbf{x}^{(1)}\right), \hat{f}_{\mathbf{\theta}}\left(\mathbf{x}^{(2)}\right), \ldots, \hat{f}_{\mathbf{\theta}}\left(\mathbf{x}^{(m)}\right)\right\}
