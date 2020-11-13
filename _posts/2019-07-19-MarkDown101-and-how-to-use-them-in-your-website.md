@@ -3,7 +3,7 @@ title: MarkDown101 and how to use them in your webpages?
 tags: [Jekyll, Markdown]
 ---
 
-This post is a basic cheat-sheet on how to write a markdown based document with proper syntax and formatting. Markdown is an easy-to-remember which is just a lightweight markup language with plain text formatting syntax. We will also explore on how to extend upon its capabilities to work in web page just like this one ! :P
+>This post is a basic cheat-sheet on how to write a markdown based document with proper syntax and formatting. Markdown is an easy-to-remember which is just a lightweight markup language with plain text formatting syntax. We will also explore on how to extend upon its capabilities to work in web page just like this one !
 
 
 ## Chose an Editor for markdown based language
