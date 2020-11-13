@@ -1,5 +1,5 @@
 ---
-title: MarkDown101 and how to use them in your webpages? 
+title: MarkDown101 and how to use them in your webpages?
 tags: [Jekyll, Markdown]
 ---
 
@@ -277,7 +277,7 @@ $$E = mc^2$$
 
 $$E = mc^2$$
 
-# How is the vanilla Markdown different from webpage processed Markdown ?
+### How is the vanilla Markdown different from webpage processed Markdown ?
 This website uses Jekyll to render Markdown based web pages and uses “kramdown” flavor of Markdown, which is what GitHub Pages supports. (There are various “flavors” of Markdown that have subtle differences in what various symbols do, but for the most part frequently used symbols like those that create heading formatting are the same—so you’re actually probably okay using  this markdown cheatsheet). I've linked a good resource for kramdown in the references section.
 
 ## References
