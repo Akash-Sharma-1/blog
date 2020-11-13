@@ -2,6 +2,9 @@
 title: Exploration of Bayesian Optimization and Gaussian Processes
 tags: [Machine Learning, Optimization, Probability, Statistics]
 ---
+
+>Bayesian Optimization provides a principled technique based on Bayes Theorem to direct a search of a global optimization problem that is efficient and effective. Bayesian Optimization is often used in applied machine learning to tune the hyperparameters of a given well-performing model on a validation dataset.
+
 ## Introduction
 
 Many optimization problems in machine learning are black box optimization problems where the objective function $$f(\mathbf{x})$$ is a black box function<sup>[1][2]</sup>. We do not have an analytical expression for $$f$$ nor do we know its derivatives. Evaluation of the function is restricted to sampling at a point $$\mathbf{x}$$ and getting a possibly noisy response.
