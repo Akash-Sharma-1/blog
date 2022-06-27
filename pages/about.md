@@ -5,9 +5,14 @@ permalink: /about/
 <link rel="stylesheet" type="text/css" media="all" href="https://akash-sharma-1.github.io/blog/pages/about_markdown_styles.css" />
 <center> <h4> Welcome to my Blogs !</h4> </center>
 <br>
-Hi👋 I'm Akash, a programmer, a developer and a tech-enthusiast. 👨🏻‍💻 I absolutely adore programming and developing new things ⚙. I'm passionate about solving problems through code🚀helping the world🌎 and making the lives of people 👨‍👨‍👧 around me easier!
+
+Hi there👋 I'm <b>Akash Sharma </b>, a programmer, a developer and a tech-enthusiast. 👨🏻‍💻 I absolutely adore programming and developing new things ⚙. 
+<br>
+I'm passionate about solving problems through code🚀helping the world🌎 and making the lives of people 👨‍👨‍👧 around me easier!    
+<br>
+
 <div align="center">
-<img align="center" alt="GIF" src="https://media.giphy.com/media/iIqmM5tTjmpOB9mpbn/giphy.gif" />
+<img align="center" alt="GIF" src="http://veronicasicoe.files.wordpress.com/2015/11/f7e0d-nu8baew.gif" />
 </div>
 <br>
 
@@ -18,10 +23,10 @@ Hi👋 I'm Akash, a programmer, a developer and a tech-enthusiast. 👨🏻‍�
 - 👯 I’m looking to collaborate on some great research projects based in ML, DL and software engineering.
 
 **About me**
-- 💼 I’m pursuing my undergraduate studies in Computer Science.
-- 🤔 My interests spans across Deep Learning, Machine Learning, Application Development, Semantic Web for now and I'm in pursuit of exploring more domains.
+- 💼 I recently completed undergraduate studies in Computer Science.
+- 🤔 My interests spans across Deep Learning, Machine Learning, Application Development, Compilers for now and I'm in pursuit of exploring more domains.
 - 💬 Ask me about anything, happy to help !
 - 📫 Reach me via twitter, telegram, mail ...
 - 😄 Pronouns: He/Him/His
-- 👀 Check out my [Website](https://www.akashsharma.live/) and my [Curriculum Vitae](https://www.akashsharma.live/resume/Akash_Sharma_One_Page_CV.pdf) to get more info.
-- ⚡ Fun fact: This Profile has more information about me than my Insta, FB, LinkedIn & other social media combined 😂
+- 👀 Check out my [Website](https://akash-sharma-1.github.io/) and my [Curriculum Vitae](https://akash-sharma-1.github.io/resume/Akash_Sharma_One_Page_CV.pdf) to get more info.
+- ⚡ Fun fact: If I were to become a cyborg, that split fingers thing (in the GIF) would be prioritized
