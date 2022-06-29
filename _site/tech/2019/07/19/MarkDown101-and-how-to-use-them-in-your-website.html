@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico">
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>MarkDown101 and how to use them in your webpages? | Akash Sharma’s Blog</title>
+<meta name="generator" content="Jekyll v3.9.2" />
+<meta property="og:title" content="MarkDown101 and how to use them in your webpages?" />
+<meta name="author" content="Akash Sharma" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This post is a basic cheat-sheet on how to write a markdown based document with proper syntax and formatting. Markdown is an easy-to-remember which is just a lightweight markup language with plain text formatting syntax. We will also explore on how to extend upon its capabilities to work in web page just like this one !" />
+<meta property="og:description" content="This post is a basic cheat-sheet on how to write a markdown based document with proper syntax and formatting. Markdown is an easy-to-remember which is just a lightweight markup language with plain text formatting syntax. We will also explore on how to extend upon its capabilities to work in web page just like this one !" />
+<link rel="canonical" href="http://localhost:4000/blog/tech/2019/07/19/MarkDown101-and-how-to-use-them-in-your-website.html" />
+<meta property="og:url" content="http://localhost:4000/blog/tech/2019/07/19/MarkDown101-and-how-to-use-them-in-your-website.html" />
+<meta property="og:site_name" content="Akash Sharma’s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-07-19T00:00:00+05:30" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="MarkDown101 and how to use them in your webpages?" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Akash Sharma"},"dateModified":"2019-07-19T00:00:00+05:30","datePublished":"2019-07-19T00:00:00+05:30","description":"This post is a basic cheat-sheet on how to write a markdown based document with proper syntax and formatting. Markdown is an easy-to-remember which is just a lightweight markup language with plain text formatting syntax. We will also explore on how to extend upon its capabilities to work in web page just like this one !","headline":"MarkDown101 and how to use them in your webpages?","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/tech/2019/07/19/MarkDown101-and-how-to-use-them-in-your-website.html"},"url":"http://localhost:4000/blog/tech/2019/07/19/MarkDown101-and-how-to-use-them-in-your-website.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/blog/feed.xml" title="Akash Sharma&apos;s Blog" />
+    
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+    <link rel="stylesheet" href="/blog/assets/css/main.css">
+    <link rel="manifest" href="/blog/manifest.json">
+
+    <!-- Support for Bootstrap https://getbootstrap.com -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js" integrity="sha256-fTuUgtT7O2rqoImwjrhDgbXTKUwyxxujIMRIK7TbuNU=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- Support for pattern background https://github.com/btmills/geopattern -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js" integrity="sha256-AOyAcXCKLfI+FRdiZr4VTj9h9Wwv0YXXa2CPfUWbBS8=" crossorigin="anonymous"></script>
+
+    <!-- Support for SVG icon https://iconify.design -->
+    <script src="https://code.iconify.design/1/1.0.0/iconify.min.js"></script>
+
+    <!-- Support for share and reaction btns -->
+    <!-- <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5fae8b9ee3f5df0012a019ca&product=sop' async='async'></script> -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5fae8ce8b9e345ad"></script>
+
+</head>
+
+    <body>
+        <header>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <nav class="container navbar navbar-expand-sm py-2">
+        <a class="navbar-brand title p-0" href="/blog/">
+          <!-- GITHUB ICON -->
+          <!-- <span class="iconify" data-icon="octicon:mark-github"></span> -->
+          <!-- Personal Icon -->
+          <span class="material-icons" style="vertical-align:middle;font-size:inherit">font_download</span>
+            <span style="vertical-align:middle">Akash Sharma's Blog</span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="navbar-nav ml-auto">
+                
+                  
+                    <a class="nav-item nav-link text-right" href="/blog/">Home</a>
+                  
+                  
+
+                
+                  
+                    <a class="nav-item nav-link text-right" href="/blog/classification/">Classification</a>
+                  
+                  
+
+                
+                  
+                    <a class="nav-item nav-link text-right" href="/blog/leetcode/">Leetcode</a>
+                  
+                  
+
+                
+                  
+                    <a class="nav-item nav-link text-right" href="/blog/about/">About Me</a>
+                  
+                  
+
+                
+                  
+                  
+                    <a class="nav-item nav-link text-right" href="https://akash-sharma-1.github.io/">Portfolio</a>
+                  
+
+                
+            </div>
+        </div>
+    </nav>
+</header>
+
+<script>
+    
+        $(".navbar").addClass("navbar-light");
+        $("a[href$='/blog/tech/2019/07/19/MarkDown101-and-how-to-use-them-in-your-website.html']").addClass("active");
+    
+</script>
+
+        <div class="titlebar text-light">
+    <div class="container">
+        
+            <!-- Post article title -->
+            <div class="title pt-3">MarkDown101 and how to use them in your webpages?</div>
+            <div class="meta pb-3">
+                <span class="pr-3">
+                    
+                        <span class="iconify" data-icon="octicon:calendar"></span>
+                        <span>2019/07/19</span>
+                    
+                </span>
+
+                
+                    <span class="titlebar-info pr-3">
+                        <span class="iconify" data-icon="octicon:tag"></span>
+                        <a class="text-light" href="/blog/classification/#Jekyll">Jekyll</a>
+                    </span>
+                
+                    <span class="titlebar-info pr-3">
+                        <span class="iconify" data-icon="octicon:tag"></span>
+                        <a class="text-light" href="/blog/classification/#Markdown">Markdown</a>
+                    </span>
+                
+
+                
+                    
+                
+
+            </div>
+        
+    </div>
+</div>
+
+<script>
+    
+        $(".titlebar").geopattern("MarkDown101 and how to use them in your webpages?");
+    
+</script>
+
+<div class="container">
+    <div class="row my-2 my-md-4">
+        <div class="content col-md-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/3.0.1/github-markdown.min.css" integrity="sha256-HbgiGHMLxHZ3kkAiixyvnaaZFNjNWLYKD/QG6PWaQPc=" crossorigin="anonymous" />
+
+<!-- Support for deep anchor links https://github.com/bryanbraun/anchorjs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.js" integrity="sha256-0X7DxIkZMaHhAon0xCc/C/YhG6y0dg8Uj8c50+gbu8c=" crossorigin="anonymous"></script>
+
+<!-- Support for fancybox https://github.com/fancyapps/fancybox -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+<!-- Support for MathJax https://github.com/mathjax/mathjax -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous" async></script>
+
+<article class="markdown-body">
+    <blockquote>
+  <p>This post is a basic cheat-sheet on how to write a markdown based document with proper syntax and formatting. Markdown is an easy-to-remember which is just a lightweight markup language with plain text formatting syntax. We will also explore on how to extend upon its capabilities to work in web page just like this one !</p>
+</blockquote>
+
+<h2 id="chose-an-editor-for-markdown-based-language">Chose an Editor for markdown based language</h2>
+
+<p>The post in website based on Jekyll is typically written with Markdown, which is just a lightweight markup language with plain text formatting syntax. You can write Markdown with any text editor like <a href="https://notepad-plus-plus.org">Notepad++</a>, <a href="https://www.sublimetext.com">Sublime Text</a>, and <a href="https://atom.io">Atom</a>, but I recommend <a href="https://code.visualstudio.com/">Visual Studio Code</a> (aka VS Code).</p>
+
+<h3 id="extensions">Extensions</h3>
+
+<p>The main reason I recommend VS Code is to have an active community that develops a number of extensions to extend its capabilities. Here are some extensions I used for Markdown.</p>
+
+<ul>
+  <li><a href="https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint">markdownlint</a></li>
+  <li><a href="https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one">Markdown All in One</a></li>
+  <li><a href="https://marketplace.visualstudio.com/items?itemName=bierner.markdown-preview-github-styles">Markdown Preview Github Styling</a></li>
+  <li><a href="https://marketplace.visualstudio.com/items?itemName=bierner.markdown-yaml-preamble">Markdown yaml Preamble</a></li>
+</ul>
+
+<h3 id="block-elements">Block Elements</h3>
+
+<h4 id="headers">Headers</h4>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh"># H1</span>
+
+<span class="gu">## H2</span>
+
+<span class="gu">### H3</span>
+
+<span class="gu">#### H4</span>
+
+<span class="gu">##### H5</span>
+</code></pre></div></div>
+
+<p>You may not use <code class="language-plaintext highlighter-rouge"># H1</code> in your post, because the <code class="language-plaintext highlighter-rouge">title</code> variable in front matter is considered as <code class="language-plaintext highlighter-rouge">H1</code> and showed on the top of the page.</p>
+
+<h4 id="lists">Lists</h4>
+
+<ul>
+  <li>
+    <p>Unordered</p>
+
+    <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">  -</span> Red
+<span class="p">  -</span> Green
+<span class="p">  -</span> Blue
+</code></pre></div>    </div>
+
+    <ul>
+      <li>Red</li>
+      <li>Green</li>
+      <li>Blue</li>
+    </ul>
+  </li>
+  <li>
+    <p>Ordered</p>
+
+    <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">  1.</span> Red
+<span class="p">  1.</span> Green
+<span class="p">  1.</span> Blue
+</code></pre></div>    </div>
+
+    <ol>
+      <li>Red</li>
+      <li>Green</li>
+      <li>Blue</li>
+    </ol>
+  </li>
+  <li>
+    <p>Task</p>
+
+    <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">  -</span> [x] Task 1
+<span class="p">  -</span> [ ] Task 2
+<span class="p">  -</span> [ ] Task 3
+</code></pre></div>    </div>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Task 1</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Task 2</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Task 3</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="code-blocks">Code Blocks</h4>
+
+<p>There are many different ways to style code blocks, you can indent with four spaces:</p>
+
+<pre><code>    if (2 &gt; 1) {
+        return true
+    }
+</code></pre>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if (2 &gt; 1) {
+    return true
+}
+</code></pre></div></div>
+
+<p>GitHub also supports something called code fencing, which allows for multiple lines without indentation, and if you’d like to use syntax highlighting, include the languages:</p>
+
+<pre><code>```java
+if (2 &gt; 1) {
+    return true
+}
+```
+</code></pre>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="o">(</span><span class="mi">2</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Additionally, you could use <a href="http://https://github.com/github/linguist">Linguist</a> to perform language detection and syntax highlighting. You can find out which keywords are valid in the <a href="https://github.com/github/linguist/blob/master/lib/linguist/languages.yml">languages YAML file</a>.</p>
+
+<h4 id="blockquotes">Blockquotes</h4>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gt">&gt; Blockquotes uses `&gt;` characters for blockquoting. And blockquotes can be nested by adding additional levels of `&gt;`:</span>
+<span class="gt">&gt;</span>
+<span class="gt">&gt; This is the first level of quoting.</span>
+<span class="gt">&gt;</span>
+<span class="gt">&gt; &gt; This is nested blockquote.</span>
+<span class="gt">&gt;</span>
+<span class="gt">&gt; Blockquotes can also contain other Markdown elements:</span>
+<span class="gt">&gt;</span>
+<span class="gt">&gt; 1. This is the first list item.</span>
+<span class="gt">&gt; 1. This is the second list item.</span>
+<span class="gt">&gt;</span>
+<span class="gt">&gt; Here's some example code:</span>
+<span class="gt">&gt;</span>
+<span class="gt">&gt; ```java</span>
+<span class="gt">&gt;  if (2 &gt; 1) {</span>
+<span class="gt">&gt;      return true</span>
+<span class="gt">&gt;  }</span>
+<span class="gt">&gt; ```</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>Blockquotes uses <code class="language-plaintext highlighter-rouge">&gt;</code> characters for blockquoting. And blockquotes can be nested by adding additional levels of <code class="language-plaintext highlighter-rouge">&gt;</code>:</p>
+
+  <p>This is the first level of quoting.</p>
+
+  <blockquote>
+    <p>This is nested blockquote.</p>
+  </blockquote>
+
+  <p>Blockquotes can also contain other Markdown elements:</p>
+
+  <ol>
+    <li>This is the first list item.</li>
+    <li>This is the second list item.</li>
+  </ol>
+
+  <p>Here’s some example code:</p>
+
+  <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">if</span> <span class="o">(</span><span class="mi">2</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+     <span class="k">return</span> <span class="kc">true</span>
+ <span class="o">}</span>
+</code></pre></div>  </div>
+</blockquote>
+
+<h3 id="span-elements">Span Elements</h3>
+
+<h4 id="links">Links</h4>
+
+<ul>
+  <li>
+    <p>Hyperlinks</p>
+
+    <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="p">[</span><span class="nv">Repo</span><span class="p">](</span><span class="sx">https://github.com/Akash-Sharma-1/blog</span><span class="p">)</span>
+</code></pre></div>    </div>
+
+    <p><a href="https://github.com/Akash-Sharma-1/blog">Repo</a></p>
+  </li>
+  <li>
+    <p>Anchor Links</p>
+
+    <p>An anchor link is a link on a page that brings you to a specific place on that page.</p>
+
+    <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="p">[</span><span class="nv">Span Elements</span><span class="p">](</span><span class="sx">#span-elements</span><span class="p">)</span>
+</code></pre></div>    </div>
+
+    <p><a href="#span-elements">Span Elements</a></p>
+
+    <p>Note that the link must be a lowercase header, even if the original header contains uppercase letters. If the header contains multiple words, they must be connected by <code class="language-plaintext highlighter-rouge">-</code>. If your header contains complex symbols, you should pre-generate the HTML page from Markdown and see what the <code class="language-plaintext highlighter-rouge">id</code> attribute of that header with your browser’s <a href="https://en.wikipedia.org/wiki/Web_development_tools">web developer tools</a>.</p>
+  </li>
+  <li>
+    <p>Post Links</p>
+
+    <blockquote>
+      <p>If you want to include a link to a post on your site, the <code class="language-plaintext highlighter-rouge">post_url</code> tag will generate the correct permalink URL for the post you specify.</p>
+
+      <p><a href="https://jekyllrb.com/docs/liquid/tags/#linking-to-posts">Linking to posts</a></p>
+    </blockquote>
+
+    <p><code class="language-plaintext highlighter-rouge">site.baseurl</code> is required before GitHub Pages’ <a href="https://pages.github.com/versions/">Jekyll dependency version</a> updates to <code class="language-plaintext highlighter-rouge">v4.0</code>.</p>
+
+    <blockquote>
+      <p>Since v4.0 you don’t need to prepend link tags with site.baseurl</p>
+
+      <p><a href="https://jekyllrb.com/docs/liquid/tags/#links">Jekyll Links</a></p>
+    </blockquote>
+  </li>
+  <li>
+    <p>Anchor Links for Another Post</p>
+
+    <p>If you want to link a specific place in another post, just combine anchor links and post links showed above. There is a simple example:</p>
+  </li>
+</ul>
+
+<h4 id="text-formatting">Text Formatting</h4>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="ge">*Italic*</span>
+
+<span class="gs">**Bold**</span>
+
+~~Strikethrough~~
+</code></pre></div></div>
+
+<p><em>Italic</em></p>
+
+<p><strong>Bold</strong></p>
+
+<p><del>Strikethrough</del></p>
+
+<h4 id="inline-code">Inline Code</h4>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Inline <span class="sb">`code`</span> has <span class="sb">`backticks`</span> around it.
+</code></pre></div></div>
+
+<p>Inline <code class="language-plaintext highlighter-rouge">code</code> has <code class="language-plaintext highlighter-rouge">backticks</code> around it.</p>
+
+<h3 id="multimedia-elements">Multimedia Elements</h3>
+
+<h4 id="images">Images</h4>
+
+<p>The image syntax is very similar to hyperlinks, except that there is an exclamation mark (<code class="language-plaintext highlighter-rouge">!</code>) at the beginning, like:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">![</span><span class="nv">Alt Text</span><span class="p">](</span><span class="sx">link</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>If you want to embed images of yourself for your site, just put your images in <code class="language-plaintext highlighter-rouge">/assets/images/</code> folder, and reference it like this:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">![</span><span class="nv">Stones on the beach</span><span class="p">](</span><span class="sx">{{</span> site.baseurl }}/assets/images/Stones on the beach.jpeg)
+</code></pre></div></div>
+
+<p><img src="/blog/assets/images/Stones on the beach.jpeg" alt="Stones on the beach" /></p>
+
+<h4 id="youtube-videos">YouTube Videos</h4>
+
+<p>You can provide a simple <code class="language-plaintext highlighter-rouge">include</code> tag for YouTube video, which is easy to embed and responsive. You just need to find out the id of a video in YouTube, which is a combination of numbers and letters after an equal sign (<code class="language-plaintext highlighter-rouge">=</code>) at the end of video page’s URL. And don’t forget the double quotes (<code class="language-plaintext highlighter-rouge">"</code>) on both sides of the id.</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% include youtube.html id="gocwRvLhDf8" %}
+</code></pre></div></div>
+
+<!-- Modified from https://github.com/nathancy/jekyll-embed-video -->
+
+<div class="iframe-container">
+    <iframe src="https://www.youtube.com/embed/gocwRvLhDf8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+    </iframe>
+</div>
+
+<h3 id="extras">Extras</h3>
+
+<h4 id="tables">Tables</h4>
+
+<blockquote>
+  <p>You can create tables by assembling a list of words and dividing them with hyphens <code class="language-plaintext highlighter-rouge">-</code> (for the first row), and then separating each column with a pipe <code class="language-plaintext highlighter-rouge">|</code>:</p>
+</blockquote>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| HEADER1 | HEADER2 | HEADER3 | HEADER4 |
+| ------- | :------ | :-----: | ------: |
+| content | content | content | content |
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>HEADER1</th>
+      <th style="text-align: left">HEADER2</th>
+      <th style="text-align: center">HEADER3</th>
+      <th style="text-align: right">HEADER4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>content</td>
+      <td style="text-align: left">content</td>
+      <td style="text-align: center">content</td>
+      <td style="text-align: right">content</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>You can choose a different alignment style for each column:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">:-----</code> Align left</li>
+  <li><code class="language-plaintext highlighter-rouge">:----:</code> Align center</li>
+  <li><code class="language-plaintext highlighter-rouge">-----:</code> Align right</li>
+</ul>
+
+<p>You may want to use a <a href="https://www.tablesgenerator.com/markdown_tables">table generator</a> for complicated tables.</p>
+
+<h4 id="mathjax">MathJax</h4>
+
+<p>Markdown supports <a href="https://www.mathjax.org">MathJax</a>, which means you can embed mathematics with \(\rm\LaTeX\).</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$$E = mc^2$$
+</code></pre></div></div>
+
+\[E = mc^2\]
+
+<h3 id="how-is-the-vanilla-markdown-different-from-webpage-processed-markdown-">How is the vanilla Markdown different from webpage processed Markdown ?</h3>
+<p>This website uses Jekyll to render Markdown based web pages and uses “kramdown” flavor of Markdown, which is what GitHub Pages supports. (There are various “flavors” of Markdown that have subtle differences in what various symbols do, but for the most part frequently used symbols like those that create heading formatting are the same—so you’re actually probably okay using  this markdown cheatsheet). I’ve linked a good resource for kramdown in the references section.</p>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li><a href="https://jekyllrb.com/docs/posts/#including-images-and-resources">Posts</a></li>
+  <li><a href="https://daringfireball.net/projects/markdown/syntax">Daring Fireball</a></li>
+  <li><a href="https://guides.github.com/features/mastering-markdown/">GitHub</a></li>
+  <li><a href="https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf">GitHub Markdown Cheatsheet</a></li>
+  <li><a href="http://kramdown.gettalong.org/quickref.html">Kramdown</a></li>
+</ul>
+
+<hr />
+
+</article>
+
+<br>
+<center><p>Thank you for reading this article 😊</p></center>
+<center><p>I'd love to hear your thoughts & feedback in the comment section below!</p></center>
+<div class="sharethis-inline-reaction-buttons"></div>
+<style>
+  #st-1 .st-btn > svg
+  {
+    width:28px;
+  }
+</style>
+<hr></hr>
+<center><p>If you liked it, share it with your friends and help this blog to grow!</p></center>
+<!-- <div class="sharethis-inline-share-buttons"></div> -->
+<center><div class="addthis_inline_share_toolbox"></div></center>
+<br>
+<br>
+
+
+    
+        <script src="https://utteranc.es/client.js"
+                repo="Akash-Sharma-1/Utteranc-Comments-Repo-Blog"
+                issue-term="pathname"
+                theme="github-light"
+                crossorigin="anonymous"
+                async>
+        </script>
+    
+
+
+<script>
+    // Add anchors to headers.
+    anchors.add();
+
+    // Show images in fancybox.
+    $("p img").each(function() {
+        $(this).wrapAll('<a data-fancybox="images" data-caption="' + this.alt + '" href="' + this.src + '"></a>');
+    });
+    $('[data-fancybox="images"]').fancybox({
+        transitionEffect: "slide",
+
+        // Support for retina displays.
+        afterLoad : function(instance, current) {
+            var pixelRatio = window.devicePixelRatio || 1;
+
+            if ( pixelRatio > 1.5 ) {
+                current.width  = current.width  / pixelRatio;
+                current.height = current.height / pixelRatio;
+            }
+        }
+    });
+</script>
+
+
+<script>
+    // Show sidebar on top in mobile devices.
+    $(".content").addClass("order-last order-md-first");
+    $(".sidebar").addClass("order-first order-md-last");
+</script>
+
+</div>
+<div class="sidebar col-md-4 mt-2 mt-md-0">
+    
+    <!-- https://github.com/christian-fei/Simple-Jekyll-Search -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/simple-jekyll-search/1.7.2/simple-jekyll-search.min.js" integrity="sha256-DsgE6Y6cI5eAZoTg8tJ5VBxFs+rnL8smPwt/u8tyAYo=" crossorigin="anonymous"></script>
+
+<div id="search-box" class="mb-2">
+    <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+    <ul class="mb-0"></ul>
+</div>
+
+<script type="text/javascript">
+    var search_box = document.getElementById("search-box");
+    SimpleJekyllSearch({
+        searchInput: search_box.getElementsByTagName("input")[0],
+        resultsContainer: search_box.getElementsByTagName("ul")[0],
+        json: '/blog/assets/search.json',
+        searchResultTemplate: '<li><a href="{url}">{title}</a></li>',
+        noResultsText: 'No results found',
+        fuzzy: false
+    });
+</script>
+
+    <!-- https://github.com/tscanlin/tocbot/ -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.7.0/tocbot.css" integrity="sha256-XUbSD3m+xLW27W/mp9kMn+fI9AU2MoBkiMMSVVYWI+o=" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.7.0/tocbot.min.js" integrity="sha256-5K/04vUxP94HmQ8f18TgufdyqE69WDJRMNga0JLhAtE=" crossorigin="anonymous"></script>
+
+<div class="toc-container mb-2">
+    <p class="name">Table of Contents</p>
+    <div class="toc py-2 pr-2 mb-2"></div>
+</div>
+
+<script>
+    // Show TOC if the article contains any heading.
+    if ($("article h1, article  h2, article h3, article h4, article h5, article h6").length == 0) {
+        $(".toc-container").addClass("d-none");
+    }
+
+    tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: ".toc",
+        // Where to grab the headings to build the table of contents.
+        contentSelector: "article",
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: "h1, h2, h3, h4, h5, h6",
+        collapseDepth: 6,
+    });
+</script>
+
+
+
+
+
+
+</div>
+
+    </div>
+</div>
+
+        <footer>
+    <div class="container">
+        <hr class="my-0">
+        <div class="row align-items-center text-muted my-3">
+            <div class="col">
+                <span>© 2022 Akash Sharma</span>
+                <a href="/blog/feed.xml"><span class="feed iconify" data-icon="foundation:rss"></span></a>
+            </div>
+            <div class="col-auto text-center px-0">
+                    <a href="https://akash-sharma-1.github.io/"><span class="github text-center text-muted iconify" data-icon="foundation:web"></span></a>
+                    <a href="https://github.com/Akash-Sharma-1"><span class="github text-center text-muted iconify" data-icon="foundation:social-github"></span></a>
+                    <a href="https://twitter.com/AkashTheGreat_1"><span class="github text-center text-muted iconify" data-icon="foundation:social-twitter"></span></a>
+                    <a href="https://www.linkedin.com/in/akash-sharma-246b67165"><span class="github text-center text-muted iconify" data-icon="foundation:social-linkedin"></span></a>
+                    <a href="mailto:akashthegreatlegend@gmail.com"><span class="github text-center text-muted iconify" data-icon="foundation:mail"></span></a>
+            </div>
+            <div class="col text-right">
+                <a href="javascript:$('html,body').animate({ scrollTop: 0 }, 'slow');">TOP</a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+    </body>
+</html>
