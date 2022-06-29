@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico">
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Basic Data Structure Concepts and Implementations | Akash Sharma’s Blog</title>
+<meta name="generator" content="Jekyll v3.9.2" />
+<meta property="og:title" content="Basic Data Structure Concepts and Implementations" />
+<meta name="author" content="Akash Sharma" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This post is a basic cheat-sheet on some of the basics yet crucial data structures’ underlying concepts and high level implementations. I also try to cover some more interesting related ideas for some of these data structures" />
+<meta property="og:description" content="This post is a basic cheat-sheet on some of the basics yet crucial data structures’ underlying concepts and high level implementations. I also try to cover some more interesting related ideas for some of these data structures" />
+<meta property="og:site_name" content="Akash Sharma’s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-06-29T00:00:00+05:30" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Basic Data Structure Concepts and Implementations" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Akash Sharma"},"dateModified":"2022-06-29T00:00:00+05:30","datePublished":"2022-06-29T00:00:00+05:30","description":"This post is a basic cheat-sheet on some of the basics yet crucial data structures’ underlying concepts and high level implementations. I also try to cover some more interesting related ideas for some of these data structures","headline":"Basic Data Structure Concepts and Implementations","mainEntityOfPage":{"@type":"WebPage","@id":"/blog/leetcode/stack/queue/linked-list/tree/trie/disjoint%20set/heap/2022/06/29/Basic-Data-Structure-Implementations.html"},"url":"/blog/leetcode/stack/queue/linked-list/tree/trie/disjoint%20set/heap/2022/06/29/Basic-Data-Structure-Implementations.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link type="application/atom+xml" rel="alternate" href="/blog/feed.xml" title="Akash Sharma's Blog" />
+    
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+    <link rel="stylesheet" href="/blog/assets/css/main.css">
+    <link rel="manifest" href="/blog/manifest.json">
+
+    <!-- Support for Bootstrap https://getbootstrap.com -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js" integrity="sha256-fTuUgtT7O2rqoImwjrhDgbXTKUwyxxujIMRIK7TbuNU=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- Support for pattern background https://github.com/btmills/geopattern -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js" integrity="sha256-AOyAcXCKLfI+FRdiZr4VTj9h9Wwv0YXXa2CPfUWbBS8=" crossorigin="anonymous"></script>
+
+    <!-- Support for SVG icon https://iconify.design -->
+    <script src="https://code.iconify.design/1/1.0.0/iconify.min.js"></script>
+
+    <!-- Support for share and reaction btns -->
+    <!-- <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5fae8b9ee3f5df0012a019ca&product=sop' async='async'></script> -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5fae8ce8b9e345ad"></script>
+
+</head>
+
+    <body>
+        <header>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <nav class="container navbar navbar-expand-sm py-2">
+        <a class="navbar-brand title p-0" href="/blog/">
+          <!-- GITHUB ICON -->
+          <!-- <span class="iconify" data-icon="octicon:mark-github"></span> -->
+          <!-- Personal Icon -->
+          <span class="material-icons" style="vertical-align:middle;font-size:inherit">font_download</span>
+            <span style="vertical-align:middle">Akash Sharma's Blog</span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="navbar-nav ml-auto">
+                
+                  
+                    <a class="nav-item nav-link text-right" href="/blog/">Home</a>
+                  
+                  
+
+                
+                  
+                    <a class="nav-item nav-link text-right" href="/blog/classification/">Classification</a>
+                  
+                  
+
+                
+                  
+                    <a class="nav-item nav-link text-right" href="/blog/leetcode/">Leetcode</a>
+                  
+                  
+
+                
+                  
+                    <a class="nav-item nav-link text-right" href="/blog/about/">About Me</a>
+                  
+                  
+
+                
+                  
+                  
+                    <a class="nav-item nav-link text-right" href="https://akash-sharma-1.github.io/">Portfolio</a>
+                  
+
+                
+            </div>
+        </div>
+    </nav>
+</header>
+
+<script>
+    
+        $(".navbar").addClass("navbar-light");
+        $("a[href$='/blog/leetcode/stack/queue/linked-list/tree/trie/disjoint%20set/heap/2022/06/29/Basic-Data-Structure-Implementations.html']").addClass("active");
+    
+</script>
+
+        <div class="titlebar text-light">
+    <div class="container">
+        
+            <!-- Post article title -->
+            <div class="title pt-3">Basic Data Structure Concepts and Implementations</div>
+            <div class="meta pb-3">
+                <span class="pr-3">
+                    
+                        <span class="iconify" data-icon="octicon:calendar"></span>
+                        <span>2022/06/29</span>
+                    
+                </span>
+
+                
+
+                
+                    
+                
+                    
+                        <span class="titlebar-info pr-3">
+                            <span class="iconify" data-icon="octicon:tag"></span>
+                            <a class="text-light" href="/blog/leetcode/categories/#Stack">Stack</a>
+                        </span>
+                    
+                
+                    
+                        <span class="titlebar-info pr-3">
+                            <span class="iconify" data-icon="octicon:tag"></span>
+                            <a class="text-light" href="/blog/leetcode/categories/#Queue">Queue</a>
+                        </span>
+                    
+                
+                    
+                        <span class="titlebar-info pr-3">
+                            <span class="iconify" data-icon="octicon:tag"></span>
+                            <a class="text-light" href="/blog/leetcode/categories/#Linked-list">Linked-list</a>
+                        </span>
+                    
+                
+                    
+                        <span class="titlebar-info pr-3">
+                            <span class="iconify" data-icon="octicon:tag"></span>
+                            <a class="text-light" href="/blog/leetcode/categories/#Tree">Tree</a>
+                        </span>
+                    
+                
+                    
+                        <span class="titlebar-info pr-3">
+                            <span class="iconify" data-icon="octicon:tag"></span>
+                            <a class="text-light" href="/blog/leetcode/categories/#Trie">Trie</a>
+                        </span>
+                    
+                
+                    
+                        <span class="titlebar-info pr-3">
+                            <span class="iconify" data-icon="octicon:tag"></span>
+                            <a class="text-light" href="/blog/leetcode/categories/#Disjoint Set">Disjoint Set</a>
+                        </span>
+                    
+                
+                    
+                        <span class="titlebar-info pr-3">
+                            <span class="iconify" data-icon="octicon:tag"></span>
+                            <a class="text-light" href="/blog/leetcode/categories/#Heap">Heap</a>
+                        </span>
+                    
+                
+
+            </div>
+        
+    </div>
+</div>
+
+<script>
+    
+        $(".titlebar").geopattern("Basic Data Structure Concepts and Implementations");
+    
+</script>
+
+<div class="container">
+    <div class="row my-2 my-md-4">
+        <div class="content col-md-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/3.0.1/github-markdown.min.css" integrity="sha256-HbgiGHMLxHZ3kkAiixyvnaaZFNjNWLYKD/QG6PWaQPc=" crossorigin="anonymous" />
+
+<!-- Support for deep anchor links https://github.com/bryanbraun/anchorjs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.js" integrity="sha256-0X7DxIkZMaHhAon0xCc/C/YhG6y0dg8Uj8c50+gbu8c=" crossorigin="anonymous"></script>
+
+<!-- Support for fancybox https://github.com/fancyapps/fancybox -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+<!-- Support for MathJax https://github.com/mathjax/mathjax -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous" async></script>
+
+<article class="markdown-body">
+    <blockquote>
+  <p>This post is a basic cheat-sheet on some of the basics yet crucial data structures’ underlying concepts and high level implementations. I also try to cover some more interesting related ideas for some of these data structures</p>
+</blockquote>
+
+<h1 id="stack">Stack</h1>
+
+<h2 id="concept">Concept</h2>
+
+<p>A stack is the basic data structure that can be logically thought of as a linear structure.</p>
+
+<p>Insertion and deletion of items at the top of the stack and the operation should obey the rules LIFO(Last In First Out).</p>
+
+<p><img src="https://yck-1254263422.cos.ap-shanghai.myqcloud.com/blog/2019-06-01-043117.png" alt="" /></p>
+
+<h2 id="implementation">Implementation</h2>
+
+<p>Each data structure can be implemented by the different method. We can treat stack as a subclass of Array. So we take the array for example here.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kd">class</span> <span class="nc">Stack</span> <span class="o">{</span>
+    <span class="n">constructor</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">stack</span> <span class="o">=</span> <span class="o">[]</span>
+    <span class="o">}</span>
+    <span class="n">push</span><span class="o">(</span><span class="n">item</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">item</span><span class="o">)</span>
+    <span class="o">}</span>
+    <span class="n">pop</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">()</span>
+    <span class="o">}</span>
+    <span class="n">peek</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">stack</span><span class="o">[</span><span class="k">this</span><span class="o">.</span><span class="na">getCount</span><span class="o">()</span> <span class="o">-</span> <span class="mi">1</span><span class="o">]</span>
+    <span class="o">}</span>
+    <span class="n">getCount</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">stack</span><span class="o">.</span><span class="na">length</span>
+    <span class="o">}</span>
+    <span class="n">isEmpty</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">getCount</span><span class="o">()</span> <span class="o">===</span> <span class="mi">0</span>
+    <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+
+<h1 id="queues">Queues</h1>
+
+<h2 id="concept-1">Concept</h2>
+
+<p>A queue is a linear data structure. The insertion takes place at one end while the deletion occurs the other one. And the operation should obey the rules FIFO(First In First Out).</p>
+
+<p><img src="https://yck-1254263422.cos.ap-shanghai.myqcloud.com/blog/2019-06-01-043118.png" alt="" /></p>
+
+<h2 id="implementation-1">Implementation</h2>
+
+<p>Here, we’ll talk two implementations of the queue: Singly-linked Queue and Circular Queue.</p>
+
+<h3 id="singly-linked-queue">Singly-linked Queue</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Queue</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">queue</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="p">}</span>
+  <span class="nx">enQueue</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="nx">deQueue</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">queue</span><span class="p">.</span><span class="nx">shift</span><span class="p">()</span>
+  <span class="p">}</span>
+  <span class="nx">getHeader</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">queue</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+  <span class="p">}</span>
+  <span class="nx">getLength</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">queue</span><span class="p">.</span><span class="nx">length</span>
+  <span class="p">}</span>
+  <span class="nx">isEmpty</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">getLength</span><span class="p">()</span> <span class="o">===</span> <span class="mi">0</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>It is an O(n) operation to enqueue in a Singly-linked Queue, while it is an average O(1) in a Circular Queue. So here comes the Circular Queue.</p>
+
+<h3 id="circular-queue">Circular Queue</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">SqQueue</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">length</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="c1">// head of the queue</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">first</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1">// tail of the queue</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">last</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1">// size of the queue</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">size</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="p">}</span>
+  <span class="nx">enQueue</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// the array need to expand if last + 1 is the head</span>
+    <span class="c1">// `% this.queue.length` is to avoid index out of bounds</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">first</span> <span class="o">===</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">last</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="k">this</span><span class="p">.</span><span class="nx">queue</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">resize</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">getLength</span><span class="p">()</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">queue</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">last</span><span class="p">]</span> <span class="o">=</span> <span class="nx">item</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">size</span><span class="o">++</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">last</span> <span class="o">=</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">last</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="k">this</span><span class="p">.</span><span class="nx">queue</span><span class="p">.</span><span class="nx">length</span>
+  <span class="p">}</span>
+  <span class="nx">deQueue</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">isEmpty</span><span class="p">())</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Queue is empty</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="kd">let</span> <span class="nx">r</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">queue</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">first</span><span class="p">]</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">queue</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">first</span><span class="p">]</span> <span class="o">=</span> <span class="kc">null</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">first</span> <span class="o">=</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">first</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="k">this</span><span class="p">.</span><span class="nx">queue</span><span class="p">.</span><span class="nx">length</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">size</span><span class="o">--</span>
+    <span class="c1">// if the size of queue is too small </span>
+    <span class="c1">// reduce the size half when the real size is quarter of the length and the length is not 2</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">size</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">getLength</span><span class="p">()</span> <span class="o">/</span> <span class="mi">4</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">getLength</span><span class="p">()</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">!==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">resize</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">getLength</span><span class="p">()</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">r</span>
+  <span class="p">}</span>
+  <span class="nx">getHeader</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">isEmpty</span><span class="p">())</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Queue is empty</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">queue</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">first</span><span class="p">]</span>
+  <span class="p">}</span>
+  <span class="nx">getLength</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">queue</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span>
+  <span class="p">}</span>
+  <span class="nx">isEmpty</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">first</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">last</span>
+  <span class="p">}</span>
+  <span class="nx">resize</span><span class="p">(</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">q</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">length</span><span class="p">)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">q</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">queue</span><span class="p">[(</span><span class="nx">i</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">first</span><span class="p">)</span> <span class="o">%</span> <span class="k">this</span><span class="p">.</span><span class="nx">queue</span><span class="p">.</span><span class="nx">length</span><span class="p">]</span>
+    <span class="p">}</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">queue</span> <span class="o">=</span> <span class="nx">q</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">first</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">last</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">size</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h1 id="linked-list">Linked List</h1>
+
+<h2 id="concept-2">Concept</h2>
+
+<p>The linked list is a linear data structure and born to be recursive structure. It can fully use the memory of the computer and manage the memory dynamically and flexibly. But Nodes in the linked list must be read in order from the beginning which can be random in the array, and it uses more memory than the array because of the storage used by their pointers.</p>
+
+<p><img src="https://yck-1254263422.cos.ap-shanghai.myqcloud.com/blog/2019-06-01-043120.png" alt="" /></p>
+
+<h2 id="implementation-2">Implementation</h2>
+
+<p>Singly-linked list</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Node</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">v</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">v</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">next</span> <span class="o">=</span> <span class="nx">next</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">class</span> <span class="nx">LinkList</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// size</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">size</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1">// virtual head</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">dummyNode</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Node</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="nx">find</span><span class="p">(</span><span class="nx">header</span><span class="p">,</span> <span class="nx">index</span><span class="p">,</span> <span class="nx">currentIndex</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">index</span> <span class="o">===</span> <span class="nx">currentIndex</span><span class="p">)</span> <span class="k">return</span> <span class="nx">header</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">header</span><span class="p">.</span><span class="nx">next</span><span class="p">,</span> <span class="nx">index</span><span class="p">,</span> <span class="nx">currentIndex</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="nx">addNode</span><span class="p">(</span><span class="nx">v</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">checkIndex</span><span class="p">(</span><span class="nx">index</span><span class="p">)</span>
+    <span class="c1">// the next of the node inserted should be previous node'next</span>
+    <span class="c1">// and the previous node's next should point to the node insert,</span>
+    <span class="c1">// except inserted to tail which next is null</span>
+    <span class="kd">let</span> <span class="nx">prev</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">dummyNode</span><span class="p">,</span> <span class="nx">index</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="nx">prev</span><span class="p">.</span><span class="nx">next</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Node</span><span class="p">(</span><span class="nx">v</span><span class="p">,</span> <span class="nx">prev</span><span class="p">.</span><span class="nx">next</span><span class="p">)</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">size</span><span class="o">++</span>
+    <span class="k">return</span> <span class="nx">prev</span><span class="p">.</span><span class="nx">next</span>
+  <span class="p">}</span>
+  <span class="nx">insertNode</span><span class="p">(</span><span class="nx">v</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">addNode</span><span class="p">(</span><span class="nx">v</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="nx">addToFirst</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">addNode</span><span class="p">(</span><span class="nx">v</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="nx">addToLast</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">addNode</span><span class="p">(</span><span class="nx">v</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">size</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="nx">removeNode</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="nx">isLast</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">checkIndex</span><span class="p">(</span><span class="nx">index</span><span class="p">)</span>
+    <span class="nx">index</span> <span class="o">=</span> <span class="nx">isLast</span> <span class="p">?</span> <span class="nx">index</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">:</span> <span class="nx">index</span>
+    <span class="kd">let</span> <span class="nx">prev</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">dummyNode</span><span class="p">,</span> <span class="nx">index</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="kd">let</span> <span class="nx">node</span> <span class="o">=</span> <span class="nx">prev</span><span class="p">.</span><span class="nx">next</span>
+    <span class="nx">prev</span><span class="p">.</span><span class="nx">next</span> <span class="o">=</span> <span class="nx">node</span><span class="p">.</span><span class="nx">next</span>
+    <span class="nx">node</span><span class="p">.</span><span class="nx">next</span> <span class="o">=</span> <span class="kc">null</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">size</span><span class="o">--</span>
+    <span class="k">return</span> <span class="nx">node</span>
+  <span class="p">}</span>
+  <span class="nx">removeFirstNode</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">removeNode</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="nx">removeLastNode</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">removeNode</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">size</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="nx">checkIndex</span><span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">index</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="nx">index</span> <span class="o">&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">size</span><span class="p">)</span> <span class="k">throw</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Index error</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="nx">getNode</span><span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">checkIndex</span><span class="p">(</span><span class="nx">index</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">isEmpty</span><span class="p">())</span> <span class="k">return</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">dummyNode</span><span class="p">,</span> <span class="nx">index</span><span class="p">,</span> <span class="mi">0</span><span class="p">).</span><span class="nx">next</span>
+  <span class="p">}</span>
+  <span class="nx">isEmpty</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">size</span> <span class="o">===</span> <span class="mi">0</span>
+  <span class="p">}</span>
+  <span class="nx">getSize</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">size</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h1 id="tree">Tree</h1>
+
+<h2 id="binary-tree">Binary Tree</h2>
+
+<p>Binary Tree is a common one of the many structures of the tree. And it is born to be recursive.</p>
+
+<p>Binary tree start at a root node and each node consists of two child-nodes at most: left node and right node.  The nodes in the bottom are usually called leaf nodes, and when the leaf nodes is full, we call the Full Binary Tree.</p>
+
+<p><img src="https://yck-1254263422.cos.ap-shanghai.myqcloud.com/blog/2019-06-01-43121.png" alt="" /></p>
+
+<h2 id="binary-search-tree">Binary Search Tree</h2>
+
+<h2 id="concept-3">Concept</h2>
+
+<p>Binary Search Tree (BST) is one of the binary trees, so it has all the features of the binary tree. But different with the binary tree, the value in any node is larger than the values in all nodes in that node’s left subtree and smaller than the values in all nodes in that node’s right subtree.</p>
+
+<p>This storage method is very suitable for data search. As shown below, when you need to find 6, because the value you need to find is larger than the value of the root node, you only need to find it in the right subtree of the root node, which greatly improves the search efficiency.</p>
+
+<p><img src="https://yck-1254263422.cos.ap-shanghai.myqcloud.com/blog/2019-06-01-043122.png" alt="" /></p>
+
+<h3 id="implementation-3">Implementation</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Node</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">value</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="kc">null</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">right</span> <span class="o">=</span> <span class="kc">null</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">class</span> <span class="nx">BST</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">root</span> <span class="o">=</span> <span class="kc">null</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">size</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="p">}</span>
+  <span class="nx">getSize</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">size</span>
+  <span class="p">}</span>
+  <span class="nx">isEmpty</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">size</span> <span class="o">===</span> <span class="mi">0</span>
+  <span class="p">}</span>
+  <span class="nx">addNode</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">root</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_addChild</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="c1">// make comparison to the value of the node when insertion</span>
+  <span class="nx">_addChild</span><span class="p">(</span><span class="nx">node</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">size</span><span class="o">++</span>
+      <span class="k">return</span> <span class="k">new</span> <span class="nx">Node</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">value</span> <span class="o">&gt;</span> <span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">node</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_addChild</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">value</span> <span class="o">&lt;</span> <span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">node</span><span class="p">.</span><span class="nx">right</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_addChild</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">node</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Above is the basic implementation of BST, the implementation of traversing tree are as follows.</p>
+
+<p>There are three ways for traversing trees: Preorder Traversal, In order Traversal, PostOrder Traversal. The difference of these ways is the time when to visit the root node. In the process of traversing the tree, each node traverses three times, traversing itself, traversing the left subtree and traversing the right subtree. If you need to implement pre-order traversal, you only need to operate the first time when traversing to the node.</p>
+
+<p>Following are the implementation by recursive, if you want to find the non-recursive, <a href="../Algorithm/algorithm-ch.md#%E9%9D%9E%E9%80%92%E5%BD%92%E5%AE%9E%E7%8E%B0">click here</a></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Preorder traversal can be used to print the structure of the tree</span>
+<span class="c1">// first root then left, and the right is last</span>
+<span class="nx">traversal</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">_pre</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">_pre</span><span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_pre</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">)</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_pre</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// Inorder traversal can be used to order</span>
+<span class="c1">// you can sort the value of BST only by one time of Inorder traversal</span>
+<span class="c1">// first left , then root and right is last</span>
+<span class="nx">midTraversal</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">_mid</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">_mid</span><span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_mid</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">)</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_mid</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// Postorder traversal can be used in the case that you want to</span>
+<span class="c1">// operate the child node first and then the parent node</span>
+<span class="c1">// first left, then right and the root is last</span>
+<span class="nx">backTraversal</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">_back</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">_back</span><span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_back</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">)</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_back</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">)</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>These three ways belong to Deep First Search. Meanwhile, there is Breadth First Search， which traverse the node layer by layer. We can implement it in the queue.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">breadthTraversal</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">)</span> <span class="k">return</span> <span class="kc">null</span>
+  <span class="kd">let</span> <span class="nx">q</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Queue</span><span class="p">()</span>
+  <span class="c1">// enqueue the root node</span>
+  <span class="nx">q</span><span class="p">.</span><span class="nx">enQueue</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">)</span>
+  <span class="c1">// whether the queue is empty, if true, the traverse is finished.</span>
+  <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="nx">q</span><span class="p">.</span><span class="nx">isEmpty</span><span class="p">())</span> <span class="p">{</span>
+    <span class="c1">// dequeue the head, and whether it has child-node, </span>
+    <span class="c1">// if true, enqueue th left and the right</span>
+    <span class="kd">let</span> <span class="nx">n</span> <span class="o">=</span> <span class="nx">q</span><span class="p">.</span><span class="nx">deQueue</span><span class="p">()</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">n</span><span class="p">.</span><span class="nx">left</span><span class="p">)</span> <span class="nx">q</span><span class="p">.</span><span class="nx">enQueue</span><span class="p">(</span><span class="nx">n</span><span class="p">.</span><span class="nx">left</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">n</span><span class="p">.</span><span class="nx">right</span><span class="p">)</span> <span class="nx">q</span><span class="p">.</span><span class="nx">enQueue</span><span class="p">(</span><span class="nx">n</span><span class="p">.</span><span class="nx">right</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>We will introduce how to find the smallest and the biggest in the tree. Because of the feature of the BST, the smallest must be on the left while the biggest is on the right.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">getMin</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_getMin</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">).</span><span class="nx">value</span>
+<span class="p">}</span>
+<span class="nx">_getMin</span><span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">)</span> <span class="k">return</span> <span class="nx">node</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_getMin</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">getMax</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_getMax</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">).</span><span class="nx">value</span>
+<span class="p">}</span>
+<span class="nx">_getMax</span><span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">)</span> <span class="k">return</span> <span class="nx">node</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_getMin</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Round up and Round down</strong> Since these two operations are opposite, the code is similar, here we’ll talk about round down. According to the feature of the BST, the target must be on the left. We only need to traverse the left nodes until the current node is no bigger than the target. And then adjudge if there have right nodes, if do, continue the judgment recursively.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">floor</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">node</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_floor</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+  <span class="k">return</span> <span class="nx">node</span> <span class="p">?</span> <span class="nx">node</span><span class="p">.</span><span class="nx">value</span> <span class="p">:</span> <span class="kc">null</span>
+<span class="p">}</span>
+<span class="nx">_floor</span><span class="p">(</span><span class="nx">node</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">node</span><span class="p">)</span> <span class="k">return</span> <span class="kc">null</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">value</span> <span class="o">===</span> <span class="nx">v</span><span class="p">)</span> <span class="k">return</span> <span class="nx">v</span>
+  <span class="c1">// if the current node is bigger than the target, continue</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">value</span> <span class="o">&gt;</span> <span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_floor</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="c1">// whether the current node has the right subtree</span>
+  <span class="kd">let</span> <span class="nx">right</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_floor</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">right</span><span class="p">)</span> <span class="k">return</span> <span class="nx">right</span>
+  <span class="k">return</span> <span class="nx">node</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Rank</strong> get the rank of the given value or get the value of the given rank, and these two operations are also similar. We as usual only introduce the operation of the latter. We should retrofit the code to add a property <code class="language-plaintext highlighter-rouge">size</code> to each node which indicates how many subnodes a node has, include itself.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Node</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">value</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="kc">null</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">right</span> <span class="o">=</span> <span class="kc">null</span>
+    <span class="c1">// add code </span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">size</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// add code</span>
+<span class="nx">_getSize</span><span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">node</span> <span class="p">?</span> <span class="nx">node</span><span class="p">.</span><span class="nx">size</span> <span class="p">:</span> <span class="mi">0</span>
+<span class="p">}</span>
+<span class="nx">_addChild</span><span class="p">(</span><span class="nx">node</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">Node</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">value</span> <span class="o">&gt;</span> <span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// edit code</span>
+    <span class="nx">node</span><span class="p">.</span><span class="nx">size</span><span class="o">++</span>
+    <span class="nx">node</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_addChild</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">value</span> <span class="o">&lt;</span> <span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// edit code</span>
+    <span class="nx">node</span><span class="p">.</span><span class="nx">size</span><span class="o">++</span>
+    <span class="nx">node</span><span class="p">.</span><span class="nx">right</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_addChild</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">node</span>
+<span class="p">}</span>
+<span class="nx">select</span><span class="p">(</span><span class="nx">k</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">node</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_select</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">,</span> <span class="nx">k</span><span class="p">)</span>
+  <span class="k">return</span> <span class="nx">node</span> <span class="p">?</span> <span class="nx">node</span><span class="p">.</span><span class="nx">value</span> <span class="p">:</span> <span class="kc">null</span>
+<span class="p">}</span>
+<span class="nx">_select</span><span class="p">(</span><span class="nx">node</span><span class="p">,</span> <span class="nx">k</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">node</span><span class="p">)</span> <span class="k">return</span> <span class="kc">null</span>
+  <span class="c1">// get the size of the node in the left subtree</span>
+  <span class="kd">let</span> <span class="nx">size</span> <span class="o">=</span> <span class="nx">node</span><span class="p">.</span><span class="nx">left</span> <span class="p">?</span> <span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">.</span><span class="nx">size</span> <span class="p">:</span> <span class="mi">0</span>
+  <span class="c1">// if size is bigger than k, the target is in the left side</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">size</span> <span class="o">&gt;</span> <span class="nx">k</span><span class="p">)</span> <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_select</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">,</span> <span class="nx">k</span><span class="p">)</span>
+  <span class="c1">// if the size is smaller than k, the target is in the right side</span>
+  <span class="c1">// there is need to recalculate the k</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">size</span> <span class="o">&lt;</span> <span class="nx">k</span><span class="p">)</span> <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_select</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">,</span> <span class="nx">k</span> <span class="o">-</span> <span class="nx">size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+  <span class="k">return</span> <span class="nx">node</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Here come the most difficult parts in BST: delete nodes, include the following cases:</p>
+
+<ul>
+  <li>the target node has no subtree</li>
+  <li>the target node has only one subtree</li>
+  <li>the target node has two subtrees</li>
+</ul>
+
+<p>The first and the second is easy to resolve, while the last is a little difficult. 
+So let us implement the simple operation at first: delete the minimum node. It could not appear in the third case, and the operation delete the largest node is opposite, so there is no need to talk.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">delectMin</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">root</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_delectMin</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">)</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">_delectMin</span><span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// rescursive  the left subtree</span>
+  <span class="c1">// if the left subtree is null, check if the right is exist</span>
+  <span class="c1">// if true, take the right subtree in place of the delect node</span>
+  <span class="k">if</span> <span class="p">((</span><span class="nx">node</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="o">&amp;</span> <span class="o">!</span><span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">)</span> <span class="k">return</span> <span class="nx">node</span><span class="p">.</span><span class="nx">right</span>
+  <span class="nx">node</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_delectMin</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">)</span>
+  <span class="c1">// update the size at last</span>
+  <span class="nx">node</span><span class="p">.</span><span class="nx">size</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_getSize</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">)</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">_getSize</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+  <span class="k">return</span> <span class="nx">node</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The last, how to delete a random node. T.Hibbard put forward the solution in 1962 which can be used to solve the third case.</p>
+
+<p>In this situation, we should get the descendant node of the current node which is the smallest node in the current node’s right subtree and replace the target node by it. And then assign the descendant node with the subtree of the target, and give the right subtree without decent node to the left subtree.</p>
+
+<p>Since the root node is bigger than all the nodes in left subtree, while less than all the nodes in the right subtree. When you want to delete a root node, you need to pick a suitable node to take place, which should bigger than the root node that means it must come from the right subtree. Then the smallest node would be picked with the limit that all the nodes in the right subtree should bigger than the root node.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">delect</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">root</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_delect</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">_delect</span><span class="p">(</span><span class="nx">node</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">node</span><span class="p">)</span> <span class="k">return</span> <span class="kc">null</span>
+  <span class="c1">// if the target is less than the current node, serach in the left subtree</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">value</span> <span class="o">&lt;</span> <span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">node</span><span class="p">.</span><span class="nx">right</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_delect</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">value</span> <span class="o">&gt;</span> <span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// if the target is bigger than the current node, serach in the right subtree</span>
+    <span class="nx">node</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_delect</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// in this case, the target has been found</span>
+    <span class="c1">// check if the node has subtree</span>
+    <span class="c1">// if true, return the subtree, same operation with `_delectMin`</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">)</span> <span class="k">return</span> <span class="nx">node</span><span class="p">.</span><span class="nx">right</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">)</span> <span class="k">return</span> <span class="nx">node</span><span class="p">.</span><span class="nx">left</span>
+    <span class="c1">// in this case, the node has both subtree</span>
+    <span class="c1">// get the decendent node of the current node, </span>
+    <span class="c1">// which is the smallest node in the right subtree</span>
+    <span class="kd">let</span> <span class="nx">min</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_getMin</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">)</span>
+    <span class="c1">// delete the smallest after got it</span>
+    <span class="c1">// Then assign the subtree after deleting the node to the smallest node</span>
+    <span class="nx">min</span><span class="p">.</span><span class="nx">right</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_delectMin</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">)</span>
+    <span class="c1">// subtree is the same</span>
+    <span class="nx">min</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="nx">node</span><span class="p">.</span><span class="nx">left</span>
+    <span class="nx">node</span> <span class="o">=</span> <span class="nx">min</span>
+  <span class="p">}</span>
+  <span class="c1">// update size</span>
+  <span class="nx">node</span><span class="p">.</span><span class="nx">size</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_getSize</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">)</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">_getSize</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+  <span class="k">return</span> <span class="nx">node</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="avl-tree">AVL Tree</h2>
+
+<h3 id="concept-4">Concept</h3>
+
+<p>BST is limited in the production because it is not the strict O(log N) and sometimes it will degenerate to a linked list, e.g., insertion of an ascending order number list.</p>
+
+<p>AVL tree improved the BST, the difference between the left subtree height and the right subtree height in each node is less than 1, which can ensure that the time complexity is strict O(log N). Based on this, the insertion and deletion may need to rotate the tree to balance the height.</p>
+
+<h3 id="implementation-4">Implementation</h3>
+
+<p>Since improved from the BST, some codes in AVL are repeated, which we will not analysis again.</p>
+
+<p>Four cases are in the node insertion of AVL tree.</p>
+
+<p><img src="https://yck-1254263422.cos.ap-shanghai.myqcloud.com/blog/2019-06-01-043123.png" alt="" /></p>
+
+<p>As for l-l(left-left), the new node T1 is in the left side of the node X. The tree cannot keep balance by now, so there need to rotate. After rotating, the tree should still obey the rules the mid is bigger than the left and less than the right according to the features of the BST.</p>
+
+<p>before rotating: T1 &lt; X &lt; T2 &lt; Y &lt; T3 &lt; Z &lt; T4， after rotating, the node Y is the root, so we need to add the right subtree of Y to the left of the Z and update the height of the nodes.</p>
+
+<p>The same situation to the r-r, opposite to the l-l, we do not talk more.</p>
+
+<p>As for the l-r, the new node is on the right side of the node X, and we need to rotate twice.</p>
+
+<p>First, rotate the left node to the left, after that the case change to l-l, we can handle it like l-l.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Node</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">value</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="kc">null</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">right</span> <span class="o">=</span> <span class="kc">null</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nx">AVL</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">root</span> <span class="o">=</span> <span class="kc">null</span>
+  <span class="p">}</span>
+  <span class="nx">addNode</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">root</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_addChild</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="nx">_addChild</span><span class="p">(</span><span class="nx">node</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="k">new</span> <span class="nx">Node</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">value</span> <span class="o">&gt;</span> <span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">node</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_addChild</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">value</span> <span class="o">&lt;</span> <span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">node</span><span class="p">.</span><span class="nx">right</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_addChild</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">node</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">v</span>
+    <span class="p">}</span>
+    <span class="nx">node</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span>
+      <span class="mi">1</span> <span class="o">+</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_getHeight</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">),</span> <span class="k">this</span><span class="p">.</span><span class="nx">_getHeight</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">))</span>
+    <span class="kd">let</span> <span class="nx">factor</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_getBalanceFactor</span><span class="p">(</span><span class="nx">node</span><span class="p">)</span>
+    <span class="c1">// when need right-rotate, the height of the left subtree must higher than right </span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">factor</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">_getBalanceFactor</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_rightRotate</span><span class="p">(</span><span class="nx">node</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="c1">// when need left-rotate, the height of the left subtree must lower than right</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">factor</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">_getBalanceFactor</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_leftRotate</span><span class="p">(</span><span class="nx">node</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="c1">// l-r</span>
+    <span class="c1">// left subtree is higher than right, </span>
+    <span class="c1">// and the right subtree of the left subtree of the node </span>
+    <span class="c1">// is higher than the left subtree of the left subtree of the node</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">factor</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">_getBalanceFactor</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">node</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_leftRotate</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">)</span>
+      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_rightRotate</span><span class="p">(</span><span class="nx">node</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="c1">// r-l</span>
+    <span class="c1">// left subtree is lower than right, </span>
+    <span class="c1">// and the right subtree of the right subtree of the node </span>
+    <span class="c1">// is lower than the left subtree of the right subtree of the node</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">factor</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">_getBalanceFactor</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">node</span><span class="p">.</span><span class="nx">right</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_rightRotate</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">)</span>
+      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_leftRotate</span><span class="p">(</span><span class="nx">node</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">node</span>
+  <span class="p">}</span>
+  <span class="nx">_getHeight</span><span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">node</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="nx">node</span><span class="p">.</span><span class="nx">height</span>
+  <span class="p">}</span>
+  <span class="nx">_getBalanceFactor</span><span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_getHeight</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">)</span> <span class="o">-</span> <span class="k">this</span><span class="p">.</span><span class="nx">_getHeight</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="c1">// right-rotate</span>
+  <span class="c1">//           5                    2</span>
+  <span class="c1">//         /   \                /   \</span>
+  <span class="c1">//        2     6   ==&gt;       1      5</span>
+  <span class="c1">//       /  \               /       /  \</span>
+  <span class="c1">//      1    3             new     3    6</span>
+  <span class="c1">//     /</span>
+  <span class="c1">//    new</span>
+  <span class="nx">_rightRotate</span><span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// new root after rotate</span>
+    <span class="kd">let</span> <span class="nx">newRoot</span> <span class="o">=</span> <span class="nx">node</span><span class="p">.</span><span class="nx">left</span>
+    <span class="c1">// node need to be moved</span>
+    <span class="kd">let</span> <span class="nx">moveNode</span> <span class="o">=</span> <span class="nx">newRoot</span><span class="p">.</span><span class="nx">right</span>
+    <span class="c1">// right node of the node 2 change to node 5</span>
+    <span class="nx">newRoot</span><span class="p">.</span><span class="nx">right</span> <span class="o">=</span> <span class="nx">node</span>
+    <span class="c1">// left node of node 5 change to node 3</span>
+    <span class="nx">node</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="nx">moveNode</span>
+    <span class="c1">// update the height</span>
+    <span class="nx">node</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span>
+      <span class="mi">1</span> <span class="o">+</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_getHeight</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">),</span> <span class="k">this</span><span class="p">.</span><span class="nx">_getHeight</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">))</span>
+    <span class="nx">newRoot</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span>
+      <span class="mi">1</span> <span class="o">+</span>
+      <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_getHeight</span><span class="p">(</span><span class="nx">newRoot</span><span class="p">.</span><span class="nx">left</span><span class="p">),</span> <span class="k">this</span><span class="p">.</span><span class="nx">_getHeight</span><span class="p">(</span><span class="nx">newRoot</span><span class="p">.</span><span class="nx">right</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="nx">newRoot</span>
+  <span class="p">}</span>
+  <span class="c1">// left-rotate</span>
+  <span class="c1">//           4                    6</span>
+  <span class="c1">//         /   \                /   \</span>
+  <span class="c1">//        2     6   ==&gt;       4      7</span>
+  <span class="c1">//             /  \         /   \      \</span>
+  <span class="c1">//            5     7      2     5      new</span>
+  <span class="c1">//                   \</span>
+  <span class="c1">//                    new</span>
+  <span class="nx">_leftRotate</span><span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// new root after rotate</span>
+    <span class="kd">let</span> <span class="nx">newRoot</span> <span class="o">=</span> <span class="nx">node</span><span class="p">.</span><span class="nx">right</span>
+    <span class="c1">// node need to be moved</span>
+    <span class="kd">let</span> <span class="nx">moveNode</span> <span class="o">=</span> <span class="nx">newRoot</span><span class="p">.</span><span class="nx">left</span>
+    <span class="c1">// left node of the node 6 change to node 4</span>
+    <span class="nx">newRoot</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="nx">node</span>
+    <span class="c1">// right node of the node 4 change to node 5</span>
+    <span class="nx">node</span><span class="p">.</span><span class="nx">right</span> <span class="o">=</span> <span class="nx">moveNode</span>
+    <span class="c1">// update the height</span>
+    <span class="nx">node</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span>
+      <span class="mi">1</span> <span class="o">+</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_getHeight</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">),</span> <span class="k">this</span><span class="p">.</span><span class="nx">_getHeight</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">))</span>
+    <span class="nx">newRoot</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span>
+      <span class="mi">1</span> <span class="o">+</span>
+      <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_getHeight</span><span class="p">(</span><span class="nx">newRoot</span><span class="p">.</span><span class="nx">left</span><span class="p">),</span> <span class="k">this</span><span class="p">.</span><span class="nx">_getHeight</span><span class="p">(</span><span class="nx">newRoot</span><span class="p">.</span><span class="nx">right</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="nx">newRoot</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h1 id="trie">Trie</h1>
+
+<h2 id="concept-5">Concept</h2>
+
+<p>In computer science, a trie, also called digital tree and sometimes radix tree or prefix tree (as prefixes can search them), is a kind of search tree—an ordered tree data structure that is used to store a dynamic set or associative array where the keys are usually strings.</p>
+
+<p>Simply, this data structure is used to search string easily, with the following features:</p>
+
+<ul>
+  <li>the root is on behalf of the empty string, and each node has N links (N is 26 in searching English character), each link represents a character.</li>
+  <li>all nodes do not store a character, and only the path store, this is different from other tree structures.</li>
+  <li>the character in the path from the root to the random node can combine to the strings corresponding to the node</li>
+</ul>
+
+<p><img src="https://yck-1254263422.cos.ap-shanghai.myqcloud.com/blog/2019-06-01-043124.png" alt="" /></p>
+
+<h2 id="implementation-5">Implementation</h2>
+
+<p>Generally, the implementation of the trie is much more simple than others, let’s take the English character searching for example.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">TrieNode</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// the times of each character travels through the node</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">path</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1">// the amount of the string to the node</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">end</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1">// links</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">next</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">26</span><span class="p">).</span><span class="nx">fill</span><span class="p">(</span><span class="kc">null</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">class</span> <span class="nx">Trie</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// root node, empty string</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">root</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TrieNode</span><span class="p">()</span>
+  <span class="p">}</span>
+  <span class="c1">// insert string</span>
+  <span class="nx">insert</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">str</span><span class="p">)</span> <span class="k">return</span>
+    <span class="kd">let</span> <span class="nx">node</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">root</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">str</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// get the index of the character</span>
+      <span class="kd">let</span> <span class="nx">index</span> <span class="o">=</span> <span class="nx">str</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">charCodeAt</span><span class="p">()</span> <span class="o">-</span> <span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">.</span><span class="nx">charCodeAt</span><span class="p">()</span>
+      <span class="c1">// create if without the index</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">node</span><span class="p">.</span><span class="nx">next</span><span class="p">[</span><span class="nx">index</span><span class="p">])</span> <span class="p">{</span>
+        <span class="nx">node</span><span class="p">.</span><span class="nx">next</span><span class="p">[</span><span class="nx">index</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TrieNode</span><span class="p">()</span>
+      <span class="p">}</span>
+      <span class="nx">node</span><span class="p">.</span><span class="nx">path</span> <span class="o">+=</span> <span class="mi">1</span>
+      <span class="nx">node</span> <span class="o">=</span> <span class="nx">node</span><span class="p">.</span><span class="nx">next</span><span class="p">[</span><span class="nx">index</span><span class="p">]</span>
+    <span class="p">}</span>
+    <span class="nx">node</span><span class="p">.</span><span class="nx">end</span> <span class="o">+=</span> <span class="mi">1</span>
+  <span class="p">}</span>
+  <span class="c1">// The number of times the search string appears</span>
+  <span class="nx">search</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">str</span><span class="p">)</span> <span class="k">return</span>
+    <span class="kd">let</span> <span class="nx">node</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">root</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">str</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">let</span> <span class="nx">index</span> <span class="o">=</span> <span class="nx">str</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">charCodeAt</span><span class="p">()</span> <span class="o">-</span> <span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">.</span><span class="nx">charCodeAt</span><span class="p">()</span>
+      <span class="c1">// if the index does node exists, there is no string to be search</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">node</span><span class="p">.</span><span class="nx">next</span><span class="p">[</span><span class="nx">index</span><span class="p">])</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">0</span>
+      <span class="p">}</span>
+      <span class="nx">node</span> <span class="o">=</span> <span class="nx">node</span><span class="p">.</span><span class="nx">next</span><span class="p">[</span><span class="nx">index</span><span class="p">]</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">node</span><span class="p">.</span><span class="nx">end</span>
+  <span class="p">}</span>
+  <span class="c1">// delete the string</span>
+  <span class="k">delete</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">search</span><span class="p">(</span><span class="nx">str</span><span class="p">))</span> <span class="k">return</span>
+    <span class="kd">let</span> <span class="nx">node</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">root</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">str</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">let</span> <span class="nx">index</span> <span class="o">=</span> <span class="nx">str</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">charCodeAt</span><span class="p">()</span> <span class="o">-</span> <span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">.</span><span class="nx">charCodeAt</span><span class="p">()</span>
+      <span class="c1">// if the path is 0,  this means no string pass </span>
+      <span class="c1">// delete it</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">--</span><span class="nx">node</span><span class="p">.</span><span class="nx">next</span><span class="p">[</span><span class="nx">index</span><span class="p">].</span><span class="nx">path</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">node</span><span class="p">.</span><span class="nx">next</span><span class="p">[</span><span class="nx">index</span><span class="p">]</span> <span class="o">=</span> <span class="kc">null</span>
+        <span class="k">return</span>
+      <span class="p">}</span>
+      <span class="nx">node</span> <span class="o">=</span> <span class="nx">node</span><span class="p">.</span><span class="nx">next</span><span class="p">[</span><span class="nx">index</span><span class="p">]</span>
+    <span class="p">}</span>
+    <span class="nx">node</span><span class="p">.</span><span class="nx">end</span> <span class="o">-=</span> <span class="mi">1</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h1 id="disjoint-set">Disjoint Set</h1>
+
+<h2 id="concept-6">Concept</h2>
+
+<p>Disjoint Set is a special data structure of the tree. Each node in this structure has a parent node, if there is only the current node, then the pointer of the parent node points to itself.</p>
+
+<p>Two important operations are in this structure,</p>
+
+<ul>
+  <li>Find: find the member of the set to which the element belongs,  and it can be used to determine whether the two elements belong to the same set</li>
+  <li>Union: combine two sets to a new set</li>
+</ul>
+
+<p><img src="https://yck-1254263422.cos.ap-shanghai.myqcloud.com/blog/2019-06-01-043126.png" alt="" /></p>
+
+<h2 id="implementation-6">Implementation</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">DisjointSet</span> <span class="p">{</span>
+  <span class="c1">// init sample</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">count</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// each node's parenet node is iteself when initialization</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">parent</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">count</span><span class="p">)</span>
+    <span class="c1">// record the deepth of the tree to optimize the complexity of query</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">rank</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">count</span><span class="p">)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">count</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">parent</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">i</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">rank</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="nx">find</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// check whether the parent node of the current node is itself, if false, means has not found yet</span>
+    <span class="c1">// uglify the path for optimization</span>
+    <span class="c1">// assume the parent node of the current node is A</span>
+    <span class="c1">// mount the current node to the parent node of A to deeply optimize</span>
+    <span class="k">while</span> <span class="p">(</span><span class="nx">p</span> <span class="o">!=</span> <span class="k">this</span><span class="p">.</span><span class="nx">parent</span><span class="p">[</span><span class="nx">p</span><span class="p">])</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">parent</span><span class="p">[</span><span class="nx">p</span><span class="p">]</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">parent</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">parent</span><span class="p">[</span><span class="nx">p</span><span class="p">]]</span>
+      <span class="nx">p</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">parent</span><span class="p">[</span><span class="nx">p</span><span class="p">]</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">p</span>
+  <span class="p">}</span>
+  <span class="nx">isConnected</span><span class="p">(</span><span class="nx">p</span><span class="p">,</span> <span class="nx">q</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">q</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="c1">// combine</span>
+  <span class="nx">union</span><span class="p">(</span><span class="nx">p</span><span class="p">,</span> <span class="nx">q</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// find the parent node of the two number</span>
+    <span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span>
+    <span class="kd">let</span> <span class="nx">j</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">q</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">i</span> <span class="o">===</span> <span class="nx">j</span><span class="p">)</span> <span class="k">return</span>
+    <span class="c1">// compare the deepth of the two trees </span>
+    <span class="c1">// if the deepth is equal, add as you wish</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">rank</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">rank</span><span class="p">[</span><span class="nx">j</span><span class="p">])</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">parent</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">j</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">rank</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">rank</span><span class="p">[</span><span class="nx">j</span><span class="p">])</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">parent</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span> <span class="o">=</span> <span class="nx">i</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">parent</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">j</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">rank</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h1 id="heap">Heap</h1>
+
+<h2 id="concept-7">Concept</h2>
+
+<p>Heap is usually treated as a tree-based array list.</p>
+
+<p>It is implemented by constructure binary heap, one of the BST. Features are as follows:</p>
+
+<ul>
+  <li>each node either larger or less than all its child-nodes</li>
+  <li>heap is always a full-tree</li>
+</ul>
+
+<p>We call the heap <strong>Max Binary Heap</strong> that its root value is the largest, while the heap with the smallest root value is called  <strong>Min Binary Heap</strong>.</p>
+
+<p>Priority Queue also can be implemented by the heap, with the same operation.</p>
+
+<h2 id="implementation-7">Implementation</h2>
+
+<p>For the implementation, we’ll take an example of a <strong>Max Binary Heap</strong>.
+The index of the left-child of each node is <code class="language-plaintext highlighter-rouge">i * 2 + 1</code>, while the right’s is <code class="language-plaintext highlighter-rouge">i * 2 + 2</code>, and the parent’s is <code class="language-plaintext highlighter-rouge">(i - 1) / 2</code></p>
+
+<p>There are two central operations in the heap, <code class="language-plaintext highlighter-rouge">shiftUp</code> and <code class="language-plaintext highlighter-rouge">shiftDown</code>. The former is used for insertion, and the latter is to delete the root node.</p>
+
+<p>The key of <code class="language-plaintext highlighter-rouge">shiftUp</code> is to compare with the parent node bubbly and exchange the position if it is larger than the parent.</p>
+
+<p>As for <code class="language-plaintext highlighter-rouge">shiftDown</code>, first exchange root and the tail node, and then delete the tail. After that, Compare with the parent node and both child-nodes circularly, if the child-node is larger, assign the parent node with the larger node.</p>
+
+<p><img src="https://yck-1254263422.cos.ap-shanghai.myqcloud.com/blog/2019-06-01-43127.png" alt="" /></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">MaxHeap</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">heap</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="p">}</span>
+  <span class="nx">size</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">.</span><span class="nx">length</span>
+  <span class="p">}</span>
+  <span class="nx">empty</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">size</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span>
+  <span class="p">}</span>
+  <span class="nx">add</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_shiftUp</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="nx">removeMax</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_shiftDown</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="nx">getParentIndex</span><span class="p">(</span><span class="nx">k</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">parseInt</span><span class="p">((</span><span class="nx">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="nx">getLeftIndex</span><span class="p">(</span><span class="nx">k</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">k</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span>
+  <span class="p">}</span>
+  <span class="nx">_shiftUp</span><span class="p">(</span><span class="nx">k</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// exchange if the current node is bigger than the parent node</span>
+    <span class="k">while</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">[</span><span class="nx">k</span><span class="p">]</span> <span class="o">&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">getParentIndex</span><span class="p">(</span><span class="nx">k</span><span class="p">)])</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">_swap</span><span class="p">(</span><span class="nx">k</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">getParentIndex</span><span class="p">(</span><span class="nx">k</span><span class="p">))</span>
+      <span class="c1">// update the index to the parent node's</span>
+      <span class="nx">k</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getParentIndex</span><span class="p">(</span><span class="nx">k</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="nx">_shiftDown</span><span class="p">(</span><span class="nx">k</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// exchange the head and tail, then delete the tail</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_swap</span><span class="p">(</span><span class="nx">k</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="c1">// check whether the node has left child-node, </span>
+    <span class="c1">// the right must exist because of full-tree</span>
+    <span class="k">while</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">getLeftIndex</span><span class="p">(</span><span class="nx">k</span><span class="p">)</span> <span class="o">&lt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">size</span><span class="p">())</span> <span class="p">{</span>
+      <span class="kd">let</span> <span class="nx">j</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getLeftIndex</span><span class="p">(</span><span class="nx">k</span><span class="p">)</span>
+      <span class="c1">// check whether the right child exits, and whether it is largger than the left</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">j</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">size</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">[</span><span class="nx">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">[</span><span class="nx">j</span><span class="p">])</span> <span class="nx">j</span><span class="o">++</span>
+      <span class="c1">// check whether the parenet node is largger than both child-nodes</span>
+      <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">[</span><span class="nx">k</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">[</span><span class="nx">j</span><span class="p">])</span> <span class="k">break</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">_swap</span><span class="p">(</span><span class="nx">k</span><span class="p">,</span> <span class="nx">j</span><span class="p">)</span>
+      <span class="nx">k</span> <span class="o">=</span> <span class="nx">j</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="nx">_swap</span><span class="p">(</span><span class="nx">left</span><span class="p">,</span> <span class="nx">right</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">rightValue</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">[</span><span class="nx">right</span><span class="p">]</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">[</span><span class="nx">right</span><span class="p">]</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">[</span><span class="nx">left</span><span class="p">]</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">[</span><span class="nx">left</span><span class="p">]</span> <span class="o">=</span> <span class="nx">rightValue</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">MaxHeap</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">heap</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="p">}</span>
+  <span class="nx">size</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">.</span><span class="nx">length</span>
+  <span class="p">}</span>
+  <span class="nx">empty</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">size</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span>
+  <span class="p">}</span>
+  <span class="nx">add</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_shiftUp</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="nx">removeMax</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_shiftDown</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="nx">getParentIndex</span><span class="p">(</span><span class="nx">k</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">parseInt</span><span class="p">((</span><span class="nx">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="nx">getLeftIndex</span><span class="p">(</span><span class="nx">k</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">k</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span>
+  <span class="p">}</span>
+  <span class="nx">_shiftUp</span><span class="p">(</span><span class="nx">k</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// exchange if the current node is bigger than the parent node</span>
+    <span class="k">while</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">[</span><span class="nx">k</span><span class="p">]</span> <span class="o">&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">getParentIndex</span><span class="p">(</span><span class="nx">k</span><span class="p">)])</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">_swap</span><span class="p">(</span><span class="nx">k</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">getParentIndex</span><span class="p">(</span><span class="nx">k</span><span class="p">))</span>
+      <span class="c1">// update the index to the parent node's</span>
+      <span class="nx">k</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getParentIndex</span><span class="p">(</span><span class="nx">k</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="nx">_shiftDown</span><span class="p">(</span><span class="nx">k</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// exchange the head and delete the tail</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_swap</span><span class="p">(</span><span class="nx">k</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="c1">// check if the node has left child-node, the right must exist if true according to the binary heap</span>
+    <span class="k">while</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">getLeftIndex</span><span class="p">(</span><span class="nx">k</span><span class="p">)</span> <span class="o">&lt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">size</span><span class="p">())</span> <span class="p">{</span>
+      <span class="kd">let</span> <span class="nx">j</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getLeftIndex</span><span class="p">(</span><span class="nx">k</span><span class="p">)</span>
+      <span class="c1">// check if the right child exits, and whether it is largger than the left</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">j</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">size</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">[</span><span class="nx">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">[</span><span class="nx">j</span><span class="p">])</span> <span class="nx">j</span><span class="o">++</span>
+      <span class="c1">// check if the parenet node is largger than both child-nodes</span>
+      <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">[</span><span class="nx">k</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">[</span><span class="nx">j</span><span class="p">])</span> <span class="k">break</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">_swap</span><span class="p">(</span><span class="nx">k</span><span class="p">,</span> <span class="nx">j</span><span class="p">)</span>
+      <span class="nx">k</span> <span class="o">=</span> <span class="nx">j</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="nx">_swap</span><span class="p">(</span><span class="nx">left</span><span class="p">,</span> <span class="nx">right</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">rightValue</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">[</span><span class="nx">right</span><span class="p">]</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">[</span><span class="nx">right</span><span class="p">]</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">[</span><span class="nx">left</span><span class="p">]</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">[</span><span class="nx">left</span><span class="p">]</span> <span class="o">=</span> <span class="nx">rightValue</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>I would be covering some more basic data-structures’ concept and implementation in this post.
+Also, would be covering some advanced data-structures as well as their applications in some other post.</p>
+</blockquote>
+
+</article>
+
+<br>
+<center><p>Thank you for reading this article 😊</p></center>
+<center><p>I'd love to hear your thoughts & feedback in the comment section below!</p></center>
+<div class="sharethis-inline-reaction-buttons"></div>
+<style>
+  #st-1 .st-btn > svg
+  {
+    width:28px;
+  }
+</style>
+<hr></hr>
+<center><p>If you liked it, share it with your friends and help this blog to grow!</p></center>
+<!-- <div class="sharethis-inline-share-buttons"></div> -->
+<center><div class="addthis_inline_share_toolbox"></div></center>
+<br>
+<br>
+
+
+    
+        <script src="https://utteranc.es/client.js"
+                repo="Akash-Sharma-1/Utteranc-Comments-Repo-Blog"
+                issue-term="pathname"
+                theme="github-light"
+                crossorigin="anonymous"
+                async>
+        </script>
+    
+
+
+<script>
+    // Add anchors to headers.
+    anchors.add();
+
+    // Show images in fancybox.
+    $("p img").each(function() {
+        $(this).wrapAll('<a data-fancybox="images" data-caption="' + this.alt + '" href="' + this.src + '"></a>');
+    });
+    $('[data-fancybox="images"]').fancybox({
+        transitionEffect: "slide",
+
+        // Support for retina displays.
+        afterLoad : function(instance, current) {
+            var pixelRatio = window.devicePixelRatio || 1;
+
+            if ( pixelRatio > 1.5 ) {
+                current.width  = current.width  / pixelRatio;
+                current.height = current.height / pixelRatio;
+            }
+        }
+    });
+</script>
+
+
+<script>
+    // Show sidebar on top in mobile devices.
+    $(".content").addClass("order-last order-md-first");
+    $(".sidebar").addClass("order-first order-md-last");
+</script>
+
+</div>
+<div class="sidebar col-md-4 mt-2 mt-md-0">
+    
+    <!-- https://github.com/christian-fei/Simple-Jekyll-Search -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/simple-jekyll-search/1.7.2/simple-jekyll-search.min.js" integrity="sha256-DsgE6Y6cI5eAZoTg8tJ5VBxFs+rnL8smPwt/u8tyAYo=" crossorigin="anonymous"></script>
+
+<div id="search-box" class="mb-2">
+    <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+    <ul class="mb-0"></ul>
+</div>
+
+<script type="text/javascript">
+    var search_box = document.getElementById("search-box");
+    SimpleJekyllSearch({
+        searchInput: search_box.getElementsByTagName("input")[0],
+        resultsContainer: search_box.getElementsByTagName("ul")[0],
+        json: '/blog/assets/search.json',
+        searchResultTemplate: '<li><a href="{url}">{title}</a></li>',
+        noResultsText: 'No results found',
+        fuzzy: false
+    });
+</script>
+
+    <!-- https://github.com/tscanlin/tocbot/ -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.7.0/tocbot.css" integrity="sha256-XUbSD3m+xLW27W/mp9kMn+fI9AU2MoBkiMMSVVYWI+o=" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.7.0/tocbot.min.js" integrity="sha256-5K/04vUxP94HmQ8f18TgufdyqE69WDJRMNga0JLhAtE=" crossorigin="anonymous"></script>
+
+<div class="toc-container mb-2">
+    <p class="name">Table of Contents</p>
+    <div class="toc py-2 pr-2 mb-2"></div>
+</div>
+
+<script>
+    // Show TOC if the article contains any heading.
+    if ($("article h1, article  h2, article h3, article h4, article h5, article h6").length == 0) {
+        $(".toc-container").addClass("d-none");
+    }
+
+    tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: ".toc",
+        // Where to grab the headings to build the table of contents.
+        contentSelector: "article",
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: "h1, h2, h3, h4, h5, h6",
+        collapseDepth: 6,
+    });
+</script>
+
+
+
+
+
+
+</div>
+
+    </div>
+</div>
+
+        <footer>
+    <div class="container">
+        <hr class="my-0">
+        <div class="row align-items-center text-muted my-3">
+            <div class="col">
+                <span>© 2022 Akash Sharma</span>
+                <a href="/blog/feed.xml"><span class="feed iconify" data-icon="foundation:rss"></span></a>
+            </div>
+            <div class="col-auto text-center px-0">
+                    <a href="https://akash-sharma-1.github.io/"><span class="github text-center text-muted iconify" data-icon="foundation:web"></span></a>
+                    <a href="https://github.com/Akash-Sharma-1"><span class="github text-center text-muted iconify" data-icon="foundation:social-github"></span></a>
+                    <a href="https://twitter.com/AkashTheGreat_1"><span class="github text-center text-muted iconify" data-icon="foundation:social-twitter"></span></a>
+                    <a href="https://www.linkedin.com/in/akash-sharma-246b67165"><span class="github text-center text-muted iconify" data-icon="foundation:social-linkedin"></span></a>
+                    <a href="mailto:akashthegreatlegend@gmail.com"><span class="github text-center text-muted iconify" data-icon="foundation:mail"></span></a>
+            </div>
+            <div class="col text-right">
+                <a href="javascript:$('html,body').animate({ scrollTop: 0 }, 'slow');">TOP</a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+    </body>
+</html>

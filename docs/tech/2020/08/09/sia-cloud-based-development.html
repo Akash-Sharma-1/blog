@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico">
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Sia Cloud-Based Storage Development | Akash Sharma’s Blog</title>
+<meta name="generator" content="Jekyll v3.9.2" />
+<meta property="og:title" content="Sia Cloud-Based Storage Development" />
+<meta name="author" content="Akash Sharma" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Sia is the leading decentralized cloud storage platform. No signups, no servers, no trusted third parties. Sia leverages blockchain technology to create a data storage marketplace that is more robust and more affordable than traditional cloud storage providers." />
+<meta property="og:description" content="Sia is the leading decentralized cloud storage platform. No signups, no servers, no trusted third parties. Sia leverages blockchain technology to create a data storage marketplace that is more robust and more affordable than traditional cloud storage providers." />
+<meta property="og:site_name" content="Akash Sharma’s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-08-09T00:00:00+05:30" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Sia Cloud-Based Storage Development" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Akash Sharma"},"dateModified":"2020-08-09T00:00:00+05:30","datePublished":"2020-08-09T00:00:00+05:30","description":"Sia is the leading decentralized cloud storage platform. No signups, no servers, no trusted third parties. Sia leverages blockchain technology to create a data storage marketplace that is more robust and more affordable than traditional cloud storage providers.","headline":"Sia Cloud-Based Storage Development","mainEntityOfPage":{"@type":"WebPage","@id":"/blog/tech/2020/08/09/sia-cloud-based-development.html"},"url":"/blog/tech/2020/08/09/sia-cloud-based-development.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link type="application/atom+xml" rel="alternate" href="/blog/feed.xml" title="Akash Sharma's Blog" />
+    
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+    <link rel="stylesheet" href="/blog/assets/css/main.css">
+    <link rel="manifest" href="/blog/manifest.json">
+
+    <!-- Support for Bootstrap https://getbootstrap.com -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js" integrity="sha256-fTuUgtT7O2rqoImwjrhDgbXTKUwyxxujIMRIK7TbuNU=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- Support for pattern background https://github.com/btmills/geopattern -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js" integrity="sha256-AOyAcXCKLfI+FRdiZr4VTj9h9Wwv0YXXa2CPfUWbBS8=" crossorigin="anonymous"></script>
+
+    <!-- Support for SVG icon https://iconify.design -->
+    <script src="https://code.iconify.design/1/1.0.0/iconify.min.js"></script>
+
+    <!-- Support for share and reaction btns -->
+    <!-- <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5fae8b9ee3f5df0012a019ca&product=sop' async='async'></script> -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5fae8ce8b9e345ad"></script>
+
+</head>
+
+    <body>
+        <header>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <nav class="container navbar navbar-expand-sm py-2">
+        <a class="navbar-brand title p-0" href="/blog/">
+          <!-- GITHUB ICON -->
+          <!-- <span class="iconify" data-icon="octicon:mark-github"></span> -->
+          <!-- Personal Icon -->
+          <span class="material-icons" style="vertical-align:middle;font-size:inherit">font_download</span>
+            <span style="vertical-align:middle">Akash Sharma's Blog</span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="navbar-nav ml-auto">
+                
+                  
+                    <a class="nav-item nav-link text-right" href="/blog/">Home</a>
+                  
+                  
+
+                
+                  
+                    <a class="nav-item nav-link text-right" href="/blog/classification/">Classification</a>
+                  
+                  
+
+                
+                  
+                    <a class="nav-item nav-link text-right" href="/blog/leetcode/">Leetcode</a>
+                  
+                  
+
+                
+                  
+                    <a class="nav-item nav-link text-right" href="/blog/about/">About Me</a>
+                  
+                  
+
+                
+                  
+                  
+                    <a class="nav-item nav-link text-right" href="https://akash-sharma-1.github.io/">Portfolio</a>
+                  
+
+                
+            </div>
+        </div>
+    </nav>
+</header>
+
+<script>
+    
+        $(".navbar").addClass("navbar-light");
+        $("a[href$='/blog/tech/2020/08/09/sia-cloud-based-development.html']").addClass("active");
+    
+</script>
+
+        <div class="titlebar text-light">
+    <div class="container">
+        
+            <!-- Post article title -->
+            <div class="title pt-3">Sia Cloud-Based Storage Development</div>
+            <div class="meta pb-3">
+                <span class="pr-3">
+                    
+                        <span class="iconify" data-icon="octicon:calendar"></span>
+                        <span>2020/08/09</span>
+                    
+                </span>
+
+                
+                    <span class="titlebar-info pr-3">
+                        <span class="iconify" data-icon="octicon:tag"></span>
+                        <a class="text-light" href="/blog/classification/#Blockchain">Blockchain</a>
+                    </span>
+                
+
+                
+                    
+                
+
+            </div>
+        
+    </div>
+</div>
+
+<script>
+    
+        $(".titlebar").geopattern("Sia Cloud-Based Storage Development");
+    
+</script>
+
+<div class="container">
+    <div class="row my-2 my-md-4">
+        <div class="content col-md-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/3.0.1/github-markdown.min.css" integrity="sha256-HbgiGHMLxHZ3kkAiixyvnaaZFNjNWLYKD/QG6PWaQPc=" crossorigin="anonymous" />
+
+<!-- Support for deep anchor links https://github.com/bryanbraun/anchorjs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.js" integrity="sha256-0X7DxIkZMaHhAon0xCc/C/YhG6y0dg8Uj8c50+gbu8c=" crossorigin="anonymous"></script>
+
+<!-- Support for fancybox https://github.com/fancyapps/fancybox -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+<!-- Support for MathJax https://github.com/mathjax/mathjax -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous" async></script>
+
+<article class="markdown-body">
+    <blockquote>
+  <p>Sia is the leading decentralized cloud storage platform. No signups, no servers, no trusted third parties. Sia leverages blockchain technology to create a data storage marketplace that is more robust and more affordable than traditional cloud storage providers.</p>
+</blockquote>
+
+<h2 id="development-environment">Development Environment</h2>
+
+<h3 id="development-platform">Development Platform</h3>
+
+<ul>
+  <li>The most basic development requirements
+    <ul>
+      <li>Get the complete <a href="https://github.com/NebulousLabs/Sia">Sia</a> source code</li>
+      <li>Can edit source code</li>
+      <li>Configure <a href="https://golang.org/">Go</a> language development environment</li>
+    </ul>
+  </li>
+  <li>Recommended development environment
+    <ul>
+      <li>Operating system: <a href="https://www.ubuntu.com/download/desktop?">Ubuntu Desktop 18.04</a></li>
+      <li>Integrated development environment: <a href="https://www.jetbrains.com/go/https://www.jetbrains.com/go/">GoLand</a> (available through <a href="https://www.jetbrains.com/toolbox/app/">Toolbox App</a> installation, the account can be through the Huake mailbox <a href="https://www.jetbrains.com/shop/eform/students">register</a>, get the full version)</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="ubuntu-desktop-configuration-go-development-environment">Ubuntu Desktop configuration Go development environment</h4>
+
+<ol>
+  <li><a href="https://golang.org/dl/">Download</a> the Go binary package of the corresponding version</li>
+  <li>
+    <p>Install (unzip) the binary package to a custom path (recommended <code class="language-plaintext highlighter-rouge">/usr/local</code>)</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">sudo tar</span> <span class="nt">-C</span> /usr/local <span class="nt">-xzf</span> go<span class="nv">$VERSION</span>.<span class="nv">$OS</span>-<span class="nv">$ARCH</span>.tar.gz
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Configure environment variables and append the following to <code class="language-plaintext highlighter-rouge">~/.bashrc</code> (<code class="language-plaintext highlighter-rouge">GOROOT</code> is the installation path of the previous step, <code class="language-plaintext highlighter-rouge">GOPATH</code> can be customized)</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">export </span><span class="nv">GOROOT</span><span class="o">=</span>/usr/local/go
+ <span class="nb">export </span><span class="nv">GOPATH</span><span class="o">=</span><span class="nv">$HOME</span>/Documents/Go
+ <span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$GOROOT</span>/bin:<span class="nv">$GOPATH</span>/bin
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Check the environment configuration with <code class="language-plaintext highlighter-rouge">go env</code></p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> akashsharma@192.168.127.100 ~ <span class="nv">$ </span>go <span class="nb">env
+ </span><span class="nv">GOARCH</span><span class="o">=</span><span class="s2">"amd64"</span>
+ <span class="nv">GOBIN</span><span class="o">=</span><span class="s2">""</span>
+ <span class="nv">GOCACHE</span><span class="o">=</span><span class="s2">"/home/akashsharma/.cache/go-build"</span>
+ <span class="nv">GOEXE</span><span class="o">=</span><span class="s2">""</span>
+ <span class="nv">GOHOSTARCH</span><span class="o">=</span><span class="s2">"amd64"</span>
+ <span class="nv">GOHOSTOS</span><span class="o">=</span><span class="s2">"linux"</span>
+ <span class="nv">GOOS</span><span class="o">=</span><span class="s2">"linux"</span>
+ <span class="nv">GOPATH</span><span class="o">=</span><span class="s2">"/home/akashsharma/Documents/Go"</span>
+ HOT <span class="o">=</span> <span class="s2">""</span>
+ <span class="nv">GOROOT</span><span class="o">=</span><span class="s2">"/usr/local/go"</span>
+ <span class="nv">GOTMPDIR</span><span class="o">=</span><span class="s2">""</span>
+ <span class="nv">GOTOOLDIR</span><span class="o">=</span><span class="s2">"/usr/local/go/pkg/tool/linux_amd64"</span>
+ <span class="nv">GCCGO</span><span class="o">=</span><span class="s2">"gccgo"</span>
+ <span class="nv">CC</span><span class="o">=</span><span class="s2">"gcc"</span>
+ <span class="nv">CXX</span><span class="o">=</span><span class="s2">"g++"</span>
+ <span class="nv">CGO_ENABLED</span><span class="o">=</span><span class="s2">"1"</span>
+ CGO_CFLAGS <span class="o">=</span> <span class="s2">"- g -O2"</span>
+ CGO_CPPFLAGS <span class="o">=</span> <span class="s2">""</span>
+ CGO_CXXFLAGS <span class="o">=</span> <span class="s2">"- g -O2"</span>
+ <span class="nv">CGO_FFLAGS</span><span class="o">=</span><span class="s2">"-g -O2"</span>
+ <span class="nv">CGO_LDFLAGS</span><span class="o">=</span><span class="s2">"-g -O2"</span>
+ <span class="nv">PKG_CONFIG</span><span class="o">=</span><span class="s2">"pkg-config"</span>
+ <span class="nv">GOGCCFLAGS</span><span class="o">=</span><span class="s2">"-fPIC -m64 -pthread -fmessage-length=0 -fdebug-prefix-map=/tmp/go-build200491170=/tmp/go-build -gno-record-gcc-switches"</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<blockquote>
+  <p><a href="https://golang.org/doc/install#install">Install the Go tools</a></p>
+</blockquote>
+
+<h4 id="goland-configuration-debugging">GoLand configuration debugging</h4>
+
+<p>Sia source code can generate two executable binary files <em>siad</em> and <em>siac</em>. When using GoLand for development, the package they belong to can be used as the entry point to start debugging, and the configuration information for debugging can be set according to the <em>Makefile</em> file</p>
+
+<ol>
+  <li>Start <code class="language-plaintext highlighter-rouge">Run/Debug Configurations</code> via the top menu <code class="language-plaintext highlighter-rouge">Run -&gt; Edit Configurations...</code></li>
+  <li>Add a new debug configuration via <code class="language-plaintext highlighter-rouge">Add New Configuration -&gt; Go Build</code></li>
+  <li>
+    <p>In the <code class="language-plaintext highlighter-rouge">Configuration</code> tab, set <code class="language-plaintext highlighter-rouge">Go tool arguments</code> to</p>
+
+    <p><code class="language-plaintext highlighter-rouge">-tags "dev debug profile netgo" -ldflags "-X github.com/NebulousLabs/Sia/build.GitRevision=DEBUG_COMMIT -X github.com/NebulousLabs/Sia/build.BuildTime=DEBUG_TIME"</code></p>
+
+    <p>Other settings are as follows (take <em>siad</em> as an example)</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Configuration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Run kind</td>
+          <td>Package</td>
+        </tr>
+        <tr>
+          <td>Package path</td>
+          <td>github.com/NebulousLabs/Sia/cmd/siad</td>
+        </tr>
+        <tr>
+          <td>Run after build</td>
+          <td>Checked</td>
+        </tr>
+        <tr>
+          <td>Program arguments</td>
+          <td>–modules=g –sia-directory=/home/akashsharma/sia –profile-directory=/home/akashsharma/sia/profiles</td>
+        </tr>
+        <tr>
+          <td>Module</td>
+          <td>Let</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <blockquote>
+      <p>-Start debugging with the above configuration, which is equivalent to running <code class="language-plaintext highlighter-rouge">siad --modules=g --sia-directory=/home/akashsharma/sia --profile-directory=/home/akashsharma/ after compiling *siad* Debug when sia/profiles</code>
+-The configuration of <code class="language-plaintext highlighter-rouge">Go tool arguments</code> is consistent with <em>Makefile</em>, <code class="language-plaintext highlighter-rouge">DEBUG_COMMIT</code> and <code class="language-plaintext highlighter-rouge">DEBUG_TIME</code> can be replaced with actual values ​​according to the settings in <em>Makefile</em>
+-<code class="language-plaintext highlighter-rouge">Package path</code> and <code class="language-plaintext highlighter-rouge">Program arguments</code> can be compiled and run according to the actual package of the <code class="language-plaintext highlighter-rouge">main</code> function to be run (for example, set to <code class="language-plaintext highlighter-rouge">github.com/NebulousLabs/Sia/cmd/siac</code> when debugging <em>siac</em>) and start Set the actual operating parameters of the corresponding program</p>
+    </blockquote>
+  </li>
+</ol>
+
+<h3 id="testing-platform">Testing platform</h3>
+
+<ul>
+  <li>The most basic test requirements
+    <ul>
+      <li>Any operating system supported by Go language</li>
+      <li>A host</li>
+    </ul>
+  </li>
+  <li>Recommended test environment
+    <ul>
+      <li>Virtualization platform: <a href="https://www.vmware.com/products/workstation-pro/workstation-pro-evaluation.html">VMware Workstation Pro 14</a></li>
+      <li>Virtual machine operating system: <a href="https://www.ubuntu.com/download/server">Ubuntu Server 18.04</a> (No need to install Go)</li>
+      <li>Virtual machine configuration: 1GB memory, 8GB storage</li>
+      <li>A cluster composed of multiple virtual hosts</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="ubuntu-server-configure-static-ip">Ubuntu Server configure static IP</h4>
+
+<p>Assuming that the network adapter of the virtual machine is set to NAT, and the gateway of the NAT adapter has been set to <em>192.168.127.2</em>, you want to set the static IP of the virtual machine to <em>192.168.127.21</em> and the subnet mask to <em>255.255.255.0</em></p>
+
+<ol>
+  <li>
+    <p>Modify the configuration file under the path of <code class="language-plaintext highlighter-rouge">/etc/netplan/</code> (default is <code class="language-plaintext highlighter-rouge">50-cloud-init.yaml</code>)</p>
+
+    <p><code class="language-plaintext highlighter-rouge">yaml
+ # This file is generated from information provided by
+ # the datasource.  Changes to it will not persist across an instance.
+ # To disable cloud-init's network configuration capabilities, write a file
+ # /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg with the following:
+ # network: {config: disabled}
+ network:
+     ethernets:
+         ens33:
+             addresses: [192.168.127.21/24]
+             dhcp4: no
+             optional: true
+             gateway4: 192.168.127.2
+     version: 2
+</code>`</p>
+  </li>
+  <li>
+    <p>Application configuration items</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">sudo </span>netplan apply
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<blockquote>
+  <p><a href="https://websiteforstudents.com/configure-static-ip-addresses-on-ubuntu-18-04-beta/">Configure Static IP Addresses On Ubuntu 18.04 LTS Server</a>、<a href="https://github.com/Akash-Sharma-1/script-tools/blob/master/ubuntu/config-ip.sh">Ubuntu Config File</a></p>
+</blockquote>
+
+<h2 id="compile-the-source-code">Compile the source code</h2>
+
+<p><em>Makefile</em> files include <code class="language-plaintext highlighter-rouge">release</code> (standard version), <code class="language-plaintext highlighter-rouge">dev</code> (development version), and <code class="language-plaintext highlighter-rouge">debug</code> (debugging version) by default. Three conventional compilation targets and compilation targets each containing data competition detection are included in the development process. <code class="language-plaintext highlighter-rouge">dev</code> version</p>
+
+<blockquote>
+  <p><a href="https://github.com/NebulousLabs/Sia/blob/master/doc/Guide%20to%20Contributing%20to%20Sia.md#build-sia">Build Sia</a></p>
+</blockquote>
+
+<h3 id="local-compilation">Local compilation</h3>
+
+<p>Execute <code class="language-plaintext highlighter-rouge">make dev</code> in the root directory of <em>Sia</em>, and generate executable files <em>siac</em> and <em>siad</em> in <code class="language-plaintext highlighter-rouge">$GOPATH/bin</code></p>
+
+<blockquote>
+  <p>The first compilation target declared in the <em>Makefile</em> file is the default compilation target (usually named <code class="language-plaintext highlighter-rouge">all</code>), and the setting in this project is</p>
+
+  <div class="language-makefile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># all will build and install release binaries
+</span><span class="nl">all</span><span class="o">:</span> <span class="nf">release</span>
+</code></pre></div>  </div>
+
+  <p>That is, <code class="language-plaintext highlighter-rouge">all</code> is used as the compilation target by default (<code class="language-plaintext highlighter-rouge">all</code> calls the compilation target <code class="language-plaintext highlighter-rouge">release</code>), so the effect of using <code class="language-plaintext highlighter-rouge">make</code>, <code class="language-plaintext highlighter-rouge">make all</code>, and <code class="language-plaintext highlighter-rouge">make release</code> is the same</p>
+
+  <p>If you want to modify the default compilation target to <code class="language-plaintext highlighter-rouge">dev</code>, you can modify the above settings to</p>
+
+  <div class="language-makefile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># all will build and install dev binaries
+</span><span class="nl">all</span><span class="o">:</span> <span class="nf">dev</span>
+</code></pre></div>  </div>
+</blockquote>
+
+<h3 id="cross-compilation">Cross compilation</h3>
+
+<ol>
+  <li>For the target platform (Windows, Linux, OpenBSD, etc.) and compilation target (release, dev, debug, etc.) of cross-compilation, modify the corresponding compilation instructions in the <em>Makefile</em> file to specify the target operating system (<code class="language-plaintext highlighter-rouge">GOOS</code>) and system Architecture (<code class="language-plaintext highlighter-rouge">GOARCH</code>)</li>
+  <li>Execute <code class="language-plaintext highlighter-rouge">make dev</code> in the <em>Sia</em> root directory, and generate the corresponding executable file in <code class="language-plaintext highlighter-rouge">$GOPATH/bin/$GOOS_$GOARCH</code></li>
+</ol>
+
+<p>If you want to cross compile the Windows version under Linux, you can modify it in the <em>Makefile</em> file</p>
+
+<div class="language-makefile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># dev builds and installs developer binaries.
+</span><span class="nl">dev</span><span class="o">:</span>
+    <span class="err">go</span> <span class="err">install</span> <span class="nv">-tags</span><span class="o">=</span><span class="s1">'dev debug profile netgo'</span> <span class="nt">-ldflags</span><span class="o">=</span><span class="s1">'</span><span class="nv">$(ldflags)</span><span class="s1">'</span> <span class="nv">$(pkgs)</span>
+</code></pre></div></div>
+
+<p>for</p>
+
+<div class="language-makefile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># dev builds and installs developer binaries.
+</span><span class="nl">dev</span><span class="o">:</span>
+    <span class="nv">GOOS</span><span class="o">=</span>windows <span class="nv">GOARCH</span><span class="o">=</span>amd64 go <span class="nb">install</span> <span class="nt">-tags</span><span class="o">=</span><span class="s1">'dev debug profile netgo'</span> <span class="nt">-ldflags</span><span class="o">=</span><span class="s1">'</span><span class="nv">$(ldflags)</span><span class="s1">'</span> <span class="nv">$(pkgs)</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>Reference : <a href="https://github.com/golang/go/wiki/WindowsCrossCompiling">Building windows go programs on linux</a> , <a href="https://golang.org/doc/install/source#environment">Optional environment variables</a></p>
+</blockquote>
+
+<h2 id="build-a-private-test-network">Build a private test network</h2>
+
+<p>When building a private test network, the networking process of the network mainly includes [Manually set up the connection node] (#Manually set up the connection node) and [Automatically discover the network node] (# Automatic discovery network node)</p>
+
+<p>It is assumed that there is a development platform that meets the most basic development requirements, and a multi-node virtual machine cluster has been built, and each node can visit each other through the network. (The following configuration assumes that the virtual machine is on the same internal network, the subnet mask is <em>255.255.255.0</em>, and the gateway is <em>192.168.127.2</em>)</p>
+
+<p>The configuration of each type of node in the cluster is as follows</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Node</th>
+      <th>IP</th>
+      <th>Type</th>
+      <th>api-addr</th>
+      <th>rpc-addr</th>
+      <th>host-addr</th>
+      <th>sia-directory</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Node 0</td>
+      <td>192.168.127.21</td>
+      <td>Bootstrap</td>
+      <td>localhost:9980</td>
+      <td>:9981</td>
+      <td> </td>
+      <td>~/sia/bootstrap</td>
+    </tr>
+    <tr>
+      <td>Node 1</td>
+      <td>192.168.127.21</td>
+      <td>Miner</td>
+      <td>localhost: 9990</td>
+      <td>: 9991</td>
+      <td> </td>
+      <td>~ / sia / miner</td>
+    </tr>
+    <tr>
+      <td>Node 2</td>
+      <td>192.168.127.22</td>
+      <td>Host</td>
+      <td>localhost:9980</td>
+      <td>:9981</td>
+      <td>:9982</td>
+      <td>~/sia/host</td>
+    </tr>
+    <tr>
+      <td>Node 3</td>
+      <td>192.168.127.23</td>
+      <td>Interest</td>
+      <td>localhost: 9980</td>
+      <td>: 9981</td>
+      <td> </td>
+      <td>~ / sia / renter</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>A single node can be used as a multi-purpose node by combining multiple modules</p>
+
+  <p>A single host can run multiple Sia instances (such as <em>Node 0</em> and <em>Node 1</em> in <em>192.168.127.21</em>) by setting different ports and data storage paths for <em>siad</em></p>
+
+  <p>You can view related port description information through <code class="language-plaintext highlighter-rouge">./siad --help</code></p>
+
+  <p>-<code class="language-plaintext highlighter-rouge">api-addr</code> is used to access the API, <em>siac</em> interacts with <em>siad</em> through this host and port (default is <code class="language-plaintext highlighter-rouge">localhost:9980</code>)
+-<code class="language-plaintext highlighter-rouge">rpc-addr</code> is used for communication between nodes, the <em>gateway</em> module connects with other Sia instances through this port (default is <code class="language-plaintext highlighter-rouge">:9981</code>)
+-<code class="language-plaintext highlighter-rouge">host-addr</code> is used by the Host node to monitor file upload and download requests (default is <code class="language-plaintext highlighter-rouge">:9982</code>)</p>
+</blockquote>
+
+<h3 id="manually-set-the-connection-node">Manually set the connection node</h3>
+
+<p>When a node joins the network, you need to manually specify the Sia instance to be connected, and then the node can obtain information about other nodes in the network from the connected node, and establish connections with other nodes</p>
+
+<p>Since hard-coded Bootstrap nodes are not used, the <em>Node 0</em> node in the cluster can be started first, assumes the function of Bootstrap, and serves as a new node to join the network and the entry for new nodes to obtain other node information in the network; the new node is in [Start Background service process] (#Start background service process sia-instance), <strong>need to set the <code class="language-plaintext highlighter-rouge">--no-bootstrap</code> parameter</strong>, and when [join network] (#join network), set <em>Node 0</em> as The connected objects will eventually form a P2P network</p>
+
+<h4 id="set-the-operating-environment">Set the operating environment</h4>
+
+<ol>
+  <li>Create the virtual machine used to build the cluster, <a href="#ubuntu-server-Configuration static-ip">Configure the IP of each virtual machine</a></li>
+  <li>Create a folder to save node data</li>
+  <li>
+    <p>Upload the <code class="language-plaintext highlighter-rouge">dev</code> version <em>siad</em> and <em>siac</em> of <a href="#Compile source code">Compile</a> to each virtual machine (you can use <a href="https://linux.die.net/man/1/scp">scp</a> Command)</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> akashsharma@192.168.127.100 bin <span class="nv">$ </span>scp siac siad akashsharma@192.168.127.21: ~ / sia
+ siac                                          100%   12MB  54.5MB/s   00:00
+ siad                                          100%   18MB  65.7MB/s   00:00
+</code></pre></div>    </div>
+
+    <blockquote>
+      <p>Reference : <a href="https://stackoverflow.com/questions/343711/transferring-files-over-ssh">Transferring files over SSH</a></p>
+    </blockquote>
+  </li>
+</ol>
+
+<h4 id="start-the-background-service-process-sia-instance">Start the background service process (Sia instance)</h4>
+
+<p>Run the Sia instance through <em>siad</em>, start the background service process of each node, and load the modules required by each node</p>
+
+<ol>
+  <li>Create a new terminal and log in to the corresponding node through <em>ssh</em></li>
+  <li>Enter the directory where <em>siad</em> is saved</li>
+  <li>
+    <p>View related commands and parameter setting information through <code class="language-plaintext highlighter-rouge">./siad --help</code></p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> akashsharma@192.168.127.21 sia <span class="nv">$ </span>./siad <span class="nt">--help</span>
+ Running with debugging enabled
+ Both Daemon v1.3.3
+
+ Usage:
+ ./siad <span class="o">[</span>flags]
+ ./siad <span class="o">[</span><span class="nb">command</span><span class="o">]</span>
+
+ Available Commands:
+ <span class="nb">help        </span>Help about any <span class="nb">command
+ </span>modules     List available modules <span class="k">for </span>use with <span class="nt">-M</span>, <span class="nt">--modules</span> flag
+ version     Print version information
+
+ Flags:
+     <span class="nt">--agent</span> string               required substring <span class="k">for </span>the user agent <span class="o">(</span>default <span class="s2">"Sia-Agent"</span><span class="o">)</span>
+     <span class="nt">--api-addr</span> string            which host:port the API server listens on <span class="o">(</span>default <span class="s2">"localhost:9980"</span><span class="o">)</span>
+     <span class="nt">--authenticate-api</span>           <span class="nb">enable </span>API password protection
+     <span class="nt">--disable-api-security</span>       allow siad to listen on a non-localhost address <span class="o">(</span>DANGEROUS<span class="o">)</span>
+ <span class="nt">-h</span>, <span class="nt">--help</span>                       <span class="nb">help </span><span class="k">for</span> ./siad
+     <span class="nt">--host-addr</span> string           which port the host listens on <span class="o">(</span>default <span class="s2">":9982"</span><span class="o">)</span>
+ <span class="nt">-M</span>, <span class="nt">--modules</span> string             enabled modules, see <span class="s1">'siad modules'</span> <span class="k">for </span>more info <span class="o">(</span>default <span class="s2">"cghrtw"</span><span class="o">)</span>
+     <span class="nt">--no-bootstrap</span>               disable bootstrapping on this run
+     <span class="nt">--profile</span> string             <span class="nb">enable </span>profiling with flags <span class="s1">'cmt'</span> <span class="k">for </span>CPU, memory, trace
+     <span class="nt">--profile-directory</span> string   location of the profiling directory <span class="o">(</span>default <span class="s2">"profiles"</span><span class="o">)</span>
+     <span class="nt">--rpc-addr</span> string            which port the gateway listens on <span class="o">(</span>default <span class="s2">":9981"</span><span class="o">)</span>
+ <span class="nt">-d</span>, <span class="nt">--sia-directory</span> string       location of the sia directory
+
+ Use <span class="s2">"./siad [command] --help"</span> <span class="k">for </span>more information about a command.
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Check whether the compiled version is the <code class="language-plaintext highlighter-rouge">dev</code> version through <code class="language-plaintext highlighter-rouge">./siad version</code></p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> akashsharma@192.168.127.21 sia <span class="nv">$ </span>./siad version
+ Running with debugging enabled
+ Sia Daemon v1.3.3-dev
+</code></pre></div>    </div>
+  </li>
+  <li>Start the background service process through <code class="language-plaintext highlighter-rouge">./siad --modules gctwrhm</code> (you may need to select only some modules to start according to the node type) (<strong>Need to set the parameter <code class="language-plaintext highlighter-rouge">--no-bootstrap</code></strong>)
+    <ul>
+      <li>
+        <p>Node 0 - Bootstrap</p>
+
+        <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  akashsharma@192.168.127.21 sia <span class="nv">$ </span>./siad <span class="nt">--modules</span><span class="o">=</span>g <span class="nt">--no-bootstrap</span> <span class="nt">--sia-directory</span><span class="o">=</span>bootstrap
+  Running with debugging enabled
+  Both Daemon v1.3.3
+  Git Revision 4c73a7dd
+  Loading...
+  <span class="o">(</span>0/1<span class="o">)</span> Loading siad ...
+  <span class="o">(</span>1/1<span class="o">)</span> Loading gateway...
+  Finished loading <span class="k">in </span>0.066843548 seconds
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <p>Node 1 - Miner</p>
+
+        <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  akashsharma@192.168.127.21 sia <span class="nv">$ </span>./siad <span class="nt">--modules</span><span class="o">=</span>gctwm <span class="nt">--no-bootstrap</span> <span class="nt">--api-addr</span><span class="o">=</span>localhost:9990 <span class="nt">--rpc-addr</span><span class="o">=</span>:9991 <span class="nt">--sia-directory</span><span class="o">=</span>miner
+  Running with debugging enabled
+  Both Daemon v1.3.3
+  Git Revision 4c73a7dd
+  Loading...
+  <span class="o">(</span>0/5<span class="o">)</span> Loading siad ...
+  <span class="o">(</span>1/5<span class="o">)</span> Loading gateway...
+  <span class="o">(</span>2/5<span class="o">)</span> Loading consensus...
+  <span class="o">(</span>3/5<span class="o">)</span> Loading transaction pool...
+  <span class="o">(</span>4/5<span class="o">)</span> Loading wallet...
+  <span class="o">(</span>5/5<span class="o">)</span> Loading miner...
+  Finished loading <span class="k">in </span>0.163977087 seconds
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <p>Node 2 - Host</p>
+
+        <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  akashsharma@192.168.127.22 sia <span class="nv">$ </span>./siad <span class="nt">--modules</span><span class="o">=</span>gctwh <span class="nt">--no-bootstrap</span> <span class="nt">--sia-directory</span><span class="o">=</span>host
+  ...
+  <span class="o">(</span>5/5<span class="o">)</span> Loading host...
+  Finished loading <span class="k">in </span>0.013928993 seconds
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <p>Node 3 - Renter</p>
+
+        <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  akashsharma@192.168.127.23 sia <span class="nv">$ </span>./siad <span class="nt">--modules</span><span class="o">=</span>gctwr <span class="nt">--no-bootstrap</span> <span class="nt">--sia-directory</span><span class="o">=</span>renter
+  ...
+  <span class="o">(</span>5/5<span class="o">)</span> Loading renter...
+  Finished loading <span class="k">in </span>0.021479162 seconds
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h4 id="join-the-network">Join the network</h4>
+
+<p>Through the commands provided by <em>siac</em>, interact with the background service process, call the API provided by its <em>gateway</em> module, and join the P2P network</p>
+
+<ol>
+  <li>Create a new terminal and log in to the corresponding node through <code class="language-plaintext highlighter-rouge">ssh</code></li>
+  <li>Enter the directory where <em>siac</em> is saved</li>
+  <li>
+    <p>View relevant help information through <code class="language-plaintext highlighter-rouge">./siac --help</code> (APIs provided by <em>siad</em> can be called through related commands)</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> akashsharma@192.168.127.21 and <span class="nv">$ </span>./siac <span class="nt">--help</span>
+ Both Client v1.3.3
+
+ Usage:
+ ./siac <span class="o">[</span>flags]
+ ./siac <span class="o">[</span><span class="nb">command</span><span class="o">]</span>
+
+ Available Commands:
+ bash-completion Creates bash completion file.
+ consensus       Print the current state of consensus
+ gateway         Perform gateway actions
+ <span class="nb">help            </span>Help about any <span class="nb">command
+ </span>host            Perform host actions
+ hostdb          Interact with the renter<span class="s1">'s host database.
+ man-generation  Creates unix style manpages.
+ miner           Perform miner actions
+ renter          Perform renter actions
+ stop            Stop the Sia daemon
+ update          Update Sia
+ version         Print version information
+ wallet          Perform wallet actions
+
+ Flags:
+ -a, --addr string          which host/port to communicate with (i.e. the host/port siad is listening on) (default "localhost:9980")
+     --apipassword string   the password for the API'</span>s http authentication
+ <span class="nt">-h</span>, <span class="nt">--help</span>                 <span class="nb">help </span><span class="k">for</span> ./siac
+     <span class="nt">--useragent</span> string     the useragent used by siac to connect to the daemon<span class="s1">'s API (default "Sia-Agent")
+
+ Use "./siac [command] --help" for more information about a command.
+</span></code></pre></div>    </div>
+  </li>
+  <li>For non-Bootstrap nodes (Miner, Host, Renter), establish a connection with Bootstrap nodes through <code class="language-plaintext highlighter-rouge">./siac gateway connect 192.168.127.21:9981</code> and join the P2P network
+    <ul>
+      <li>
+        <p>Node 1 - Miner</p>
+
+        <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  akashsharma@192.168.127.21 sia <span class="nv">$ </span>./siac <span class="nt">--addr</span><span class="o">=</span>localhost:9990 gateway connect 192.168.127.21:9981
+  Added 192.168.127.21:9981 to peer list.
+  akashsharma@192.168.127.21 sia <span class="nv">$ </span>./siac <span class="nt">--addr</span><span class="o">=</span>localhost:9990 gateway list
+  1 active peers:
+  Version  Outbound  Address
+  1.3.3    Yes       192.168.127.21:9981
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <p>Node 2 - Host</p>
+
+        <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  akashsharma@192.168.127.22 sia <span class="nv">$ </span>./siac gateway connect 192.168.127.21:9981
+  Added 192.168.127.21:9981 to peer list.
+  akashsharma@192.168.127.22 sia <span class="nv">$ </span>./siac gateway list
+  2 active peers:
+  Version  Outbound  Address
+  1.3.3    Yes       192.168.127.21:9981
+  1.3.3    Yes       192.168.127.21:9991
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <p>Node 3 - Renter</p>
+
+        <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  akashsharma@192.168.127.23 sia <span class="nv">$ </span>./siac gateway connect 192.168.127.21:9981
+  Added 192.168.127.21:9981 to peer list.
+  akashsharma@192.168.127.23 sia <span class="nv">$ </span>./siac gateway list
+  3 active peers:
+  Version  Outbound  Address
+  1.3.3    Yes       192.168.127.21:9981
+  1.3.3    Yes       192.168.127.21:9991
+  1.3.3    No        192.168.127.22:9981
+</code></pre></div>        </div>
+      </li>
+    </ul>
+
+    <blockquote>
+      <p>Connect miner, host, renter and Bootstrap in turn, the new node will be connected to other nodes in the network in addition to the Bootstrap node</p>
+    </blockquote>
+  </li>
+</ol>
+
+<h4 id="wallet-operation">Wallet operation</h4>
+
+<h5 id="initialize-the-wallet">Initialize the wallet</h5>
+
+<p>For nodes that use the <em>wallet</em> module (Miner saves mining rewards, Host needs to provide mortgages before launching shared storage services, and Renter needs to pay a prepayment before using shared storage), initialize via <code class="language-plaintext highlighter-rouge">./siac wallet init --password</code> Wallet and set password</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>akashsharma@192.168.127.21 sia <span class="nv">$ </span>./siac <span class="nt">--addr</span><span class="o">=</span>localhost:9990 wallet init <span class="nt">--password</span>
+Wallet password:
+Confirm:
+Recovery seed:
+awning myth blip hexagon identity goodbye dyslexic debut mammal actress pulp upstairs lobster autumn adult vehicle twofold stellar batch jittery essential pause onslaught deftly saxophone ringing remedy reef aggravate
+
+Wallet encrypted with given password
+</code></pre></div></div>
+
+<blockquote>
+  <p>The <code class="language-plaintext highlighter-rouge">--addr</code> parameter is used to specify the <em>siad</em> background service process of the communication (the default is <code class="language-plaintext highlighter-rouge">localhost:9980</code>)</p>
+</blockquote>
+
+<h5 id="unlock-wallet">Unlock wallet</h5>
+
+<p>The wallet must be used for node-related operations, or the wallet must be unlocked through <code class="language-plaintext highlighter-rouge">./siac wallet unlock</code> before performing any operations on the wallet, otherwise the related operations will not work properly. If the Miner node does not unlock the wallet before starting the first mining, it will not be possible Receiving mining rewards</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>akashsharma@192.168.127.21 sia <span class="nv">$ </span>./siac <span class="nt">--addr</span><span class="o">=</span>localhost:9990 wallet unlock
+Wallet password:
+</code></pre></div></div>
+
+<h5 id="create-account-address">Create account address</h5>
+
+<p>When the <a href="#transfer-miner---host">transfer</a> operation is required, the recipient of the transfer needs to create a new account address for the wallet through <code class="language-plaintext highlighter-rouge">./siac wallet address</code> in advance, and can use <code class="language-plaintext highlighter-rouge">./siac wallet addresses</code> View all account addresses in the wallet</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>akashsharma@192.168.127.22 sia <span class="nv">$ </span>./siac wallet address
+Created new address: 17d05e536d6cd6ccfcfeb0688325464f69b75b960df6dd1a5caded822ee80f98e47654dd8181
+akashsharma@192.168.127.22 sia <span class="nv">$ </span>./siac wallet addresses
+17d05e536d6cd6ccfcfeb0688325464f69b75b960df6dd1a5caded822ee80f98e47654dd8181
+</code></pre></div></div>
+
+<blockquote>
+  <p>In the subsequent operations, only the Host node and the Renter node provide or use shared storage to pay for Siacoin, so only these two types of nodes need to manually create account addresses; because the Miner node can automatically generate and receive rewards after the wallet is unlocked while mining Account address, so there is no need to manually create an account address</p>
+</blockquote>
+
+<h5 id="view-balance">View balance</h5>
+
+<p>For nodes that use the <em>wallet</em> module, you can check the balance in the wallet through <code class="language-plaintext highlighter-rouge">./siac wallet balance</code></p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>akashsharma@192.168.127.21 sia <span class="nv">$ </span>./siac <span class="nt">--addr</span><span class="o">=</span>localhost:9990 wallet balance
+Wallet status:
+Encrypted, Unlocked
+Height:              0
+Confirmed Balance:   0 H
+Unconfirmed Delta:  +0 H
+Exact:               0 H
+Siafunds:            0 SF
+Siafund Claims:      0 H
+
+Estimated Fee:       30 mS / KB
+</code></pre></div></div>
+
+<h4 id="test-the-built-network">Test the built network</h4>
+
+<h5 id="mining-miner">Mining Miner</h5>
+
+<p>The Miner node obtains Siacoin through mining, and performs <a href="#transfer-miner---host">transfer</a> to the Host and Renter nodes, which is <a href="#share storage-host">shared storage</a> and <a href="#文件Upload and download -renter---host">file upload download</a> provide transaction support and confirm the generated transaction</p>
+
+<ol>
+  <li>
+    <p>Miner node runs <em>miner</em> module through <code class="language-plaintext highlighter-rouge">./siac miner start</code> to start mining</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> akashsharma@192.168.127.21 sia <span class="nv">$ </span>./siac <span class="nt">--addr</span><span class="o">=</span>localhost:9990 miner start
+ CPU Miner is now running.
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Miner node ends mining through <code class="language-plaintext highlighter-rouge">./siac miner stop</code></p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> akashsharma@192.168.127.21 sia <span class="nv">$ </span>./siac <span class="nt">--addr</span><span class="o">=</span>localhost:9990 miner stop
+ Stopped mining.
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Each node ((Miner, Host, Renter) checks the synchronization of the blockchain through <code class="language-plaintext highlighter-rouge">./siac consensus</code> (Because the Bootstrap node does not start the <em>consensus</em> module, the blockchain is not synchronized, and the blocks of other nodes The chain is completely synchronized, and the query results are exactly the same)</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> akashsharma@192.168.127.21 sia <span class="nv">$ </span>./siac <span class="nt">--addr</span><span class="o">=</span>localhost:9990 consensus
+ Synced: Yes
+ Block:      0000007573fc48b79136a60f5597fc34f34603c5e816a241d9b2390db18b0219
+ Height:     500
+ Target:     <span class="o">[</span>0 0 1 5 17 132 33 158 236 175 6 108 67 120 9 5 174 115 191 213 7 247 6 193 127 240 191 222 39 32 139 209]
+ Difficulty: 16451500
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Miner node [check the balance in the wallet] (#check the balance)</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> akashsharma@192.168.127.21 sia <span class="nv">$ </span>./siac <span class="nt">--addr</span><span class="o">=</span>localhost:9990 wallet balance
+ Wallet status:
+ Encrypted, Unlocked
+ Height:              500
+ Confirmed Balance:   146.9 MS
+ Unconfirmed Delta:  +0 H
+ Exact:               146879705000000000000000000000000 H
+ Siafunds:            0 SF
+ Siafund Claims:      0 H
+
+ Estimated Fee:       30 mS / KB
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h5 id="transfer-miner---host">Transfer Miner -&gt; Host</h5>
+
+<p>The Miner node transfers the Siacoin obtained by <a href="# Mining-miner">Mining</a> to the Host node, and the Host node uses the Siacoin obtained as collateral to provide shared storage services</p>
+
+<ol>
+  <li>Host node [Create account address] (#Create account address)</li>
+  <li>
+    <p>The Miner node sends Siacoins to the Host node through <code class="language-plaintext highlighter-rouge">./siac wallet send siacoins [amount] [dest]</code></p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> akashsharma@192.168.127.21 sia <span class="nv">$ </span>./siac <span class="nt">--addr</span><span class="o">=</span>localhost:9990 wallet send siacoins 50MS 17d05e536d6cd6ccfcfeb0688325464f69b75b960df6dd1a5caded822ee80f98e47654dd8181
+ Sent 50000000000000000000000000000000 hastings to 17d05e536d6cd6ccfcfeb0688325464f69b75b960df6dd1a5caded822ee80f98e47654dd8181
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>The Host node uses <code class="language-plaintext highlighter-rouge">./siac wallet balance</code> to check the balance of the wallet, and <code class="language-plaintext highlighter-rouge">./siac wallet transactions</code> to check the relevant transfer transaction information
+ -When the Miner node does not start mining, the transaction is not recorded in the blockchain and the transfer is not completed</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> ```sh
+ akashsharma@192.168.127.22 sia $ ./siac wallet balance
+ Wallet status:
+ Encrypted, Unlocked
+ Height:              500
+ Confirmed Balance:   0 H
+ Unconfirmed Delta:  +50 MS
+ Exact:               0 H
+ Siafunds:            0 SF
+ Siafund Claims:      0 H
+
+ Estimated Fee:       30 mS / KB
+ akashsharma@192.168.127.22 sia $ ./siac wallet transactions
+             [timestamp]    [height]                                                   [transaction id]    [net siacoins]   [net siafunds]
+             unconfirmed unconfirmed   b7b37e7293b9e17867b076f11441e3fbc2dbd5195da05f64e8dc40d235a0c06c    50000000.00 SC             0 SF
+ ```
+</code></pre></div>    </div>
+
+    <p>-After the Miner node starts mining, the transaction is confirmed and the transfer is completed</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> ```sh
+ akashsharma@192.168.127.22 sia $ ./siac wallet balance
+ Wallet status:
+ Encrypted, Unlocked
+ Height:              504
+ Confirmed Balance:   50 MS
+ Unconfirmed Delta:  +0 H
+ Exact:               50000000000000000000000000000000 H
+ Siafunds:            0 SF
+ Siafund Claims:      0 H
+
+ Estimated Fee:       30 mS / KB
+ akashsharma@192.168.127.22 sia $ ./siac wallet transactions
+             [timestamp]    [height]                                                   [transaction id]    [net siacoins]   [net siafunds]
+ 2018-07-05 04:43:45+0800         501   b7b37e7293b9e17867b076f11441e3fbc2dbd5195da05f64e8dc40d235a0c06c    50000000.00 SC             0 SF
+ ```
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h5 id="shared-storage-host">Shared Storage Host</h5>
+
+<p>The Host node announces the shared storage to the network and accepts the contract by setting the shared storage path and size, thereby providing shared storage services</p>
+
+<ol>
+  <li>
+    <p>Create a new folder on the Host node as the data storage path for shared storage</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> akashsharma@192.168.127.22 sia <span class="nv">$ </span><span class="nb">mkdir </span>share_storage
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>The Host node adds a shared storage data storage path through <code class="language-plaintext highlighter-rouge">./siac host folder add [path] [size]</code> and sets the shared space size</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> akashsharma@192.168.127.22 sia <span class="nv">$ </span>./siac host folder add ~/sia/share_storage 512MB
+ Added folder /home/akashsharma/sia/share_storage
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>The Host node announces the start of shared storage service to the network through <code class="language-plaintext highlighter-rouge">./siac host announce [address]</code></p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> akashsharma@192.168.127.22 sia <span class="nv">$ </span>./siac host announce 192.168.127.22:9982
+ Host announcement submitted to network.
+ The host has also been configured to accept contracts.
+ To revert this, run:
+     siac host config acceptingcontracts <span class="nb">false</span>
+</code></pre></div>    </div>
+
+    <blockquote>
+      <p>Check <code class="language-plaintext highlighter-rouge">Sia/modules/host/announce.go</code> to know</p>
+
+      <ol>
+        <li>
+          <p>In the internal network test, executing <code class="language-plaintext highlighter-rouge">./siac host announce</code> will eventually call the <code class="language-plaintext highlighter-rouge">func (h *Host) Announce() error</code> method in the above source file in the Siad instance, due to <code class="language-plaintext highlighter-rouge">h.settings.NetAddress </code>And <code class="language-plaintext highlighter-rouge">h.autoAddress</code> both return <code class="language-plaintext highlighter-rouge">""</code>, so <code class="language-plaintext highlighter-rouge">h.managedAnnounce(annAddr)</code> will not be executed, and the announcement process cannot be completed (no error will be reported)</p>
+        </li>
+        <li>
+          <p>In the intranet test, use the official source code directly compiled version, execute <code class="language-plaintext highlighter-rouge">./siac host announce [address]</code>, and finally call <code class="language-plaintext highlighter-rouge">func (h *Host) AnnounceAddress in the above source file in the Siad instance (addr modules.NetAddress) error</code> method, because the internal network address is provided during the test, the judgment statement <code class="language-plaintext highlighter-rouge">if addr.IsLocal()</code> cannot be passed when executing, so you need to comment the relevant statement, and then re <a href="#Compile the source code">compile with the modified source code siad</a>, and upload to the corresponding Host node, execute <code class="language-plaintext highlighter-rouge">./siac host announce [address]</code></p>
+
+          <div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c">//if addr.IsLocal() {</span>
+ <span class="c">//    return errors.New("announcement requested with local net address")</span>
+ <span class="c">//}</span>
+</code></pre></div>          </div>
+        </li>
+      </ol>
+    </blockquote>
+  </li>
+  <li>
+    <p>The Host node uses <code class="language-plaintext highlighter-rouge">./siac host</code> to view the current settings of shared storage</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> akashsharma@192.168.127.22 and <span class="nv">$ </span>./siac host
+ Host info:
+     Connectability Status: Host is not connectable <span class="o">(</span>re-checks every few minutes<span class="o">)</span><span class="nb">.</span>
+
+     Storage:      503.32 MB <span class="o">(</span>0 B used<span class="o">)</span>
+     Price:        50 SC / TB / Month
+     Max Duration: 25 Weeks
+
+     Accepting Contracts:  Yes
+     Anticipated Revenue:  0 H
+     Locked Collateral:    0 H
+     Revenue:              0 H
+
+ Storage Folders:
+     Used    Capacity     % Used    Path
+     0 B     503.32 MB    0.00      /home/akashsharma/sia/share_storage
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>The Renter node uses <code class="language-plaintext highlighter-rouge">./siac hostdb</code> to view the information of the Host node that announced the provision of shared storage services in the current network</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> akashsharma@192.168.127.23 and <span class="nv">$ </span>./siac hostdb
+ 1 Active Hosts:
+     Address Price <span class="o">(</span>per TB per Mo<span class="o">)</span>
+ 1:  192.168.127.22:9982  50 SC
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h5 id="file-upload-and-downloadrenter---host">File upload and downloadRenter &lt;-&gt; Host</h5>
+
+<p>The Renter node obtains the shared storage service by presetting the allowance (prepayment) to be paid to the Host node during the file upload and download process</p>
+
+<ol>
+  <li>The Renter node obtains Siacoin from the Miner node through a process similar to <a href="# Transfer-miner---host">Miner transfer to Host</a></li>
+  <li>
+    <p>The Renter node uses <code class="language-plaintext highlighter-rouge">./siac renter prices</code> to view the shared storage prices in the network</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> akashsharma@192.168.127.23 sia <span class="nv">$ </span>./siac renter prices
+ Renter Prices <span class="o">(</span>estimated<span class="o">)</span>:
+ Fees <span class="k">for </span>Creating a Set of Contracts:   3.96 SC
+ Download 1 TB:                          25 SC
+ Store 1 TB <span class="k">for </span>1 Month:                 150 SC
+ Upload 1 TB:                            3 SC
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>The Renter node uses <code class="language-plaintext highlighter-rouge">./siac renter setallowance [amount] [period] [hosts] [renew window]</code> to set the total amount of Siacoin that can be spent in a given period when using the shared storage service provided by the Host node, that is According to the price of shared storage in the network, the prepayment that needs to be paid before using the shared storage service</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> akashsharma@192.168.127.23 sia <span class="nv">$ </span>./siac renter setallowance 100SC 100b 1 10b
+ Allowance updated.
+</code></pre></div>    </div>
+
+    <blockquote>
+      <p>You can view specific parameter setting instructions through <code class="language-plaintext highlighter-rouge">./siac renter setallowance --help</code></p>
+
+      <p>-<code class="language-plaintext highlighter-rouge">amount</code> -&gt; <code class="language-plaintext highlighter-rouge">100SC</code> is set to spend at most 100SC in a period, that is, the prepayment in a shared storage service period is 100SC
+-<code class="language-plaintext highlighter-rouge">period</code> -&gt; <code class="language-plaintext highlighter-rouge">100b</code> Set a period length to 100 blocks
+-<code class="language-plaintext highlighter-rouge">hosts</code> -&gt; <code class="language-plaintext highlighter-rouge">1</code> Set the data of the Renter node to be distributed on 1 Host node (because there is only one Host node in the test network)
+-<code class="language-plaintext highlighter-rouge">renew windows</code> -&gt; <code class="language-plaintext highlighter-rouge">10b</code> Set the time window for automatic renewal of allowance (prepayment) to 10 blocks, and the contract signed by Renter and Host will be automatically updated after the time window is reached</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>The Renter node uploads files via <code class="language-plaintext highlighter-rouge">./siac renter upload [source] [path]</code>, and checks the status of all files via <code class="language-plaintext highlighter-rouge">./siac renter list</code></p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> akashsharma@192.168.127.23 sia <span class="nv">$ </span>./siac renter upload test_file <span class="nb">test
+ </span>Uploaded <span class="s1">'/home/akashsharma/sia/test_file'</span> as test.
+ akashsharma@192.168.127.23 sia <span class="nv">$ </span>./siac renter list
+ Tracking 1 files:
+ Total uploaded:  12.09 MB
+ 12.09 MB  <span class="nb">test</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>The Host node uses <code class="language-plaintext highlighter-rouge">./siac host</code> to view the shared storage space usage</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> akashsharma@192.168.127.22 and <span class="nv">$ </span>./siac host
+ ...
+ Storage Folders:
+     Used        Capacity     % Used    Path
+     12.32 MB    503.32 MB    2.45      /home/akashsharma/sia/share_storage
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>The Renter node downloads files through <code class="language-plaintext highlighter-rouge">./siac renter download [path] [destination]</code></p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> akashsharma@192.168.127.23 sia <span class="nv">$ </span>./siac renter download <span class="nb">test </span>test_file2
+ Downloading...  95.4% of 12.09 MB, 1s elapsed, 61.42 Mbps
+ Downloaded <span class="s1">'test'</span> to /home/akashsharma/sia/test_file2.
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+
+</article>
+
+<br>
+<center><p>Thank you for reading this article 😊</p></center>
+<center><p>I'd love to hear your thoughts & feedback in the comment section below!</p></center>
+<div class="sharethis-inline-reaction-buttons"></div>
+<style>
+  #st-1 .st-btn > svg
+  {
+    width:28px;
+  }
+</style>
+<hr></hr>
+<center><p>If you liked it, share it with your friends and help this blog to grow!</p></center>
+<!-- <div class="sharethis-inline-share-buttons"></div> -->
+<center><div class="addthis_inline_share_toolbox"></div></center>
+<br>
+<br>
+
+
+    
+        <script src="https://utteranc.es/client.js"
+                repo="Akash-Sharma-1/Utteranc-Comments-Repo-Blog"
+                issue-term="pathname"
+                theme="github-light"
+                crossorigin="anonymous"
+                async>
+        </script>
+    
+
+
+<script>
+    // Add anchors to headers.
+    anchors.add();
+
+    // Show images in fancybox.
+    $("p img").each(function() {
+        $(this).wrapAll('<a data-fancybox="images" data-caption="' + this.alt + '" href="' + this.src + '"></a>');
+    });
+    $('[data-fancybox="images"]').fancybox({
+        transitionEffect: "slide",
+
+        // Support for retina displays.
+        afterLoad : function(instance, current) {
+            var pixelRatio = window.devicePixelRatio || 1;
+
+            if ( pixelRatio > 1.5 ) {
+                current.width  = current.width  / pixelRatio;
+                current.height = current.height / pixelRatio;
+            }
+        }
+    });
+</script>
+
+
+<script>
+    // Show sidebar on top in mobile devices.
+    $(".content").addClass("order-last order-md-first");
+    $(".sidebar").addClass("order-first order-md-last");
+</script>
+
+</div>
+<div class="sidebar col-md-4 mt-2 mt-md-0">
+    
+    <!-- https://github.com/christian-fei/Simple-Jekyll-Search -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/simple-jekyll-search/1.7.2/simple-jekyll-search.min.js" integrity="sha256-DsgE6Y6cI5eAZoTg8tJ5VBxFs+rnL8smPwt/u8tyAYo=" crossorigin="anonymous"></script>
+
+<div id="search-box" class="mb-2">
+    <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+    <ul class="mb-0"></ul>
+</div>
+
+<script type="text/javascript">
+    var search_box = document.getElementById("search-box");
+    SimpleJekyllSearch({
+        searchInput: search_box.getElementsByTagName("input")[0],
+        resultsContainer: search_box.getElementsByTagName("ul")[0],
+        json: '/blog/assets/search.json',
+        searchResultTemplate: '<li><a href="{url}">{title}</a></li>',
+        noResultsText: 'No results found',
+        fuzzy: false
+    });
+</script>
+
+    <!-- https://github.com/tscanlin/tocbot/ -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.7.0/tocbot.css" integrity="sha256-XUbSD3m+xLW27W/mp9kMn+fI9AU2MoBkiMMSVVYWI+o=" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.7.0/tocbot.min.js" integrity="sha256-5K/04vUxP94HmQ8f18TgufdyqE69WDJRMNga0JLhAtE=" crossorigin="anonymous"></script>
+
+<div class="toc-container mb-2">
+    <p class="name">Table of Contents</p>
+    <div class="toc py-2 pr-2 mb-2"></div>
+</div>
+
+<script>
+    // Show TOC if the article contains any heading.
+    if ($("article h1, article  h2, article h3, article h4, article h5, article h6").length == 0) {
+        $(".toc-container").addClass("d-none");
+    }
+
+    tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: ".toc",
+        // Where to grab the headings to build the table of contents.
+        contentSelector: "article",
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: "h1, h2, h3, h4, h5, h6",
+        collapseDepth: 6,
+    });
+</script>
+
+
+
+
+
+
+</div>
+
+    </div>
+</div>
+
+        <footer>
+    <div class="container">
+        <hr class="my-0">
+        <div class="row align-items-center text-muted my-3">
+            <div class="col">
+                <span>© 2022 Akash Sharma</span>
+                <a href="/blog/feed.xml"><span class="feed iconify" data-icon="foundation:rss"></span></a>
+            </div>
+            <div class="col-auto text-center px-0">
+                    <a href="https://akash-sharma-1.github.io/"><span class="github text-center text-muted iconify" data-icon="foundation:web"></span></a>
+                    <a href="https://github.com/Akash-Sharma-1"><span class="github text-center text-muted iconify" data-icon="foundation:social-github"></span></a>
+                    <a href="https://twitter.com/AkashTheGreat_1"><span class="github text-center text-muted iconify" data-icon="foundation:social-twitter"></span></a>
+                    <a href="https://www.linkedin.com/in/akash-sharma-246b67165"><span class="github text-center text-muted iconify" data-icon="foundation:social-linkedin"></span></a>
+                    <a href="mailto:akashthegreatlegend@gmail.com"><span class="github text-center text-muted iconify" data-icon="foundation:mail"></span></a>
+            </div>
+            <div class="col text-right">
+                <a href="javascript:$('html,body').animate({ scrollTop: 0 }, 'slow');">TOP</a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+    </body>
+</html>
