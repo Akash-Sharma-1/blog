@@ -1,6 +1,6 @@
 <div class="titlebar text-light">
     <div class="container">
-        {% if page.name == "index.html" %}
+        {% if page.title == "Home" %}
             <!-- Home page title -->
             <div class="title-big pt-sm-3 pt-md-4">{{ site.subtitle }}</div>
             <div class="meta pb-1 pb-2 pb-sm-3 pb-md-4">
@@ -37,9 +37,19 @@
                 {% for tag in page.tags %}
                     <span class="titlebar-info pr-3">
                         <span class="iconify" data-icon="octicon:tag"></span>
-                        <a class="text-light" href="{{ site.baseurl }}/archive/#{{ tag }}">{{ tag }}</a>
+                        <a class="text-light" href="{{ site.baseurl }}/classification/#{{ tag }}">{{ tag }}</a>
                     </span>
                 {% endfor %}
+
+                {% for category in page.categories %}
+                    {% if category != "leetcode" and category != "tech" %}
+                        <span class="titlebar-info pr-3">
+                            <span class="iconify" data-icon="octicon:tag"></span>
+                            <a class="text-light" href="{{ site.baseurl }}/leetcode/categories/#{{ category }}">{{ category }}</a>
+                        </span>
+                    {% endif %}
+                {% endfor %}
+
             </div>
         {% else %}
             <!-- Default title -->
@@ -49,7 +59,7 @@
 </div>
 
 <script>
-    {% if page.name == "index.html" %}
+    {% if page.title == "Home" %}
         $(".titlebar").addClass("bg-primary");
         $(".titlebar").addClass("titlebar-primary");
 

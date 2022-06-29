@@ -18,9 +18,15 @@ subtitle: Blogs on Data Science, Deep Learning, Algorithms,<br>Development and m
 description: Reading, Learning, Thinking and Writing
 baseurl: "/blog"
 timezone: Asia/Kolkata
-sidebar_repository_limit: 5
-paginate: 10
+sidebar_repository_limit: 3
 publication_date: 2022
+pagination:
+  # Site-wide kill switch, disabled here it doesn't run at all 
+  enabled: true
+  # How many objects per paginated page, used to be `paginate` (default: 0, means all)
+  per_page: 5
+  sort_field: 'date'
+  sort_reverse: true
 
 # Uncomment the line below if you use this theme as a GitHub Page's remote theme.
 remote_theme: Akash-Sharma-1/blog
@@ -49,9 +55,9 @@ navigation:
   - name: Home
     link: /
   - name: Classification
-    link: /archive/
-  - name: Wiki
-    link: /wiki/
+    link: /classification/
+  - name: Leetcode
+    link: /leetcode/
   - name: About Me
     link: /about/
   - name: Portfolio
@@ -66,7 +72,7 @@ defaults:
     values:
       layout: post
   - scope:
-      path: _wiki
+      path: _leetcode
     values:
       layout: post
 sass:

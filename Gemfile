@@ -8,5 +8,7 @@ group :jekyll_plugins do
     gem 'tzinfo-data'
     gem 'github-pages'
     gem 'webrick'
+    gem 'jekyll-paginate-v2'
+
 end
 # gem "github-pages", group: :jekyll_plugins

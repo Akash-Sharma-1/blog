@@ -6,7 +6,9 @@ permalink: /about/
 <center> <h4> Welcome to my Blogs !</h4> </center>
 <br>
 
-Hi there👋 I'm <b>Akash Sharma </b>, a programmer, a developer and a tech-enthusiast. 👨🏻‍💻 I absolutely adore programming and developing new things ⚙. 
+Hi there👋 I'm <b>Akash Sharma </b>, a programmer, researcher and a tech-enthusiast. 
+<br>
+👨🏻‍💻 I absolutely adore programming and developing new things ⚙. 
 <br>
 I'm passionate about solving problems through code🚀helping the world🌎 and making the lives of people 👨‍👨‍👧 around me easier!    
 <br>

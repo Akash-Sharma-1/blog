@@ -17,16 +17,6 @@
                         <a class="text-muted" href="{{ site.baseurl }}/classification/#{{ tag }}">{{ tag }}</a>
                     </span>
                 {% endfor %}
-
-                {% for category in post.categories %}
-                    {% if category != "leetcode" and category != "tech" %}
-                        <span class="pr-3">
-                            <span class="iconify" data-icon="octicon:tag"></span>
-                            <a class="text-muted" href="{{ site.baseurl }}/leetcode/categories/#{{ category }}">{{ category }}</a>
-                        </span>
-                    {% endif %}
-                {% endfor %}
-
             </div>
         </li>
         <hr>

@@ -9,13 +9,13 @@ tags: Blockchain
 
 ### Development Platform
 
--The most basic development requirements
-    -Get the complete [Sia](https://github.com/NebulousLabs/Sia) source code
-    -Can edit source code
-    -Configure [Go](https://golang.org/) language development environment
--Recommended development environment
-    -Operating system: [Ubuntu Desktop 18.04](https://www.ubuntu.com/download/desktop?)
-    -Integrated development environment: [GoLand](https://www.jetbrains.com/go/https://www.jetbrains.com/go/) (available through [Toolbox App](https://www.jetbrains. com/toolbox/app/) installation, the account can be through the Huake mailbox [register] (https://www.jetbrains.com/shop/eform/students), get the full version)
+- The most basic development requirements
+    - Get the complete [Sia](https://github.com/NebulousLabs/Sia) source code
+    - Can edit source code
+    - Configure [Go](https://golang.org/) language development environment
+- Recommended development environment
+    - Operating system: [Ubuntu Desktop 18.04](https://www.ubuntu.com/download/desktop?)
+    - Integrated development environment: [GoLand](https://www.jetbrains.com/go/https://www.jetbrains.com/go/) (available through [Toolbox App](https://www.jetbrains.com/toolbox/app/) installation, the account can be through the Huake mailbox [register](https://www.jetbrains.com/shop/eform/students), get the full version)
 
 #### Ubuntu Desktop configuration Go development environment
 
@@ -89,16 +89,16 @@ Sia source code can generate two executable binary files *siad* and *siac*. When
     >-The configuration of `Go tool arguments` is consistent with *Makefile*, `DEBUG_COMMIT` and `DEBUG_TIME` can be replaced with actual values ​​according to the settings in *Makefile*
     >-`Package path` and `Program arguments` can be compiled and run according to the actual package of the `main` function to be run (for example, set to `github.com/NebulousLabs/Sia/cmd/siac` when debugging *siac*) and start Set the actual operating parameters of the corresponding program
 
-### testing platform
+### Testing platform
 
--The most basic test requirements
-    -Any operating system supported by Go language
-    -A host
--Recommended test environment
-    -Virtualization platform: [VMware Workstation Pro 14](https://www.vmware.com/products/workstation-pro/workstation-pro-evaluation.html)
-    -Virtual machine operating system: [Ubuntu Server 18.04](https://www.ubuntu.com/download/server) (No need to install Go)
-    -Virtual machine configuration: 1GB memory, 8GB storage
-    -A cluster composed of multiple virtual hosts
+- The most basic test requirements
+    - Any operating system supported by Go language
+    - A host
+- Recommended test environment
+    - Virtualization platform: [VMware Workstation Pro 14](https://www.vmware.com/products/workstation-pro/workstation-pro-evaluation.html)
+    - Virtual machine operating system: [Ubuntu Server 18.04](https://www.ubuntu.com/download/server) (No need to install Go)
+    - Virtual machine configuration: 1GB memory, 8GB storage
+    - A cluster composed of multiple virtual hosts
 
 #### Ubuntu Server configure static IP
 
@@ -106,7 +106,7 @@ Assuming that the network adapter of the virtual machine is set to NAT, and the 
 
 1. Modify the configuration file under the path of `/etc/netplan/` (default is `50-cloud-init.yaml`)
 
-    `` Yaml
+    ``yaml
     # This file is generated from information provided by
     # the datasource.  Changes to it will not persist across an instance.
     # To disable cloud-init's network configuration capabilities, write a file
@@ -177,7 +177,7 @@ dev:
     GOOS=windows GOARCH=amd64 go install -tags='dev debug profile netgo' -ldflags='$(ldflags)' $(pkgs)
 ```
 
-> [Building windows go programs on linux](https://github.com/golang/go/wiki/WindowsCrossCompiling)、[Optional environment variables](https://golang.org/doc/install/source#environment)
+> Reference : [Building windows go programs on linux](https://github.com/golang/go/wiki/WindowsCrossCompiling) , [Optional environment variables](https://golang.org/doc/install/source#environment)
 
 ## Build a private test network
 
@@ -222,7 +222,7 @@ Since hard-coded Bootstrap nodes are not used, the *Node 0* node in the cluster 
     siad                                          100%   18MB  65.7MB/s   00:00
     ```
 
-    > 参考 [Transferring files over SSH](https://stackoverflow.com/questions/343711/transferring-files-over-ssh)
+    > Reference : [Transferring files over SSH](https://stackoverflow.com/questions/343711/transferring-files-over-ssh)
 
 #### Start the background service process (Sia instance)
 

@@ -1,0 +1,18 @@
+<div class="tag-list">
+    {% assign tags = site.categories | sort %}
+    {% for tag in tags %}
+        {% if tag[0] != "leetcode" and tag[0] != "tech" %}
+            <div class="name mb-3" id="{{ tag[0] }}">{{ tag[0] }}</div>
+            <ul class="text-muted">
+                {% for post in tag[1] %}
+                        <li class="post mb-3">
+                            <span class="date">{{ post.date | date:"%Y-%m-%d" }}</span>
+                            <a class="title text-muted" href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+                        </li>
+
+                {% endfor %}
+            </ul>
+        {% endif %}
+        
+    {% endfor %}
+</div>

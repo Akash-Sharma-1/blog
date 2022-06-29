@@ -36,6 +36,6 @@
         {% else %}
             {% assign color = 8 | minus: base %}
         {% endif %}
-        <a href="{{ site.baseurl }}/archive/#{{ tag[0] }}" style="font-size: {{ size }}pt; color: #{{ color }}{{ color }}{{ color }};">{{ tag | first }}</a>
+        <a href="{{ site.baseurl }}/classification/#{{ tag[0] }}" style="font-size: {{ size }}pt; color: #{{ color }}{{ color }}{{ color }};">{{ tag | first }}</a>
     {% endfor %}
 </div>
