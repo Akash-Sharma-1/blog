@@ -43,7 +43,7 @@ social:
 comments_repository: Akash-Sharma-1/Utteranc-Comments-Repo-Blog
 
 # Google Analytics settings (https://analytics.google.com/)
-ga_measurement_id:
+ga_measurement_id: G-W1GFNLSVY2
 
 # Build settings (https://help.github.com/en/articles/configuring-jekyll)
 # If you use this theme as a Github Pages's remote theme, you don't need to edit the
