@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico">
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Setting up Dell XPS 15 with Pop!_OS Distro | Akash Sharma’s Blog</title>
+<meta name="generator" content="Jekyll v3.9.2" />
+<meta property="og:title" content="Setting up Dell XPS 15 with Pop!_OS Distro" />
+<meta name="author" content="Akash Sharma" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="I’ve got a Dell XPS 15 9570 (16gb ram, i7-8750H CPU) for work expecting it to have good support in Linux, considering other XPS laptops ship with Ubuntu." />
+<meta property="og:description" content="I’ve got a Dell XPS 15 9570 (16gb ram, i7-8750H CPU) for work expecting it to have good support in Linux, considering other XPS laptops ship with Ubuntu." />
+<link rel="canonical" href="http://localhost:4000/blog/tech/2021/07/08/Setting-up-Dell-XPS-15-with-Pop!_OS-Distro.html" />
+<meta property="og:url" content="http://localhost:4000/blog/tech/2021/07/08/Setting-up-Dell-XPS-15-with-Pop!_OS-Distro.html" />
+<meta property="og:site_name" content="Akash Sharma’s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-07-08T00:00:00+05:30" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Setting up Dell XPS 15 with Pop!_OS Distro" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Akash Sharma"},"dateModified":"2021-07-08T00:00:00+05:30","datePublished":"2021-07-08T00:00:00+05:30","description":"I’ve got a Dell XPS 15 9570 (16gb ram, i7-8750H CPU) for work expecting it to have good support in Linux, considering other XPS laptops ship with Ubuntu.","headline":"Setting up Dell XPS 15 with Pop!_OS Distro","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/tech/2021/07/08/Setting-up-Dell-XPS-15-with-Pop!_OS-Distro.html"},"url":"http://localhost:4000/blog/tech/2021/07/08/Setting-up-Dell-XPS-15-with-Pop!_OS-Distro.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/blog/feed.xml" title="Akash Sharma&apos;s Blog" />
+    
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W1GFNLSVY2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-W1GFNLSVY2');
+</script>
+
+    
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+    <link rel="stylesheet" href="/blog/assets/css/main.css">
+    <link rel="manifest" href="/blog/manifest.json">
+
+    <!-- Support for Bootstrap https://getbootstrap.com -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js" integrity="sha256-fTuUgtT7O2rqoImwjrhDgbXTKUwyxxujIMRIK7TbuNU=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- Support for pattern background https://github.com/btmills/geopattern -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js" integrity="sha256-AOyAcXCKLfI+FRdiZr4VTj9h9Wwv0YXXa2CPfUWbBS8=" crossorigin="anonymous"></script>
+
+    <!-- Support for SVG icon https://iconify.design -->
+    <script src="https://code.iconify.design/1/1.0.0/iconify.min.js"></script>
+
+    <!-- Support for share and reaction btns -->
+    <!-- <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5fae8b9ee3f5df0012a019ca&product=sop' async='async'></script> -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5fae8ce8b9e345ad"></script>
+
+</head>
+
+    <body>
+        <header>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <nav class="container navbar navbar-expand-sm py-2">
+        <a class="navbar-brand title p-0" href="/blog/">
+          <!-- GITHUB ICON -->
+          <!-- <span class="iconify" data-icon="octicon:mark-github"></span> -->
+          <!-- Personal Icon -->
+          <span class="material-icons" style="vertical-align:middle;font-size:inherit">font_download</span>
+            <span style="vertical-align:middle">Akash Sharma's Blog</span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="navbar-nav ml-auto">
+                
+                  
+                    <a class="nav-item nav-link text-right" href="/blog/">Home</a>
+                  
+                  
+
+                
+                  
+                    <a class="nav-item nav-link text-right" href="/blog/classification/">Classification</a>
+                  
+                  
+
+                
+                  
+                    <a class="nav-item nav-link text-right" href="/blog/leetcode/">Leetcode</a>
+                  
+                  
+
+                
+                  
+                    <a class="nav-item nav-link text-right" href="/blog/about/">About Me</a>
+                  
+                  
+
+                
+                  
+                  
+                    <a class="nav-item nav-link text-right" href="https://akash-sharma-1.github.io/">Portfolio</a>
+                  
+
+                
+            </div>
+        </div>
+    </nav>
+</header>
+
+<script>
+    
+        $(".navbar").addClass("navbar-light");
+        $("a[href$='/blog/tech/2021/07/08/Setting-up-Dell-XPS-15-with-Pop!_OS-Distro.html']").addClass("active");
+    
+</script>
+
+        <div class="titlebar text-light">
+    <div class="container">
+        
+            <!-- Post article title -->
+            <div class="title pt-3">Setting up Dell XPS 15 with Pop!_OS Distro</div>
+            <div class="meta pb-3">
+                <span class="pr-3">
+                    
+                        <span class="iconify" data-icon="octicon:calendar"></span>
+                        <span>2021/07/08</span>
+                    
+                </span>
+
+                
+                    <span class="titlebar-info pr-3">
+                        <span class="iconify" data-icon="octicon:tag"></span>
+                        <a class="text-light" href="/blog/classification/#Linux">Linux</a>
+                    </span>
+                
+                    <span class="titlebar-info pr-3">
+                        <span class="iconify" data-icon="octicon:tag"></span>
+                        <a class="text-light" href="/blog/classification/#XPS-15">XPS-15</a>
+                    </span>
+                
+
+                
+                    
+                
+
+            </div>
+        
+    </div>
+</div>
+
+<script>
+    
+        $(".titlebar").geopattern("Setting up Dell XPS 15 with Pop!_OS Distro");
+    
+</script>
+
+<div class="container">
+    <div class="row my-2 my-md-4">
+        <div class="content col-md-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/3.0.1/github-markdown.min.css" integrity="sha256-HbgiGHMLxHZ3kkAiixyvnaaZFNjNWLYKD/QG6PWaQPc=" crossorigin="anonymous" />
+
+<!-- Support for deep anchor links https://github.com/bryanbraun/anchorjs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.js" integrity="sha256-0X7DxIkZMaHhAon0xCc/C/YhG6y0dg8Uj8c50+gbu8c=" crossorigin="anonymous"></script>
+
+<!-- Support for fancybox https://github.com/fancyapps/fancybox -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+<!-- Support for MathJax https://github.com/mathjax/mathjax -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous" async></script>
+
+<article class="markdown-body">
+    <p>I’ve got a <a href="https://www.dell.com/en-in/work/shop/scc/sr/laptops/xps-laptops">Dell XPS 15 9570</a> (16gb ram, i7-8750H CPU) for work expecting it to have good support in Linux, considering other XPS laptops ship with Ubuntu.</p>
+
+<p>However, the massive (for a laptop) NVIDIA GeForce GTX 1050Ti with 4GB GDDR5 ensures installing Linux is not so smooth…</p>
+
+<p>Any distro will boot into the live usb pretty well with the basic Intel graphics–however, you will eventually end up with a few issues trying to get NVIDIA to work.</p>
+
+<p>To simplify, I decided to use <a href="https://system76.com/pop">Pop!_OS</a>, an Ubuntu-based distro from computer manufacturer <a href="https://system76.com">System76</a>. There is a few <a href="https://support.system76.com/articles/difference-between-pop-ubuntu/">differences from Ubuntu</a>, but most importantly Pop!_OS provides a special image specifically for NVIDIA machines so it is easy to get things working.</p>
+
+<p><em>Note: I did not install as a dual boot, so I am not sure how smoothly that would go, but check the <a href="https://pop.system76.com/docs/dual-booting-windows/">official docs</a>.</em></p>
+
+<h2 id="set-up-and-install-pop_os">Set up and install Pop!_OS</h2>
+
+<ol>
+  <li><a href="https://pop.system76.com/">Download Pop!_OS</a> choosing the NVIDIA option.</li>
+  <li><a href="https://evanwill.github.io/_drafts/notes/burn-iso.html">Burn to a USB stick</a></li>
+  <li>Plug in your Pop!_OS USB</li>
+  <li>Boot XPS 15 and hit F2 as it boots to enter the BIOS menu</li>
+  <li>Enter BIOS:
+    <ul>
+      <li>turn off Secure Boot (this is necessary for the NVIDIA drivers, and eventually if you want to use virtual machines)</li>
+      <li>Settings &gt; General &gt; Advanced Boot Option, select “enable legacy option ROMS”</li>
+      <li>SATA Operation, select “AHCI” (you need to turn “RAID” mode off because it is not supported by Linux, because its not worth while… If you are dual booting, check the steps on the windows side before doing this)</li>
+    </ul>
+  </li>
+  <li>Save and exit BIOS</li>
+  <li>Reboot and hit F12 as it boots to enter boot option menu</li>
+  <li>Choose the first USB boot option</li>
+  <li>After a minute, it should boot into a live desktop with the Pop installer running. You can test out the live system if desired.</li>
+  <li>Follow the installer steps. It is a bit different than other distros because setting up a user takes place after install, during your first boot.
+    <ul>
+      <li>Check the <a href="https://pop.system76.com/docs/install-pop-os/">official docs</a>.</li>
+      <li>I chose to do a full disk encrypt (work computer), but keep in mind it will ask you for the encryption password (different than your user password) at every restart.</li>
+    </ul>
+  </li>
+  <li>After installation is complete, reboot, and type in your encrypt password a few times</li>
+  <li>Follow the steps to set up a user account</li>
+  <li>Checkout your new system! See the <a href="https://support.system76.com/articles/pop-basics/">intro docs</a> and <a href="https://pop.system76.com/docs/keyboard-shortcuts/">keyboard shortcuts</a> for more info.</li>
+</ol>
+
+<h2 id="updates">Updates</h2>
+
+<p>If you have used GNOME before, everything should be pretty familiar although it starts out more vanilla than an Ubuntu install.
+Click on Activities or hit Super (windows key) to bring up your menu.</p>
+
+<p>You should run updates, which brings up the first noticeable difference from Ubuntu.
+The “update manager” is gone, instead updates are applied from the “Pop!_Shop” software center. 
+Open Pop!_Shop, click on Installed, and if updates are available a button will appear to install them.</p>
+
+<h2 id="graphics-switch">Graphics switch</h2>
+
+<p>Another unique Pop! feature: click the upper right for the power menu, then click the battery icon / status meter. 
+This opens options to set power profile (performance / balanced / long life), or to switch between graphics cards (NVIDIA / Intel).
+Switching between graphics cards takes a minute and a restart – its not instantaneous…</p>
+
+<h2 id="set-up-and-customize-desktop">Set up and customize desktop</h2>
+
+<h3 id="some-basic-customizations-">Some basic customizations …</h3>
+
+<p>Open Settings:</p>
+
+<ul>
+  <li>Settings &gt; Background to get your wallpaper set.</li>
+  <li>Settings &gt; Devices &gt; Display to set up your monitor and turn on Night Light if you want a red shift in the evening.</li>
+  <li>Settings &gt; Bluetooth, turn bluetooth off if you don’t use it, since it is a security risk.</li>
+</ul>
+
+<h3 id="some-go-to-have-packages-">Some go-to-have packages …</h3>
+
+<p>Pop uses <a href="https://packages.ubuntu.com/">Ubuntu packages</a>.
+Open a terminal and install these right away, <code class="language-plaintext highlighter-rouge">sudo apt install</code>:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">gnome-tweak-tool</code> (lets you customize the desktop)</li>
+  <li><code class="language-plaintext highlighter-rouge">chrome-gnome-shell</code> (might be installed already, but enables gnome extensions, connecting the manager with Firefox or Chromium)</li>
+  <li><code class="language-plaintext highlighter-rouge">tlp tlp-rdw</code> (<a href="https://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html">advanced laptop power management</a>, also see <a href="https://support.system76.com/articles/battery/">system76 battery</a>)</li>
+</ul>
+
+<h3 id="note-on-dev-packages-">Note on dev packages …</h3>
+
+<p>Pop! comes with a lot of development essentials already installed (build-essentials, git, curl, gpg2, ufw). But you do have to enable firewall: <code class="language-plaintext highlighter-rouge">sudo ufw enable</code>.</p>
+
+<h3 id="browser-setup-">Browser setup …</h3>
+
+<p>Next, set up Firefox browser:</p>
+
+<ul>
+  <li>Preferences &gt; Privacy &amp; Security &gt; check “Use a master password” and set.</li>
+  <li>Add <a href="https://extensions.gnome.org/">GNOME extensions</a> plugin, <a href="https://addons.mozilla.org/en/firefox/addon/gnome-shell-integration/">gnome-shell-integration</a></li>
+  <li>Add Firefox <a href="https://addons.mozilla.org/en-US/firefox/addon/multi-account-containers/?src=search">Multi-Account Containers</a>, <a href="https://addons.mozilla.org/en-US/firefox/addon/facebook-container/">Facebook Container</a></li>
+  <li>Add adblocker such as <a href="https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/?src=search">uBlock Origin</a></li>
+</ul>
+
+<h3 id="gnome-extensions-">GNOME extensions …</h3>
+
+<p>Now you can add <a href="https://extensions.gnome.org/">GNOME extensions</a>, click the GNOME icon in the browser’s upper right side.
+Pop! comes with a few pre-installed, but here are a few more to add:</p>
+
+<ul>
+  <li><a href="https://extensions.gnome.org/extension/517/caffeine/">Caffeine</a>, disable screen lock to watch movies or just not have your laptop locking all the time.</li>
+  <li><a href="https://extensions.gnome.org/extension/307/dash-to-dock/">Dash to Dock</a>, adds a highly customizable  dock to your desktop. For an Ubuntu-like look, go to installed extensions page: click settings, turn off intelligent autohide, select panel mode, and make icon size smaller.</li>
+  <li>More suggestions, see <a href="https://evanwill.github.io/_drafts/notes/ubuntu-gnome.html">GNOME on Ubuntu notes</a></li>
+</ul>
+
+<h3 id="note-taking-">Note taking …</h3>
+
+<p>Next I like to have Gedit (“Text Editor”) customized so its ready as a quick editor.</p>
+
+<p>Open the app, then click the name in the top bar to open the app menu &gt; Preferences.
+See <a href="https://evanwill.github.io/_drafts/notes/gedit-editor.html">customization suggestions notes</a>.</p>
+
+<h2 id="simplify-git-credentials">Simplify git credentials</h2>
+
+<p>You can permanently store your Git credentials with your user account.
+Configure Git as normal:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config --global user.name "Evan Will"
+git config --global user.email "myemail@gmail.com"
+git config --global core.editor "nano -w"
+</code></pre></div></div>
+
+<p><strong>Note:</strong> You should be using the <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh">newer SSH based configuration</a> suggested by Github</p>
+
+<p>Install dependencies:</p>
+
+<p><code class="language-plaintext highlighter-rouge">sudo apt install libgnome-keyring-dev</code></p>
+
+<p>Build the helper:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd /usr/share/doc/git/contrib/credential/gnome-keyring
+sudo make
+</code></pre></div></div>
+
+<p>Configure git helper:</p>
+
+<p><code class="language-plaintext highlighter-rouge">git config --global credential.helper /usr/share/doc/git/contrib/credential</code></p>
+
+<p>Then the next time you need a Git credential, it will prompt for username and password as normal, but it will be stored going forward.</p>
+
+<p><strong>Note: newer versions of Git require a different manager, if libgnome-keyring-dev gives a permission error, use libsecret instead. I found this is necessary on Ubuntu 19.04.</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt-get install libsecret-1-0 libsecret-1-dev
+cd /usr/share/doc/git/contrib/credential/libsecret
+sudo make
+git config --global credential.helper /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
+</code></pre></div></div>
+
+<h2 id="resolving-issues-with-sleep">Resolving issues with sleep</h2>
+
+<p>With Intel graphics activated, closing the lid for sleep or using the sleep icon from the power menu works correctly.
+However, XPS 15 does not seem to sleep correctly with NVIDIA activated, either it won’t go to sleep or it won’t wake up the screen…</p>
+
+<p>Supposedly there is a way to fix this with boot options passed to the Linux kernel.
+If you were on Ubuntu, editing the GRUB options <em>in theory</em> should work. 
+However, Pop! no longer uses GRUB, instead uses systemd-boot and <a href="https://github.com/pop-os/kernelstub">kernelstub</a>.</p>
+
+<p>Ubuntu would look something like:</p>
+<ul>
+  <li>Open GRUB options, <code class="language-plaintext highlighter-rouge">sudo nano /etc/default/grub</code>
+    <ul>
+      <li>
+        <p>edit the value of the <code class="language-plaintext highlighter-rouge">GRUB_CMDLINE_LINUX_DEFAULT</code> line, so it looks like:</p>
+      </li>
+      <li>
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  GRUB_CMDLINE_LINUX_DEFAULT="quiet acpi_rev_override=1 acpi_osi=Linux nouveau.modeset=0 pcie_aspm=force drm.vblankoffdelay=1 scsi_mod.use_blk_mq=1 nouveau.runpm=0 mem_sleep_default=deep"
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Then update GRUB using <code class="language-plaintext highlighter-rouge">sudo update-grub</code></p>
+  </li>
+  <li>See <a href="https://github.com/JackHack96/dell-xps-9570-ubuntu-respin">dell-xps-9570-ubuntu-respin</a> “xps-tweaks.sh” for scripts which inspired these settings.</li>
+</ul>
+
+<p>You can do this on Pop (since all the Ubuntu stuff is still there), but it won’t have any effect, since it isn’t actually booting via GRUB!</p>
+
+<p>Check your current set up with <code class="language-plaintext highlighter-rouge">sudo kernelstub -p</code> (mine says the kernel options are “quiet loglevel=0 systemd.show_status=false splash”).
+You could then add on the same kernel options as the GRUB config above, like:</p>
+
+<p><code class="language-plaintext highlighter-rouge">sudo kernelstub -a "acpi_rev_override=1 acpi_osi=Linux nouveau.modeset=0 pcie_aspm=force drm.vblankoffdelay=1 scsi_mod.use_blk_mq=1 nouveau.runpm=0 mem_sleep_default=deep"</code></p>
+
+<p>Honestly, I haven’t tried it… 
+Since sleep works fine on Intel graphics, which I generally use for better battery life anyway, I will wait for some other brave soul to figure out the best boot options.
+Let me know if you do!</p>
+
+<h2 id="adding-some-useful-apps">Adding some useful apps</h2>
+
+<p>Languages:</p>
+
+<ul>
+  <li>Ruby: <a href="https://evanwill.github.io/_drafts/notes/ruby-notes.html">RVM set up</a></li>
+  <li>Python: <a href="https://evanwill.github.io/_drafts/notes/dual-python-notebook.html">Anaconda set up</a></li>
+  <li>Java: <code class="language-plaintext highlighter-rouge">sudo apt install default-jre</code> or <code class="language-plaintext highlighter-rouge">default-jdk</code> (this will be OpenJDK 11+, fine for apps like OpenRefine, if you need more specific versions search <a href="https://packages.ubuntu.com/search?keywords=jdk&amp;searchon=names&amp;suite=bionic&amp;section=all">packages</a>)</li>
+  <li>Node: use <a href="https://github.com/creationix/nvm">nvm</a> (this seems to be the best method; install nvm, then <code class="language-plaintext highlighter-rouge">nvm install --lts</code>), or official <a href="https://github.com/nodesource/distributions/blob/master/README.md">NodeSource ppa</a>, or repository version <code class="language-plaintext highlighter-rouge">nodejs</code> (which is out of date)</li>
+</ul>
+
+<p>Search <a href="https://packages.ubuntu.com/">Ubuntu Packages</a> or Pop!_Shop for software.</p>
+
+<p>App essentials:</p>
+
+<ul>
+  <li>A few extra fonts: <code class="language-plaintext highlighter-rouge">fonts-firacode</code>, <code class="language-plaintext highlighter-rouge">fonts-noto</code></li>
+  <li>Chromium Browser, <code class="language-plaintext highlighter-rouge">chromium-browser</code></li>
+  <li>Tilix terminal, <code class="language-plaintext highlighter-rouge">tilix</code></li>
+  <li>KeePassXC</li>
+  <li>GIMP image editing, <code class="language-plaintext highlighter-rouge">gimp</code></li>
+</ul>
+
+<hr />
+
+<blockquote>
+  <p>Update: <a href="https://evanwill.github.io/_drafts/notes/ubuntu20.html">Ubuntu 20.04 installs works great</a> on XPS 15. I have moved to Ubuntu 20.04, but most of this post is still relevant. The most recent versions of Pop!_OS have some unique gnome extensions, including an auto-tiling desktop option.</p>
+</blockquote>
+
+</article>
+
+<br>
+<center><p>Thank you for reading this article 😊</p></center>
+<center><p>I'd love to hear your thoughts & feedback in the comment section below!</p></center>
+<div class="sharethis-inline-reaction-buttons"></div>
+<style>
+  #st-1 .st-btn > svg
+  {
+    width:28px;
+  }
+</style>
+<hr></hr>
+<center><p>If you liked it, share it with your friends and help this blog to grow!</p></center>
+<!-- <div class="sharethis-inline-share-buttons"></div> -->
+<center><div class="addthis_inline_share_toolbox"></div></center>
+<br>
+<br>
+
+
+    
+        <script src="https://utteranc.es/client.js"
+                repo="Akash-Sharma-1/Utteranc-Comments-Repo-Blog"
+                issue-term="pathname"
+                theme="github-light"
+                crossorigin="anonymous"
+                async>
+        </script>
+    
+
+
+<script>
+    // Add anchors to headers.
+    anchors.add();
+
+    // Show images in fancybox.
+    $("p img").each(function() {
+        $(this).wrapAll('<a data-fancybox="images" data-caption="' + this.alt + '" href="' + this.src + '"></a>');
+    });
+    $('[data-fancybox="images"]').fancybox({
+        transitionEffect: "slide",
+
+        // Support for retina displays.
+        afterLoad : function(instance, current) {
+            var pixelRatio = window.devicePixelRatio || 1;
+
+            if ( pixelRatio > 1.5 ) {
+                current.width  = current.width  / pixelRatio;
+                current.height = current.height / pixelRatio;
+            }
+        }
+    });
+</script>
+
+
+<script>
+    // Show sidebar on top in mobile devices.
+    $(".content").addClass("order-last order-md-first");
+    $(".sidebar").addClass("order-first order-md-last");
+</script>
+
+</div>
+<div class="sidebar col-md-4 mt-2 mt-md-0">
+    
+    <!-- https://github.com/christian-fei/Simple-Jekyll-Search -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/simple-jekyll-search/1.7.2/simple-jekyll-search.min.js" integrity="sha256-DsgE6Y6cI5eAZoTg8tJ5VBxFs+rnL8smPwt/u8tyAYo=" crossorigin="anonymous"></script>
+
+<div id="search-box" class="mb-2">
+    <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+    <ul class="mb-0"></ul>
+</div>
+
+<script type="text/javascript">
+    var search_box = document.getElementById("search-box");
+    SimpleJekyllSearch({
+        searchInput: search_box.getElementsByTagName("input")[0],
+        resultsContainer: search_box.getElementsByTagName("ul")[0],
+        json: '/blog/assets/search.json',
+        searchResultTemplate: '<li><a href="{url}">{title}</a></li>',
+        noResultsText: 'No results found',
+        fuzzy: false
+    });
+</script>
+
+    <!-- https://github.com/tscanlin/tocbot/ -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.7.0/tocbot.css" integrity="sha256-XUbSD3m+xLW27W/mp9kMn+fI9AU2MoBkiMMSVVYWI+o=" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.7.0/tocbot.min.js" integrity="sha256-5K/04vUxP94HmQ8f18TgufdyqE69WDJRMNga0JLhAtE=" crossorigin="anonymous"></script>
+
+<div class="toc-container mb-2">
+    <p class="name">Table of Contents</p>
+    <div class="toc py-2 pr-2 mb-2"></div>
+</div>
+
+<script>
+    // Show TOC if the article contains any heading.
+    if ($("article h1, article  h2, article h3, article h4, article h5, article h6").length == 0) {
+        $(".toc-container").addClass("d-none");
+    }
+
+    tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: ".toc",
+        // Where to grab the headings to build the table of contents.
+        contentSelector: "article",
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: "h1, h2, h3, h4, h5, h6",
+        collapseDepth: 6,
+    });
+</script>
+
+
+
+
+
+
+</div>
+
+    </div>
+</div>
+
+        <footer>
+    <div class="container">
+        <hr class="my-0">
+        <div class="row align-items-center text-muted my-3">
+            <div class="col">
+                <span>© 2022 Akash Sharma</span>
+                <a href="/blog/feed.xml"><span class="feed iconify" data-icon="foundation:rss"></span></a>
+            </div>
+            <div class="col-auto text-center px-0">
+                    <a href="https://akash-sharma-1.github.io/"><span class="github text-center text-muted iconify" data-icon="foundation:web"></span></a>
+                    <a href="https://github.com/Akash-Sharma-1"><span class="github text-center text-muted iconify" data-icon="foundation:social-github"></span></a>
+                    <a href="https://twitter.com/AkashTheGreat_1"><span class="github text-center text-muted iconify" data-icon="foundation:social-twitter"></span></a>
+                    <a href="https://www.linkedin.com/in/akash-sharma-246b67165"><span class="github text-center text-muted iconify" data-icon="foundation:social-linkedin"></span></a>
+                    <a href="mailto:akashthegreatlegend@gmail.com"><span class="github text-center text-muted iconify" data-icon="foundation:mail"></span></a>
+            </div>
+            <div class="col text-right">
+                <a href="javascript:$('html,body').animate({ scrollTop: 0 }, 'slow');">TOP</a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+    </body>
+</html>
