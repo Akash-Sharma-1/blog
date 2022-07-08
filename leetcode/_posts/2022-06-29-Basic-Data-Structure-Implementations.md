@@ -936,5 +936,4 @@ class MaxHeap {
 }
 ```
 
-> I would be covering some more basic data-structures' concept and implementation in this post.
-> Also, would be covering some advanced data-structures as well as their applications in some other post.
+{% include alert.html content="I would be covering some more basic Data-structures' concept and implementation in this post.Also, would be covering some advanced data-structures as well as their applications in some other post."%}

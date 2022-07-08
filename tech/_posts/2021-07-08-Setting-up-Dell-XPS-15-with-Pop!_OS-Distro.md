@@ -4,33 +4,37 @@ tags: [Linux, XPS-15]
 date: 2021-07-08
 ---
 
-I've got a [Dell XPS 15 9570](https://www.dell.com/en-in/work/shop/scc/sr/laptops/xps-laptops) (16gb ram, i7-8750H CPU) for work expecting it to have good support in Linux, considering other XPS laptops ship with Ubuntu. 
+I've got a [Dell XPS 15 9570](https://www.dell.com/en-in/work/shop/scc/sr/laptops/xps-laptops) (16GB RAM, i7-8750H CPU) for work expecting it to have good support in Linux, considering other XPS laptops ship with Ubuntu. 
 
-However, the massive (for a laptop) NVIDIA GeForce GTX 1050Ti with 4GB GDDR5 ensures installing Linux is not so smooth... 
+However, the massive (for a laptop) NVIDIA GeForce GTX 1050Ti with 4GB GDDR5 ensures installing Linux is not so smooth...🤔
 
-Any distro will boot into the live usb pretty well with the basic Intel graphics--however, you will eventually end up with a few issues trying to get NVIDIA to work. 
+Any distro will boot into the live usb pretty well with the basic Intel graphics however, you will eventually end up with a few issues trying to get NVIDIA to work. 
 
-To simplify, I decided to use [Pop!_OS](https://system76.com/pop), an Ubuntu-based distro from computer manufacturer [System76](https://system76.com). There is a few [differences from Ubuntu](https://support.system76.com/articles/difference-between-pop-ubuntu/), but most importantly Pop!_OS provides a special image specifically for NVIDIA machines so it is easy to get things working. 
 
-*Note: I did not install as a dual boot, so I am not sure how smoothly that would go, but check the [official docs](https://pop.system76.com/docs/dual-booting-windows/).*
+{% include alert.html content='To simplify the problem, I decided to use <a href="https://system76.com/pop"> <b>Pop!_OS</b></a>, an Ubuntu-based distro from computer manufacturer <a href="https://system76.com">System76</a>. <br><br>
+There are few <a href="https://support.system76.com/articles/difference-between-pop-ubuntu/">differences from Ubuntu </a>, but most importantly <b>Pop!_OS</b> provides a special image specifically for NVIDIA machines so it is easy to get things working.' %}
+
+
+**Note:** I did not install as a dual boot, so I am not sure how smoothly that would go, but check the [official docs](https://pop.system76.com/docs/dual-booting-windows/).
+I did later on, proceeded on doing a clean install of Official Windows for bringing things back to what they were.
 
 ## Set up and install Pop!_OS
 
 1. [Download Pop!_OS](https://pop.system76.com/) choosing the NVIDIA option.
 2. [Burn to a USB stick](https://evanwill.github.io/_drafts/notes/burn-iso.html)
-3. Plug in your Pop!_OS USB
-4. Boot XPS 15 and hit F2 as it boots to enter the BIOS menu
+3. Plug in your **Pop!_OS USB**
+4. Boot XPS 15 and hit F2 as it boots to enter the **BIOS menu**
 5. Enter BIOS:
-    - turn off Secure Boot (this is necessary for the NVIDIA drivers, and eventually if you want to use virtual machines)
-    - Settings > General > Advanced Boot Option, select "enable legacy option ROMS"
-    - SATA Operation, select "AHCI" (you need to turn "RAID" mode off because it is not supported by Linux, because its not worth while... If you are dual booting, check the steps on the windows side before doing this)
+    - turn off **Secure Boot** (this is necessary for the NVIDIA drivers, and eventually if you want to use virtual machines)
+    - Settings > General > Advanced Boot Option, select "**enable legacy option ROMS**"
+    - SATA Operation, select "**AHCI**" (you need to turn "RAID" mode off because it is not supported by Linux, because its not worth while... If you are dual booting, check the steps on the windows side before doing this)
 6. Save and exit BIOS
-7. Reboot and hit F12 as it boots to enter boot option menu
-8. Choose the first USB boot option
-9. After a minute, it should boot into a live desktop with the Pop installer running. You can test out the live system if desired.
+7. **Reboot** and hit F12 as it boots to enter boot option menu
+8. Choose the first **USB boot option**
+9. After a minute, it should boot into a live desktop with the **Pop installer** running. You can test out the live system if desired.
 10. Follow the installer steps. It is a bit different than other distros because setting up a user takes place after install, during your first boot. 
     - Check the [official docs](https://pop.system76.com/docs/install-pop-os/). 
-    - I chose to do a full disk encrypt (work computer), but keep in mind it will ask you for the encryption password (different than your user password) at every restart.
+    - I chose to do a **full disk encrypt** (work computer), but keep in mind it will ask you for the encryption password (different than your user password) at every restart.
 11. After installation is complete, reboot, and type in your encrypt password a few times
 12. Follow the steps to set up a user account
 13. Checkout your new system! See the [intro docs](https://support.system76.com/articles/pop-basics/) and [keyboard shortcuts](https://pop.system76.com/docs/keyboard-shortcuts/) for more info.
@@ -38,16 +42,16 @@ To simplify, I decided to use [Pop!_OS](https://system76.com/pop), an Ubuntu-bas
 ## Updates
 
 If you have used GNOME before, everything should be pretty familiar although it starts out more vanilla than an Ubuntu install.
-Click on Activities or hit Super (windows key) to bring up your menu.
+Click on **Activities** or hit Super (windows key) to bring up your menu.
 
 You should run updates, which brings up the first noticeable difference from Ubuntu.
-The "update manager" is gone, instead updates are applied from the "Pop!_Shop" software center. 
+The "**update manager**" is gone, instead updates are applied from the "Pop!_Shop" software center. 
 Open Pop!_Shop, click on Installed, and if updates are available a button will appear to install them.
 
 ## Graphics switch
 
 Another unique Pop! feature: click the upper right for the power menu, then click the battery icon / status meter. 
-This opens options to set power profile (performance / balanced / long life), or to switch between graphics cards (NVIDIA / Intel).
+This opens options to set **power profile** (performance / balanced / long life), or to switch between graphics cards (NVIDIA / Intel).
 Switching between graphics cards takes a minute and a restart -- its not instantaneous...
 
 ## Set up and customize desktop
@@ -56,9 +60,9 @@ Switching between graphics cards takes a minute and a restart -- its not instant
 
 Open Settings:
 
-- Settings > Background to get your wallpaper set.
-- Settings > Devices > Display to set up your monitor and turn on Night Light if you want a red shift in the evening.
-- Settings > Bluetooth, turn bluetooth off if you don’t use it, since it is a security risk. 
+- Settings > **Background** to get your wallpaper set.
+- Settings > Devices > **Display** to set up your monitor and turn on Night Light if you want a red shift in the evening.
+- Settings > **Bluetooth**, turn bluetooth off if you don’t use it, since it is a security risk. 
 
 ### Some go-to-have packages ...  
 
@@ -190,5 +194,6 @@ App essentials:
 
 ---
 
+{% include alert.html content='Update: <a href="https://evanwill.github.io/_drafts/notes/ubuntu20.html"> Ubuntu 20.04 installs works great</a>  on XPS 15. I have moved to Ubuntu 20.04, but most of this post is still relevant. The most recent versions of Pop!_OS have some unique gnome extensions, including an auto-tiling desktop option. ' %}
 
->Update: [Ubuntu 20.04 installs works great](https://evanwill.github.io/_drafts/notes/ubuntu20.html) on XPS 15. I have moved to Ubuntu 20.04, but most of this post is still relevant. The most recent versions of Pop!_OS have some unique gnome extensions, including an auto-tiling desktop option. 
+
