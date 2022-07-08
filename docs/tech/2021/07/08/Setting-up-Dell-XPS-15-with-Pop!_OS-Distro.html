@@ -12,15 +12,15 @@
 <meta property="og:title" content="Setting up Dell XPS 15 with Pop!_OS Distro" />
 <meta name="author" content="Akash Sharma" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="I’ve got a Dell XPS 15 9570 (16gb ram, i7-8750H CPU) for work expecting it to have good support in Linux, considering other XPS laptops ship with Ubuntu." />
-<meta property="og:description" content="I’ve got a Dell XPS 15 9570 (16gb ram, i7-8750H CPU) for work expecting it to have good support in Linux, considering other XPS laptops ship with Ubuntu." />
+<meta name="description" content="I’ve got a Dell XPS 15 9570 (16GB RAM, i7-8750H CPU) for work expecting it to have good support in Linux, considering other XPS laptops ship with Ubuntu." />
+<meta property="og:description" content="I’ve got a Dell XPS 15 9570 (16GB RAM, i7-8750H CPU) for work expecting it to have good support in Linux, considering other XPS laptops ship with Ubuntu." />
 <meta property="og:site_name" content="Akash Sharma’s Blog" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-07-08T00:00:00+05:30" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Setting up Dell XPS 15 with Pop!_OS Distro" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Akash Sharma"},"dateModified":"2021-07-08T00:00:00+05:30","datePublished":"2021-07-08T00:00:00+05:30","description":"I’ve got a Dell XPS 15 9570 (16gb ram, i7-8750H CPU) for work expecting it to have good support in Linux, considering other XPS laptops ship with Ubuntu.","headline":"Setting up Dell XPS 15 with Pop!_OS Distro","mainEntityOfPage":{"@type":"WebPage","@id":"/blog/tech/2021/07/08/Setting-up-Dell-XPS-15-with-Pop!_OS-Distro.html"},"url":"/blog/tech/2021/07/08/Setting-up-Dell-XPS-15-with-Pop!_OS-Distro.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Akash Sharma"},"dateModified":"2021-07-08T00:00:00+05:30","datePublished":"2021-07-08T00:00:00+05:30","description":"I’ve got a Dell XPS 15 9570 (16GB RAM, i7-8750H CPU) for work expecting it to have good support in Linux, considering other XPS laptops ship with Ubuntu.","headline":"Setting up Dell XPS 15 with Pop!_OS Distro","mainEntityOfPage":{"@type":"WebPage","@id":"/blog/tech/2021/07/08/Setting-up-Dell-XPS-15-with-Pop!_OS-Distro.html"},"url":"/blog/tech/2021/07/08/Setting-up-Dell-XPS-15-with-Pop!_OS-Distro.html"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="/blog/feed.xml" title="Akash Sharma's Blog" />
@@ -175,38 +175,42 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous" async></script>
 
 <article class="markdown-body">
-    <p>I’ve got a <a href="https://www.dell.com/en-in/work/shop/scc/sr/laptops/xps-laptops">Dell XPS 15 9570</a> (16gb ram, i7-8750H CPU) for work expecting it to have good support in Linux, considering other XPS laptops ship with Ubuntu.</p>
+    <p>I’ve got a <a href="https://www.dell.com/en-in/work/shop/scc/sr/laptops/xps-laptops">Dell XPS 15 9570</a> (16GB RAM, i7-8750H CPU) for work expecting it to have good support in Linux, considering other XPS laptops ship with Ubuntu.</p>
 
-<p>However, the massive (for a laptop) NVIDIA GeForce GTX 1050Ti with 4GB GDDR5 ensures installing Linux is not so smooth…</p>
+<p>However, the massive (for a laptop) NVIDIA GeForce GTX 1050Ti with 4GB GDDR5 ensures installing Linux is not so smooth…🤔</p>
 
-<p>Any distro will boot into the live usb pretty well with the basic Intel graphics–however, you will eventually end up with a few issues trying to get NVIDIA to work.</p>
+<p>Any distro will boot into the live usb pretty well with the basic Intel graphics however, you will eventually end up with a few issues trying to get NVIDIA to work.</p>
 
-<p>To simplify, I decided to use <a href="https://system76.com/pop">Pop!_OS</a>, an Ubuntu-based distro from computer manufacturer <a href="https://system76.com">System76</a>. There is a few <a href="https://support.system76.com/articles/difference-between-pop-ubuntu/">differences from Ubuntu</a>, but most importantly Pop!_OS provides a special image specifically for NVIDIA machines so it is easy to get things working.</p>
+<div class="alert alert-info" role="alert">
+  To simplify the problem, I decided to use <a href="https://system76.com/pop"> <b>Pop!_OS</b></a>, an Ubuntu-based distro from computer manufacturer <a href="https://system76.com">System76</a>. <br /><br />
+There are few <a href="https://support.system76.com/articles/difference-between-pop-ubuntu/">differences from Ubuntu </a>, but most importantly <b>Pop!_OS</b> provides a special image specifically for NVIDIA machines so it is easy to get things working.
+</div>
 
-<p><em>Note: I did not install as a dual boot, so I am not sure how smoothly that would go, but check the <a href="https://pop.system76.com/docs/dual-booting-windows/">official docs</a>.</em></p>
+<p><strong>Note:</strong> I did not install as a dual boot, so I am not sure how smoothly that would go, but check the <a href="https://pop.system76.com/docs/dual-booting-windows/">official docs</a>.
+I did later on, proceeded on doing a clean install of Official Windows for bringing things back to what they were.</p>
 
 <h2 id="set-up-and-install-pop_os">Set up and install Pop!_OS</h2>
 
 <ol>
   <li><a href="https://pop.system76.com/">Download Pop!_OS</a> choosing the NVIDIA option.</li>
   <li><a href="https://evanwill.github.io/_drafts/notes/burn-iso.html">Burn to a USB stick</a></li>
-  <li>Plug in your Pop!_OS USB</li>
-  <li>Boot XPS 15 and hit F2 as it boots to enter the BIOS menu</li>
+  <li>Plug in your <strong>Pop!_OS USB</strong></li>
+  <li>Boot XPS 15 and hit F2 as it boots to enter the <strong>BIOS menu</strong></li>
   <li>Enter BIOS:
     <ul>
-      <li>turn off Secure Boot (this is necessary for the NVIDIA drivers, and eventually if you want to use virtual machines)</li>
-      <li>Settings &gt; General &gt; Advanced Boot Option, select “enable legacy option ROMS”</li>
-      <li>SATA Operation, select “AHCI” (you need to turn “RAID” mode off because it is not supported by Linux, because its not worth while… If you are dual booting, check the steps on the windows side before doing this)</li>
+      <li>turn off <strong>Secure Boot</strong> (this is necessary for the NVIDIA drivers, and eventually if you want to use virtual machines)</li>
+      <li>Settings &gt; General &gt; Advanced Boot Option, select “<strong>enable legacy option ROMS</strong>”</li>
+      <li>SATA Operation, select “<strong>AHCI</strong>” (you need to turn “RAID” mode off because it is not supported by Linux, because its not worth while… If you are dual booting, check the steps on the windows side before doing this)</li>
     </ul>
   </li>
   <li>Save and exit BIOS</li>
-  <li>Reboot and hit F12 as it boots to enter boot option menu</li>
-  <li>Choose the first USB boot option</li>
-  <li>After a minute, it should boot into a live desktop with the Pop installer running. You can test out the live system if desired.</li>
+  <li><strong>Reboot</strong> and hit F12 as it boots to enter boot option menu</li>
+  <li>Choose the first <strong>USB boot option</strong></li>
+  <li>After a minute, it should boot into a live desktop with the <strong>Pop installer</strong> running. You can test out the live system if desired.</li>
   <li>Follow the installer steps. It is a bit different than other distros because setting up a user takes place after install, during your first boot.
     <ul>
       <li>Check the <a href="https://pop.system76.com/docs/install-pop-os/">official docs</a>.</li>
-      <li>I chose to do a full disk encrypt (work computer), but keep in mind it will ask you for the encryption password (different than your user password) at every restart.</li>
+      <li>I chose to do a <strong>full disk encrypt</strong> (work computer), but keep in mind it will ask you for the encryption password (different than your user password) at every restart.</li>
     </ul>
   </li>
   <li>After installation is complete, reboot, and type in your encrypt password a few times</li>
@@ -217,16 +221,16 @@
 <h2 id="updates">Updates</h2>
 
 <p>If you have used GNOME before, everything should be pretty familiar although it starts out more vanilla than an Ubuntu install.
-Click on Activities or hit Super (windows key) to bring up your menu.</p>
+Click on <strong>Activities</strong> or hit Super (windows key) to bring up your menu.</p>
 
 <p>You should run updates, which brings up the first noticeable difference from Ubuntu.
-The “update manager” is gone, instead updates are applied from the “Pop!_Shop” software center. 
+The “<strong>update manager</strong>” is gone, instead updates are applied from the “Pop!_Shop” software center. 
 Open Pop!_Shop, click on Installed, and if updates are available a button will appear to install them.</p>
 
 <h2 id="graphics-switch">Graphics switch</h2>
 
 <p>Another unique Pop! feature: click the upper right for the power menu, then click the battery icon / status meter. 
-This opens options to set power profile (performance / balanced / long life), or to switch between graphics cards (NVIDIA / Intel).
+This opens options to set <strong>power profile</strong> (performance / balanced / long life), or to switch between graphics cards (NVIDIA / Intel).
 Switching between graphics cards takes a minute and a restart – its not instantaneous…</p>
 
 <h2 id="set-up-and-customize-desktop">Set up and customize desktop</h2>
@@ -236,9 +240,9 @@ Switching between graphics cards takes a minute and a restart – its not instan
 <p>Open Settings:</p>
 
 <ul>
-  <li>Settings &gt; Background to get your wallpaper set.</li>
-  <li>Settings &gt; Devices &gt; Display to set up your monitor and turn on Night Light if you want a red shift in the evening.</li>
-  <li>Settings &gt; Bluetooth, turn bluetooth off if you don’t use it, since it is a security risk.</li>
+  <li>Settings &gt; <strong>Background</strong> to get your wallpaper set.</li>
+  <li>Settings &gt; Devices &gt; <strong>Display</strong> to set up your monitor and turn on Night Light if you want a red shift in the evening.</li>
+  <li>Settings &gt; <strong>Bluetooth</strong>, turn bluetooth off if you don’t use it, since it is a security risk.</li>
 </ul>
 
 <h3 id="some-go-to-have-packages-">Some go-to-have packages …</h3>
@@ -384,9 +388,10 @@ Let me know if you do!</p>
 
 <hr />
 
-<blockquote>
-  <p>Update: <a href="https://evanwill.github.io/_drafts/notes/ubuntu20.html">Ubuntu 20.04 installs works great</a> on XPS 15. I have moved to Ubuntu 20.04, but most of this post is still relevant. The most recent versions of Pop!_OS have some unique gnome extensions, including an auto-tiling desktop option.</p>
-</blockquote>
+<div class="alert alert-info" role="alert">
+  Update: <a href="https://evanwill.github.io/_drafts/notes/ubuntu20.html"> Ubuntu 20.04 installs works great</a>  on XPS 15. I have moved to Ubuntu 20.04, but most of this post is still relevant. The most recent versions of Pop!_OS have some unique gnome extensions, including an auto-tiling desktop option. 
+</div>
+
 
 </article>
 
@@ -401,7 +406,7 @@ Let me know if you do!</p>
   }
 </style>
 <hr></hr>
-<center><p>If you liked it, share it with your friends and help this blog to grow!</p></center>
+<center><p>If you liked it, please share it with your friends and help this blog to grow!</p></center>
 <!-- <div class="sharethis-inline-share-buttons"></div> -->
 <center><div class="addthis_inline_share_toolbox"></div></center>
 <br>

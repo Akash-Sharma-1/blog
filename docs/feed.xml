@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="/blog/" rel="alternate" type="text/html" /><updated>2022-07-08T02:09:14+05:30</updated><id>/blog/feed.xml</id><title type="html">Akash Sharma’s Blog</title><subtitle>Reading, Learning, Thinking and Writing</subtitle><author><name>Akash Sharma</name></author><entry><title type="html">Basic Data Structure Concepts and Implementations</title><link href="/blog/leetcode/stack/queue/linked-list/tree/trie/disjoint%20set/heap/2022/06/29/Basic-Data-Structure-Implementations.html" rel="alternate" type="text/html" title="Basic Data Structure Concepts and Implementations" /><published>2022-06-29T00:00:00+05:30</published><updated>2022-06-29T00:00:00+05:30</updated><id>/blog/leetcode/stack/queue/linked-list/tree/trie/disjoint%20set/heap/2022/06/29/Basic-Data-Structure-Implementations</id><content type="html" xml:base="/blog/leetcode/stack/queue/linked-list/tree/trie/disjoint%20set/heap/2022/06/29/Basic-Data-Structure-Implementations.html">&lt;blockquote&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="/blog/" rel="alternate" type="text/html" /><updated>2022-07-08T22:18:13+05:30</updated><id>/blog/feed.xml</id><title type="html">Akash Sharma’s Blog</title><subtitle>Reading, Learning, Thinking and Writing</subtitle><author><name>Akash Sharma</name></author><entry><title type="html">Basic Data Structure Concepts and Implementations</title><link href="/blog/leetcode/stack/queue/linked-list/tree/trie/disjoint%20set/heap/2022/06/29/Basic-Data-Structure-Implementations.html" rel="alternate" type="text/html" title="Basic Data Structure Concepts and Implementations" /><published>2022-06-29T00:00:00+05:30</published><updated>2022-06-29T00:00:00+05:30</updated><id>/blog/leetcode/stack/queue/linked-list/tree/trie/disjoint%20set/heap/2022/06/29/Basic-Data-Structure-Implementations</id><content type="html" xml:base="/blog/leetcode/stack/queue/linked-list/tree/trie/disjoint%20set/heap/2022/06/29/Basic-Data-Structure-Implementations.html">&lt;blockquote&gt;
   &lt;p&gt;This post is a basic cheat-sheet on some of the basics yet crucial data structures’ underlying concepts and high level implementations. I also try to cover some more interesting related ideas for some of these data structures&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -923,41 +923,44 @@ The index of the left-child of each node is &lt;code class=&quot;language-plaint
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;I would be covering some more basic data-structures’ concept and implementation in this post.
-Also, would be covering some advanced data-structures as well as their applications in some other post.&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>Akash Sharma</name></author><category term="[&quot;Stack&quot;, &quot;Queue&quot;, &quot;Linked-list&quot;, &quot;Tree&quot;, &quot;Trie&quot;, &quot;Disjoint Set&quot;, &quot;Heap&quot;]" /><summary type="html">This post is a basic cheat-sheet on some of the basics yet crucial data structures’ underlying concepts and high level implementations. I also try to cover some more interesting related ideas for some of these data structures</summary></entry><entry><title type="html">Setting up Dell XPS 15 with Pop!_OS Distro</title><link href="/blog/tech/2021/07/08/Setting-up-Dell-XPS-15-with-Pop!_OS-Distro.html" rel="alternate" type="text/html" title="Setting up Dell XPS 15 with Pop!_OS Distro" /><published>2021-07-08T00:00:00+05:30</published><updated>2021-07-08T00:00:00+05:30</updated><id>/blog/tech/2021/07/08/Setting-up-Dell-XPS-15-with-Pop!_OS-Distro</id><content type="html" xml:base="/blog/tech/2021/07/08/Setting-up-Dell-XPS-15-with-Pop!_OS-Distro.html">&lt;p&gt;I’ve got a &lt;a href=&quot;https://www.dell.com/en-in/work/shop/scc/sr/laptops/xps-laptops&quot;&gt;Dell XPS 15 9570&lt;/a&gt; (16gb ram, i7-8750H CPU) for work expecting it to have good support in Linux, considering other XPS laptops ship with Ubuntu.&lt;/p&gt;
+&lt;div class=&quot;alert alert-info&quot; role=&quot;alert&quot;&gt;
+  I would be covering some more basic Data-structures' concept and implementation in this post.Also, would be covering some advanced data-structures as well as their applications in some other post.
+&lt;/div&gt;</content><author><name>Akash Sharma</name></author><category term="[&quot;Stack&quot;, &quot;Queue&quot;, &quot;Linked-list&quot;, &quot;Tree&quot;, &quot;Trie&quot;, &quot;Disjoint Set&quot;, &quot;Heap&quot;]" /><summary type="html">This post is a basic cheat-sheet on some of the basics yet crucial data structures’ underlying concepts and high level implementations. I also try to cover some more interesting related ideas for some of these data structures</summary></entry><entry><title type="html">Setting up Dell XPS 15 with Pop!_OS Distro</title><link href="/blog/tech/2021/07/08/Setting-up-Dell-XPS-15-with-Pop!_OS-Distro.html" rel="alternate" type="text/html" title="Setting up Dell XPS 15 with Pop!_OS Distro" /><published>2021-07-08T00:00:00+05:30</published><updated>2021-07-08T00:00:00+05:30</updated><id>/blog/tech/2021/07/08/Setting-up-Dell-XPS-15-with-Pop!_OS-Distro</id><content type="html" xml:base="/blog/tech/2021/07/08/Setting-up-Dell-XPS-15-with-Pop!_OS-Distro.html">&lt;p&gt;I’ve got a &lt;a href=&quot;https://www.dell.com/en-in/work/shop/scc/sr/laptops/xps-laptops&quot;&gt;Dell XPS 15 9570&lt;/a&gt; (16GB RAM, i7-8750H CPU) for work expecting it to have good support in Linux, considering other XPS laptops ship with Ubuntu.&lt;/p&gt;
 
-&lt;p&gt;However, the massive (for a laptop) NVIDIA GeForce GTX 1050Ti with 4GB GDDR5 ensures installing Linux is not so smooth…&lt;/p&gt;
+&lt;p&gt;However, the massive (for a laptop) NVIDIA GeForce GTX 1050Ti with 4GB GDDR5 ensures installing Linux is not so smooth…🤔&lt;/p&gt;
 
-&lt;p&gt;Any distro will boot into the live usb pretty well with the basic Intel graphics–however, you will eventually end up with a few issues trying to get NVIDIA to work.&lt;/p&gt;
+&lt;p&gt;Any distro will boot into the live usb pretty well with the basic Intel graphics however, you will eventually end up with a few issues trying to get NVIDIA to work.&lt;/p&gt;
 
-&lt;p&gt;To simplify, I decided to use &lt;a href=&quot;https://system76.com/pop&quot;&gt;Pop!_OS&lt;/a&gt;, an Ubuntu-based distro from computer manufacturer &lt;a href=&quot;https://system76.com&quot;&gt;System76&lt;/a&gt;. There is a few &lt;a href=&quot;https://support.system76.com/articles/difference-between-pop-ubuntu/&quot;&gt;differences from Ubuntu&lt;/a&gt;, but most importantly Pop!_OS provides a special image specifically for NVIDIA machines so it is easy to get things working.&lt;/p&gt;
+&lt;div class=&quot;alert alert-info&quot; role=&quot;alert&quot;&gt;
+  To simplify the problem, I decided to use &lt;a href=&quot;https://system76.com/pop&quot;&gt; &lt;b&gt;Pop!_OS&lt;/b&gt;&lt;/a&gt;, an Ubuntu-based distro from computer manufacturer &lt;a href=&quot;https://system76.com&quot;&gt;System76&lt;/a&gt;. &lt;br /&gt;&lt;br /&gt;
+There are few &lt;a href=&quot;https://support.system76.com/articles/difference-between-pop-ubuntu/&quot;&gt;differences from Ubuntu &lt;/a&gt;, but most importantly &lt;b&gt;Pop!_OS&lt;/b&gt; provides a special image specifically for NVIDIA machines so it is easy to get things working.
+&lt;/div&gt;
 
-&lt;p&gt;&lt;em&gt;Note: I did not install as a dual boot, so I am not sure how smoothly that would go, but check the &lt;a href=&quot;https://pop.system76.com/docs/dual-booting-windows/&quot;&gt;official docs&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; I did not install as a dual boot, so I am not sure how smoothly that would go, but check the &lt;a href=&quot;https://pop.system76.com/docs/dual-booting-windows/&quot;&gt;official docs&lt;/a&gt;.
+I did later on, proceeded on doing a clean install of Official Windows for bringing things back to what they were.&lt;/p&gt;
 
 &lt;h2 id=&quot;set-up-and-install-pop_os&quot;&gt;Set up and install Pop!_OS&lt;/h2&gt;
 
 &lt;ol&gt;
   &lt;li&gt;&lt;a href=&quot;https://pop.system76.com/&quot;&gt;Download Pop!_OS&lt;/a&gt; choosing the NVIDIA option.&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://evanwill.github.io/_drafts/notes/burn-iso.html&quot;&gt;Burn to a USB stick&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Plug in your Pop!_OS USB&lt;/li&gt;
-  &lt;li&gt;Boot XPS 15 and hit F2 as it boots to enter the BIOS menu&lt;/li&gt;
+  &lt;li&gt;Plug in your &lt;strong&gt;Pop!_OS USB&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Boot XPS 15 and hit F2 as it boots to enter the &lt;strong&gt;BIOS menu&lt;/strong&gt;&lt;/li&gt;
   &lt;li&gt;Enter BIOS:
     &lt;ul&gt;
-      &lt;li&gt;turn off Secure Boot (this is necessary for the NVIDIA drivers, and eventually if you want to use virtual machines)&lt;/li&gt;
-      &lt;li&gt;Settings &amp;gt; General &amp;gt; Advanced Boot Option, select “enable legacy option ROMS”&lt;/li&gt;
-      &lt;li&gt;SATA Operation, select “AHCI” (you need to turn “RAID” mode off because it is not supported by Linux, because its not worth while… If you are dual booting, check the steps on the windows side before doing this)&lt;/li&gt;
+      &lt;li&gt;turn off &lt;strong&gt;Secure Boot&lt;/strong&gt; (this is necessary for the NVIDIA drivers, and eventually if you want to use virtual machines)&lt;/li&gt;
+      &lt;li&gt;Settings &amp;gt; General &amp;gt; Advanced Boot Option, select “&lt;strong&gt;enable legacy option ROMS&lt;/strong&gt;”&lt;/li&gt;
+      &lt;li&gt;SATA Operation, select “&lt;strong&gt;AHCI&lt;/strong&gt;” (you need to turn “RAID” mode off because it is not supported by Linux, because its not worth while… If you are dual booting, check the steps on the windows side before doing this)&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;Save and exit BIOS&lt;/li&gt;
-  &lt;li&gt;Reboot and hit F12 as it boots to enter boot option menu&lt;/li&gt;
-  &lt;li&gt;Choose the first USB boot option&lt;/li&gt;
-  &lt;li&gt;After a minute, it should boot into a live desktop with the Pop installer running. You can test out the live system if desired.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Reboot&lt;/strong&gt; and hit F12 as it boots to enter boot option menu&lt;/li&gt;
+  &lt;li&gt;Choose the first &lt;strong&gt;USB boot option&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;After a minute, it should boot into a live desktop with the &lt;strong&gt;Pop installer&lt;/strong&gt; running. You can test out the live system if desired.&lt;/li&gt;
   &lt;li&gt;Follow the installer steps. It is a bit different than other distros because setting up a user takes place after install, during your first boot.
     &lt;ul&gt;
       &lt;li&gt;Check the &lt;a href=&quot;https://pop.system76.com/docs/install-pop-os/&quot;&gt;official docs&lt;/a&gt;.&lt;/li&gt;
-      &lt;li&gt;I chose to do a full disk encrypt (work computer), but keep in mind it will ask you for the encryption password (different than your user password) at every restart.&lt;/li&gt;
+      &lt;li&gt;I chose to do a &lt;strong&gt;full disk encrypt&lt;/strong&gt; (work computer), but keep in mind it will ask you for the encryption password (different than your user password) at every restart.&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;After installation is complete, reboot, and type in your encrypt password a few times&lt;/li&gt;
@@ -968,16 +971,16 @@ Also, would be covering some advanced data-structures as well as their applicati
 &lt;h2 id=&quot;updates&quot;&gt;Updates&lt;/h2&gt;
 
 &lt;p&gt;If you have used GNOME before, everything should be pretty familiar although it starts out more vanilla than an Ubuntu install.
-Click on Activities or hit Super (windows key) to bring up your menu.&lt;/p&gt;
+Click on &lt;strong&gt;Activities&lt;/strong&gt; or hit Super (windows key) to bring up your menu.&lt;/p&gt;
 
 &lt;p&gt;You should run updates, which brings up the first noticeable difference from Ubuntu.
-The “update manager” is gone, instead updates are applied from the “Pop!_Shop” software center. 
+The “&lt;strong&gt;update manager&lt;/strong&gt;” is gone, instead updates are applied from the “Pop!_Shop” software center. 
 Open Pop!_Shop, click on Installed, and if updates are available a button will appear to install them.&lt;/p&gt;
 
 &lt;h2 id=&quot;graphics-switch&quot;&gt;Graphics switch&lt;/h2&gt;
 
 &lt;p&gt;Another unique Pop! feature: click the upper right for the power menu, then click the battery icon / status meter. 
-This opens options to set power profile (performance / balanced / long life), or to switch between graphics cards (NVIDIA / Intel).
+This opens options to set &lt;strong&gt;power profile&lt;/strong&gt; (performance / balanced / long life), or to switch between graphics cards (NVIDIA / Intel).
 Switching between graphics cards takes a minute and a restart – its not instantaneous…&lt;/p&gt;
 
 &lt;h2 id=&quot;set-up-and-customize-desktop&quot;&gt;Set up and customize desktop&lt;/h2&gt;
@@ -987,9 +990,9 @@ Switching between graphics cards takes a minute and a restart – its not instan
 &lt;p&gt;Open Settings:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Settings &amp;gt; Background to get your wallpaper set.&lt;/li&gt;
-  &lt;li&gt;Settings &amp;gt; Devices &amp;gt; Display to set up your monitor and turn on Night Light if you want a red shift in the evening.&lt;/li&gt;
-  &lt;li&gt;Settings &amp;gt; Bluetooth, turn bluetooth off if you don’t use it, since it is a security risk.&lt;/li&gt;
+  &lt;li&gt;Settings &amp;gt; &lt;strong&gt;Background&lt;/strong&gt; to get your wallpaper set.&lt;/li&gt;
+  &lt;li&gt;Settings &amp;gt; Devices &amp;gt; &lt;strong&gt;Display&lt;/strong&gt; to set up your monitor and turn on Night Light if you want a red shift in the evening.&lt;/li&gt;
+  &lt;li&gt;Settings &amp;gt; &lt;strong&gt;Bluetooth&lt;/strong&gt;, turn bluetooth off if you don’t use it, since it is a security risk.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;some-go-to-have-packages-&quot;&gt;Some go-to-have packages …&lt;/h3&gt;
@@ -1135,9 +1138,9 @@ Let me know if you do!&lt;/p&gt;
 
 &lt;hr /&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;Update: &lt;a href=&quot;https://evanwill.github.io/_drafts/notes/ubuntu20.html&quot;&gt;Ubuntu 20.04 installs works great&lt;/a&gt; on XPS 15. I have moved to Ubuntu 20.04, but most of this post is still relevant. The most recent versions of Pop!_OS have some unique gnome extensions, including an auto-tiling desktop option.&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>Akash Sharma</name></author><category term="tech" /><category term="Linux" /><category term="XPS-15" /><summary type="html">I’ve got a Dell XPS 15 9570 (16gb ram, i7-8750H CPU) for work expecting it to have good support in Linux, considering other XPS laptops ship with Ubuntu.</summary></entry><entry><title type="html">Exploration of Bayesian Optimization and Gaussian Processes</title><link href="/blog/tech/2020/10/14/Exploration-of-Bayesian-Optimization-&-Gaussian-Processes.html" rel="alternate" type="text/html" title="Exploration of Bayesian Optimization and Gaussian Processes" /><published>2020-10-14T00:00:00+05:30</published><updated>2020-10-14T00:00:00+05:30</updated><id>/blog/tech/2020/10/14/Exploration-of-Bayesian-Optimization-&amp;-Gaussian-Processes</id><content type="html" xml:base="/blog/tech/2020/10/14/Exploration-of-Bayesian-Optimization-&amp;-Gaussian-Processes.html">&lt;blockquote&gt;
+&lt;div class=&quot;alert alert-info&quot; role=&quot;alert&quot;&gt;
+  Update: &lt;a href=&quot;https://evanwill.github.io/_drafts/notes/ubuntu20.html&quot;&gt; Ubuntu 20.04 installs works great&lt;/a&gt;  on XPS 15. I have moved to Ubuntu 20.04, but most of this post is still relevant. The most recent versions of Pop!_OS have some unique gnome extensions, including an auto-tiling desktop option. 
+&lt;/div&gt;</content><author><name>Akash Sharma</name></author><category term="tech" /><category term="Linux" /><category term="XPS-15" /><summary type="html">I’ve got a Dell XPS 15 9570 (16GB RAM, i7-8750H CPU) for work expecting it to have good support in Linux, considering other XPS laptops ship with Ubuntu.</summary></entry><entry><title type="html">Exploration of Bayesian Optimization and Gaussian Processes</title><link href="/blog/tech/2020/10/14/Exploration-of-Bayesian-Optimization-&-Gaussian-Processes.html" rel="alternate" type="text/html" title="Exploration of Bayesian Optimization and Gaussian Processes" /><published>2020-10-14T00:00:00+05:30</published><updated>2020-10-14T00:00:00+05:30</updated><id>/blog/tech/2020/10/14/Exploration-of-Bayesian-Optimization-&amp;-Gaussian-Processes</id><content type="html" xml:base="/blog/tech/2020/10/14/Exploration-of-Bayesian-Optimization-&amp;-Gaussian-Processes.html">&lt;blockquote&gt;
   &lt;p&gt;Bayesian Optimization provides a principled technique based on Bayes Theorem to direct a search of a global optimization problem that is efficient and effective. Bayesian Optimization is often used in applied machine learning to tune the hyperparameters of a given well-performing model on a validation dataset.&lt;/p&gt;
 &lt;/blockquote&gt;
 
