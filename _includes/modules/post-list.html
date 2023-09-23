@@ -19,10 +19,10 @@
                 {% endfor %}
 
                 {% for category in post.categories %}
-                    {% if category != "leetcode" and category != "tech" %}
+                    {% if category != "algorithms" and category != "tech" %}
                         <span class="pr-3">
                             <span class="iconify" data-icon="octicon:tag"></span>
-                            <a class="text-muted" href="{{ site.baseurl }}/leetcode/categories/#{{ category }}">{{ category }}</a>
+                            <a class="text-muted" href="{{ site.baseurl }}/algorithms/categories/#{{ category }}">{{ category }}</a>
                         </span>
                     {% endif %}
                 {% endfor %}

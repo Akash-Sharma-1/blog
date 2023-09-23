@@ -3,9 +3,9 @@
     "lang": "English",
     "name": "Akash Sharma’s Blog",
     "short_name": "Akash Sharma’s Blog",
-    "scope": "/blog/",
+    "scope": "/",
     "display": "standalone",
-    "start_url": "https://akash-sharma-1.github.io/blog",
+    "start_url": "https://blog.akashomatics.space/",
     "background_color": "transparent",
     "theme_color": "transparent",
     "description": "Reading, Learning, Thinking and Writing",
@@ -14,10 +14,10 @@
     "prefer_related_applications": false,
     "icons": [
         {
-            "src": "https://akash-sharma-1.github.io/blog/assets/images/thumbnail.png",
+            "src": "https://blog.akashomatics.space//assets/images/thumbnail.png",
             "sizes": "96x96",
             "type": "image/png"
         }
     ],
-    "url": "https://akash-sharma-1.github.io/blog"
+    "url": "https://blog.akashomatics.space/"
 }

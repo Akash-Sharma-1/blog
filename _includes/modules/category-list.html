@@ -1,7 +1,7 @@
 <div class="tag-list">
     {% assign tags = site.categories | sort %}
     {% for tag in tags %}
-        {% if tag[0] != "leetcode" and tag[0] != "tech" %}
+        {% if tag[0] != "algorithms" and tag[0] != "tech" %}
             <div class="name mb-3" id="{{ tag[0] }}">{{ tag[0] }}</div>
             <ul class="text-muted">
                 {% for post in tag[1] %}

@@ -1,12 +1,12 @@
 {% if page.layout == "post" %}
     {% include modules/search-box.html %}
     {% include modules/toc.html %}
-{% elsif page.url == "/leetcode/index.html" %}
+{% elsif page.url == "/algorithms/index.html" %}
     {% include modules/search-box.html %}
     {% include modules/category-list-group.html %}
-{% elsif page.url == "/leetcode/categories/" %}
+{% elsif page.url == "/algorithms/categories/" %}
     {% include modules/search-box.html %}
-    {% include modules/category-list-group.html %}
+    {% include modules/algorithms-blog-list.html %}
 {% elsif page.url == "/classification/" %}
     {% include modules/search-box.html %}
     {% include modules/tag-list-group.html %}
@@ -14,14 +14,21 @@
     {% if page.url != "/about/" %}
         {% include modules/search-box.html %}
         {% include modules/tag-cloud.html %}
+        <hr/>
       {% if site.github.public_repositories != null %}
           {% include modules/repository-list.html %}
+            <hr/>
+          {% include modules/papers-list.html %}
       {% endif %}
     {% endif %}
     {% if page.url == "/about/" %}
       {% include modules/connect-with-me.html %}
+      <hr/>
       {% if site.github.public_repositories != null %}
           {% include modules/repository-list.html %}
+            <hr/>
+          {% include modules/papers-list.html %}
+
       {% endif %}
     {% endif %}
 

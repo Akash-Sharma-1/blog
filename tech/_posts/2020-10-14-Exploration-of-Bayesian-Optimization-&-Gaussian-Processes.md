@@ -103,7 +103,7 @@ plt.legend();
 ```
 
 
-![png](/blog/img/2018-03-21/output_4_0.png)
+![png](/img/2018-03-21/output_4_0.png)
 
 
 Goal is to find the global optimum on the left in a small number of steps. The next step is to implement the acquisition function defined in Equation (2) as `expected_improvement` function.
@@ -231,7 +231,7 @@ for i in range(n_iter):
 ```
 
 
-![png](/blog/img/2018-03-21/output_10_0.png)
+![png](/img/2018-03-21/output_10_0.png)
 
 
 Note how the two initial samples initially drive search into the direction of the local maximum on the right side but exploration allows the algorithm to escape from that local optimum and find the global optimum on the left side. Also note how sampling point proposals often fall within regions of high uncertainty (exploration) and are not only driven by the highest surrogate function values (exploitation).
@@ -246,7 +246,7 @@ plot_convergence(X_sample, Y_sample)
 ```
 
 
-![png](/blog/img/2018-03-21/output_12_0.png)
+![png](/img/2018-03-21/output_12_0.png)
 
 
 ## Bayesian optimization libraries
@@ -286,7 +286,7 @@ plot_approximation(gpr, X, Y, r.x_iters, -r.func_vals, show_legend=True)
 ```
 
 
-![png](/blog/img/2018-03-21/output_14_0.png)
+![png](/img/2018-03-21/output_14_0.png)
 
 
 
@@ -295,7 +295,7 @@ plot_convergence(np.array(r.x_iters), -r.func_vals)
 ```
 
 
-![png](/blog/img/2018-03-21/output_15_0.png)
+![png](/img/2018-03-21/output_15_0.png)
 
 
 ## GPyOpt
@@ -330,7 +330,7 @@ optimizer.plot_acquisition()
 ```
 
 
-![png](/blog/img/2018-03-21/output_17_0.png)
+![png](/img/2018-03-21/output_17_0.png)
 
 
 
@@ -339,7 +339,7 @@ optimizer.plot_convergence()
 ```
 
 
-![png](/blog/img/2018-03-21/output_18_0.png)
+![png](/img/2018-03-21/output_18_0.png)
 
 
 ## Application
@@ -449,7 +449,7 @@ plt.legend();
 
 
 
-![png](/blog/img/2018-03-21/output_26_1.png)
+![png](/img/2018-03-21/output_26_1.png)
 
 
 ## References

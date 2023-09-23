@@ -42,10 +42,10 @@
                 {% endfor %}
 
                 {% for category in page.categories %}
-                    {% if category != "leetcode" and category != "tech" %}
+                    {% if category != "algorithms" and category != "tech" %}
                         <span class="titlebar-info pr-3">
                             <span class="iconify" data-icon="octicon:tag"></span>
-                            <a class="text-light" href="{{ site.baseurl }}/leetcode/categories/#{{ category }}">{{ category }}</a>
+                            <a class="text-light" href="{{ site.baseurl }}/algorithms/categories/#{{ category }}">{{ category }}</a>
                         </span>
                     {% endif %}
                 {% endfor %}

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="/blog/" rel="alternate" type="text/html" /><updated>2023-09-18T23:18:23+05:30</updated><id>/blog/feed.xml</id><title type="html">Akash Sharma’s Blog</title><subtitle>Reading, Learning, Thinking and Writing</subtitle><author><name>Akash Sharma</name></author><entry><title type="html">Basic Data Structure Concepts and Implementations</title><link href="/blog/leetcode/stack/queue/linked-list/tree/trie/disjoint%20set/heap/2022/06/29/Basic-Data-Structure-Implementations.html" rel="alternate" type="text/html" title="Basic Data Structure Concepts and Implementations" /><published>2022-06-29T00:00:00+05:30</published><updated>2022-06-29T00:00:00+05:30</updated><id>/blog/leetcode/stack/queue/linked-list/tree/trie/disjoint%20set/heap/2022/06/29/Basic-Data-Structure-Implementations</id><content type="html" xml:base="/blog/leetcode/stack/queue/linked-list/tree/trie/disjoint%20set/heap/2022/06/29/Basic-Data-Structure-Implementations.html">&lt;blockquote&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-09-24T01:50:57+05:30</updated><id>/feed.xml</id><title type="html">Akash Sharma’s Blog</title><subtitle>Reading, Learning, Thinking and Writing</subtitle><author><name>Akash Sharma</name></author><entry><title type="html">Basic Data Structure Concepts and Implementations</title><link href="/algorithms/stack/queue/linked-list/tree/trie/disjoint%20set/heap/2022/06/29/Basic-Data-Structure-Implementations.html" rel="alternate" type="text/html" title="Basic Data Structure Concepts and Implementations" /><published>2022-06-29T00:00:00+05:30</published><updated>2022-06-29T00:00:00+05:30</updated><id>/algorithms/stack/queue/linked-list/tree/trie/disjoint%20set/heap/2022/06/29/Basic-Data-Structure-Implementations</id><content type="html" xml:base="/algorithms/stack/queue/linked-list/tree/trie/disjoint%20set/heap/2022/06/29/Basic-Data-Structure-Implementations.html">&lt;blockquote&gt;
   &lt;p&gt;This post is a basic cheat-sheet on some of the basics yet crucial data structures’ underlying concepts and high level implementations. I also try to cover some more interesting related ideas for some of these data structures&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -925,7 +925,7 @@ The index of the left-child of each node is &lt;code class=&quot;language-plaint
 
 &lt;div class=&quot;alert alert-info&quot; role=&quot;alert&quot;&gt;
   I would be covering some more basic Data-structures&apos; concept and implementation in this post.Also, would be covering some advanced data-structures as well as their applications in some other post.
-&lt;/div&gt;</content><author><name>Akash Sharma</name></author><category term="[&quot;Stack&quot;, &quot;Queue&quot;, &quot;Linked-list&quot;, &quot;Tree&quot;, &quot;Trie&quot;, &quot;Disjoint Set&quot;, &quot;Heap&quot;]" /><summary type="html">This post is a basic cheat-sheet on some of the basics yet crucial data structures’ underlying concepts and high level implementations. I also try to cover some more interesting related ideas for some of these data structures</summary></entry><entry><title type="html">Setting up Dell XPS 15 with Pop!_OS Distro</title><link href="/blog/tech/2021/07/08/Setting-up-Dell-XPS-15-with-Pop!_OS-Distro.html" rel="alternate" type="text/html" title="Setting up Dell XPS 15 with Pop!_OS Distro" /><published>2021-07-08T00:00:00+05:30</published><updated>2021-07-08T00:00:00+05:30</updated><id>/blog/tech/2021/07/08/Setting-up-Dell-XPS-15-with-Pop!_OS-Distro</id><content type="html" xml:base="/blog/tech/2021/07/08/Setting-up-Dell-XPS-15-with-Pop!_OS-Distro.html">&lt;p&gt;I’ve got a &lt;a href=&quot;https://www.dell.com/en-in/work/shop/scc/sr/laptops/xps-laptops&quot;&gt;Dell XPS 15 9570&lt;/a&gt; (16GB RAM, i7-8750H CPU) for work expecting it to have good support in Linux, considering other XPS laptops ship with Ubuntu.&lt;/p&gt;
+&lt;/div&gt;</content><author><name>Akash Sharma</name></author><category term="[&quot;Stack&quot;, &quot;Queue&quot;, &quot;Linked-list&quot;, &quot;Tree&quot;, &quot;Trie&quot;, &quot;Disjoint Set&quot;, &quot;Heap&quot;]" /><summary type="html">This post is a basic cheat-sheet on some of the basics yet crucial data structures’ underlying concepts and high level implementations. I also try to cover some more interesting related ideas for some of these data structures</summary></entry><entry><title type="html">Setting up Dell XPS 15 with Pop!_OS Distro</title><link href="/tech/2021/07/08/Setting-up-Dell-XPS-15-with-Pop!_OS-Distro.html" rel="alternate" type="text/html" title="Setting up Dell XPS 15 with Pop!_OS Distro" /><published>2021-07-08T00:00:00+05:30</published><updated>2021-07-08T00:00:00+05:30</updated><id>/tech/2021/07/08/Setting-up-Dell-XPS-15-with-Pop!_OS-Distro</id><content type="html" xml:base="/tech/2021/07/08/Setting-up-Dell-XPS-15-with-Pop!_OS-Distro.html">&lt;p&gt;I’ve got a &lt;a href=&quot;https://www.dell.com/en-in/work/shop/scc/sr/laptops/xps-laptops&quot;&gt;Dell XPS 15 9570&lt;/a&gt; (16GB RAM, i7-8750H CPU) for work expecting it to have good support in Linux, considering other XPS laptops ship with Ubuntu.&lt;/p&gt;
 
 &lt;p&gt;However, the massive (for a laptop) NVIDIA GeForce GTX 1050Ti with 4GB GDDR5 ensures installing Linux is not so smooth…🤔&lt;/p&gt;
 
@@ -1140,7 +1140,7 @@ Let me know if you do!&lt;/p&gt;
 
 &lt;div class=&quot;alert alert-info&quot; role=&quot;alert&quot;&gt;
   Update: &lt;a href=&quot;https://evanwill.github.io/_drafts/notes/ubuntu20.html&quot;&gt; Ubuntu 20.04 installs works great&lt;/a&gt;  on XPS 15. I have moved to Ubuntu 20.04, but most of this post is still relevant. The most recent versions of Pop!_OS have some unique gnome extensions, including an auto-tiling desktop option. 
-&lt;/div&gt;</content><author><name>Akash Sharma</name></author><category term="tech" /><category term="Linux" /><category term="XPS-15" /><summary type="html">I’ve got a Dell XPS 15 9570 (16GB RAM, i7-8750H CPU) for work expecting it to have good support in Linux, considering other XPS laptops ship with Ubuntu.</summary></entry><entry><title type="html">Exploration of Bayesian Optimization and Gaussian Processes</title><link href="/blog/tech/2020/10/14/Exploration-of-Bayesian-Optimization-&-Gaussian-Processes.html" rel="alternate" type="text/html" title="Exploration of Bayesian Optimization and Gaussian Processes" /><published>2020-10-14T00:00:00+05:30</published><updated>2020-10-14T00:00:00+05:30</updated><id>/blog/tech/2020/10/14/Exploration-of-Bayesian-Optimization-&amp;-Gaussian-Processes</id><content type="html" xml:base="/blog/tech/2020/10/14/Exploration-of-Bayesian-Optimization-&amp;-Gaussian-Processes.html">&lt;blockquote&gt;
+&lt;/div&gt;</content><author><name>Akash Sharma</name></author><category term="tech" /><category term="Linux" /><category term="XPS-15" /><summary type="html">I’ve got a Dell XPS 15 9570 (16GB RAM, i7-8750H CPU) for work expecting it to have good support in Linux, considering other XPS laptops ship with Ubuntu.</summary></entry><entry><title type="html">Exploration of Bayesian Optimization and Gaussian Processes</title><link href="/tech/2020/10/14/Exploration-of-Bayesian-Optimization-&-Gaussian-Processes.html" rel="alternate" type="text/html" title="Exploration of Bayesian Optimization and Gaussian Processes" /><published>2020-10-14T00:00:00+05:30</published><updated>2020-10-14T00:00:00+05:30</updated><id>/tech/2020/10/14/Exploration-of-Bayesian-Optimization-&amp;-Gaussian-Processes</id><content type="html" xml:base="/tech/2020/10/14/Exploration-of-Bayesian-Optimization-&amp;-Gaussian-Processes.html">&lt;blockquote&gt;
   &lt;p&gt;Bayesian Optimization provides a principled technique based on Bayes Theorem to direct a search of a global optimization problem that is efficient and effective. Bayesian Optimization is often used in applied machine learning to tune the hyperparameters of a given well-performing model on a validation dataset.&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -1235,7 +1235,7 @@ Let me know if you do!&lt;/p&gt;
 &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;legend&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/img/2018-03-21/output_4_0.png&quot; alt=&quot;png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/2018-03-21/output_4_0.png&quot; alt=&quot;png&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Goal is to find the global optimum on the left in a small number of steps. The next step is to implement the acquisition function defined in Equation (2) as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;expected_improvement&lt;/code&gt; function.&lt;/p&gt;
 
@@ -1355,7 +1355,7 @@ Let me know if you do!&lt;/p&gt;
     &lt;span class=&quot;n&quot;&gt;Y_sample&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vstack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Y_sample&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Y_next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/img/2018-03-21/output_10_0.png&quot; alt=&quot;png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/2018-03-21/output_10_0.png&quot; alt=&quot;png&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Note how the two initial samples initially drive search into the direction of the local maximum on the right side but exploration allows the algorithm to escape from that local optimum and find the global optimum on the left side. Also note how sampling point proposals often fall within regions of high uncertainty (exploration) and are not only driven by the highest surrogate function values (exploitation).&lt;/p&gt;
 
@@ -1366,7 +1366,7 @@ Let me know if you do!&lt;/p&gt;
 &lt;span class=&quot;n&quot;&gt;plot_convergence&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_sample&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Y_sample&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/img/2018-03-21/output_12_0.png&quot; alt=&quot;png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/2018-03-21/output_12_0.png&quot; alt=&quot;png&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;bayesian-optimization-libraries&quot;&gt;Bayesian optimization libraries&lt;/h2&gt;
 
@@ -1402,12 +1402,12 @@ Let me know if you do!&lt;/p&gt;
 &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot_approximation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gpr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x_iters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;func_vals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;show_legend&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/img/2018-03-21/output_14_0.png&quot; alt=&quot;png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/2018-03-21/output_14_0.png&quot; alt=&quot;png&quot; /&gt;&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;plot_convergence&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x_iters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;func_vals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/img/2018-03-21/output_15_0.png&quot; alt=&quot;png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/2018-03-21/output_15_0.png&quot; alt=&quot;png&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;gpyopt&quot;&gt;GPyOpt&lt;/h2&gt;
 
@@ -1438,12 +1438,12 @@ Let me know if you do!&lt;/p&gt;
 &lt;span class=&quot;n&quot;&gt;optimizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot_acquisition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/img/2018-03-21/output_17_0.png&quot; alt=&quot;png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/2018-03-21/output_17_0.png&quot; alt=&quot;png&quot; /&gt;&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;optimizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot_convergence&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/img/2018-03-21/output_18_0.png&quot; alt=&quot;png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/2018-03-21/output_18_0.png&quot; alt=&quot;png&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;application&quot;&gt;Application&lt;/h2&gt;
 
@@ -1543,7 +1543,7 @@ Random search neg. MSE = -3678.77
 Bayesian optimization neg. MSE = -3185.50
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/img/2018-03-21/output_26_1.png&quot; alt=&quot;png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/2018-03-21/output_26_1.png&quot; alt=&quot;png&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 &lt;ul&gt;
@@ -1554,7 +1554,7 @@ Bayesian optimization neg. MSE = -3185.50
   &lt;li&gt;&lt;a href=&quot;https://pyro.ai/examples/bo.html&quot;&gt;Pyro&lt;/a&gt;’s documentation.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;hr /&gt;</content><author><name>Akash Sharma</name></author><category term="tech" /><category term="Machine Learning" /><category term="Optimization" /><category term="Probability" /><category term="Statistics" /><summary type="html">Bayesian Optimization provides a principled technique based on Bayes Theorem to direct a search of a global optimization problem that is efficient and effective. Bayesian Optimization is often used in applied machine learning to tune the hyperparameters of a given well-performing model on a validation dataset.</summary></entry><entry><title type="html">Sia Cloud-Based Storage Development</title><link href="/blog/tech/2020/08/09/sia-cloud-based-development.html" rel="alternate" type="text/html" title="Sia Cloud-Based Storage Development" /><published>2020-08-09T00:00:00+05:30</published><updated>2020-08-09T00:00:00+05:30</updated><id>/blog/tech/2020/08/09/sia-cloud-based-development</id><content type="html" xml:base="/blog/tech/2020/08/09/sia-cloud-based-development.html">&lt;blockquote&gt;
+&lt;hr /&gt;</content><author><name>Akash Sharma</name></author><category term="tech" /><category term="Machine Learning" /><category term="Optimization" /><category term="Probability" /><category term="Statistics" /><summary type="html">Bayesian Optimization provides a principled technique based on Bayes Theorem to direct a search of a global optimization problem that is efficient and effective. Bayesian Optimization is often used in applied machine learning to tune the hyperparameters of a given well-performing model on a validation dataset.</summary></entry><entry><title type="html">Sia Cloud-Based Storage Development</title><link href="/tech/2020/08/09/sia-cloud-based-development.html" rel="alternate" type="text/html" title="Sia Cloud-Based Storage Development" /><published>2020-08-09T00:00:00+05:30</published><updated>2020-08-09T00:00:00+05:30</updated><id>/tech/2020/08/09/sia-cloud-based-development</id><content type="html" xml:base="/tech/2020/08/09/sia-cloud-based-development.html">&lt;blockquote&gt;
   &lt;p&gt;Sia is the leading decentralized cloud storage platform. No signups, no servers, no trusted third parties. Sia leverages blockchain technology to create a data storage marketplace that is more robust and more affordable than traditional cloud storage providers.&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -2385,7 +2385,7 @@ Estimated Fee:       30 mS / KB
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;hr /&gt;</content><author><name>Akash Sharma</name></author><category term="tech" /><category term="Blockchain" /><summary type="html">Sia is the leading decentralized cloud storage platform. No signups, no servers, no trusted third parties. Sia leverages blockchain technology to create a data storage marketplace that is more robust and more affordable than traditional cloud storage providers.</summary></entry><entry><title type="html">MarkDown101 and how to use them in your webpages?</title><link href="/blog/tech/2019/07/19/MarkDown101-and-how-to-use-them-in-your-website.html" rel="alternate" type="text/html" title="MarkDown101 and how to use them in your webpages?" /><published>2019-07-19T00:00:00+05:30</published><updated>2019-07-19T00:00:00+05:30</updated><id>/blog/tech/2019/07/19/MarkDown101-and-how-to-use-them-in-your-website</id><content type="html" xml:base="/blog/tech/2019/07/19/MarkDown101-and-how-to-use-them-in-your-website.html">&lt;blockquote&gt;
+&lt;hr /&gt;</content><author><name>Akash Sharma</name></author><category term="tech" /><category term="Blockchain" /><summary type="html">Sia is the leading decentralized cloud storage platform. No signups, no servers, no trusted third parties. Sia leverages blockchain technology to create a data storage marketplace that is more robust and more affordable than traditional cloud storage providers.</summary></entry><entry><title type="html">MarkDown101 and how to use them in your webpages?</title><link href="/tech/2019/07/19/MarkDown101-and-how-to-use-them-in-your-website.html" rel="alternate" type="text/html" title="MarkDown101 and how to use them in your webpages?" /><published>2019-07-19T00:00:00+05:30</published><updated>2019-07-19T00:00:00+05:30</updated><id>/tech/2019/07/19/MarkDown101-and-how-to-use-them-in-your-website</id><content type="html" xml:base="/tech/2019/07/19/MarkDown101-and-how-to-use-them-in-your-website.html">&lt;blockquote&gt;
   &lt;p&gt;This post is a basic cheat-sheet on how to write a markdown based document with proper syntax and formatting. Markdown is an easy-to-remember which is just a lightweight markup language with plain text formatting syntax. We will also explore on how to extend upon its capabilities to work in web page just like this one !&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -2629,7 +2629,7 @@ if (2 &amp;gt; 1) {
 &lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;![&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;Stones on the beach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;{{&lt;/span&gt; site.baseurl }}/assets/images/Stones on the beach.jpeg)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/assets/images/Stones on the beach.jpeg&quot; alt=&quot;Stones on the beach&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/Stones on the beach.jpeg&quot; alt=&quot;Stones on the beach&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;youtube-videos&quot;&gt;YouTube Videos&lt;/h4&gt;
 

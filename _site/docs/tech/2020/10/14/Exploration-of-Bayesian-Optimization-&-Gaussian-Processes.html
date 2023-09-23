@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
 
     <!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Exploration of Bayesian Optimization and Gaussian Processes | Akash Sharma’s Blog</title>
@@ -20,10 +20,10 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Exploration of Bayesian Optimization and Gaussian Processes" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Akash Sharma"},"dateModified":"2020-10-14T00:00:00+05:30","datePublished":"2020-10-14T00:00:00+05:30","description":"Bayesian Optimization provides a principled technique based on Bayes Theorem to direct a search of a global optimization problem that is efficient and effective. Bayesian Optimization is often used in applied machine learning to tune the hyperparameters of a given well-performing model on a validation dataset.","headline":"Exploration of Bayesian Optimization and Gaussian Processes","mainEntityOfPage":{"@type":"WebPage","@id":"/blog/tech/2020/10/14/Exploration-of-Bayesian-Optimization-&-Gaussian-Processes.html"},"url":"/blog/tech/2020/10/14/Exploration-of-Bayesian-Optimization-&-Gaussian-Processes.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Akash Sharma"},"dateModified":"2020-10-14T00:00:00+05:30","datePublished":"2020-10-14T00:00:00+05:30","description":"Bayesian Optimization provides a principled technique based on Bayes Theorem to direct a search of a global optimization problem that is efficient and effective. Bayesian Optimization is often used in applied machine learning to tune the hyperparameters of a given well-performing model on a validation dataset.","headline":"Exploration of Bayesian Optimization and Gaussian Processes","mainEntityOfPage":{"@type":"WebPage","@id":"/tech/2020/10/14/Exploration-of-Bayesian-Optimization-&-Gaussian-Processes.html"},"url":"/tech/2020/10/14/Exploration-of-Bayesian-Optimization-&-Gaussian-Processes.html"}</script>
 <!-- End Jekyll SEO tag -->
 
-    <link type="application/atom+xml" rel="alternate" href="/blog/feed.xml" title="Akash Sharma's Blog" />
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Akash Sharma&apos;s Blog" />
     
         <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-W1GFNLSVY2"></script>
@@ -38,8 +38,8 @@
     
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
-    <link rel="stylesheet" href="/blog/assets/css/main.css">
-    <link rel="manifest" href="/blog/manifest.json">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="manifest" href="/manifest.json">
 
     <!-- Support for Bootstrap https://getbootstrap.com -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
@@ -62,7 +62,7 @@
         <header>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <nav class="container navbar navbar-expand-sm py-2">
-        <a class="navbar-brand title p-0" href="/blog/">
+        <a class="navbar-brand title p-0" href="/">
           <!-- GITHUB ICON -->
           <!-- <span class="iconify" data-icon="octicon:mark-github"></span> -->
           <!-- Personal Icon -->
@@ -78,25 +78,25 @@
             <div class="navbar-nav ml-auto">
                 
                   
-                    <a class="nav-item nav-link text-right" href="/blog/">Home</a>
+                    <a class="nav-item nav-link text-right" href="/">Home</a>
                   
                   
 
                 
                   
-                    <a class="nav-item nav-link text-right" href="/blog/classification/">Classification</a>
+                    <a class="nav-item nav-link text-right" href="/classification/">Classification</a>
                   
                   
 
                 
                   
-                    <a class="nav-item nav-link text-right" href="/blog/leetcode/">Leetcode</a>
+                    <a class="nav-item nav-link text-right" href="/algorithms/">Algorithms</a>
                   
                   
 
                 
                   
-                    <a class="nav-item nav-link text-right" href="/blog/about/">About Me</a>
+                    <a class="nav-item nav-link text-right" href="/about/">About Me</a>
                   
                   
 
@@ -115,7 +115,7 @@
 <script>
     
         $(".navbar").addClass("navbar-light");
-        $("a[href$='/blog/tech/2020/10/14/Exploration-of-Bayesian-Optimization-&-Gaussian-Processes.html']").addClass("active");
+        $("a[href$='/tech/2020/10/14/Exploration-of-Bayesian-Optimization-&-Gaussian-Processes.html']").addClass("active");
     
 </script>
 
@@ -135,22 +135,22 @@
                 
                     <span class="titlebar-info pr-3">
                         <span class="iconify" data-icon="octicon:tag"></span>
-                        <a class="text-light" href="/blog/classification/#Machine Learning">Machine Learning</a>
+                        <a class="text-light" href="/classification/#Machine Learning">Machine Learning</a>
                     </span>
                 
                     <span class="titlebar-info pr-3">
                         <span class="iconify" data-icon="octicon:tag"></span>
-                        <a class="text-light" href="/blog/classification/#Optimization">Optimization</a>
+                        <a class="text-light" href="/classification/#Optimization">Optimization</a>
                     </span>
                 
                     <span class="titlebar-info pr-3">
                         <span class="iconify" data-icon="octicon:tag"></span>
-                        <a class="text-light" href="/blog/classification/#Probability">Probability</a>
+                        <a class="text-light" href="/classification/#Probability">Probability</a>
                     </span>
                 
                     <span class="titlebar-info pr-3">
                         <span class="iconify" data-icon="octicon:tag"></span>
-                        <a class="text-light" href="/blog/classification/#Statistics">Statistics</a>
+                        <a class="text-light" href="/classification/#Statistics">Statistics</a>
                     </span>
                 
 
@@ -280,7 +280,7 @@
 <span class="n">plt</span><span class="p">.</span><span class="n">legend</span><span class="p">();</span>
 </code></pre></div></div>
 
-<p><img src="/blog/img/2018-03-21/output_4_0.png" alt="png" /></p>
+<p><img src="/img/2018-03-21/output_4_0.png" alt="png" /></p>
 
 <p>Goal is to find the global optimum on the left in a small number of steps. The next step is to implement the acquisition function defined in Equation (2) as <code class="language-plaintext highlighter-rouge">expected_improvement</code> function.</p>
 
@@ -400,7 +400,7 @@
     <span class="n">Y_sample</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">Y_sample</span><span class="p">,</span> <span class="n">Y_next</span><span class="p">))</span>
 </code></pre></div></div>
 
-<p><img src="/blog/img/2018-03-21/output_10_0.png" alt="png" /></p>
+<p><img src="/img/2018-03-21/output_10_0.png" alt="png" /></p>
 
 <p>Note how the two initial samples initially drive search into the direction of the local maximum on the right side but exploration allows the algorithm to escape from that local optimum and find the global optimum on the left side. Also note how sampling point proposals often fall within regions of high uncertainty (exploration) and are not only driven by the highest surrogate function values (exploitation).</p>
 
@@ -411,7 +411,7 @@
 <span class="n">plot_convergence</span><span class="p">(</span><span class="n">X_sample</span><span class="p">,</span> <span class="n">Y_sample</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p><img src="/blog/img/2018-03-21/output_12_0.png" alt="png" /></p>
+<p><img src="/img/2018-03-21/output_12_0.png" alt="png" /></p>
 
 <h2 id="bayesian-optimization-libraries">Bayesian optimization libraries</h2>
 
@@ -447,12 +447,12 @@
 </span><span class="n">plot_approximation</span><span class="p">(</span><span class="n">gpr</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">r</span><span class="p">.</span><span class="n">x_iters</span><span class="p">,</span> <span class="o">-</span><span class="n">r</span><span class="p">.</span><span class="n">func_vals</span><span class="p">,</span> <span class="n">show_legend</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p><img src="/blog/img/2018-03-21/output_14_0.png" alt="png" /></p>
+<p><img src="/img/2018-03-21/output_14_0.png" alt="png" /></p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plot_convergence</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">x_iters</span><span class="p">),</span> <span class="o">-</span><span class="n">r</span><span class="p">.</span><span class="n">func_vals</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p><img src="/blog/img/2018-03-21/output_15_0.png" alt="png" /></p>
+<p><img src="/img/2018-03-21/output_15_0.png" alt="png" /></p>
 
 <h2 id="gpyopt">GPyOpt</h2>
 
@@ -483,12 +483,12 @@
 <span class="n">optimizer</span><span class="p">.</span><span class="n">plot_acquisition</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p><img src="/blog/img/2018-03-21/output_17_0.png" alt="png" /></p>
+<p><img src="/img/2018-03-21/output_17_0.png" alt="png" /></p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">optimizer</span><span class="p">.</span><span class="n">plot_convergence</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p><img src="/blog/img/2018-03-21/output_18_0.png" alt="png" /></p>
+<p><img src="/img/2018-03-21/output_18_0.png" alt="png" /></p>
 
 <h2 id="application">Application</h2>
 
@@ -588,7 +588,7 @@ Random search neg. MSE = -3678.77
 Bayesian optimization neg. MSE = -3185.50
 </code></pre></div></div>
 
-<p><img src="/blog/img/2018-03-21/output_26_1.png" alt="png" /></p>
+<p><img src="/img/2018-03-21/output_26_1.png" alt="png" /></p>
 
 <h2 id="references">References</h2>
 <ul>
@@ -614,7 +614,7 @@ Bayesian optimization neg. MSE = -3185.50
   }
 </style>
 <hr></hr>
-<center><p>If you liked it, share it with your friends and help this blog to grow!</p></center>
+<center><p>If you liked it, please share it with your friends and help this blog to grow!</p></center>
 <!-- <div class="sharethis-inline-share-buttons"></div> -->
 <center><div class="addthis_inline_share_toolbox"></div></center>
 <br>
@@ -678,7 +678,7 @@ Bayesian optimization neg. MSE = -3185.50
     SimpleJekyllSearch({
         searchInput: search_box.getElementsByTagName("input")[0],
         resultsContainer: search_box.getElementsByTagName("ul")[0],
-        json: '/blog/assets/search.json',
+        json: '/assets/search.json',
         searchResultTemplate: '<li><a href="{url}">{title}</a></li>',
         noResultsText: 'No results found',
         fuzzy: false
@@ -726,8 +726,8 @@ Bayesian optimization neg. MSE = -3185.50
         <hr class="my-0">
         <div class="row align-items-center text-muted my-3">
             <div class="col">
-                <span>© 2022 Akash Sharma</span>
-                <a href="/blog/feed.xml"><span class="feed iconify" data-icon="foundation:rss"></span></a>
+                <span>© 2023 Akash Sharma</span>
+                <a href="/feed.xml"><span class="feed iconify" data-icon="foundation:rss"></span></a>
             </div>
             <div class="col-auto text-center px-0">
                     <a href="https://akash-sharma-1.github.io/"><span class="github text-center text-muted iconify" data-icon="foundation:web"></span></a>

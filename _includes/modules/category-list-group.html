@@ -1,12 +1,11 @@
 <div class="tag-list-group">
-    <p class="name">Topics</p>
-    <a href="{{ site.baseurl }}/leetcode/categories/" style="font-size: 10pt; color: #999;">View All Topics</a>
+    <a href="{{ site.baseurl }}/algorithms/categories/" style="font-size: 10pt; color: #999;">View All Topics List</a>
     <br>
     <br>
     <ul class="list-group">
         {% assign sorted_tags = site.categories  | sort %}
         {% for tag in sorted_tags %}
-            {% if tag[0] != "leetcode" and tag[0] != "tech" %}
+            {% if tag[0] != "algorithms" and tag[0] != "tech" %}
                 <li class="list-group-item">
                     <a href="categories/#{{ tag[0] }}">{{ tag[0] }}</a>
                     <span class="badge badge-pill badge-secondary float-right">{{ tag[1].size }}</span>
