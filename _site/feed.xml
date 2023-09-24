@@ -1,4 +1,219 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-09-24T15:16:59+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Akash Sharma’s Blog</title><subtitle>Reading, Learning, Thinking and Writing</subtitle><author><name>Akash Sharma</name></author><entry><title type="html">Basic Data Structure Concepts and Implementations</title><link href="http://localhost:4000/algorithms/stack/queue/linked-list/tree/trie/disjoint%20set/heap/2022/06/29/Basic-Data-Structure-Implementations.html" rel="alternate" type="text/html" title="Basic Data Structure Concepts and Implementations" /><published>2022-06-29T00:00:00+05:30</published><updated>2022-06-29T00:00:00+05:30</updated><id>http://localhost:4000/algorithms/stack/queue/linked-list/tree/trie/disjoint%20set/heap/2022/06/29/Basic-Data-Structure-Implementations</id><content type="html" xml:base="http://localhost:4000/algorithms/stack/queue/linked-list/tree/trie/disjoint%20set/heap/2022/06/29/Basic-Data-Structure-Implementations.html">&lt;blockquote&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-09-24T15:22:42+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Akash Sharma’s Blog</title><subtitle>Reading, Learning, Thinking and Writing</subtitle><author><name>Akash Sharma</name></author><entry><title type="html">Setting up Dell XPS 15 with Pop!_OS Distro</title><link href="http://localhost:4000/tech/2023/07/08/Setting-up-Dell-XPS-15-with-Pop!_OS-Distro.html" rel="alternate" type="text/html" title="Setting up Dell XPS 15 with Pop!_OS Distro" /><published>2023-07-08T00:00:00+05:30</published><updated>2023-07-08T00:00:00+05:30</updated><id>http://localhost:4000/tech/2023/07/08/Setting-up-Dell-XPS-15-with-Pop!_OS-Distro</id><content type="html" xml:base="http://localhost:4000/tech/2023/07/08/Setting-up-Dell-XPS-15-with-Pop!_OS-Distro.html">&lt;p&gt;I’ve got a &lt;a href=&quot;https://www.dell.com/en-in/work/shop/scc/sr/laptops/xps-laptops&quot;&gt;Dell XPS 15 9570&lt;/a&gt; (16GB RAM, i7-8750H CPU) for work expecting it to have good support in Linux, considering other XPS laptops ship with Ubuntu.&lt;/p&gt;
+
+&lt;p&gt;However, the massive (for a laptop) NVIDIA GeForce GTX 1050Ti with 4GB GDDR5 ensures installing Linux is not so smooth…🤔&lt;/p&gt;
+
+&lt;p&gt;Any distro will boot into the live usb pretty well with the basic Intel graphics however, you will eventually end up with a few issues trying to get NVIDIA to work.&lt;/p&gt;
+
+&lt;div class=&quot;alert alert-info&quot; role=&quot;alert&quot;&gt;
+  To simplify the problem, I decided to use &lt;a href=&quot;https://system76.com/pop&quot;&gt; &lt;b&gt;Pop!_OS&lt;/b&gt;&lt;/a&gt;, an Ubuntu-based distro from computer manufacturer &lt;a href=&quot;https://system76.com&quot;&gt;System76&lt;/a&gt;. &lt;br /&gt;&lt;br /&gt;
+There are few &lt;a href=&quot;https://support.system76.com/articles/difference-between-pop-ubuntu/&quot;&gt;differences from Ubuntu &lt;/a&gt;, but most importantly &lt;b&gt;Pop!_OS&lt;/b&gt; provides a special image specifically for NVIDIA machines so it is easy to get things working.
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; I did not install as a dual boot, so I am not sure how smoothly that would go, but check the &lt;a href=&quot;https://pop.system76.com/docs/dual-booting-windows/&quot;&gt;official docs&lt;/a&gt;.
+I did later on, proceeded on doing a clean install of Official Windows for bringing things back to what they were.&lt;/p&gt;
+
+&lt;h2 id=&quot;set-up-and-install-pop_os&quot;&gt;Set up and install Pop!_OS&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://pop.system76.com/&quot;&gt;Download Pop!_OS&lt;/a&gt; choosing the NVIDIA option.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://evanwill.github.io/_drafts/notes/burn-iso.html&quot;&gt;Burn to a USB stick&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Plug in your &lt;strong&gt;Pop!_OS USB&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Boot XPS 15 and hit F2 as it boots to enter the &lt;strong&gt;BIOS menu&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Enter BIOS:
+    &lt;ul&gt;
+      &lt;li&gt;turn off &lt;strong&gt;Secure Boot&lt;/strong&gt; (this is necessary for the NVIDIA drivers, and eventually if you want to use virtual machines)&lt;/li&gt;
+      &lt;li&gt;Settings &amp;gt; General &amp;gt; Advanced Boot Option, select “&lt;strong&gt;enable legacy option ROMS&lt;/strong&gt;”&lt;/li&gt;
+      &lt;li&gt;SATA Operation, select “&lt;strong&gt;AHCI&lt;/strong&gt;” (you need to turn “RAID” mode off because it is not supported by Linux, because its not worth while… If you are dual booting, check the steps on the windows side before doing this)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Save and exit BIOS&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Reboot&lt;/strong&gt; and hit F12 as it boots to enter boot option menu&lt;/li&gt;
+  &lt;li&gt;Choose the first &lt;strong&gt;USB boot option&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;After a minute, it should boot into a live desktop with the &lt;strong&gt;Pop installer&lt;/strong&gt; running. You can test out the live system if desired.&lt;/li&gt;
+  &lt;li&gt;Follow the installer steps. It is a bit different than other distros because setting up a user takes place after install, during your first boot.
+    &lt;ul&gt;
+      &lt;li&gt;Check the &lt;a href=&quot;https://pop.system76.com/docs/install-pop-os/&quot;&gt;official docs&lt;/a&gt;.&lt;/li&gt;
+      &lt;li&gt;I chose to do a &lt;strong&gt;full disk encrypt&lt;/strong&gt; (work computer), but keep in mind it will ask you for the encryption password (different than your user password) at every restart.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;After installation is complete, reboot, and type in your encrypt password a few times&lt;/li&gt;
+  &lt;li&gt;Follow the steps to set up a user account&lt;/li&gt;
+  &lt;li&gt;Checkout your new system! See the &lt;a href=&quot;https://support.system76.com/articles/pop-basics/&quot;&gt;intro docs&lt;/a&gt; and &lt;a href=&quot;https://pop.system76.com/docs/keyboard-shortcuts/&quot;&gt;keyboard shortcuts&lt;/a&gt; for more info.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;updates&quot;&gt;Updates&lt;/h2&gt;
+
+&lt;p&gt;If you have used GNOME before, everything should be pretty familiar although it starts out more vanilla than an Ubuntu install.
+Click on &lt;strong&gt;Activities&lt;/strong&gt; or hit Super (windows key) to bring up your menu.&lt;/p&gt;
+
+&lt;p&gt;You should run updates, which brings up the first noticeable difference from Ubuntu.
+The “&lt;strong&gt;update manager&lt;/strong&gt;” is gone, instead updates are applied from the “Pop!_Shop” software center. 
+Open Pop!_Shop, click on Installed, and if updates are available a button will appear to install them.&lt;/p&gt;
+
+&lt;h2 id=&quot;graphics-switch&quot;&gt;Graphics switch&lt;/h2&gt;
+
+&lt;p&gt;Another unique Pop! feature: click the upper right for the power menu, then click the battery icon / status meter. 
+This opens options to set &lt;strong&gt;power profile&lt;/strong&gt; (performance / balanced / long life), or to switch between graphics cards (NVIDIA / Intel).
+Switching between graphics cards takes a minute and a restart – its not instantaneous…&lt;/p&gt;
+
+&lt;h2 id=&quot;set-up-and-customize-desktop&quot;&gt;Set up and customize desktop&lt;/h2&gt;
+
+&lt;h3 id=&quot;some-basic-customizations-&quot;&gt;Some basic customizations …&lt;/h3&gt;
+
+&lt;p&gt;Open Settings:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Settings &amp;gt; &lt;strong&gt;Background&lt;/strong&gt; to get your wallpaper set.&lt;/li&gt;
+  &lt;li&gt;Settings &amp;gt; Devices &amp;gt; &lt;strong&gt;Display&lt;/strong&gt; to set up your monitor and turn on Night Light if you want a red shift in the evening.&lt;/li&gt;
+  &lt;li&gt;Settings &amp;gt; &lt;strong&gt;Bluetooth&lt;/strong&gt;, turn bluetooth off if you don’t use it, since it is a security risk.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;some-go-to-have-packages-&quot;&gt;Some go-to-have packages …&lt;/h3&gt;
+
+&lt;p&gt;Pop uses &lt;a href=&quot;https://packages.ubuntu.com/&quot;&gt;Ubuntu packages&lt;/a&gt;.
+Open a terminal and install these right away, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo apt install&lt;/code&gt;:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gnome-tweak-tool&lt;/code&gt; (lets you customize the desktop)&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;chrome-gnome-shell&lt;/code&gt; (might be installed already, but enables gnome extensions, connecting the manager with Firefox or Chromium)&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tlp tlp-rdw&lt;/code&gt; (&lt;a href=&quot;https://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html&quot;&gt;advanced laptop power management&lt;/a&gt;, also see &lt;a href=&quot;https://support.system76.com/articles/battery/&quot;&gt;system76 battery&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;note-on-dev-packages-&quot;&gt;Note on dev packages …&lt;/h3&gt;
+
+&lt;p&gt;Pop! comes with a lot of development essentials already installed (build-essentials, git, curl, gpg2, ufw). But you do have to enable firewall: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo ufw enable&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;browser-setup-&quot;&gt;Browser setup …&lt;/h3&gt;
+
+&lt;p&gt;Next, set up Firefox browser:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Preferences &amp;gt; Privacy &amp;amp; Security &amp;gt; check “Use a master password” and set.&lt;/li&gt;
+  &lt;li&gt;Add &lt;a href=&quot;https://extensions.gnome.org/&quot;&gt;GNOME extensions&lt;/a&gt; plugin, &lt;a href=&quot;https://addons.mozilla.org/en/firefox/addon/gnome-shell-integration/&quot;&gt;gnome-shell-integration&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Add Firefox &lt;a href=&quot;https://addons.mozilla.org/en-US/firefox/addon/multi-account-containers/?src=search&quot;&gt;Multi-Account Containers&lt;/a&gt;, &lt;a href=&quot;https://addons.mozilla.org/en-US/firefox/addon/facebook-container/&quot;&gt;Facebook Container&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Add adblocker such as &lt;a href=&quot;https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/?src=search&quot;&gt;uBlock Origin&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;gnome-extensions-&quot;&gt;GNOME extensions …&lt;/h3&gt;
+
+&lt;p&gt;Now you can add &lt;a href=&quot;https://extensions.gnome.org/&quot;&gt;GNOME extensions&lt;/a&gt;, click the GNOME icon in the browser’s upper right side.
+Pop! comes with a few pre-installed, but here are a few more to add:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://extensions.gnome.org/extension/517/caffeine/&quot;&gt;Caffeine&lt;/a&gt;, disable screen lock to watch movies or just not have your laptop locking all the time.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://extensions.gnome.org/extension/307/dash-to-dock/&quot;&gt;Dash to Dock&lt;/a&gt;, adds a highly customizable  dock to your desktop. For an Ubuntu-like look, go to installed extensions page: click settings, turn off intelligent autohide, select panel mode, and make icon size smaller.&lt;/li&gt;
+  &lt;li&gt;More suggestions, see &lt;a href=&quot;https://evanwill.github.io/_drafts/notes/ubuntu-gnome.html&quot;&gt;GNOME on Ubuntu notes&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;note-taking-&quot;&gt;Note taking …&lt;/h3&gt;
+
+&lt;p&gt;Next I like to have Gedit (“Text Editor”) customized so its ready as a quick editor.&lt;/p&gt;
+
+&lt;p&gt;Open the app, then click the name in the top bar to open the app menu &amp;gt; Preferences.
+See &lt;a href=&quot;https://evanwill.github.io/_drafts/notes/gedit-editor.html&quot;&gt;customization suggestions notes&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;simplify-git-credentials&quot;&gt;Simplify git credentials&lt;/h2&gt;
+
+&lt;p&gt;You can permanently store your Git credentials with your user account.
+Configure Git as normal:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git config --global user.name &quot;Evan Will&quot;
+git config --global user.email &quot;myemail@gmail.com&quot;
+git config --global core.editor &quot;nano -w&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; You should be using the &lt;a href=&quot;https://docs.github.com/en/authentication/connecting-to-github-with-ssh&quot;&gt;newer SSH based configuration&lt;/a&gt; suggested by Github&lt;/p&gt;
+
+&lt;p&gt;Install dependencies:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo apt install libgnome-keyring-dev&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Build the helper:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd /usr/share/doc/git/contrib/credential/gnome-keyring
+sudo make
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Configure git helper:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git config --global credential.helper /usr/share/doc/git/contrib/credential&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Then the next time you need a Git credential, it will prompt for username and password as normal, but it will be stored going forward.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note: newer versions of Git require a different manager, if libgnome-keyring-dev gives a permission error, use libsecret instead. I found this is necessary on Ubuntu 19.04.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install libsecret-1-0 libsecret-1-dev
+cd /usr/share/doc/git/contrib/credential/libsecret
+sudo make
+git config --global credential.helper /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;resolving-issues-with-sleep&quot;&gt;Resolving issues with sleep&lt;/h2&gt;
+
+&lt;p&gt;With Intel graphics activated, closing the lid for sleep or using the sleep icon from the power menu works correctly.
+However, XPS 15 does not seem to sleep correctly with NVIDIA activated, either it won’t go to sleep or it won’t wake up the screen…&lt;/p&gt;
+
+&lt;p&gt;Supposedly there is a way to fix this with boot options passed to the Linux kernel.
+If you were on Ubuntu, editing the GRUB options &lt;em&gt;in theory&lt;/em&gt; should work. 
+However, Pop! no longer uses GRUB, instead uses systemd-boot and &lt;a href=&quot;https://github.com/pop-os/kernelstub&quot;&gt;kernelstub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Ubuntu would look something like:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Open GRUB options, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo nano /etc/default/grub&lt;/code&gt;
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;edit the value of the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GRUB_CMDLINE_LINUX_DEFAULT&lt;/code&gt; line, so it looks like:&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet acpi_rev_override=1 acpi_osi=Linux nouveau.modeset=0 pcie_aspm=force drm.vblankoffdelay=1 scsi_mod.use_blk_mq=1 nouveau.runpm=0 mem_sleep_default=deep&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Then update GRUB using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo update-grub&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;See &lt;a href=&quot;https://github.com/JackHack96/dell-xps-9570-ubuntu-respin&quot;&gt;dell-xps-9570-ubuntu-respin&lt;/a&gt; “xps-tweaks.sh” for scripts which inspired these settings.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You can do this on Pop (since all the Ubuntu stuff is still there), but it won’t have any effect, since it isn’t actually booting via GRUB!&lt;/p&gt;
+
+&lt;p&gt;Check your current set up with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo kernelstub -p&lt;/code&gt; (mine says the kernel options are “quiet loglevel=0 systemd.show_status=false splash”).
+You could then add on the same kernel options as the GRUB config above, like:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo kernelstub -a &quot;acpi_rev_override=1 acpi_osi=Linux nouveau.modeset=0 pcie_aspm=force drm.vblankoffdelay=1 scsi_mod.use_blk_mq=1 nouveau.runpm=0 mem_sleep_default=deep&quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Honestly, I haven’t tried it… 
+Since sleep works fine on Intel graphics, which I generally use for better battery life anyway, I will wait for some other brave soul to figure out the best boot options.
+Let me know if you do!&lt;/p&gt;
+
+&lt;h2 id=&quot;adding-some-useful-apps&quot;&gt;Adding some useful apps&lt;/h2&gt;
+
+&lt;p&gt;Languages:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Ruby: &lt;a href=&quot;https://evanwill.github.io/_drafts/notes/ruby-notes.html&quot;&gt;RVM set up&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Python: &lt;a href=&quot;https://evanwill.github.io/_drafts/notes/dual-python-notebook.html&quot;&gt;Anaconda set up&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Java: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo apt install default-jre&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;default-jdk&lt;/code&gt; (this will be OpenJDK 11+, fine for apps like OpenRefine, if you need more specific versions search &lt;a href=&quot;https://packages.ubuntu.com/search?keywords=jdk&amp;amp;searchon=names&amp;amp;suite=bionic&amp;amp;section=all&quot;&gt;packages&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Node: use &lt;a href=&quot;https://github.com/creationix/nvm&quot;&gt;nvm&lt;/a&gt; (this seems to be the best method; install nvm, then &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nvm install --lts&lt;/code&gt;), or official &lt;a href=&quot;https://github.com/nodesource/distributions/blob/master/README.md&quot;&gt;NodeSource ppa&lt;/a&gt;, or repository version &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nodejs&lt;/code&gt; (which is out of date)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Search &lt;a href=&quot;https://packages.ubuntu.com/&quot;&gt;Ubuntu Packages&lt;/a&gt; or Pop!_Shop for software.&lt;/p&gt;
+
+&lt;p&gt;App essentials:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A few extra fonts: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fonts-firacode&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fonts-noto&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Chromium Browser, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;chromium-browser&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Tilix terminal, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tilix&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;KeePassXC&lt;/li&gt;
+  &lt;li&gt;GIMP image editing, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gimp&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;div class=&quot;alert alert-info&quot; role=&quot;alert&quot;&gt;
+  Update: &lt;a href=&quot;https://evanwill.github.io/_drafts/notes/ubuntu20.html&quot;&gt; Ubuntu 20.04 installs works great&lt;/a&gt;  on XPS 15. I have moved to Ubuntu 20.04, but most of this post is still relevant. The most recent versions of Pop!_OS have some unique gnome extensions, including an auto-tiling desktop option. 
+&lt;/div&gt;</content><author><name>Akash Sharma</name></author><category term="tech" /><category term="Linux" /><category term="XPS-15" /><summary type="html">I’ve got a Dell XPS 15 9570 (16GB RAM, i7-8750H CPU) for work expecting it to have good support in Linux, considering other XPS laptops ship with Ubuntu.</summary></entry><entry><title type="html">Basic Data Structure Concepts and Implementations</title><link href="http://localhost:4000/algorithms/stack/queue/linked-list/tree/trie/disjoint%20set/heap/2023/06/29/Basic-Data-Structure-Implementations.html" rel="alternate" type="text/html" title="Basic Data Structure Concepts and Implementations" /><published>2023-06-29T00:00:00+05:30</published><updated>2023-06-29T00:00:00+05:30</updated><id>http://localhost:4000/algorithms/stack/queue/linked-list/tree/trie/disjoint%20set/heap/2023/06/29/Basic-Data-Structure-Implementations</id><content type="html" xml:base="http://localhost:4000/algorithms/stack/queue/linked-list/tree/trie/disjoint%20set/heap/2023/06/29/Basic-Data-Structure-Implementations.html">&lt;blockquote&gt;
   &lt;p&gt;This post is a basic cheat-sheet on some of the basics yet crucial data structures’ underlying concepts and high level implementations. I also try to cover some more interesting related ideas for some of these data structures&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -925,222 +1140,7 @@ The index of the left-child of each node is &lt;code class=&quot;language-plaint
 
 &lt;div class=&quot;alert alert-info&quot; role=&quot;alert&quot;&gt;
   I would be covering some more basic Data-structures&apos; concept and implementation in this post.Also, would be covering some advanced data-structures as well as their applications in some other post.
-&lt;/div&gt;</content><author><name>Akash Sharma</name></author><category term="[&quot;Stack&quot;, &quot;Queue&quot;, &quot;Linked-list&quot;, &quot;Tree&quot;, &quot;Trie&quot;, &quot;Disjoint Set&quot;, &quot;Heap&quot;]" /><summary type="html">This post is a basic cheat-sheet on some of the basics yet crucial data structures’ underlying concepts and high level implementations. I also try to cover some more interesting related ideas for some of these data structures</summary></entry><entry><title type="html">Setting up Dell XPS 15 with Pop!_OS Distro</title><link href="http://localhost:4000/tech/2021/07/08/Setting-up-Dell-XPS-15-with-Pop!_OS-Distro.html" rel="alternate" type="text/html" title="Setting up Dell XPS 15 with Pop!_OS Distro" /><published>2021-07-08T00:00:00+05:30</published><updated>2021-07-08T00:00:00+05:30</updated><id>http://localhost:4000/tech/2021/07/08/Setting-up-Dell-XPS-15-with-Pop!_OS-Distro</id><content type="html" xml:base="http://localhost:4000/tech/2021/07/08/Setting-up-Dell-XPS-15-with-Pop!_OS-Distro.html">&lt;p&gt;I’ve got a &lt;a href=&quot;https://www.dell.com/en-in/work/shop/scc/sr/laptops/xps-laptops&quot;&gt;Dell XPS 15 9570&lt;/a&gt; (16GB RAM, i7-8750H CPU) for work expecting it to have good support in Linux, considering other XPS laptops ship with Ubuntu.&lt;/p&gt;
-
-&lt;p&gt;However, the massive (for a laptop) NVIDIA GeForce GTX 1050Ti with 4GB GDDR5 ensures installing Linux is not so smooth…🤔&lt;/p&gt;
-
-&lt;p&gt;Any distro will boot into the live usb pretty well with the basic Intel graphics however, you will eventually end up with a few issues trying to get NVIDIA to work.&lt;/p&gt;
-
-&lt;div class=&quot;alert alert-info&quot; role=&quot;alert&quot;&gt;
-  To simplify the problem, I decided to use &lt;a href=&quot;https://system76.com/pop&quot;&gt; &lt;b&gt;Pop!_OS&lt;/b&gt;&lt;/a&gt;, an Ubuntu-based distro from computer manufacturer &lt;a href=&quot;https://system76.com&quot;&gt;System76&lt;/a&gt;. &lt;br /&gt;&lt;br /&gt;
-There are few &lt;a href=&quot;https://support.system76.com/articles/difference-between-pop-ubuntu/&quot;&gt;differences from Ubuntu &lt;/a&gt;, but most importantly &lt;b&gt;Pop!_OS&lt;/b&gt; provides a special image specifically for NVIDIA machines so it is easy to get things working.
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; I did not install as a dual boot, so I am not sure how smoothly that would go, but check the &lt;a href=&quot;https://pop.system76.com/docs/dual-booting-windows/&quot;&gt;official docs&lt;/a&gt;.
-I did later on, proceeded on doing a clean install of Official Windows for bringing things back to what they were.&lt;/p&gt;
-
-&lt;h2 id=&quot;set-up-and-install-pop_os&quot;&gt;Set up and install Pop!_OS&lt;/h2&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;https://pop.system76.com/&quot;&gt;Download Pop!_OS&lt;/a&gt; choosing the NVIDIA option.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://evanwill.github.io/_drafts/notes/burn-iso.html&quot;&gt;Burn to a USB stick&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Plug in your &lt;strong&gt;Pop!_OS USB&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;Boot XPS 15 and hit F2 as it boots to enter the &lt;strong&gt;BIOS menu&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;Enter BIOS:
-    &lt;ul&gt;
-      &lt;li&gt;turn off &lt;strong&gt;Secure Boot&lt;/strong&gt; (this is necessary for the NVIDIA drivers, and eventually if you want to use virtual machines)&lt;/li&gt;
-      &lt;li&gt;Settings &amp;gt; General &amp;gt; Advanced Boot Option, select “&lt;strong&gt;enable legacy option ROMS&lt;/strong&gt;”&lt;/li&gt;
-      &lt;li&gt;SATA Operation, select “&lt;strong&gt;AHCI&lt;/strong&gt;” (you need to turn “RAID” mode off because it is not supported by Linux, because its not worth while… If you are dual booting, check the steps on the windows side before doing this)&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Save and exit BIOS&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Reboot&lt;/strong&gt; and hit F12 as it boots to enter boot option menu&lt;/li&gt;
-  &lt;li&gt;Choose the first &lt;strong&gt;USB boot option&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;After a minute, it should boot into a live desktop with the &lt;strong&gt;Pop installer&lt;/strong&gt; running. You can test out the live system if desired.&lt;/li&gt;
-  &lt;li&gt;Follow the installer steps. It is a bit different than other distros because setting up a user takes place after install, during your first boot.
-    &lt;ul&gt;
-      &lt;li&gt;Check the &lt;a href=&quot;https://pop.system76.com/docs/install-pop-os/&quot;&gt;official docs&lt;/a&gt;.&lt;/li&gt;
-      &lt;li&gt;I chose to do a &lt;strong&gt;full disk encrypt&lt;/strong&gt; (work computer), but keep in mind it will ask you for the encryption password (different than your user password) at every restart.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;After installation is complete, reboot, and type in your encrypt password a few times&lt;/li&gt;
-  &lt;li&gt;Follow the steps to set up a user account&lt;/li&gt;
-  &lt;li&gt;Checkout your new system! See the &lt;a href=&quot;https://support.system76.com/articles/pop-basics/&quot;&gt;intro docs&lt;/a&gt; and &lt;a href=&quot;https://pop.system76.com/docs/keyboard-shortcuts/&quot;&gt;keyboard shortcuts&lt;/a&gt; for more info.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;updates&quot;&gt;Updates&lt;/h2&gt;
-
-&lt;p&gt;If you have used GNOME before, everything should be pretty familiar although it starts out more vanilla than an Ubuntu install.
-Click on &lt;strong&gt;Activities&lt;/strong&gt; or hit Super (windows key) to bring up your menu.&lt;/p&gt;
-
-&lt;p&gt;You should run updates, which brings up the first noticeable difference from Ubuntu.
-The “&lt;strong&gt;update manager&lt;/strong&gt;” is gone, instead updates are applied from the “Pop!_Shop” software center. 
-Open Pop!_Shop, click on Installed, and if updates are available a button will appear to install them.&lt;/p&gt;
-
-&lt;h2 id=&quot;graphics-switch&quot;&gt;Graphics switch&lt;/h2&gt;
-
-&lt;p&gt;Another unique Pop! feature: click the upper right for the power menu, then click the battery icon / status meter. 
-This opens options to set &lt;strong&gt;power profile&lt;/strong&gt; (performance / balanced / long life), or to switch between graphics cards (NVIDIA / Intel).
-Switching between graphics cards takes a minute and a restart – its not instantaneous…&lt;/p&gt;
-
-&lt;h2 id=&quot;set-up-and-customize-desktop&quot;&gt;Set up and customize desktop&lt;/h2&gt;
-
-&lt;h3 id=&quot;some-basic-customizations-&quot;&gt;Some basic customizations …&lt;/h3&gt;
-
-&lt;p&gt;Open Settings:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Settings &amp;gt; &lt;strong&gt;Background&lt;/strong&gt; to get your wallpaper set.&lt;/li&gt;
-  &lt;li&gt;Settings &amp;gt; Devices &amp;gt; &lt;strong&gt;Display&lt;/strong&gt; to set up your monitor and turn on Night Light if you want a red shift in the evening.&lt;/li&gt;
-  &lt;li&gt;Settings &amp;gt; &lt;strong&gt;Bluetooth&lt;/strong&gt;, turn bluetooth off if you don’t use it, since it is a security risk.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;some-go-to-have-packages-&quot;&gt;Some go-to-have packages …&lt;/h3&gt;
-
-&lt;p&gt;Pop uses &lt;a href=&quot;https://packages.ubuntu.com/&quot;&gt;Ubuntu packages&lt;/a&gt;.
-Open a terminal and install these right away, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo apt install&lt;/code&gt;:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gnome-tweak-tool&lt;/code&gt; (lets you customize the desktop)&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;chrome-gnome-shell&lt;/code&gt; (might be installed already, but enables gnome extensions, connecting the manager with Firefox or Chromium)&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tlp tlp-rdw&lt;/code&gt; (&lt;a href=&quot;https://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html&quot;&gt;advanced laptop power management&lt;/a&gt;, also see &lt;a href=&quot;https://support.system76.com/articles/battery/&quot;&gt;system76 battery&lt;/a&gt;)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;note-on-dev-packages-&quot;&gt;Note on dev packages …&lt;/h3&gt;
-
-&lt;p&gt;Pop! comes with a lot of development essentials already installed (build-essentials, git, curl, gpg2, ufw). But you do have to enable firewall: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo ufw enable&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;browser-setup-&quot;&gt;Browser setup …&lt;/h3&gt;
-
-&lt;p&gt;Next, set up Firefox browser:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Preferences &amp;gt; Privacy &amp;amp; Security &amp;gt; check “Use a master password” and set.&lt;/li&gt;
-  &lt;li&gt;Add &lt;a href=&quot;https://extensions.gnome.org/&quot;&gt;GNOME extensions&lt;/a&gt; plugin, &lt;a href=&quot;https://addons.mozilla.org/en/firefox/addon/gnome-shell-integration/&quot;&gt;gnome-shell-integration&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Add Firefox &lt;a href=&quot;https://addons.mozilla.org/en-US/firefox/addon/multi-account-containers/?src=search&quot;&gt;Multi-Account Containers&lt;/a&gt;, &lt;a href=&quot;https://addons.mozilla.org/en-US/firefox/addon/facebook-container/&quot;&gt;Facebook Container&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Add adblocker such as &lt;a href=&quot;https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/?src=search&quot;&gt;uBlock Origin&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;gnome-extensions-&quot;&gt;GNOME extensions …&lt;/h3&gt;
-
-&lt;p&gt;Now you can add &lt;a href=&quot;https://extensions.gnome.org/&quot;&gt;GNOME extensions&lt;/a&gt;, click the GNOME icon in the browser’s upper right side.
-Pop! comes with a few pre-installed, but here are a few more to add:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://extensions.gnome.org/extension/517/caffeine/&quot;&gt;Caffeine&lt;/a&gt;, disable screen lock to watch movies or just not have your laptop locking all the time.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://extensions.gnome.org/extension/307/dash-to-dock/&quot;&gt;Dash to Dock&lt;/a&gt;, adds a highly customizable  dock to your desktop. For an Ubuntu-like look, go to installed extensions page: click settings, turn off intelligent autohide, select panel mode, and make icon size smaller.&lt;/li&gt;
-  &lt;li&gt;More suggestions, see &lt;a href=&quot;https://evanwill.github.io/_drafts/notes/ubuntu-gnome.html&quot;&gt;GNOME on Ubuntu notes&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;note-taking-&quot;&gt;Note taking …&lt;/h3&gt;
-
-&lt;p&gt;Next I like to have Gedit (“Text Editor”) customized so its ready as a quick editor.&lt;/p&gt;
-
-&lt;p&gt;Open the app, then click the name in the top bar to open the app menu &amp;gt; Preferences.
-See &lt;a href=&quot;https://evanwill.github.io/_drafts/notes/gedit-editor.html&quot;&gt;customization suggestions notes&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;simplify-git-credentials&quot;&gt;Simplify git credentials&lt;/h2&gt;
-
-&lt;p&gt;You can permanently store your Git credentials with your user account.
-Configure Git as normal:&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git config --global user.name &quot;Evan Will&quot;
-git config --global user.email &quot;myemail@gmail.com&quot;
-git config --global core.editor &quot;nano -w&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; You should be using the &lt;a href=&quot;https://docs.github.com/en/authentication/connecting-to-github-with-ssh&quot;&gt;newer SSH based configuration&lt;/a&gt; suggested by Github&lt;/p&gt;
-
-&lt;p&gt;Install dependencies:&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo apt install libgnome-keyring-dev&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Build the helper:&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd /usr/share/doc/git/contrib/credential/gnome-keyring
-sudo make
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Configure git helper:&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git config --global credential.helper /usr/share/doc/git/contrib/credential&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Then the next time you need a Git credential, it will prompt for username and password as normal, but it will be stored going forward.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Note: newer versions of Git require a different manager, if libgnome-keyring-dev gives a permission error, use libsecret instead. I found this is necessary on Ubuntu 19.04.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install libsecret-1-0 libsecret-1-dev
-cd /usr/share/doc/git/contrib/credential/libsecret
-sudo make
-git config --global credential.helper /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;resolving-issues-with-sleep&quot;&gt;Resolving issues with sleep&lt;/h2&gt;
-
-&lt;p&gt;With Intel graphics activated, closing the lid for sleep or using the sleep icon from the power menu works correctly.
-However, XPS 15 does not seem to sleep correctly with NVIDIA activated, either it won’t go to sleep or it won’t wake up the screen…&lt;/p&gt;
-
-&lt;p&gt;Supposedly there is a way to fix this with boot options passed to the Linux kernel.
-If you were on Ubuntu, editing the GRUB options &lt;em&gt;in theory&lt;/em&gt; should work. 
-However, Pop! no longer uses GRUB, instead uses systemd-boot and &lt;a href=&quot;https://github.com/pop-os/kernelstub&quot;&gt;kernelstub&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Ubuntu would look something like:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Open GRUB options, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo nano /etc/default/grub&lt;/code&gt;
-    &lt;ul&gt;
-      &lt;li&gt;
-        &lt;p&gt;edit the value of the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GRUB_CMDLINE_LINUX_DEFAULT&lt;/code&gt; line, so it looks like:&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-        &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet acpi_rev_override=1 acpi_osi=Linux nouveau.modeset=0 pcie_aspm=force drm.vblankoffdelay=1 scsi_mod.use_blk_mq=1 nouveau.runpm=0 mem_sleep_default=deep&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Then update GRUB using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo update-grub&lt;/code&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;See &lt;a href=&quot;https://github.com/JackHack96/dell-xps-9570-ubuntu-respin&quot;&gt;dell-xps-9570-ubuntu-respin&lt;/a&gt; “xps-tweaks.sh” for scripts which inspired these settings.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;You can do this on Pop (since all the Ubuntu stuff is still there), but it won’t have any effect, since it isn’t actually booting via GRUB!&lt;/p&gt;
-
-&lt;p&gt;Check your current set up with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo kernelstub -p&lt;/code&gt; (mine says the kernel options are “quiet loglevel=0 systemd.show_status=false splash”).
-You could then add on the same kernel options as the GRUB config above, like:&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo kernelstub -a &quot;acpi_rev_override=1 acpi_osi=Linux nouveau.modeset=0 pcie_aspm=force drm.vblankoffdelay=1 scsi_mod.use_blk_mq=1 nouveau.runpm=0 mem_sleep_default=deep&quot;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Honestly, I haven’t tried it… 
-Since sleep works fine on Intel graphics, which I generally use for better battery life anyway, I will wait for some other brave soul to figure out the best boot options.
-Let me know if you do!&lt;/p&gt;
-
-&lt;h2 id=&quot;adding-some-useful-apps&quot;&gt;Adding some useful apps&lt;/h2&gt;
-
-&lt;p&gt;Languages:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Ruby: &lt;a href=&quot;https://evanwill.github.io/_drafts/notes/ruby-notes.html&quot;&gt;RVM set up&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Python: &lt;a href=&quot;https://evanwill.github.io/_drafts/notes/dual-python-notebook.html&quot;&gt;Anaconda set up&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Java: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo apt install default-jre&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;default-jdk&lt;/code&gt; (this will be OpenJDK 11+, fine for apps like OpenRefine, if you need more specific versions search &lt;a href=&quot;https://packages.ubuntu.com/search?keywords=jdk&amp;amp;searchon=names&amp;amp;suite=bionic&amp;amp;section=all&quot;&gt;packages&lt;/a&gt;)&lt;/li&gt;
-  &lt;li&gt;Node: use &lt;a href=&quot;https://github.com/creationix/nvm&quot;&gt;nvm&lt;/a&gt; (this seems to be the best method; install nvm, then &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nvm install --lts&lt;/code&gt;), or official &lt;a href=&quot;https://github.com/nodesource/distributions/blob/master/README.md&quot;&gt;NodeSource ppa&lt;/a&gt;, or repository version &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nodejs&lt;/code&gt; (which is out of date)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Search &lt;a href=&quot;https://packages.ubuntu.com/&quot;&gt;Ubuntu Packages&lt;/a&gt; or Pop!_Shop for software.&lt;/p&gt;
-
-&lt;p&gt;App essentials:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;A few extra fonts: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fonts-firacode&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fonts-noto&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Chromium Browser, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;chromium-browser&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Tilix terminal, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tilix&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;KeePassXC&lt;/li&gt;
-  &lt;li&gt;GIMP image editing, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gimp&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;div class=&quot;alert alert-info&quot; role=&quot;alert&quot;&gt;
-  Update: &lt;a href=&quot;https://evanwill.github.io/_drafts/notes/ubuntu20.html&quot;&gt; Ubuntu 20.04 installs works great&lt;/a&gt;  on XPS 15. I have moved to Ubuntu 20.04, but most of this post is still relevant. The most recent versions of Pop!_OS have some unique gnome extensions, including an auto-tiling desktop option. 
-&lt;/div&gt;</content><author><name>Akash Sharma</name></author><category term="tech" /><category term="Linux" /><category term="XPS-15" /><summary type="html">I’ve got a Dell XPS 15 9570 (16GB RAM, i7-8750H CPU) for work expecting it to have good support in Linux, considering other XPS laptops ship with Ubuntu.</summary></entry><entry><title type="html">Exploration of Bayesian Optimization and Gaussian Processes</title><link href="http://localhost:4000/tech/2020/10/14/Exploration-of-Bayesian-Optimization-&-Gaussian-Processes.html" rel="alternate" type="text/html" title="Exploration of Bayesian Optimization and Gaussian Processes" /><published>2020-10-14T00:00:00+05:30</published><updated>2020-10-14T00:00:00+05:30</updated><id>http://localhost:4000/tech/2020/10/14/Exploration-of-Bayesian-Optimization-&amp;-Gaussian-Processes</id><content type="html" xml:base="http://localhost:4000/tech/2020/10/14/Exploration-of-Bayesian-Optimization-&amp;-Gaussian-Processes.html">&lt;blockquote&gt;
+&lt;/div&gt;</content><author><name>Akash Sharma</name></author><category term="[&quot;Stack&quot;, &quot;Queue&quot;, &quot;Linked-list&quot;, &quot;Tree&quot;, &quot;Trie&quot;, &quot;Disjoint Set&quot;, &quot;Heap&quot;]" /><summary type="html">This post is a basic cheat-sheet on some of the basics yet crucial data structures’ underlying concepts and high level implementations. I also try to cover some more interesting related ideas for some of these data structures</summary></entry><entry><title type="html">Exploration of Bayesian Optimization and Gaussian Processes</title><link href="http://localhost:4000/tech/2022/10/14/Exploration-of-Bayesian-Optimization-&-Gaussian-Processes.html" rel="alternate" type="text/html" title="Exploration of Bayesian Optimization and Gaussian Processes" /><published>2022-10-14T00:00:00+05:30</published><updated>2022-10-14T00:00:00+05:30</updated><id>http://localhost:4000/tech/2022/10/14/Exploration-of-Bayesian-Optimization-&amp;-Gaussian-Processes</id><content type="html" xml:base="http://localhost:4000/tech/2022/10/14/Exploration-of-Bayesian-Optimization-&amp;-Gaussian-Processes.html">&lt;blockquote&gt;
   &lt;p&gt;Bayesian Optimization provides a principled technique based on Bayes Theorem to direct a search of a global optimization problem that is efficient and effective. Bayesian Optimization is often used in applied machine learning to tune the hyperparameters of a given well-performing model on a validation dataset.&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -1554,7 +1554,7 @@ Bayesian optimization neg. MSE = -3185.50
   &lt;li&gt;&lt;a href=&quot;https://pyro.ai/examples/bo.html&quot;&gt;Pyro&lt;/a&gt;’s documentation.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;hr /&gt;</content><author><name>Akash Sharma</name></author><category term="tech" /><category term="Machine Learning" /><category term="Optimization" /><category term="Probability" /><category term="Statistics" /><summary type="html">Bayesian Optimization provides a principled technique based on Bayes Theorem to direct a search of a global optimization problem that is efficient and effective. Bayesian Optimization is often used in applied machine learning to tune the hyperparameters of a given well-performing model on a validation dataset.</summary></entry><entry><title type="html">Sia Cloud-Based Storage Development</title><link href="http://localhost:4000/tech/2020/08/09/sia-cloud-based-development.html" rel="alternate" type="text/html" title="Sia Cloud-Based Storage Development" /><published>2020-08-09T00:00:00+05:30</published><updated>2020-08-09T00:00:00+05:30</updated><id>http://localhost:4000/tech/2020/08/09/sia-cloud-based-development</id><content type="html" xml:base="http://localhost:4000/tech/2020/08/09/sia-cloud-based-development.html">&lt;blockquote&gt;
+&lt;hr /&gt;</content><author><name>Akash Sharma</name></author><category term="tech" /><category term="Machine Learning" /><category term="Optimization" /><category term="Probability" /><category term="Statistics" /><summary type="html">Bayesian Optimization provides a principled technique based on Bayes Theorem to direct a search of a global optimization problem that is efficient and effective. Bayesian Optimization is often used in applied machine learning to tune the hyperparameters of a given well-performing model on a validation dataset.</summary></entry><entry><title type="html">Sia Cloud-Based Storage Development</title><link href="http://localhost:4000/tech/2022/08/09/sia-cloud-based-development.html" rel="alternate" type="text/html" title="Sia Cloud-Based Storage Development" /><published>2022-08-09T00:00:00+05:30</published><updated>2022-08-09T00:00:00+05:30</updated><id>http://localhost:4000/tech/2022/08/09/sia-cloud-based-development</id><content type="html" xml:base="http://localhost:4000/tech/2022/08/09/sia-cloud-based-development.html">&lt;blockquote&gt;
   &lt;p&gt;Sia is the leading decentralized cloud storage platform. No signups, no servers, no trusted third parties. Sia leverages blockchain technology to create a data storage marketplace that is more robust and more affordable than traditional cloud storage providers.&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -2385,7 +2385,7 @@ Estimated Fee:       30 mS / KB
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;hr /&gt;</content><author><name>Akash Sharma</name></author><category term="tech" /><category term="Blockchain" /><summary type="html">Sia is the leading decentralized cloud storage platform. No signups, no servers, no trusted third parties. Sia leverages blockchain technology to create a data storage marketplace that is more robust and more affordable than traditional cloud storage providers.</summary></entry><entry><title type="html">MarkDown101 and how to use them in your webpages?</title><link href="http://localhost:4000/tech/2019/07/19/MarkDown101-and-how-to-use-them-in-your-website.html" rel="alternate" type="text/html" title="MarkDown101 and how to use them in your webpages?" /><published>2019-07-19T00:00:00+05:30</published><updated>2019-07-19T00:00:00+05:30</updated><id>http://localhost:4000/tech/2019/07/19/MarkDown101-and-how-to-use-them-in-your-website</id><content type="html" xml:base="http://localhost:4000/tech/2019/07/19/MarkDown101-and-how-to-use-them-in-your-website.html">&lt;blockquote&gt;
+&lt;hr /&gt;</content><author><name>Akash Sharma</name></author><category term="tech" /><category term="Blockchain" /><summary type="html">Sia is the leading decentralized cloud storage platform. No signups, no servers, no trusted third parties. Sia leverages blockchain technology to create a data storage marketplace that is more robust and more affordable than traditional cloud storage providers.</summary></entry><entry><title type="html">MarkDown101 and how to use them in your webpages?</title><link href="http://localhost:4000/tech/2022/07/19/MarkDown101-and-how-to-use-them-in-your-website.html" rel="alternate" type="text/html" title="MarkDown101 and how to use them in your webpages?" /><published>2022-07-19T00:00:00+05:30</published><updated>2022-07-19T00:00:00+05:30</updated><id>http://localhost:4000/tech/2022/07/19/MarkDown101-and-how-to-use-them-in-your-website</id><content type="html" xml:base="http://localhost:4000/tech/2022/07/19/MarkDown101-and-how-to-use-them-in-your-website.html">&lt;blockquote&gt;
   &lt;p&gt;This post is a basic cheat-sheet on how to write a markdown based document with proper syntax and formatting. Markdown is an easy-to-remember which is just a lightweight markup language with plain text formatting syntax. We will also explore on how to extend upon its capabilities to work in web page just like this one !&lt;/p&gt;
 &lt;/blockquote&gt;
 
