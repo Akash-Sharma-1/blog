@@ -24,7 +24,7 @@ pagination:
   # Site-wide kill switch, disabled here it doesn't run at all 
   enabled: true
   # How many objects per paginated page, used to be `paginate` (default: 0, means all)
-  per_page: 5
+  per_page: 8
   sort_field: 'date'
   sort_reverse: true
 
