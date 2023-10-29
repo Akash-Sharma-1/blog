@@ -2,7 +2,7 @@
 title: About
 permalink: /about/
 ---
-<link rel="stylesheet" type="text/css" media="all" href="https://blog.akashomatics.space//pages/about_markdown_styles.css" />
+<link rel="stylesheet" type="text/css" media="all" href="https://akash-sharma-1.github.io/blog//pages/about_markdown_styles.css" />
 <center> <h4> Welcome to my Blogs !</h4> </center>
 <br>
 
