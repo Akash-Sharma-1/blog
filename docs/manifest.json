@@ -14,7 +14,7 @@
     "prefer_related_applications": false,
     "icons": [
         {
-            "src": "https://akash-sharma-1.github.io/blog//assets/images/thumbnail.png",
+            "src": "https://akash-sharma-1.github.io/blog/assets/images/thumbnail.png",
             "sizes": "96x96",
             "type": "image/png"
         }
