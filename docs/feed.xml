@@ -1,4 +1,29 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-09-30T18:20:45+05:30</updated><id>/feed.xml</id><title type="html">Akash Sharma’s Blog</title><subtitle>Reading, Learning, Thinking and Writing</subtitle><author><name>Akash Sharma</name></author><entry><title type="html">Setting up Dell XPS 15 with Pop!_OS Distro</title><link href="/tech/2023/07/08/Setting-up-Dell-XPS-15-with-Pop!_OS-Distro.html" rel="alternate" type="text/html" title="Setting up Dell XPS 15 with Pop!_OS Distro" /><published>2023-07-08T00:00:00+05:30</published><updated>2023-07-08T00:00:00+05:30</updated><id>/tech/2023/07/08/Setting-up-Dell-XPS-15-with-Pop!_OS-Distro</id><content type="html" xml:base="/tech/2023/07/08/Setting-up-Dell-XPS-15-with-Pop!_OS-Distro.html">&lt;p&gt;I’ve got a &lt;a href=&quot;https://www.dell.com/en-in/work/shop/scc/sr/laptops/xps-laptops&quot;&gt;Dell XPS 15 9570&lt;/a&gt; (16GB RAM, i7-8750H CPU) for work expecting it to have good support in Linux, considering other XPS laptops ship with Ubuntu.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-10-29T18:56:02+05:30</updated><id>/feed.xml</id><title type="html">Akash Sharma’s Blog</title><subtitle>Reading, Learning, Thinking and Writing</subtitle><author><name>Akash Sharma</name></author><entry><title type="html">Monotonicity and Stacks</title><link href="/algorithms/stack/2023/09/27/Monotonicity-and-Stacks.html" rel="alternate" type="text/html" title="Monotonicity and Stacks" /><published>2023-09-27T00:00:00+05:30</published><updated>2023-09-27T00:00:00+05:30</updated><id>/algorithms/stack/2023/09/27/Monotonicity-and-Stacks</id><content type="html" xml:base="/algorithms/stack/2023/09/27/Monotonicity-and-Stacks.html">&lt;blockquote&gt;
+  &lt;p&gt;This post highlights the possible usage of stacks (as a data structure) to resolve problems where monotonicity is of value.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;what-is-monotonicity-&quot;&gt;What is Monotonicity ?&lt;/h1&gt;
+
+&lt;h2 id=&quot;concept&quot;&gt;Concept&lt;/h2&gt;
+
+&lt;h2 id=&quot;types&quot;&gt;Types&lt;/h2&gt;
+
+&lt;h1 id=&quot;a-deeper-dive-on-monotonic-stacks&quot;&gt;A deeper dive on Monotonic Stacks&lt;/h1&gt;
+
+&lt;h2 id=&quot;audience-setting&quot;&gt;Audience setting&lt;/h2&gt;
+
+&lt;h1 id=&quot;implementation-details-and-insights&quot;&gt;Implementation Details and Insights&lt;/h1&gt;
+
+&lt;h1 id=&quot;problems-and-use-case-analysis&quot;&gt;Problems and Use Case Analysis&lt;/h1&gt;
+
+&lt;h1 id=&quot;bonus-section&quot;&gt;Bonus Section&lt;/h1&gt;
+&lt;div class=&quot;alert alert-info&quot; role=&quot;alert&quot;&gt;
+  I would be covering this topic as well as its applications in some other post in detail. However I just wanted to your ignite the curiousity
+&lt;/div&gt;
+
+&lt;h2 id=&quot;monotonic-queues&quot;&gt;Monotonic Queues&lt;/h2&gt;
+
+&lt;h2 id=&quot;now-what-is-montonic-deque-&quot;&gt;Now what is Montonic Deque ?&lt;/h2&gt;</content><author><name>Akash Sharma</name></author><category term="[&quot;Stack&quot;]" /><summary type="html">This post highlights the possible usage of stacks (as a data structure) to resolve problems where monotonicity is of value.</summary></entry><entry><title type="html">Setting up Dell XPS 15 with Pop!_OS Distro</title><link href="/tech/2023/07/08/Setting-up-Dell-XPS-15-with-Pop!_OS-Distro.html" rel="alternate" type="text/html" title="Setting up Dell XPS 15 with Pop!_OS Distro" /><published>2023-07-08T00:00:00+05:30</published><updated>2023-07-08T00:00:00+05:30</updated><id>/tech/2023/07/08/Setting-up-Dell-XPS-15-with-Pop!_OS-Distro</id><content type="html" xml:base="/tech/2023/07/08/Setting-up-Dell-XPS-15-with-Pop!_OS-Distro.html">&lt;p&gt;I’ve got a &lt;a href=&quot;https://www.dell.com/en-in/work/shop/scc/sr/laptops/xps-laptops&quot;&gt;Dell XPS 15 9570&lt;/a&gt; (16GB RAM, i7-8750H CPU) for work expecting it to have good support in Linux, considering other XPS laptops ship with Ubuntu.&lt;/p&gt;
 
 &lt;p&gt;However, the massive (for a laptop) NVIDIA GeForce GTX 1050Ti with 4GB GDDR5 ensures installing Linux is not so smooth…🤔&lt;/p&gt;
 
