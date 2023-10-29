@@ -29,7 +29,7 @@ pagination:
   sort_reverse: true
 
 # Uncomment the line below if you use this theme as a GitHub Page's remote theme.
-remote_theme: Akash-Sharma-1/blog
+#remote_theme: Akash-Sharma-1/blog
 
 # Author settings
 author: Akash Sharma

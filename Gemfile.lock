@@ -274,6 +274,7 @@ DEPENDENCIES
   github-pages
   jekyll
   jekyll-paginate-v2
+  jekyll-remote-theme
   tzinfo
   tzinfo-data
   webrick
