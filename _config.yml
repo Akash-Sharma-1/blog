@@ -16,7 +16,7 @@
 title: Akash Sharma's Blog
 subtitle: Blogs on Deep Learning, System Design, Algorithms,<br>Development and much more ...
 description: Reading, Learning, Thinking and Writing
-baseurl: ""
+baseurl: "/blog"
 timezone: Asia/Kolkata
 sidebar_repository_limit: 3
 publication_date: 2023
@@ -29,7 +29,7 @@ pagination:
   sort_reverse: true
 
 # Uncomment the line below if you use this theme as a GitHub Page's remote theme.
-#remote_theme: Akash-Sharma-1/blog
+# remote_theme: Akash-Sharma-1/blog
 
 # Author settings
 author: Akash Sharma
