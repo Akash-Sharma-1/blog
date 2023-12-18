@@ -15,7 +15,7 @@ This is the domain where Bayesian optimization techniques are most useful. They 
 
 ### Surrogate model
 
-A popular surrogate model for Bayesian optimization are [Gaussian processes](https://en.wikipedia.org/wiki/Gaussian_process) (GPs). I wrote about Gaussian processes in a [previous post](/2018/03/19/gaussian-processes/). If you are not familiar with GPs I recommend reading it first. GPs define a prior over functions and we can use them to incorporate prior beliefs about the objective function (smoothness, ...). The GP posterior is cheap to evaluate and is used to propose points in the search space where sampling is likely to yield an improvement.
+A popular surrogate model for Bayesian optimization are [Gaussian processes](https://en.wikipedia.org/wiki/Gaussian_process) (GPs). I will be also writing about Gaussian processes in a separate post. If you are not familiar with GPs I recommend reading it first. GPs define a prior over functions and we can use them to incorporate prior beliefs about the objective function (smoothness, ...). The GP posterior is cheap to evaluate and is used to propose points in the search space where sampling is likely to yield an improvement.
 
 ### Acquisition functions
 
@@ -103,7 +103,7 @@ plt.legend();
 ```
 
 
-![png](/img/2018-03-21/output_4_0.png)
+![png]({{ site.baseurl }}/assets/images/bayesian-optimization/output_4_0.png)
 
 
 Goal is to find the global optimum on the left in a small number of steps. The next step is to implement the acquisition function defined in Equation (2) as `expected_improvement` function.
@@ -231,7 +231,7 @@ for i in range(n_iter):
 ```
 
 
-![png](/img/2018-03-21/output_10_0.png)
+![png]({{ site.baseurl }}/assets/images/bayesian-optimization/output_10_0.png)
 
 
 Note how the two initial samples initially drive search into the direction of the local maximum on the right side but exploration allows the algorithm to escape from that local optimum and find the global optimum on the left side. Also note how sampling point proposals often fall within regions of high uncertainty (exploration) and are not only driven by the highest surrogate function values (exploitation).
@@ -246,7 +246,7 @@ plot_convergence(X_sample, Y_sample)
 ```
 
 
-![png](/img/2018-03-21/output_12_0.png)
+![png]({{ site.baseurl }}/assets/images/bayesian-optimization/output_12_0.png)
 
 
 ## Bayesian optimization libraries
@@ -286,7 +286,7 @@ plot_approximation(gpr, X, Y, r.x_iters, -r.func_vals, show_legend=True)
 ```
 
 
-![png](/img/2018-03-21/output_14_0.png)
+![png]({{ site.baseurl }}/assets/images/bayesian-optimization/output_14_0.png)
 
 
 
@@ -295,7 +295,7 @@ plot_convergence(np.array(r.x_iters), -r.func_vals)
 ```
 
 
-![png](/img/2018-03-21/output_15_0.png)
+![png]({{ site.baseurl }}/assets/images/bayesian-optimization/output_15_0.png)
 
 
 ## GPyOpt
@@ -330,7 +330,7 @@ optimizer.plot_acquisition()
 ```
 
 
-![png](/img/2018-03-21/output_17_0.png)
+![png]({{ site.baseurl }}/assets/images/bayesian-optimization/output_17_0.png)
 
 
 
@@ -339,7 +339,7 @@ optimizer.plot_convergence()
 ```
 
 
-![png](/img/2018-03-21/output_18_0.png)
+![png]({{ site.baseurl }}/assets/images/bayesian-optimization/output_18_0.png)
 
 
 ## Application
@@ -449,7 +449,7 @@ plt.legend();
 
 
 
-![png](/img/2018-03-21/output_26_1.png)
+![png]({{ site.baseurl }}/assets/images/bayesian-optimization/output_26_1.png)
 
 
 ## References

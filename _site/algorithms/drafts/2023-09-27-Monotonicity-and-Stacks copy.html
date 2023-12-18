@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico">
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Monotonicity and Stacks | Akash Sharma’s Blog</title>
+<meta name="generator" content="Jekyll v3.9.2" />
+<meta property="og:title" content="Monotonicity and Stacks" />
+<meta name="author" content="Akash Sharma" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Reading, Learning, Thinking and Writing" />
+<meta property="og:description" content="Reading, Learning, Thinking and Writing" />
+<link rel="canonical" href="http://localhost:4000/blog/algorithms/drafts/2023-09-27-Monotonicity-and-Stacks%20copy.html" />
+<meta property="og:url" content="http://localhost:4000/blog/algorithms/drafts/2023-09-27-Monotonicity-and-Stacks%20copy.html" />
+<meta property="og:site_name" content="Akash Sharma’s Blog" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Monotonicity and Stacks" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Akash Sharma"},"description":"Reading, Learning, Thinking and Writing","headline":"Monotonicity and Stacks","url":"http://localhost:4000/blog/algorithms/drafts/2023-09-27-Monotonicity-and-Stacks%20copy.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/blog/feed.xml" title="Akash Sharma&apos;s Blog" />
+    
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W1GFNLSVY2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-W1GFNLSVY2');
+</script>
+
+    
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+    <link rel="stylesheet" href="/blog/assets/css/main.css">
+    <link rel="manifest" href="/blog/manifest.json">
+
+    <!-- Support for Bootstrap https://getbootstrap.com -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js" integrity="sha256-fTuUgtT7O2rqoImwjrhDgbXTKUwyxxujIMRIK7TbuNU=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- Support for pattern background https://github.com/btmills/geopattern -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js" integrity="sha256-AOyAcXCKLfI+FRdiZr4VTj9h9Wwv0YXXa2CPfUWbBS8=" crossorigin="anonymous"></script>
+
+    <!-- Support for SVG icon https://iconify.design -->
+    <script src="https://code.iconify.design/1/1.0.0/iconify.min.js"></script>
+
+    <!-- Support for share and reaction btns -->
+    <!-- <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5fae8b9ee3f5df0012a019ca&product=sop' async='async'></script> -->
+    <!-- <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=650fe938f702ac001998f3a4&product=sop' async='async'></script> -->
+    <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+
+</head>
+
+    <body>
+        <header>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <nav class="container navbar navbar-expand-sm py-2">
+        <a class="navbar-brand title p-0" href="/blog/">
+          <!-- GITHUB ICON -->
+          <!-- <span class="iconify" data-icon="octicon:mark-github"></span> -->
+          <!-- Personal Icon -->
+          <span class="material-icons" style="vertical-align:middle;font-size:inherit">font_download</span>
+            <span style="vertical-align:middle">Akash Sharma's Blog</span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="navbar-nav ml-auto">
+                
+                  
+                    <a class="nav-item nav-link text-right" href="/blog/">Home</a>
+                  
+                  
+
+                
+                  
+                    <a class="nav-item nav-link text-right" href="/blog/classification/">Classification</a>
+                  
+                  
+
+                
+                  
+                    <a class="nav-item nav-link text-right" href="/blog/algorithms/">Algorithms</a>
+                  
+                  
+
+                
+                  
+                    <a class="nav-item nav-link text-right" href="/blog/about/">About Me</a>
+                  
+                  
+
+                
+                  
+                  
+                    <a class="nav-item nav-link text-right" href="https://akash-sharma-1.github.io/">Portfolio</a>
+                  
+
+                
+            </div>
+        </div>
+    </nav>
+</header>
+
+<script>
+    
+        $(".navbar").addClass("navbar-light");
+        $("a[href$='/blog/algorithms/drafts/2023-09-27-Monotonicity-and-Stacks%20copy.html']").addClass("active");
+    
+</script>
+
+        <div class="titlebar text-light">
+    <div class="container">
+        
+            <!-- Default title -->
+            <div class="title py-2 py-md-3">Monotonicity and Stacks</div>
+        
+    </div>
+</div>
+
+<script>
+    
+        $(".titlebar").geopattern("Monotonicity and Stacks");
+    
+</script>
+
+<div class="container">
+    <div class="row my-2 my-md-4">
+        
+
+<div class="content col-md-8">
+    <blockquote>
+  <p>This post highlights the possible usage of stacks (as a data structure) to resolve problems where monotonicity is of value.</p>
+</blockquote>
+
+<h1 id="what-is-monotonicity-">What is Monotonicity ?</h1>
+
+<h2 id="concept">Concept</h2>
+
+<h2 id="types">Types</h2>
+
+<h1 id="a-deeper-dive-on-monotonic-stacks">A deeper dive on Monotonic Stacks</h1>
+
+<h2 id="audience-setting">Audience setting</h2>
+
+<h1 id="implementation-details-and-insights">Implementation Details and Insights</h1>
+
+<h1 id="problems-and-use-case-analysis">Problems and Use Case Analysis</h1>
+
+<h1 id="bonus-section">Bonus Section</h1>
+<div class="alert alert-info" role="alert">
+  I would be covering this topic as well as its applications in some other post in detail. However I just wanted to your ignite the curiousity
+</div>
+
+<h2 id="monotonic-queues">Monotonic Queues</h2>
+
+<h2 id="now-what-is-montonic-deque-">Now what is Montonic Deque ?</h2>
+
+</div>
+<div class="sidebar col-md-4 mt-2 mt-md-0">
+    
+    
+        <!-- https://github.com/christian-fei/Simple-Jekyll-Search -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/simple-jekyll-search/1.7.2/simple-jekyll-search.min.js" integrity="sha256-DsgE6Y6cI5eAZoTg8tJ5VBxFs+rnL8smPwt/u8tyAYo=" crossorigin="anonymous"></script>
+
+<div id="search-box" class="mb-2">
+    <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+    <ul class="mb-0"></ul>
+</div>
+
+<script type="text/javascript">
+    var search_box = document.getElementById("search-box");
+    SimpleJekyllSearch({
+        searchInput: search_box.getElementsByTagName("input")[0],
+        resultsContainer: search_box.getElementsByTagName("ul")[0],
+        json: '/blog/assets/search.json',
+        searchResultTemplate: '<li><a href="{url}">{title}</a></li>',
+        noResultsText: 'No results found',
+        fuzzy: false
+    });
+</script>
+
+        <!-- http://liberize.github.io/tech/jekyll-tag-cloud.html -->
+<div id="tag-cloud" class="mb-2">
+    <p class="name">Classification Cloud</p>
+    
+    
+    
+
+    
+    
+
+    
+
+    
+        
+        
+        
+
+        
+
+        
+        <a href="/blog/classification/#Jekyll" style="font-size: 9pt; color: #999;">Jekyll</a>
+    
+        
+        
+        
+
+        
+
+        
+        <a href="/blog/classification/#Markdown" style="font-size: 9pt; color: #999;">Markdown</a>
+    
+        
+        
+        
+
+        
+
+        
+        <a href="/blog/classification/#Linux" style="font-size: 9pt; color: #999;">Linux</a>
+    
+        
+        
+        
+
+        
+
+        
+        <a href="/blog/classification/#XPS-15" style="font-size: 9pt; color: #999;">XPS-15</a>
+    
+        
+        
+        
+
+        
+
+        
+        <a href="/blog/classification/#Machine Learning" style="font-size: 9pt; color: #999;">Machine Learning</a>
+    
+        
+        
+        
+
+        
+
+        
+        <a href="/blog/classification/#Optimization" style="font-size: 9pt; color: #999;">Optimization</a>
+    
+        
+        
+        
+
+        
+
+        
+        <a href="/blog/classification/#Probability" style="font-size: 9pt; color: #999;">Probability</a>
+    
+        
+        
+        
+
+        
+
+        
+        <a href="/blog/classification/#Statistics" style="font-size: 9pt; color: #999;">Statistics</a>
+    
+        
+        
+        
+
+        
+
+        
+        <a href="/blog/classification/#Blockchain" style="font-size: 9pt; color: #999;">Blockchain</a>
+    
+        
+        
+        
+
+        
+
+        
+        <a href="/blog/classification/#DevOps" style="font-size: 9pt; color: #999;">DevOps</a>
+    
+        
+        
+        
+
+        
+
+        
+        <a href="/blog/classification/#Kubernetes" style="font-size: 9pt; color: #999;">Kubernetes</a>
+    
+        
+        
+        
+
+        
+
+        
+        <a href="/blog/classification/#Treaps" style="font-size: 9pt; color: #999;">Treaps</a>
+    
+        
+        
+        
+
+        
+
+        
+        <a href="/blog/classification/#Tree" style="font-size: 9pt; color: #999;">Tree</a>
+    
+        
+        
+        
+
+        
+
+        
+        <a href="/blog/classification/#Fenwick" style="font-size: 9pt; color: #999;">Fenwick</a>
+    
+        
+        
+        
+
+        
+
+        
+        <a href="/blog/classification/#Software Architecture" style="font-size: 9pt; color: #999;">Software Architecture</a>
+    
+</div>
+
+        <hr/>
+      
+          <div class="repository-list">
+    <p class="name">My Popular Repositories</p>
+    <div class="row">
+        
+        
+            <div class="col-sm-6 col-md-12 mb-3">
+                <a class="repository-card btn rounded p-0" href="https://github.com/Akash-Sharma-1/DashTerm">
+                    <div class="card p-1">
+                        <div class="name rounded center text-light">
+                            DashTerm
+                        </div>
+                        <div class="info center">
+                            <div class="p-2">
+                                <div class="description mb-2">A terminal based application (TUI) for enhancing your productive workstation 👨‍💻</div>
+                                <div>
+                                    <span class="iconify" data-icon="octicon:star"></span>
+                                    <span class="pr-3">9</span>
+                                    <span class="iconify" data-icon="octicon:repo-forked"></span>
+                                    <span class="pr-3">0</span>
+                                    <span class="iconify" data-icon="octicon:clock"></span>
+                                    <span>2023-12-10</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        
+            <div class="col-sm-6 col-md-12 mb-3">
+                <a class="repository-card btn rounded p-0" href="https://github.com/Akash-Sharma-1/Advanced-Twitter-Scraper">
+                    <div class="card p-1">
+                        <div class="name rounded center text-light">
+                            Advanced-Twitter-Scraper
+                        </div>
+                        <div class="info center">
+                            <div class="p-2">
+                                <div class="description mb-2">An advanced Twitter Scrapper which bypasses Twitter's official API Limit on tweet data retrieval.</div>
+                                <div>
+                                    <span class="iconify" data-icon="octicon:star"></span>
+                                    <span class="pr-3">4</span>
+                                    <span class="iconify" data-icon="octicon:repo-forked"></span>
+                                    <span class="pr-3">0</span>
+                                    <span class="iconify" data-icon="octicon:clock"></span>
+                                    <span>2022-06-27</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        
+            <div class="col-sm-6 col-md-12 mb-3">
+                <a class="repository-card btn rounded p-0" href="https://github.com/Akash-Sharma-1/Augmenting-Variation-in-Images-with-Cycle-Consistent-VAE">
+                    <div class="card p-1">
+                        <div class="name rounded center text-light">
+                            Augmenting-Variation-in-Images-with-Cycle-Consistent-VAE
+                        </div>
+                        <div class="info center">
+                            <div class="p-2">
+                                <div class="description mb-2">Implementation of Cycle Consistent Variational AutoEncoder for getting the factors of variation across Images.</div>
+                                <div>
+                                    <span class="iconify" data-icon="octicon:star"></span>
+                                    <span class="pr-3">3</span>
+                                    <span class="iconify" data-icon="octicon:repo-forked"></span>
+                                    <span class="pr-3">0</span>
+                                    <span class="iconify" data-icon="octicon:clock"></span>
+                                    <span>2023-12-18</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        
+    </div>
+</div>
+
+<script>
+    $(".repository-card .name").each(function () {
+        $(this).geopattern($(this).text().trim());
+    });
+</script>
+
+            <hr/>
+          <div class="repository-list">
+    <p class="name">My Popular Papers</p>
+    <div class="row">
+   
+            <div class="col-sm-6 col-md-12 mb-3">
+                <a class="repository-card btn rounded p-0" href="https://www.computer.org/csdl/journal/ts/5555/01/10242168/1QdYTNsq4Xm">
+                    <div class="card p-1">
+                        <!-- <div class="name rounded center text-light">
+                            dasjkdhajkshdjksadfghhads gfhjadgshjfg adshjfgasdhj fgsadhjfghjsdagf ajshgfsdhjag f
+                        </div> -->
+                        <div class="info center">
+                            <div class="p-2">
+                                <div class="mt-2 mb-2">Improving Cross-Language Code Clone Detection via Code Representation Learning 
+                                    and Graph Neural Networks</div>
+                                <!-- <div>
+                                    <span class="iconify" data-icon="octicon:star"></span>
+                                    <span class="iconify" data-icon="octicon:repo-forked"></span>
+                                    <span class="iconify" data-icon="octicon:clock"></span>
+                                </div> -->
+                            </div>
+                        </div>
+
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-sm-6 col-md-12 mb-3">
+                <a class="repository-card btn rounded p-0" href="#">
+                    <div class="card p-1">
+                        <!-- <div class="name rounded center text-light">
+                            dasjkdhajkshdjksadfghhads gfhjadgshjfg adshjfgasdhj fgsadhjfghjsdagf ajshgfsdhjag f
+                        </div> -->
+                        <div class="info center">
+                            <div class="p-2">
+                                <div class="mt-2 mb-2">Learning Fine-Grained Cross Modality Excitement for Self Supervised Detection of
+                                    Speech Disfluencies</div>
+                                <!-- <div>
+                                    <span class="iconify" data-icon="octicon:star"></span>
+                                    <span class="iconify" data-icon="octicon:repo-forked"></span>
+                                    <span class="iconify" data-icon="octicon:clock"></span>
+                                </div> -->
+                            </div>
+                        </div>
+
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-sm-6 col-md-12 mb-3">
+                <a class="repository-card btn rounded p-0" href="#">
+                    <div class="card p-1">
+                        <!-- <div class="name rounded center text-light">
+                            dasjkdhajkshdjksadfghhads gfhjadgshjfg adshjfgasdhj fgsadhjfghjsdagf ajshgfsdhjag f
+                        </div> -->
+                        <div class="info center">
+                            <div class="p-2">
+                                <div class="mt-2 mb-2">Analysis and Modelling of Disfluency and AS Units for Automatic scoring of L2 speakers</div>
+                                <!-- <div>
+                                    <span class="iconify" data-icon="octicon:star"></span>
+                                    <span class="iconify" data-icon="octicon:repo-forked"></span>
+                                    <span class="iconify" data-icon="octicon:clock"></span>
+                                </div> -->
+                            </div>
+                        </div>
+
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-sm-6 col-md-12 mb-3">
+                <a class="repository-card btn rounded p-0" href="#">
+                    <div class="card p-1">
+                        <!-- <div class="name rounded center text-light">
+                            dasjkdhajkshdjksadfghhads gfhjadgshjfg adshjfgasdhj fgsadhjfghjsdagf ajshgfsdhjag f
+                        </div> -->
+                        <div class="info center">
+                            <div class="p-2">
+                                <div class="mt-2 mb-2">India's GDP mis-estimation: An analysis of the role of agriculture and service sectors</div>
+                                <!-- <div>
+                                    <span class="iconify" data-icon="octicon:star"></span>
+                                    <span class="iconify" data-icon="octicon:repo-forked"></span>
+                                    <span class="iconify" data-icon="octicon:clock"></span>
+                                </div> -->
+                            </div>
+                        </div>
+
+                    </div>
+                </a>
+            </div>
+    </div>
+</div>
+
+
+      
+    
+    
+
+
+
+
+
+
+</div>
+
+
+
+    </div>
+</div>
+
+        <footer>
+    <div class="container">
+        <hr class="my-0">
+        <div class="row align-items-center text-muted my-3">
+            <div class="col">
+                <span>© 2023 Akash Sharma</span>
+                <a href="/blog/feed.xml"><span class="feed iconify" data-icon="foundation:rss"></span></a>
+            </div>
+            <div class="col-auto text-center px-0">
+                    <a href="https://akash-sharma-1.github.io/"><span class="github text-center text-muted iconify" data-icon="foundation:web"></span></a>
+                    <a href="https://github.com/Akash-Sharma-1"><span class="github text-center text-muted iconify" data-icon="foundation:social-github"></span></a>
+                    <a href="https://twitter.com/AkashTheGreat_1"><span class="github text-center text-muted iconify" data-icon="foundation:social-twitter"></span></a>
+                    <a href="https://www.linkedin.com/in/akash-sharma-246b67165"><span class="github text-center text-muted iconify" data-icon="foundation:social-linkedin"></span></a>
+                    <a href="mailto:akashthegreatlegend@gmail.com"><span class="github text-center text-muted iconify" data-icon="foundation:mail"></span></a>
+            </div>
+            <div class="col text-right">
+                <a href="javascript:$('html,body').animate({ scrollTop: 0 }, 'slow');">TOP</a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+    </body>
+</html>

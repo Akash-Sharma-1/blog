@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico">
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Embracing Scalability - A Guide to Microfrontends with Module Federation | Akash Sharma’s Blog</title>
+<meta name="generator" content="Jekyll v3.9.2" />
+<meta property="og:title" content="Embracing Scalability - A Guide to Microfrontends with Module Federation" />
+<meta name="author" content="Akash Sharma" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Microfrontends, coupled with Module Federation, have emerged as a powerful architectural pattern, offering scalability and flexibility in frontend development. In this blog post, we’ll dive into the world of Microfrontends, explore the principles of Module Federation, and walk through practical examples to illustrate their synergy." />
+<meta property="og:description" content="Microfrontends, coupled with Module Federation, have emerged as a powerful architectural pattern, offering scalability and flexibility in frontend development. In this blog post, we’ll dive into the world of Microfrontends, explore the principles of Module Federation, and walk through practical examples to illustrate their synergy." />
+<link rel="canonical" href="http://localhost:4000/blog/tech/frontend/2023/08/29/Microfrontends.html" />
+<meta property="og:url" content="http://localhost:4000/blog/tech/frontend/2023/08/29/Microfrontends.html" />
+<meta property="og:site_name" content="Akash Sharma’s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-08-29T00:00:00+05:30" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Embracing Scalability - A Guide to Microfrontends with Module Federation" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Akash Sharma"},"dateModified":"2023-08-29T00:00:00+05:30","datePublished":"2023-08-29T00:00:00+05:30","description":"Microfrontends, coupled with Module Federation, have emerged as a powerful architectural pattern, offering scalability and flexibility in frontend development. In this blog post, we’ll dive into the world of Microfrontends, explore the principles of Module Federation, and walk through practical examples to illustrate their synergy.","headline":"Embracing Scalability - A Guide to Microfrontends with Module Federation","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/tech/frontend/2023/08/29/Microfrontends.html"},"url":"http://localhost:4000/blog/tech/frontend/2023/08/29/Microfrontends.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/blog/feed.xml" title="Akash Sharma&apos;s Blog" />
+    
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W1GFNLSVY2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-W1GFNLSVY2');
+</script>
+
+    
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+    <link rel="stylesheet" href="/blog/assets/css/main.css">
+    <link rel="manifest" href="/blog/manifest.json">
+
+    <!-- Support for Bootstrap https://getbootstrap.com -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js" integrity="sha256-fTuUgtT7O2rqoImwjrhDgbXTKUwyxxujIMRIK7TbuNU=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- Support for pattern background https://github.com/btmills/geopattern -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js" integrity="sha256-AOyAcXCKLfI+FRdiZr4VTj9h9Wwv0YXXa2CPfUWbBS8=" crossorigin="anonymous"></script>
+
+    <!-- Support for SVG icon https://iconify.design -->
+    <script src="https://code.iconify.design/1/1.0.0/iconify.min.js"></script>
+
+    <!-- Support for share and reaction btns -->
+    <!-- <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5fae8b9ee3f5df0012a019ca&product=sop' async='async'></script> -->
+    <!-- <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=650fe938f702ac001998f3a4&product=sop' async='async'></script> -->
+    <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+
+</head>
+
+    <body>
+        <header>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <nav class="container navbar navbar-expand-sm py-2">
+        <a class="navbar-brand title p-0" href="/blog/">
+          <!-- GITHUB ICON -->
+          <!-- <span class="iconify" data-icon="octicon:mark-github"></span> -->
+          <!-- Personal Icon -->
+          <span class="material-icons" style="vertical-align:middle;font-size:inherit">font_download</span>
+            <span style="vertical-align:middle">Akash Sharma's Blog</span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="navbar-nav ml-auto">
+                
+                  
+                    <a class="nav-item nav-link text-right" href="/blog/">Home</a>
+                  
+                  
+
+                
+                  
+                    <a class="nav-item nav-link text-right" href="/blog/classification/">Classification</a>
+                  
+                  
+
+                
+                  
+                    <a class="nav-item nav-link text-right" href="/blog/algorithms/">Algorithms</a>
+                  
+                  
+
+                
+                  
+                    <a class="nav-item nav-link text-right" href="/blog/about/">About Me</a>
+                  
+                  
+
+                
+                  
+                  
+                    <a class="nav-item nav-link text-right" href="https://akash-sharma-1.github.io/">Portfolio</a>
+                  
+
+                
+            </div>
+        </div>
+    </nav>
+</header>
+
+<script>
+    
+        $(".navbar").addClass("navbar-light");
+        $("a[href$='/blog/tech/frontend/2023/08/29/Microfrontends.html']").addClass("active");
+    
+</script>
+
+        <div class="titlebar text-light">
+    <div class="container">
+        
+            <!-- Post article title -->
+            <div class="title pt-3">Embracing Scalability - A Guide to Microfrontends with Module Federation</div>
+            <div class="meta pb-3">
+                <span class="pr-3">
+                    
+                        <span class="iconify" data-icon="octicon:calendar"></span>
+                        <span>2023/08/29</span>
+                    
+                </span>
+
+                
+
+                
+                    
+                
+                    
+                        <span class="titlebar-info pr-3">
+                            <span class="iconify" data-icon="octicon:tag"></span>
+                            <a class="text-light" href="/blog/algorithms/categories/#Frontend">Frontend</a>
+                        </span>
+                    
+                
+
+            </div>
+        
+    </div>
+</div>
+
+<script>
+    
+        $(".titlebar").geopattern("Embracing Scalability - A Guide to Microfrontends with Module Federation");
+    
+</script>
+
+<div class="container">
+    <div class="row my-2 my-md-4">
+        
+<div class="content col-md-9">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/3.0.1/github-markdown.min.css" integrity="sha256-HbgiGHMLxHZ3kkAiixyvnaaZFNjNWLYKD/QG6PWaQPc=" crossorigin="anonymous" />
+
+<!-- Support for deep anchor links https://github.com/bryanbraun/anchorjs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.js" integrity="sha256-0X7DxIkZMaHhAon0xCc/C/YhG6y0dg8Uj8c50+gbu8c=" crossorigin="anonymous"></script>
+
+<!-- Support for fancybox https://github.com/fancyapps/fancybox -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+<!-- Support for MathJax https://github.com/mathjax/mathjax -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous" async></script>
+
+<article class="markdown-body">
+    <p>Microfrontends, coupled with Module Federation, have emerged as a powerful architectural pattern, offering scalability and flexibility in frontend development. In this blog post, we’ll dive into the world of Microfrontends, explore the principles of Module Federation, and walk through practical examples to illustrate their synergy.</p>
+
+<h2 id="understanding-microfrontends">Understanding Microfrontends</h2>
+
+<p>Microfrontends extend the microservices concept to the frontend layer, allowing teams to independently develop, test, and deploy parts of a user interface. Each microfrontend represents a self-contained module responsible for a specific feature or functionality.</p>
+
+<h2 id="the-role-of-module-federation">The Role of Module Federation</h2>
+
+<p>Module Federation is a technology introduced by Webpack that enables dynamic loading of JavaScript modules at runtime. This concept is particularly potent in a Microfrontend architecture, where individual modules can be loaded on-demand, fostering a more modular and scalable frontend.</p>
+
+<h2 id="basic-concepts">Basic Concepts</h2>
+
+<h3 id="1-microfrontend-principles">1. <strong>Microfrontend Principles:</strong></h3>
+<ul>
+  <li><strong>Independence:</strong> Each microfrontend operates independently, having its own codebase, dependencies, and release cycle.</li>
+  <li><strong>Integration:</strong> Microfrontends seamlessly integrate to form a cohesive user interface, either at build time or runtime.</li>
+</ul>
+
+<h3 id="2-module-federation-key-points">2. <strong>Module Federation Key Points:</strong></h3>
+<ul>
+  <li><strong>Dynamic Module Loading:</strong> Module Federation allows the dynamic loading of modules, enabling a more flexible and efficient system.</li>
+  <li><strong>Shared Dependencies:</strong> Common dependencies can be shared among microfrontends, reducing duplication and optimizing resource utilization.</li>
+</ul>
+
+<h2 id="constructing-a-microfrontend-with-module-federation">Constructing a Microfrontend with Module Federation</h2>
+
+<p>Let’s walk through the process of creating a simple Microfrontend system using Module Federation.</p>
+
+<ol>
+  <li><strong>Initialize the Microfrontend Project:</strong>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npx create-react-app microfrontend1
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Configure Webpack for Module Federation:</strong>
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// webpack.config.js in microfrontend1</span>
+<span class="kd">const</span> <span class="nx">ModuleFederationPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">webpack/lib/container/ModuleFederationPlugin</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1">// other configurations...</span>
+    <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span>
+        <span class="k">new</span> <span class="nx">ModuleFederationPlugin</span><span class="p">({</span>
+            <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">microfrontend1</span><span class="dl">'</span><span class="p">,</span>
+            <span class="na">library</span><span class="p">:</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">var</span><span class="dl">'</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">microfrontend1</span><span class="dl">'</span> <span class="p">},</span>
+            <span class="na">filename</span><span class="p">:</span> <span class="dl">'</span><span class="s1">remoteEntry.js</span><span class="dl">'</span><span class="p">,</span>
+            <span class="na">exposes</span><span class="p">:</span> <span class="p">{</span>
+                <span class="dl">'</span><span class="s1">./Microfrontend1</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">./src/Microfrontend1</span><span class="dl">'</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="na">shared</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">react-dom</span><span class="dl">'</span><span class="p">],</span>
+        <span class="p">}),</span>
+    <span class="p">],</span>
+<span class="p">};</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Create the Microfrontend Component:</strong>
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// src/Microfrontend1.jsx in microfrontend1</span>
+<span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">Microfrontend1</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>Microfrontend 1 Content<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;;</span>
+<span class="p">};</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">Microfrontend1</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Integrate Microfrontend in Main Application:</strong>
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// src/App.js in main application</span>
+<span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">lazy</span><span class="p">,</span> <span class="nx">Suspense</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">Microfrontend1</span> <span class="o">=</span> <span class="nx">lazy</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="k">import</span><span class="p">(</span><span class="dl">'</span><span class="s1">microfrontend1/Microfrontend1</span><span class="dl">'</span><span class="p">));</span>
+
+<span class="kd">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Main Application<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">Suspense</span> <span class="na">fallback</span><span class="p">=</span><span class="s">"Loading Microfrontend..."</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nc">Microfrontend1</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nc">Suspense</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">);</span>
+<span class="p">};</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="practical-example-widget-dashboard">Practical Example: Widget Dashboard</h2>
+
+<p>Imagine a scenario where you have a Widget Dashboard, and each widget is developed and deployed independently as a Microfrontend.</p>
+
+<ol>
+  <li><strong>Widget 1 Microfrontend:</strong>
+    <ul>
+      <li>Provides a weather widget.</li>
+      <li>Dynamically loads weather data.</li>
+    </ul>
+  </li>
+  <li><strong>Widget 2 Microfrontend:</strong>
+    <ul>
+      <li>Offers a stock market widget.</li>
+      <li>Dynamically fetches stock information.</li>
+    </ul>
+  </li>
+</ol>
+
+<p>In the main application, the Widget Dashboard integrates these microfrontends dynamically, creating a unified and feature-rich dashboard.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Main Application integrating Widget Microfrontends</span>
+<span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">lazy</span><span class="p">,</span> <span class="nx">Suspense</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">WeatherWidget</span> <span class="o">=</span> <span class="nx">lazy</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="k">import</span><span class="p">(</span><span class="dl">'</span><span class="s1">weather/MicrofrontendWeather</span><span class="dl">'</span><span class="p">));</span>
+<span class="kd">const</span> <span class="nx">StockWidget</span> <span class="o">=</span> <span class="nx">lazy</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="k">import</span><span class="p">(</span><span class="dl">'</span><span class="s1">stocks/MicrofrontendStocks</span><span class="dl">'</span><span class="p">));</span>
+
+<span class="kd">const</span> <span class="nx">Dashboard</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Widget Dashboard<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">Suspense</span> <span class="na">fallback</span><span class="p">=</span><span class="s">"Loading Widgets..."</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nc">WeatherWidget</span> <span class="p">/&gt;</span>
+                <span class="p">&lt;</span><span class="nc">StockWidget</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nc">Suspense</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">);</span>
+<span class="p">};</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">Dashboard</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Microfrontends with Module Federation represent a paradigm shift in frontend development. This approach empowers teams to work independently, accelerates development cycles, and provides a scalable architecture for complex applications. By embracing the principles of Microfrontends and leveraging the capabilities of Module Federation, developers can build modular, maintainable, and future-proof frontend systems. Happy coding!</p>
+
+</article>
+
+<br>
+<center><p>Thank you for reading this article 😊</p></center>
+<center><p>I'd love to hear your thoughts & feedback in the comment section below!</p></center>
+<!-- <div class="sharethis-inline-reaction-buttons"></div>
+<style>
+  #st-1 .st-btn > svg
+  {
+    width:28px;
+  }
+</style> -->
+<hr></hr>
+<center><p>If you liked it, please share it with your friends and help this blog to grow!</p></center>
+<div class="elfsight-app-c37f9300-422e-4d9d-a637-20a2cd5ddb06"></div>
+
+<!-- <div class="sharethis-inline-share-buttons"></div> -->
+<!-- <center><div class="addthis_inline_share_toolbox"></div></center> -->
+<br>
+<br>
+
+
+    
+        <script src="https://utteranc.es/client.js"
+                repo="Akash-Sharma-1/Utteranc-Comments-Repo-Blog"
+                issue-term="pathname"
+                theme="github-light"
+                crossorigin="anonymous"
+                async>
+        </script>
+    
+
+
+<script>
+    // Add anchors to headers.
+    anchors.add();
+
+    // Show images in fancybox.
+    $("p img").each(function() {
+        $(this).wrapAll('<a data-fancybox="images" data-caption="' + this.alt + '" href="' + this.src + '"></a>');
+    });
+    $('[data-fancybox="images"]').fancybox({
+        transitionEffect: "slide",
+
+        // Support for retina displays.
+        afterLoad : function(instance, current) {
+            var pixelRatio = window.devicePixelRatio || 1;
+
+            if ( pixelRatio > 1.5 ) {
+                current.width  = current.width  / pixelRatio;
+                current.height = current.height / pixelRatio;
+            }
+        }
+    });
+</script>
+
+
+<script>
+    // Show sidebar on top in mobile devices.
+    $(".content").addClass("order-last order-md-first");
+    $(".sidebar").addClass("order-first order-md-last");
+</script>
+
+</div>
+<div class="sidebar col-md-3 mt-2 mt-md-0">
+    
+    <!-- https://github.com/christian-fei/Simple-Jekyll-Search -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/simple-jekyll-search/1.7.2/simple-jekyll-search.min.js" integrity="sha256-DsgE6Y6cI5eAZoTg8tJ5VBxFs+rnL8smPwt/u8tyAYo=" crossorigin="anonymous"></script>
+
+<div id="search-box" class="mb-2">
+    <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+    <ul class="mb-0"></ul>
+</div>
+
+<script type="text/javascript">
+    var search_box = document.getElementById("search-box");
+    SimpleJekyllSearch({
+        searchInput: search_box.getElementsByTagName("input")[0],
+        resultsContainer: search_box.getElementsByTagName("ul")[0],
+        json: '/blog/assets/search.json',
+        searchResultTemplate: '<li><a href="{url}">{title}</a></li>',
+        noResultsText: 'No results found',
+        fuzzy: false
+    });
+</script>
+
+    <!-- https://github.com/tscanlin/tocbot/ -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.7.0/tocbot.css" integrity="sha256-XUbSD3m+xLW27W/mp9kMn+fI9AU2MoBkiMMSVVYWI+o=" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.7.0/tocbot.min.js" integrity="sha256-5K/04vUxP94HmQ8f18TgufdyqE69WDJRMNga0JLhAtE=" crossorigin="anonymous"></script>
+
+<div class="toc-container mb-2">
+    <p class="name">Table of Contents</p>
+    <div class="toc py-2 pr-2 mb-2"></div>
+</div>
+
+<script>
+    // Show TOC if the article contains any heading.
+    if ($("article h1, article  h2, article h3, article h4, article h5, article h6").length == 0) {
+        $(".toc-container").addClass("d-none");
+    }
+
+    tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: ".toc",
+        // Where to grab the headings to build the table of contents.
+        contentSelector: "article",
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: "h1, h2, h3, h4, h5, h6",
+        collapseDepth: 6,
+    });
+</script>
+
+
+
+
+
+
+</div>
+
+
+    </div>
+</div>
+
+        <footer>
+    <div class="container">
+        <hr class="my-0">
+        <div class="row align-items-center text-muted my-3">
+            <div class="col">
+                <span>© 2023 Akash Sharma</span>
+                <a href="/blog/feed.xml"><span class="feed iconify" data-icon="foundation:rss"></span></a>
+            </div>
+            <div class="col-auto text-center px-0">
+                    <a href="https://akash-sharma-1.github.io/"><span class="github text-center text-muted iconify" data-icon="foundation:web"></span></a>
+                    <a href="https://github.com/Akash-Sharma-1"><span class="github text-center text-muted iconify" data-icon="foundation:social-github"></span></a>
+                    <a href="https://twitter.com/AkashTheGreat_1"><span class="github text-center text-muted iconify" data-icon="foundation:social-twitter"></span></a>
+                    <a href="https://www.linkedin.com/in/akash-sharma-246b67165"><span class="github text-center text-muted iconify" data-icon="foundation:social-linkedin"></span></a>
+                    <a href="mailto:akashthegreatlegend@gmail.com"><span class="github text-center text-muted iconify" data-icon="foundation:mail"></span></a>
+            </div>
+            <div class="col text-right">
+                <a href="javascript:$('html,body').animate({ scrollTop: 0 }, 'slow');">TOP</a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+    </body>
+</html>

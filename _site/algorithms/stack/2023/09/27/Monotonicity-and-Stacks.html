@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico">
 
     <!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Monotonicity and Stacks | Akash Sharma’s Blog</title>
@@ -14,18 +14,18 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="This post highlights the possible usage of stacks (as a data structure) to resolve problems where monotonicity is of value." />
 <meta property="og:description" content="This post highlights the possible usage of stacks (as a data structure) to resolve problems where monotonicity is of value." />
-<link rel="canonical" href="http://localhost:4000/algorithms/stack/2023/09/27/Monotonicity-and-Stacks.html" />
-<meta property="og:url" content="http://localhost:4000/algorithms/stack/2023/09/27/Monotonicity-and-Stacks.html" />
+<link rel="canonical" href="http://localhost:4000/blog/algorithms/stack/2023/09/27/Monotonicity-and-Stacks.html" />
+<meta property="og:url" content="http://localhost:4000/blog/algorithms/stack/2023/09/27/Monotonicity-and-Stacks.html" />
 <meta property="og:site_name" content="Akash Sharma’s Blog" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2023-09-27T00:00:00+05:30" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Monotonicity and Stacks" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Akash Sharma"},"dateModified":"2023-09-27T00:00:00+05:30","datePublished":"2023-09-27T00:00:00+05:30","description":"This post highlights the possible usage of stacks (as a data structure) to resolve problems where monotonicity is of value.","headline":"Monotonicity and Stacks","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/algorithms/stack/2023/09/27/Monotonicity-and-Stacks.html"},"url":"http://localhost:4000/algorithms/stack/2023/09/27/Monotonicity-and-Stacks.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Akash Sharma"},"dateModified":"2023-09-27T00:00:00+05:30","datePublished":"2023-09-27T00:00:00+05:30","description":"This post highlights the possible usage of stacks (as a data structure) to resolve problems where monotonicity is of value.","headline":"Monotonicity and Stacks","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/algorithms/stack/2023/09/27/Monotonicity-and-Stacks.html"},"url":"http://localhost:4000/blog/algorithms/stack/2023/09/27/Monotonicity-and-Stacks.html"}</script>
 <!-- End Jekyll SEO tag -->
 
-    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Akash Sharma&apos;s Blog" />
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/blog/feed.xml" title="Akash Sharma&apos;s Blog" />
     
         <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-W1GFNLSVY2"></script>
@@ -40,8 +40,8 @@
     
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
-    <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="/blog/assets/css/main.css">
+    <link rel="manifest" href="/blog/manifest.json">
 
     <!-- Support for Bootstrap https://getbootstrap.com -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
@@ -65,7 +65,7 @@
         <header>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <nav class="container navbar navbar-expand-sm py-2">
-        <a class="navbar-brand title p-0" href="/">
+        <a class="navbar-brand title p-0" href="/blog/">
           <!-- GITHUB ICON -->
           <!-- <span class="iconify" data-icon="octicon:mark-github"></span> -->
           <!-- Personal Icon -->
@@ -81,25 +81,25 @@
             <div class="navbar-nav ml-auto">
                 
                   
-                    <a class="nav-item nav-link text-right" href="/">Home</a>
+                    <a class="nav-item nav-link text-right" href="/blog/">Home</a>
                   
                   
 
                 
                   
-                    <a class="nav-item nav-link text-right" href="/classification/">Classification</a>
+                    <a class="nav-item nav-link text-right" href="/blog/classification/">Classification</a>
                   
                   
 
                 
                   
-                    <a class="nav-item nav-link text-right" href="/algorithms/">Algorithms</a>
+                    <a class="nav-item nav-link text-right" href="/blog/algorithms/">Algorithms</a>
                   
                   
 
                 
                   
-                    <a class="nav-item nav-link text-right" href="/about/">About Me</a>
+                    <a class="nav-item nav-link text-right" href="/blog/about/">About Me</a>
                   
                   
 
@@ -118,7 +118,7 @@
 <script>
     
         $(".navbar").addClass("navbar-light");
-        $("a[href$='/algorithms/stack/2023/09/27/Monotonicity-and-Stacks.html']").addClass("active");
+        $("a[href$='/blog/algorithms/stack/2023/09/27/Monotonicity-and-Stacks.html']").addClass("active");
     
 </script>
 
@@ -143,7 +143,7 @@
                     
                         <span class="titlebar-info pr-3">
                             <span class="iconify" data-icon="octicon:tag"></span>
-                            <a class="text-light" href="/algorithms/categories/#Stack">Stack</a>
+                            <a class="text-light" href="/blog/algorithms/categories/#Stack">Stack</a>
                         </span>
                     
                 
@@ -161,7 +161,8 @@
 
 <div class="container">
     <div class="row my-2 my-md-4">
-        <div class="content col-md-8">
+        
+<div class="content col-md-9">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/3.0.1/github-markdown.min.css" integrity="sha256-HbgiGHMLxHZ3kkAiixyvnaaZFNjNWLYKD/QG6PWaQPc=" crossorigin="anonymous" />
 
@@ -179,28 +180,114 @@
   <p>This post highlights the possible usage of stacks (as a data structure) to resolve problems where monotonicity is of value.</p>
 </blockquote>
 
-<h1 id="what-is-monotonicity-">What is Monotonicity ?</h1>
+<p>Monotonic stacks, a powerful concept in computer science, are instrumental in solving various problems efficiently. In this blog post, we’ll unravel the essence of monotonic stacks, explore their applications, and walk through practical examples to solidify our understanding.</p>
 
-<h2 id="concept">Concept</h2>
+<h2 id="what-is-monotonicity">What is Monotonicity?</h2>
 
-<h2 id="types">Types</h2>
+<p>Monotonicity is a mathematical concept describing the behavior of a function or sequence with respect to the direction of change. It characterizes whether the values of the function or sequence consistently increase, decrease, or remain constant as the input variable varies.</p>
 
-<h1 id="a-deeper-dive-on-monotonic-stacks">A deeper dive on Monotonic Stacks</h1>
+<p>There are two main types of monotonicity:</p>
 
-<h2 id="audience-setting">Audience setting</h2>
+<ol>
+  <li><strong>Monotonic Increasing (Non-Decreasing):</strong>
+    <ul>
+      <li>In a monotonic increasing function or sequence, the values never decrease as the input variable increases. Formally, for any two points (x_1) and (x_2) where (x_1 \leq x_2), the corresponding function values satisfy (f(x_1) \leq f(x_2)).</li>
+    </ul>
+  </li>
+  <li><strong>Monotonic Decreasing (Non-Increasing):</strong>
+    <ul>
+      <li>In a monotonic decreasing function or sequence, the values never increase as the input variable increases. Formally, for any two points (x_1) and (x_2) where (x_1 \leq x_2), the corresponding function values satisfy (f(x_1) \geq f(x_2)).</li>
+    </ul>
+  </li>
+</ol>
 
-<h1 id="implementation-details-and-insights">Implementation Details and Insights</h1>
+<p>Monotonicity is a fundamental concept in mathematics, providing insights into the behavior of functions and sequences. It has applications in calculus, optimization, and various algorithmic designs, where understanding the direction of change is crucial for problem-solving and decision-making.</p>
 
-<h1 id="problems-and-use-case-analysis">Problems and Use Case Analysis</h1>
+<h2 id="understanding-monotonic-stacks">Understanding Monotonic Stacks</h2>
 
-<h1 id="bonus-section">Bonus Section</h1>
-<div class="alert alert-info" role="alert">
-  I would be covering this topic as well as its applications in some other post in detail. However I just wanted to your ignite the curiousity
-</div>
+<p>A monotonic stack is a data structure that maintains either non-decreasing or non-increasing order of its elements. It proves to be particularly useful in scenarios where you need to find the next greater or smaller element in an array, track the nearest greater or smaller element on both sides, or solve problems involving increasing or decreasing sequences.</p>
 
-<h2 id="monotonic-queues">Monotonic Queues</h2>
+<h2 id="basic-concepts">Basic Concepts</h2>
 
-<h2 id="now-what-is-montonic-deque-">Now what is Montonic Deque ?</h2>
+<h3 id="1-monotonic-stack-properties">1. <strong>Monotonic Stack Properties:</strong></h3>
+<ul>
+  <li>A monotonic stack can be either increasing or decreasing.</li>
+  <li>Elements are added or removed based on maintaining the desired monotonic order.</li>
+</ul>
+
+<h3 id="2-applications">2. <strong>Applications:</strong></h3>
+<ul>
+  <li>Monotonic stacks are frequently used to solve problems involving finding the next greater/smaller element or tracking elements in increasing/decreasing order.</li>
+</ul>
+
+<h3 id="3-operations">3. <strong>Operations:</strong></h3>
+<ul>
+  <li>The two main operations on a monotonic stack are “push” and “pop.” The key is to maintain the monotonic property during these operations.</li>
+</ul>
+
+<h2 id="constructing-a-monotonic-stack">Constructing a Monotonic Stack</h2>
+
+<p>Let’s dive into the step-by-step construction of a monotonic stack.</p>
+
+<ol>
+  <li><strong>Initialize an Empty Stack:</strong>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Push Operation:</strong>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">push</span><span class="p">(</span><span class="n">stack</span><span class="p">,</span> <span class="n">element</span><span class="p">):</span>
+    <span class="k">while</span> <span class="n">stack</span> <span class="ow">and</span> <span class="n">element</span> <span class="o">&lt;</span> <span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="n">stack</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
+    <span class="n">stack</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Pop Operation:</strong>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">pop</span><span class="p">(</span><span class="n">stack</span><span class="p">):</span>
+    <span class="n">stack</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="practical-examples">Practical Examples</h2>
+
+<h3 id="example-1-next-greater-element">Example 1: Next Greater Element</h3>
+
+<p>Given an array, find the next greater element for each element in the array.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">next_greater_element</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+    <span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)):</span>
+        <span class="k">while</span> <span class="n">stack</span> <span class="ow">and</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">nums</span><span class="p">[</span><span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]:</span>
+            <span class="n">result</span><span class="p">[</span><span class="n">stack</span><span class="p">.</span><span class="n">pop</span><span class="p">()]</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">stack</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">result</span>
+</code></pre></div></div>
+
+<h3 id="example-2-stock-span-problem">Example 2: Stock Span Problem</h3>
+
+<p>Calculate the span of stock prices, where the span is defined as the maximum number of consecutive days the price of a stock is less than or equal to the current day.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">stock_span</span><span class="p">(</span><span class="n">prices</span><span class="p">):</span>
+    <span class="n">span</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
+    <span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">prices</span><span class="p">)):</span>
+        <span class="k">while</span> <span class="n">stack</span> <span class="ow">and</span> <span class="n">prices</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">prices</span><span class="p">[</span><span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]:</span>
+            <span class="n">stack</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="n">span</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">stack</span> <span class="k">else</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">stack</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">span</span>
+</code></pre></div></div>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Monotonic stacks offer an elegant and efficient solution to a variety of problems encountered in algorithmic and competitive programming. By understanding the principles of maintaining monotonic order and practicing with examples, you’ll be well-equipped to apply this powerful concept to real-world coding challenges. Happy coding!</p>
+
+<hr />
 
 </article>
 
@@ -266,7 +353,7 @@
 </script>
 
 </div>
-<div class="sidebar col-md-4 mt-2 mt-md-0">
+<div class="sidebar col-md-3 mt-2 mt-md-0">
     
     <!-- https://github.com/christian-fei/Simple-Jekyll-Search -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/simple-jekyll-search/1.7.2/simple-jekyll-search.min.js" integrity="sha256-DsgE6Y6cI5eAZoTg8tJ5VBxFs+rnL8smPwt/u8tyAYo=" crossorigin="anonymous"></script>
@@ -281,7 +368,7 @@
     SimpleJekyllSearch({
         searchInput: search_box.getElementsByTagName("input")[0],
         resultsContainer: search_box.getElementsByTagName("ul")[0],
-        json: '/assets/search.json',
+        json: '/blog/assets/search.json',
         searchResultTemplate: '<li><a href="{url}">{title}</a></li>',
         noResultsText: 'No results found',
         fuzzy: false
@@ -321,6 +408,7 @@
 
 </div>
 
+
     </div>
 </div>
 
@@ -330,7 +418,7 @@
         <div class="row align-items-center text-muted my-3">
             <div class="col">
                 <span>© 2023 Akash Sharma</span>
-                <a href="/feed.xml"><span class="feed iconify" data-icon="foundation:rss"></span></a>
+                <a href="/blog/feed.xml"><span class="feed iconify" data-icon="foundation:rss"></span></a>
             </div>
             <div class="col-auto text-center px-0">
                     <a href="https://akash-sharma-1.github.io/"><span class="github text-center text-muted iconify" data-icon="foundation:web"></span></a>

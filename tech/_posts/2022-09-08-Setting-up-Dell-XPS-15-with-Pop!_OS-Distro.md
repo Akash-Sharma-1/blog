@@ -1,7 +1,7 @@
 ---
 title: Setting up Dell XPS 15 with Pop!_OS Distro
 tags: [Linux, XPS-15]
-date: 2023-07-08
+date: 2022-09-08
 ---
 
 I've got a [Dell XPS 15 9570](https://www.dell.com/en-in/work/shop/scc/sr/laptops/xps-laptops) (16GB RAM, i7-8750H CPU) for work expecting it to have good support in Linux, considering other XPS laptops ship with Ubuntu. 

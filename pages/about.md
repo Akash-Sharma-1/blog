@@ -3,14 +3,14 @@ title: About
 permalink: /about/
 ---
 <link rel="stylesheet" type="text/css" media="all" href="https://akash-sharma-1.github.io/blog//pages/about_markdown_styles.css" />
-<center> <h4> Welcome to my Blogs !</h4> </center>
-<br>
+<div align="center" class="mb-3"> <h4 > Welcome to my Blogs !</h4> </div>
 
-Hi there👋 I'm <b>Akash Sharma </b>, a programmer, researcher and a tech-enthusiast. 
+👋  I'm <b>Akash Sharma </b>, a programmer, researcher and a tech-enthusiast. 
 <br>
-👨🏻‍💻 I absolutely adore programming and developing new things ⚙. 
+I absolutely adore programming and developing new things 👨🏻‍💻
 <br>
-I'm passionate about solving problems through code🚀helping the world🌎 and making the lives of people 👨‍👨‍👧 around me easier!    
+<br>
+I'm passionate about solving problems through code 🚀 helping the world 🌎 and making the lives of people 👨‍👨‍👧 around me easier!    
 <br>
 
 <div align="center">

@@ -231,7 +231,7 @@ If you want to embed images of yourself for your site, just put your images in `
 {% raw %}![Stones on the beach]({{ site.baseurl }}/assets/images/Stones on the beach.jpeg){% endraw %}
 ```
 
-![Stones on the beach]({{ site.baseurl }}/assets/images/Stones on the beach.jpeg)
+![Stones on the beach]({{ site.baseurl }}/assets/images/markdown/Stones on the beach.jpeg)
 
 #### YouTube Videos
 
