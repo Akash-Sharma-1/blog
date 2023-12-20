@@ -1,27 +1,211 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/blog/" rel="alternate" type="text/html" /><updated>2023-12-18T21:41:05+05:30</updated><id>http://localhost:4000/blog/feed.xml</id><title type="html">Akash Sharma’s Blog</title><subtitle>Reading, Learning, Thinking and Writing</subtitle><author><name>Akash Sharma</name></author><entry><title type="html">Understanding Cyclomatic Complexity - is it really worth it ?</title><link href="http://localhost:4000/blog/tech/2023/12/18/Cyclomatic-complexity.html" rel="alternate" type="text/html" title="Understanding Cyclomatic Complexity - is it really worth it ?" /><published>2023-12-18T00:00:00+05:30</published><updated>2023-12-18T00:00:00+05:30</updated><id>http://localhost:4000/blog/tech/2023/12/18/Cyclomatic-complexity</id><content type="html" xml:base="http://localhost:4000/blog/tech/2023/12/18/Cyclomatic-complexity.html">&lt;blockquote&gt;
-  &lt;p&gt;Cyclomatic complexity is a well known concept&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/blog/" rel="alternate" type="text/html" /><updated>2023-12-20T01:07:58+05:30</updated><id>http://localhost:4000/blog/feed.xml</id><title type="html">Akash Sharma’s Blog</title><subtitle>Reading, Learning, Thinking and Writing</subtitle><author><name>Akash Sharma</name></author><entry><title type="html">Understanding Cyclomatic Complexity - is it really worth it ?</title><link href="http://localhost:4000/blog/tech/2023/12/17/Cyclomatic-complexity.html" rel="alternate" type="text/html" title="Understanding Cyclomatic Complexity - is it really worth it ?" /><published>2023-12-17T00:00:00+05:30</published><updated>2023-12-17T00:00:00+05:30</updated><id>http://localhost:4000/blog/tech/2023/12/17/Cyclomatic-complexity</id><content type="html" xml:base="http://localhost:4000/blog/tech/2023/12/17/Cyclomatic-complexity.html">&lt;blockquote&gt;
+  &lt;p&gt;Cyclomatic Complexity serves as a fundamental metric of code complexity and has well known usage in software testing and analyis. While it’s built on a sound and interesting graph-theory concept, it has fair share of problems associated with it.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h2 id=&quot;what-is-cyclomatic-complexity-&quot;&gt;What is Cyclomatic Complexity ?&lt;/h2&gt;
+&lt;h1 id=&quot;what-is-cyclomatic-complexity-&quot;&gt;What is Cyclomatic Complexity ?&lt;/h1&gt;
 
-&lt;p&gt;Definition 
-to measure the number of linearly independent paths in that function. Stated another way, it tells us how many branches there are in each function&lt;/p&gt;
+&lt;h2 id=&quot;definition&quot;&gt;Definition&lt;/h2&gt;
 
-&lt;p&gt;Just to make sure we are talking about the same thing, &lt;a href=&quot;http://en.wikipedia.org/wiki/Cyclomatic_complexity&quot;&gt;Cyclomatic Complexity&lt;/a&gt; is a metric that was introduced by Thomas McCabe in 1976 and aims at capturing the &lt;em&gt;complexity&lt;/em&gt; of a method in a single number. Actually, the original publication talks about the more general term &lt;em&gt;module&lt;/em&gt;, but today this typically means function or method for most languages.&lt;/p&gt;
+&lt;p&gt;Cyclomatic complexity represents the number of linearly independent paths possible in the code. In other words, it symbolises the number of branching existing in the code.&lt;/p&gt;
 
-&lt;h2 id=&quot;theory&quot;&gt;Theory&lt;/h2&gt;
+&lt;p&gt;The intent of this number is to capture the amount of decision logic being performed in the concerned piece of code.&lt;/p&gt;
+
+&lt;h2 id=&quot;a-bit-of-a-history-&quot;&gt;A bit of a history …&lt;/h2&gt;
+
+&lt;p&gt;Interestingly, this metric was introduced by &lt;em&gt;Thomas McCabe&lt;/em&gt; in 1976 at a theoretical level aiming to measure the structured complexity of programs in a quantitative way during that time. However, even though it might seem that this metric has an old history , it still is relevant and heavily influential in today’s software discussions.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-it-computed-for-&quot;&gt;What is it computed for ?&lt;/h2&gt;
+
+&lt;p&gt;The original publication by McCabe, referred to the concept of cyclomatic complexity to be computed for a ‘&lt;em&gt;module&lt;/em&gt;’. It could resemble to a function or a method in modern programming languages. I’ll talk about how a granular level complexity check is beneficial.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Will be referring Cyclomatic Complexity as &quot;CC&quot; from now on 
+FYI, i like abbreviations :) 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;how-is-it-computed-&quot;&gt;How is it computed ?&lt;/h2&gt;
+
+&lt;p&gt;Cyclomatic complexity is calculated through the program’s &lt;strong&gt;control-flow graph&lt;/strong&gt;, where nodes represent cohesive sets of commands (called as a block) , and directed edges link nodes if the execution of the second command is a potential immediate follow-up to the first one.&lt;/p&gt;
+
+&lt;p&gt;Here, a conditional or loop or similar statements (represented as nodes) would have multiple branching (multiple out-edges) which is used in computation the CC number.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dz2cdn1.dzone.com/storage/temp/14000108-untitled.jpg&quot; alt=&quot;PHTO&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;mathematical-foundation&quot;&gt;Mathematical Foundation&lt;/h1&gt;
+
+&lt;h2 id=&quot;graph-theory&quot;&gt;Graph Theory&lt;/h2&gt;
+
+&lt;p&gt;Cyclomatic number is a value in graph theory that tells you the number of the edges required to be remove and break all cycles of the graph i.e the number of independent paths in a graph. Note that its only valid for  for &lt;strong&gt;strongly connected graphs&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;It is also known as a ‘circuit rank’ and  has quite diverse use cases beyond this software analysis.&lt;/p&gt;
+
+&lt;p&gt;The cyclomatic number can be derived by :&lt;/p&gt;
+
+\[rank = E - N + C\]
+
+&lt;p&gt;Here, E represents the number of edges, N represents the number of nodes and C represents the connected components.&lt;/p&gt;
+
+&lt;p&gt;The derivation of this formula is based on the manipulation of famous Kirchhoff’s Law from the Linear Algebra.&lt;/p&gt;
+
+&lt;h2 id=&quot;mccabes-derivation&quot;&gt;McCabe’s derivation&lt;/h2&gt;
+
+&lt;p&gt;Program control flow graphs do not inherently exhibit strong connectivity. However, the introduction of a “virtual edge” that connects the exit node to the entry node transforms them into strongly connected graphs.&lt;/p&gt;
+
+&lt;p&gt;The definition of cyclomatic complexity for program control flow graphs is derived from the cyclomatic number formula by a straightforward addition of one, signifying the impact of the virtual edge.&lt;/p&gt;
+
+&lt;p&gt;This interpretation aligns cyclomatic complexity with the count of independent paths within the standard control flow graph model, elegantly sidestepping the need for explicit reference to the virtual edge.&lt;/p&gt;
+
+&lt;p&gt;Since for CFGs, the connected component is 1 as we are considering a single function or method.&lt;/p&gt;
+
+&lt;p&gt;This gives us :&lt;/p&gt;
+
+\[cc = E - N + 1\]
+
+&lt;p&gt;Taking into consideration the virtual edge - which inevidently contributes to the branching count , the formula becomes :&lt;/p&gt;
+
+\[cc = E - N + 2\]
+
+&lt;p&gt;McCabe proposed a generic formula for “P” number of program exits (was common in the older era program with goto statements)&lt;/p&gt;
+
+\[cc = E - N + 2P\]
+
+&lt;h2 id=&quot;intuitive-understanding&quot;&gt;Intuitive understanding&lt;/h2&gt;
+
+&lt;p&gt;Let’s break up the CC formula to 3 segments :&lt;/p&gt;
+
+\[cc = E - N + 2\]
+
+\[cc = (E - N) + (1) + (1)\]
+
 &lt;ul&gt;
-  &lt;li&gt;Original paper - points&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;E-N&lt;/code&gt; would nullify all the nodes with 1 branch and will render us with the count of extra branches of the nodes,&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1&lt;/code&gt; is added for considering the default path (no branch diversion)&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1&lt;/code&gt; is accounting for the ‘virtual edge’ added for the mathematical convenience&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;formula understnading and explanation&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;virtual edge&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;examples-of-some-code-snippets-and-associated-cc&quot;&gt;Examples of some code snippets and associated CC&lt;/h1&gt;
 
-&lt;h2 id=&quot;examples&quot;&gt;Examples&lt;/h2&gt;
+&lt;p&gt;I have included some function snippets below.
+Guess the complexity of these functions and verify them below.&lt;/p&gt;
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;foo1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-&lt;h2 id=&quot;how-does-it-help-in-software-quality-&quot;&gt;How does it help in software quality ?&lt;/h2&gt;
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;foo2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;foo3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;foo4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;foo5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;foo6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+     &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;foo7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+     &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;foo8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+     &lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;foo9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;foo10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Function name&lt;/th&gt;
+      &lt;th&gt;Cyclomatic Complexity&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;foo1&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;foo2&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;foo3&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;foo4&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;foo5&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;foo6&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;foo7&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;foo8&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;foo9&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;foo10&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h1 id=&quot;how-does-it-help-in-software-quality-&quot;&gt;How does it help in software quality ?&lt;/h1&gt;
 
 &lt;p&gt;There are many good reasons to limit cyclomatic complexity. Overly complex modules are more prone to error, are harder to understand, are harder to test, and are harder to modify. Deliberately limiting complexity at all stages of software development, for example as a departmental standard, helps avoid the pitfalls associated with high complexity software. Many organizations have successfully implemented complexity limits as part of their software programs. The precise number to use as a limit, however, remains somewhat controversial. The original limit of 10 as proposed by McCabe has significant supporting evidence, but limits as high as 15 have been used successfully as well. Limits over 10 should be reserved for projects that have several operational advantages over typical projects, for example experienced staff, formal design, a modern programming language, structured programming, code walkthroughs, and a comprehensive test plan. In other words, an organization can pick a complexity limit greater than 10, but only if it is sure it knows what it is doing and is willing to devote the additional testing effort required by more complex modules.&lt;/p&gt;
 
@@ -38,36 +222,46 @@ https://www.math.unipd.it/~tullio/IS-1/2004/Approfondimenti/cyclomatic.htm#:~:te
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;interesting-use-case-that-i-worked-for&quot;&gt;Interesting use case that I worked for&lt;/h2&gt;
+&lt;h1 id=&quot;interesting-use-case-that-i-worked-for&quot;&gt;Interesting use case that I worked for&lt;/h1&gt;
 
 &lt;ul&gt;
   &lt;li&gt;white box testing&lt;/li&gt;
+  &lt;li&gt;NETWORK ROUTING MECHANISMs&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;how-to-use-it-with-tools-&quot;&gt;How to use it with tools ?&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;Visual studio&lt;/li&gt;
-  &lt;li&gt;The primary tool I use for identifying CC is Visual Studio 2022/2019. It’s under &lt;em&gt;Analyze -&amp;gt; Calculate Code Metrics.&lt;/em&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;how-to-use-it-with-tools-&quot;&gt;How to use it with tools ?&lt;/h1&gt;
 
-&lt;p&gt;Some other tools you could use to identify CC include JetBrain’s Resharper (&lt;a href=&quot;https://www.danylkoweb.com/Blog/review-resharper-9-ultimate-8U&quot; title=&quot;Go to Review: Resharper 9 Ultimate&quot;&gt;review&lt;/a&gt;) and NDepend (&lt;a href=&quot;https://www.danylkoweb.com/Blog/review-ndepend-20201-QK&quot; title=&quot;Go to Review: NDepend 2020.1&quot;&gt;review&lt;/a&gt;) for static code analysis.&lt;/p&gt;
-
-&lt;p&gt;As you can guess, there are a number of tools to assist with cyclomatic complexity while writing code.&lt;/p&gt;
+&lt;p&gt;There are multiple category of tools that do the CC checks for you.
+Many these tools easily get integrated with your CI/CD pipeline.&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://visualstudio.microsoft.com/downloads/&quot; title=&quot;Go to Visual Studio on visualstudio.microsoft.com&quot;&gt;&lt;strong&gt;Visual Studio&lt;/strong&gt;&lt;/a&gt; - There are plenty of extensions out there along with built-in functionality for cyclomatic complexity out-of-the-box.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://code.visualstudio.com/&quot; title=&quot;Go to Visual Studio Code on code.visualstudio.com&quot;&gt;&lt;strong&gt;Visual Studio Code&lt;/strong&gt;&lt;/a&gt; - Various extensions are available like &lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=EF8980CD-E5F2-4113-92AE-5789026D677C.MetricsAnalyzer&quot; title=&quot;Go to CodeMetrics on marketplace.visualstudio.com&quot;&gt;CodeMetrics&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.jetbrains.com/resharper/&quot; title=&quot;Go to Resharper on jetbrains.com&quot;&gt;&lt;strong&gt;JetBrains ReSharper&lt;/strong&gt;&lt;/a&gt; (&lt;a href=&quot;https://www.danylkoweb.com/Blog/review-resharper-9-ultimate-8U&quot; title=&quot;Go to Resharper 9 Ultimate Review&quot;&gt;Review&lt;/a&gt;)&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.devexpress.com/products/coderush/&quot; title=&quot;Go to CodeRush on devexpress.com&quot;&gt;&lt;strong&gt;CodeRush&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;IDE integrated CC checkers :
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://visualstudio.microsoft.com/downloads/&quot; title=&quot;Go to Visual Studio on visualstudio.microsoft.com&quot;&gt;Visual Studio*&lt;/a&gt; built-in functionality for cyclomatic complexity out-of-the-box.&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://code.visualstudio.com/&quot; title=&quot;Go to Visual Studio Code on code.visualstudio.com&quot;&gt;Visual Studio Code&lt;/a&gt; Various extensions are available like &lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=EF8980CD-E5F2-4113-92AE-5789026D677C.MetricsAnalyzer&quot; title=&quot;Go to CodeMetrics on marketplace.visualstudio.com&quot;&gt;CodeMetrics&lt;/a&gt;.&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.jetbrains.com/resharper/&quot; title=&quot;Go to Resharper on jetbrains.com&quot;&gt;JetBrains ReSharper&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.devexpress.com/products/coderush/&quot; title=&quot;Go to CodeRush on devexpress.com&quot;&gt;CodeRush&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://marketplace.eclipse.org/content/codemr-static-code-analyser&quot;&gt;Eclipse Metric Plugin &lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Linter based checkers :
+    &lt;ul&gt;
+      &lt;li&gt;ESLint&lt;/li&gt;
+      &lt;li&gt;JSHint&lt;/li&gt;
+      &lt;li&gt;PyLint&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;The OGs :
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.mccabe.com/&quot;&gt;McCabe IQ&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.sonarqube.org/&quot;&gt;SonarQube&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;usage&quot;&gt;Usage&lt;/h2&gt;
+&lt;h1 id=&quot;breaking-the-system&quot;&gt;Breaking the system&lt;/h1&gt;
 
-&lt;p&gt;vcxvxcvxc&lt;/p&gt;
-
-&lt;h2 id=&quot;breaking-the-system&quot;&gt;Breaking the system&lt;/h2&gt;
-
-&lt;h2 id=&quot;special-attention-here&quot;&gt;Special attention here&lt;/h2&gt;
+&lt;p&gt;Special attention here&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Boolean long expression
     &lt;ul&gt;
@@ -98,7 +292,7 @@ https://www.math.unipd.it/~tullio/IS-1/2004/Approfondimenti/cyclomatic.htm#:~:te
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;cons&quot;&gt;Cons&lt;/h2&gt;
+&lt;h1 id=&quot;cons&quot;&gt;Cons&lt;/h1&gt;
 &lt;ul&gt;
   &lt;li&gt;Vague idea in original paper
     &lt;ul&gt;
@@ -119,7 +313,7 @@ https://www.math.unipd.it/~tullio/IS-1/2004/Approfondimenti/cyclomatic.htm#:~:te
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;alternatives&quot;&gt;Alternatives&lt;/h2&gt;
+&lt;h1 id=&quot;alternatives&quot;&gt;Alternatives&lt;/h1&gt;
 &lt;ul&gt;
   &lt;li&gt;Cognitive complexity
     &lt;ul&gt;
@@ -130,18 +324,24 @@ https://www.math.unipd.it/~tullio/IS-1/2004/Approfondimenti/cyclomatic.htm#:~:te
   &lt;li&gt;https://brainhub.eu/library/measuring-cyclomatic-complexity&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+&lt;h1 id=&quot;personal-opinions&quot;&gt;Personal Opinions&lt;/h1&gt;
+
+&lt;p&gt;It is a good metric to start evaluating if not already. I consider it more of a sniff test than anything to rigidly adhere to. Usually if my function’s cyclomatic complexity is too high, I know it with or without a sniffer telling me so.&lt;/p&gt;
+
+&lt;p&gt;However, the things I think we should be careful about is to not exploit the metric so as to dilute it’s intention.&lt;/p&gt;
+
+&lt;p&gt;Donald Knuth rightly mentioned the Goodhart’s Law in one of his books. It states that&lt;/p&gt;
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;A metric that becomes a target ceases to be a good metric.&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;What this really means is that with growing dependence on the metrics, the developers might start to optimize the metric itself and loose the sense of real motive behind the target.&lt;/p&gt;
+
+&lt;h1 id=&quot;references&quot;&gt;References&lt;/h1&gt;
 &lt;ul&gt;
   &lt;li&gt;mccabe paper&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&quot;personal-opinions&quot;&gt;personal opinions&lt;/h1&gt;
-&lt;p&gt;I consider it more of a sniff test than anything to rigidly adhere to.&lt;/p&gt;
-
-&lt;p&gt;Usually if my function’s cyclomatic complexity is too high, I know it with or without a sniffer telling me so.&lt;/p&gt;
-
-&lt;p&gt;A metric that becomes a target ceases to be a good metric.” - Goodhart’s Law
-Donald knuth&lt;/p&gt;</content><author><name>Akash Sharma</name></author><category term="tech" /><category term="Software Architecture" /><summary type="html">Cyclomatic complexity is a well known concept</summary></entry><entry><title type="html">Navigating Fenwick Trees - A Novice’s Handbook for Powerful Range Operations</title><link href="http://localhost:4000/blog/algorithms/2023/11/13/Fenwick.html" rel="alternate" type="text/html" title="Navigating Fenwick Trees - A Novice’s Handbook for Powerful Range Operations" /><published>2023-11-13T00:00:00+05:30</published><updated>2023-11-13T00:00:00+05:30</updated><id>http://localhost:4000/blog/algorithms/2023/11/13/Fenwick</id><content type="html" xml:base="http://localhost:4000/blog/algorithms/2023/11/13/Fenwick.html">&lt;blockquote&gt;
+&lt;hr /&gt;</content><author><name>Akash Sharma</name></author><category term="tech" /><category term="Software Architecture" /><summary type="html">Cyclomatic Complexity serves as a fundamental metric of code complexity and has well known usage in software testing and analyis. While it’s built on a sound and interesting graph-theory concept, it has fair share of problems associated with it.</summary></entry><entry><title type="html">Unraveling the Magic of Fenwick Trees - A Beginner’s Guide</title><link href="http://localhost:4000/blog/algorithms/2023/11/13/Fenwick.html" rel="alternate" type="text/html" title="Unraveling the Magic of Fenwick Trees - A Beginner’s Guide" /><published>2023-11-13T00:00:00+05:30</published><updated>2023-11-13T00:00:00+05:30</updated><id>http://localhost:4000/blog/algorithms/2023/11/13/Fenwick</id><content type="html" xml:base="http://localhost:4000/blog/algorithms/2023/11/13/Fenwick.html">&lt;blockquote&gt;
   &lt;p&gt;Fenwick Trees, also known as Binary Indexed Trees (BIT), are an elegant and efficient data structure used to perform range queries and updates on an array. Originally designed by Peter Fenwick in 1994, these trees have found applications in various fields, ranging from computational geometry to competitive programming. In this blog post, we’ll explore the fundamentals of Fenwick Trees, understand their construction, and delve into practical examples.&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -281,6 +481,102 @@ Donald knuth&lt;/p&gt;</content><author><name>Akash Sharma</name></author><categ
   &lt;li&gt;The introduction of random priorities provides a probabilistic guarantee of balance, reducing the likelihood of performance degradation.&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;h2 id=&quot;treap-anatomy&quot;&gt;Treap Anatomy&lt;/h2&gt;
+&lt;p&gt;At its core, a Treap is a binary tree where each node has both a key (satisfying the binary search tree property) and a priority. The priorities are assigned randomly during insertion, following the rules of a max-heap. This enchanting combination results in a balanced structure that inherits the best qualities of both trees and heaps.&lt;/p&gt;
+
+&lt;h3 id=&quot;1-node-structure&quot;&gt;1. &lt;strong&gt;Node Structure:&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Each node in a Treap contains a key and a priority.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;2-priority-assignment&quot;&gt;2. &lt;strong&gt;Priority Assignment:&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Priorities are assigned randomly during insertion, ensuring a balanced structure.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;3-balancing-act-1&quot;&gt;3. &lt;strong&gt;Balancing Act:&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;The random assignment of priorities inherently balances the tree, preventing skewed structures.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;treap-construction&quot;&gt;Treap Construction&lt;/h2&gt;
+
+&lt;p&gt;Let’s walk through the step-by-step construction of a Treap.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Initialize an Empty Treap:&lt;/strong&gt;
+    &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;TreapNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;priority&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;priority&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;priority&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Insertion Operation:&lt;/strong&gt;
+    &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;treap_insert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;priority&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TreapNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;priority&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;treap_insert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;priority&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;priority&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;priority&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;root&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;right_rotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;treap_insert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;priority&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;priority&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;priority&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;root&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;left_rotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Rotation Operations:&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Left Rotation:
+        &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;left_rotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Right Rotation:
+        &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;right_rotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;practical-examples&quot;&gt;Practical Examples&lt;/h2&gt;
+
+&lt;h3 id=&quot;example-1-treap-insertion&quot;&gt;Example 1: Treap Insertion&lt;/h3&gt;
+
+&lt;p&gt;Given the keys &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[4, 2, 6, 1, 3, 5, 7]&lt;/code&gt;, insert them into a Treap with randomly assigned priorities.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;treap&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;keys&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;priority&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;random_priority&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;treap&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;treap_insert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;treap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;priority&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;example-2-treap-visualization&quot;&gt;Example 2: Treap Visualization&lt;/h3&gt;
+
+&lt;p&gt;Visualizing the resulting Treap after insertion:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        4
+       / \
+      2   6
+     / \ / \
+    1  3 5  7
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;h2 id=&quot;use-cases-and-applications&quot;&gt;Use Cases and Applications&lt;/h2&gt;
 
 &lt;h3 id=&quot;1-priority-queues&quot;&gt;1. &lt;strong&gt;Priority Queues:&lt;/strong&gt;&lt;/h3&gt;
@@ -295,7 +591,9 @@ Donald knuth&lt;/p&gt;</content><author><name>Akash Sharma</name></author><categ
 
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 
-&lt;p&gt;The Treap, with its clever amalgamation of binary search tree properties and heap characteristics, stands out as a powerful data structure with applications in various domains. Its ability to maintain balance through randomized priorities makes it an attractive choice for scenarios where unpredictability and efficient operations are crucial. The Treap’s balancing act continues to captivate researchers and engineers alike, showcasing the elegance and versatility of innovative data structures.&lt;/p&gt;</content><author><name>Akash Sharma</name></author><category term="algorithms" /><category term="Treaps" /><summary type="html">When it comes to data structures, the Treap is a fascinating hybrid that combines the characteristics of both binary search trees and heaps. This ingenious structure seamlessly integrates the orderly properties of a binary search tree with the randomized priorities of a heap. Let’s delve into the world of Treaps and explore how this balancing act works.</summary></entry><entry><title type="html">Optimizing Clusters with Kubernetes Descheduling</title><link href="http://localhost:4000/blog/tech/2023/10/21/Understanding-Kubernetes.html" rel="alternate" type="text/html" title="Optimizing Clusters with Kubernetes Descheduling" /><published>2023-10-21T00:00:00+05:30</published><updated>2023-10-21T00:00:00+05:30</updated><id>http://localhost:4000/blog/tech/2023/10/21/Understanding-Kubernetes</id><content type="html" xml:base="http://localhost:4000/blog/tech/2023/10/21/Understanding-Kubernetes.html">&lt;blockquote&gt;
+&lt;p&gt;The Treap, with its clever amalgamation of binary search tree properties and heap characteristics, stands out as a powerful data structure with applications in various domains. As we’ve explored their construction and applications through examples, the elegance and versatility of Treaps become evident. Its ability to maintain balance through randomized priorities makes it an attractive choice for scenarios where unpredictability and efficient operations are crucial. The Treap’s balancing act continues to captivate researchers and engineers alike, showcasing the elegance and versatility of innovative data structures.&lt;/p&gt;
+
+&lt;hr /&gt;</content><author><name>Akash Sharma</name></author><category term="algorithms" /><category term="Treaps" /><summary type="html">When it comes to data structures, the Treap is a fascinating hybrid that combines the characteristics of both binary search trees and heaps. This ingenious structure seamlessly integrates the orderly properties of a binary search tree with the randomized priorities of a heap. Let’s delve into the world of Treaps and explore how this balancing act works.</summary></entry><entry><title type="html">Optimizing pod scheduling with Kubernetes Descheduling</title><link href="http://localhost:4000/blog/tech/2023/10/21/Understanding-Kubernetes.html" rel="alternate" type="text/html" title="Optimizing pod scheduling with Kubernetes Descheduling" /><published>2023-10-21T00:00:00+05:30</published><updated>2023-10-21T00:00:00+05:30</updated><id>http://localhost:4000/blog/tech/2023/10/21/Understanding-Kubernetes</id><content type="html" xml:base="http://localhost:4000/blog/tech/2023/10/21/Understanding-Kubernetes.html">&lt;blockquote&gt;
   &lt;p&gt;I recently started working with Kubernetes Descheduler. Here, we’ll explore how to use it to balance pods and services running on Kubernetes in real world scenarios.&lt;/p&gt;
 &lt;/blockquote&gt;
 

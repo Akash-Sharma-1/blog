@@ -1,5 +1,5 @@
 ---
-title: Optimizing Clusters with Kubernetes Descheduling
+title: Optimizing pod scheduling with Kubernetes Descheduling
 tags: [DevOps, Kubernetes]
 date: 2023-10-21
 ---
