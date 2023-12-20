@@ -7,20 +7,20 @@
     <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico">
 
     <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Monotonicity and Stacks | Akash Sharma’s Blog</title>
+<title>Understanding Cyclomatic Complexity - is it really worth it ? | Akash Sharma’s Blog</title>
 <meta name="generator" content="Jekyll v3.9.2" />
-<meta property="og:title" content="Monotonicity and Stacks" />
+<meta property="og:title" content="Understanding Cyclomatic Complexity - is it really worth it ?" />
 <meta name="author" content="Akash Sharma" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="This post highlights the possible usage of stacks (as a data structure) to resolve problems where monotonicity is of value." />
-<meta property="og:description" content="This post highlights the possible usage of stacks (as a data structure) to resolve problems where monotonicity is of value." />
+<meta name="description" content="Cyclomatic complexity is a well known concept" />
+<meta property="og:description" content="Cyclomatic complexity is a well known concept" />
 <meta property="og:site_name" content="Akash Sharma’s Blog" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2023-09-27T00:00:00+05:30" />
+<meta property="article:published_time" content="2023-12-18T00:00:00+05:30" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Monotonicity and Stacks" />
+<meta property="twitter:title" content="Understanding Cyclomatic Complexity - is it really worth it ?" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Akash Sharma"},"dateModified":"2023-09-27T00:00:00+05:30","datePublished":"2023-09-27T00:00:00+05:30","description":"This post highlights the possible usage of stacks (as a data structure) to resolve problems where monotonicity is of value.","headline":"Monotonicity and Stacks","mainEntityOfPage":{"@type":"WebPage","@id":"/blog/algorithms/stack/2023/09/27/Monotonicity-and-Stacks.html"},"url":"/blog/algorithms/stack/2023/09/27/Monotonicity-and-Stacks.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Akash Sharma"},"dateModified":"2023-12-18T00:00:00+05:30","datePublished":"2023-12-18T00:00:00+05:30","description":"Cyclomatic complexity is a well known concept","headline":"Understanding Cyclomatic Complexity - is it really worth it ?","mainEntityOfPage":{"@type":"WebPage","@id":"/blog/tech/2023/12/18/Cyclomatic-complexity.html"},"url":"/blog/tech/2023/12/18/Cyclomatic-complexity.html"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="/blog/feed.xml" title="Akash Sharma&apos;s Blog" />
@@ -116,7 +116,7 @@
 <script>
     
         $(".navbar").addClass("navbar-light");
-        $("a[href$='/blog/algorithms/stack/2023/09/27/Monotonicity-and-Stacks.html']").addClass("active");
+        $("a[href$='/blog/tech/2023/12/18/Cyclomatic-complexity.html']").addClass("active");
     
 </script>
 
@@ -124,25 +124,23 @@
     <div class="container">
         
             <!-- Post article title -->
-            <div class="title pt-3">Monotonicity and Stacks</div>
+            <div class="title pt-3">Understanding Cyclomatic Complexity - is it really worth it ?</div>
             <div class="meta pb-3">
                 <span class="pr-3">
                     
                         <span class="iconify" data-icon="octicon:calendar"></span>
-                        <span>2023/09/27</span>
+                        <span>2023/12/18</span>
                     
                 </span>
 
                 
+                    <span class="titlebar-info pr-3">
+                        <span class="iconify" data-icon="octicon:tag"></span>
+                        <a class="text-light" href="/blog/classification/#Software Architecture">Software Architecture</a>
+                    </span>
+                
 
                 
-                    
-                
-                    
-                        <span class="titlebar-info pr-3">
-                            <span class="iconify" data-icon="octicon:tag"></span>
-                            <a class="text-light" href="/blog/algorithms/categories/#Stack">Stack</a>
-                        </span>
                     
                 
 
@@ -153,7 +151,7 @@
 
 <script>
     
-        $(".titlebar").geopattern("Monotonicity and Stacks");
+        $(".titlebar").geopattern("Understanding Cyclomatic Complexity - is it really worth it ?");
     
 </script>
 
@@ -175,117 +173,149 @@
 
 <article class="markdown-body">
     <blockquote>
-  <p>This post highlights the possible usage of stacks (as a data structure) to resolve problems where monotonicity is of value.</p>
+  <p>Cyclomatic complexity is a well known concept</p>
 </blockquote>
 
-<p>Monotonic stacks, a powerful concept in computer science, are instrumental in solving various problems efficiently. In this blog post, we’ll unravel the essence of monotonic stacks, explore their applications, and walk through practical examples to solidify our understanding.</p>
+<h2 id="what-is-cyclomatic-complexity-">What is Cyclomatic Complexity ?</h2>
 
-<h2 id="what-is-monotonicity">What is Monotonicity?</h2>
+<p>Definition 
+to measure the number of linearly independent paths in that function. Stated another way, it tells us how many branches there are in each function</p>
 
-<p>Monotonicity is a mathematical concept describing the behavior of a function or sequence with respect to the direction of change. It characterizes whether the values of the function or sequence consistently increase, decrease, or remain constant as the input variable varies.</p>
+<p>Just to make sure we are talking about the same thing, <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity">Cyclomatic Complexity</a> is a metric that was introduced by Thomas McCabe in 1976 and aims at capturing the <em>complexity</em> of a method in a single number. Actually, the original publication talks about the more general term <em>module</em>, but today this typically means function or method for most languages.</p>
 
-<p>There are two main types of monotonicity:</p>
+<h2 id="theory">Theory</h2>
+<ul>
+  <li>Original paper - points</li>
+</ul>
 
-<ol>
-  <li><strong>Monotonic Increasing (Non-Decreasing):</strong>
+<p>formula understnading and explanation</p>
+<ul>
+  <li>virtual edge</li>
+</ul>
+
+<h2 id="examples">Examples</h2>
+
+<h2 id="how-does-it-help-in-software-quality-">How does it help in software quality ?</h2>
+
+<p>There are many good reasons to limit cyclomatic complexity. Overly complex modules are more prone to error, are harder to understand, are harder to test, and are harder to modify. Deliberately limiting complexity at all stages of software development, for example as a departmental standard, helps avoid the pitfalls associated with high complexity software. Many organizations have successfully implemented complexity limits as part of their software programs. The precise number to use as a limit, however, remains somewhat controversial. The original limit of 10 as proposed by McCabe has significant supporting evidence, but limits as high as 15 have been used successfully as well. Limits over 10 should be reserved for projects that have several operational advantages over typical projects, for example experienced staff, formal design, a modern programming language, structured programming, code walkthroughs, and a comprehensive test plan. In other words, an organization can pick a complexity limit greater than 10, but only if it is sure it knows what it is doing and is willing to devote the additional testing effort required by more complex modules.</p>
+
+<p>-Reason 1 – It tells us the risk that a function contains undiscovered bugs.</p>
+
+<p>Reason 2 – It tells us the risk that modifying a function will inject a bug</p>
+<ul>
+  <li>
+    <p>or the difficulty of the addition of the</p>
+  </li>
+  <li>
+    <p>mdoularity - short code
+https://www.math.unipd.it/~tullio/IS-1/2004/Approfondimenti/cyclomatic.htm#:~:text=The%20cyclomatic%20number%20in%20graph%20theory%20is%20defined%20as%20e,node%20to%20the%20entry%20node.</p>
+  </li>
+</ul>
+
+<h2 id="interesting-use-case-that-i-worked-for">Interesting use case that I worked for</h2>
+
+<ul>
+  <li>white box testing</li>
+</ul>
+
+<h2 id="how-to-use-it-with-tools-">How to use it with tools ?</h2>
+<ul>
+  <li>Visual studio</li>
+  <li>The primary tool I use for identifying CC is Visual Studio 2022/2019. It’s under <em>Analyze -&gt; Calculate Code Metrics.</em></li>
+</ul>
+
+<p>Some other tools you could use to identify CC include JetBrain’s Resharper (<a href="https://www.danylkoweb.com/Blog/review-resharper-9-ultimate-8U" title="Go to Review: Resharper 9 Ultimate">review</a>) and NDepend (<a href="https://www.danylkoweb.com/Blog/review-ndepend-20201-QK" title="Go to Review: NDepend 2020.1">review</a>) for static code analysis.</p>
+
+<p>As you can guess, there are a number of tools to assist with cyclomatic complexity while writing code.</p>
+
+<ul>
+  <li><a href="https://visualstudio.microsoft.com/downloads/" title="Go to Visual Studio on visualstudio.microsoft.com"><strong>Visual Studio</strong></a> - There are plenty of extensions out there along with built-in functionality for cyclomatic complexity out-of-the-box.</li>
+  <li><a href="https://code.visualstudio.com/" title="Go to Visual Studio Code on code.visualstudio.com"><strong>Visual Studio Code</strong></a> - Various extensions are available like <a href="https://marketplace.visualstudio.com/items?itemName=EF8980CD-E5F2-4113-92AE-5789026D677C.MetricsAnalyzer" title="Go to CodeMetrics on marketplace.visualstudio.com">CodeMetrics</a>.</li>
+  <li><a href="https://www.jetbrains.com/resharper/" title="Go to Resharper on jetbrains.com"><strong>JetBrains ReSharper</strong></a> (<a href="https://www.danylkoweb.com/Blog/review-resharper-9-ultimate-8U" title="Go to Resharper 9 Ultimate Review">Review</a>)</li>
+  <li><a href="https://www.devexpress.com/products/coderush/" title="Go to CodeRush on devexpress.com"><strong>CodeRush</strong></a></li>
+</ul>
+
+<h2 id="usage">Usage</h2>
+
+<p>vcxvxcvxc</p>
+
+<h2 id="breaking-the-system">Breaking the system</h2>
+
+<h2 id="special-attention-here">Special attention here</h2>
+<ul>
+  <li>Boolean long expression
     <ul>
-      <li>In a monotonic increasing function or sequence, the values never decrease as the input variable increases. Formally, for any two points (x_1) and (x_2) where (x_1 \leq x_2), the corresponding function values satisfy (f(x_1) \leq f(x_2)).</li>
+      <li>
+        <ul>
+          <li>multiple operators in a signle if</li>
+        </ul>
+      </li>
+      <li>https://teamscale.com/blog/en/news/blog/mccabe-cyclomatic-complexity</li>
     </ul>
   </li>
-  <li><strong>Monotonic Decreasing (Non-Increasing):</strong>
+  <li>Exemptions of switch case
     <ul>
-      <li>In a monotonic decreasing function or sequence, the values never increase as the input variable increases. Formally, for any two points (x_1) and (x_2) where (x_1 \leq x_2), the corresponding function values satisfy (f(x_1) \geq f(x_2)).</li>
+      <li>https://stackoverflow.com/questions/30240236/cyclomatic-complexity-of-switch-case-statement</li>
     </ul>
   </li>
-</ol>
-
-<p>Monotonicity is a fundamental concept in mathematics, providing insights into the behavior of functions and sequences. It has applications in calculus, optimization, and various algorithmic designs, where understanding the direction of change is crucial for problem-solving and decision-making.</p>
-
-<h2 id="understanding-monotonic-stacks">Understanding Monotonic Stacks</h2>
-
-<p>A monotonic stack is a data structure that maintains either non-decreasing or non-increasing order of its elements. It proves to be particularly useful in scenarios where you need to find the next greater or smaller element in an array, track the nearest greater or smaller element on both sides, or solve problems involving increasing or decreasing sequences.</p>
-
-<h2 id="basic-concepts">Basic Concepts</h2>
-
-<h3 id="1-monotonic-stack-properties">1. <strong>Monotonic Stack Properties:</strong></h3>
-<ul>
-  <li>A monotonic stack can be either increasing or decreasing.</li>
-  <li>Elements are added or removed based on maintaining the desired monotonic order.</li>
+  <li>Inline Conditional (or <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/conditional-operator" title="Go to Conditional Operators on docs.microsoft.com">Ternary operator</a>)</li>
 </ul>
 
-<h3 id="2-applications">2. <strong>Applications:</strong></h3>
+<p>https://www.danylkoweb.com/Blog/hiding-cyclomatic-complexity-SR</p>
+
 <ul>
-  <li>Monotonic stacks are frequently used to solve problems involving finding the next greater/smaller element or tracking elements in increasing/decreasing order.</li>
+  <li>OOps
+    <ul>
+      <li>polymorphism</li>
+      <li>https://adavis.info/2015/07/conquering-cyclomatic-complexity.html</li>
+    </ul>
+  </li>
 </ul>
 
-<h3 id="3-operations">3. <strong>Operations:</strong></h3>
+<h2 id="cons">Cons</h2>
 <ul>
-  <li>The two main operations on a monotonic stack are “push” and “pop.” The key is to maintain the monotonic property during these operations.</li>
+  <li>Vague idea in original paper
+    <ul>
+      <li>different tools have diff implement</li>
+    </ul>
+  </li>
+  <li>doesnt have the entire picture ?
+    <ul>
+      <li>external functions, API</li>
+    </ul>
+  </li>
+  <li>cheating ?
+    <ul>
+      <li>https://softwareengineering.stackexchange.com/questions/344358/cyclomatic-complexity-spread-over-non-reusable-functions</li>
+      <li>advocating function based cyclomatic ?</li>
+      <li>hide spagetti code</li>
+    </ul>
+  </li>
 </ul>
 
-<h2 id="constructing-a-monotonic-stack">Constructing a Monotonic Stack</h2>
-
-<p>Let’s dive into the step-by-step construction of a monotonic stack.</p>
-
-<ol>
-  <li><strong>Initialize an Empty Stack:</strong>
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
-</code></pre></div>    </div>
+<h2 id="alternatives">Alternatives</h2>
+<ul>
+  <li>Cognitive complexity
+    <ul>
+      <li>https://www.sonarsource.com/blog/cognitive-complexity-because-testability-understandability/</li>
+    </ul>
   </li>
-  <li><strong>Push Operation:</strong>
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">push</span><span class="p">(</span><span class="n">stack</span><span class="p">,</span> <span class="n">element</span><span class="p">):</span>
-    <span class="k">while</span> <span class="n">stack</span> <span class="ow">and</span> <span class="n">element</span> <span class="o">&lt;</span> <span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
-        <span class="n">stack</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
-    <span class="n">stack</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
-</code></pre></div>    </div>
-  </li>
-  <li><strong>Pop Operation:</strong>
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">pop</span><span class="p">(</span><span class="n">stack</span><span class="p">):</span>
-    <span class="n">stack</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
-</code></pre></div>    </div>
-  </li>
-</ol>
+  <li>MISRA</li>
+  <li>https://brainhub.eu/library/measuring-cyclomatic-complexity</li>
+</ul>
 
-<h2 id="practical-examples">Practical Examples</h2>
+<h2 id="references">References</h2>
+<ul>
+  <li>mccabe paper</li>
+</ul>
 
-<h3 id="example-1-next-greater-element">Example 1: Next Greater Element</h3>
+<h1 id="personal-opinions">personal opinions</h1>
+<p>I consider it more of a sniff test than anything to rigidly adhere to.</p>
 
-<p>Given an array, find the next greater element for each element in the array.</p>
+<p>Usually if my function’s cyclomatic complexity is too high, I know it with or without a sniffer telling me so.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">next_greater_element</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
-    <span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
-
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)):</span>
-        <span class="k">while</span> <span class="n">stack</span> <span class="ow">and</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">nums</span><span class="p">[</span><span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]:</span>
-            <span class="n">result</span><span class="p">[</span><span class="n">stack</span><span class="p">.</span><span class="n">pop</span><span class="p">()]</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-        <span class="n">stack</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">result</span>
-</code></pre></div></div>
-
-<h3 id="example-2-stock-span-problem">Example 2: Stock Span Problem</h3>
-
-<p>Calculate the span of stock prices, where the span is defined as the maximum number of consecutive days the price of a stock is less than or equal to the current day.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">stock_span</span><span class="p">(</span><span class="n">prices</span><span class="p">):</span>
-    <span class="n">span</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
-    <span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
-
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">prices</span><span class="p">)):</span>
-        <span class="k">while</span> <span class="n">stack</span> <span class="ow">and</span> <span class="n">prices</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">prices</span><span class="p">[</span><span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]:</span>
-            <span class="n">stack</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
-        <span class="n">span</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">stack</span> <span class="k">else</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
-        <span class="n">stack</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">span</span>
-</code></pre></div></div>
-
-<h2 id="conclusion">Conclusion</h2>
-
-<p>Monotonic stacks offer an elegant and efficient solution to a variety of problems encountered in algorithmic and competitive programming. By understanding the principles of maintaining monotonic order and practicing with examples, you’ll be well-equipped to apply this powerful concept to real-world coding challenges. Happy coding!</p>
-
-<hr />
+<p>A metric that becomes a target ceases to be a good metric.” - Goodhart’s Law
+Donald knuth</p>
 
 </article>
 

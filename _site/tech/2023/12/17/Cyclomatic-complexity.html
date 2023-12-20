@@ -180,27 +180,28 @@
 
 <h1 id="what-is-cyclomatic-complexity-">What is Cyclomatic Complexity ?</h1>
 
-<h2 id="definition">Definition</h2>
+<h3 id="definition">Definition</h3>
 
-<p>Cyclomatic complexity represents the number of linearly independent paths possible in the code. In other words, it symbolises the number of branching existing in the code.</p>
+<p>Cyclomatic complexity represents the number of <strong>linearly independent paths</strong> possible in the code. In other words, it symbolises the number of branching existing in the code.</p>
 
 <p>The intent of this number is to capture the amount of decision logic being performed in the concerned piece of code.</p>
 
-<h2 id="a-bit-of-a-history-">A bit of a history …</h2>
+<h3 id="a-bit-of-a-history-">A bit of a history …</h3>
 
 <p>Interestingly, this metric was introduced by <em>Thomas McCabe</em> in 1976 at a theoretical level aiming to measure the structured complexity of programs in a quantitative way during that time. However, even though it might seem that this metric has an old history , it still is relevant and heavily influential in today’s software discussions.</p>
 
-<h2 id="what-is-it-computed-for-">What is it computed for ?</h2>
-
-<p>The original publication by McCabe, referred to the concept of cyclomatic complexity to be computed for a ‘<em>module</em>’. It could resemble to a function or a method in modern programming languages. I’ll talk about how a granular level complexity check is beneficial.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Will be referring Cyclomatic Complexity as "CC" from now on 
+<div class="alert alert-info" role="alert">
+  Will be referring Cyclomatic Complexity as "CC" from now on <br />
 FYI, i like abbreviations :) 
-</code></pre></div></div>
+</div>
 
-<h2 id="how-is-it-computed-">How is it computed ?</h2>
+<h3 id="what-is-it-computed-for-">What is it computed for ?</h3>
 
-<p>Cyclomatic complexity is calculated through the program’s <strong>control-flow graph</strong>, where nodes represent cohesive sets of commands (called as a block) , and directed edges link nodes if the execution of the second command is a potential immediate follow-up to the first one.</p>
+<p>The original publication by McCabe, referred to the concept of CC to be computed for a ‘<em>module</em>’. It could resemble to a function or a method in modern programming languages. I’ll talk about how a granular level complexity check is beneficial.</p>
+
+<h3 id="how-is-it-computed-">How is it computed ?</h3>
+
+<p>CC is calculated through the program’s <strong>control-flow graph</strong>, where nodes represent cohesive sets of commands (called as a block) , and directed edges link nodes if the execution of the second command is a potential immediate follow-up to the first one.</p>
 
 <p>Here, a conditional or loop or similar statements (represented as nodes) would have multiple branching (multiple out-edges) which is used in computation the CC number.</p>
 
@@ -208,31 +209,20 @@ FYI, i like abbreviations :)
 
 <h1 id="mathematical-foundation">Mathematical Foundation</h1>
 
-<h2 id="graph-theory">Graph Theory</h2>
+<h3 id="graph-theory">Graph Theory</h3>
 
-<p>Cyclomatic number is a value in graph theory that tells you the number of the edges required to be remove and break all cycles of the graph i.e the number of independent paths in a graph. Note that its only valid for  for <strong>strongly connected graphs</strong>.</p>
-
-<p>It is also known as a ‘circuit rank’ and  has quite diverse use cases beyond this software analysis.</p>
+<p>Cyclomatic number is a value in graph theory that tells you the number of the edges required to be remove and break all cycles of the graph i.e the number of independent paths in a graph. Note that its only valid for  for <strong>strongly connected graphs</strong>. It is also known as a ‘circuit rank’ and  has quite diverse use cases beyond this software analysis.</p>
 
 <p>The cyclomatic number can be derived by :</p>
 
 \[rank = E - N + C\]
 
-<p>Here, E represents the number of edges, N represents the number of nodes and C represents the connected components.</p>
+<p>Here, E represents the number of edges, N represents the number of nodes and C represents the connected components. The derivation of this formula is based on the manipulation of famous Kirchhoff’s Law from the Linear Algebra.</p>
 
-<p>The derivation of this formula is based on the manipulation of famous Kirchhoff’s Law from the Linear Algebra.</p>
+<h3 id="mccabes-derivation">McCabe’s derivation</h3>
 
-<h2 id="mccabes-derivation">McCabe’s derivation</h2>
-
-<p>Program control flow graphs do not inherently exhibit strong connectivity. However, the introduction of a “virtual edge” that connects the exit node to the entry node transforms them into strongly connected graphs.</p>
-
-<p>The definition of cyclomatic complexity for program control flow graphs is derived from the cyclomatic number formula by a straightforward addition of one, signifying the impact of the virtual edge.</p>
-
-<p>This interpretation aligns cyclomatic complexity with the count of independent paths within the standard control flow graph model, elegantly sidestepping the need for explicit reference to the virtual edge.</p>
-
-<p>Since for CFGs, the connected component is 1 as we are considering a single function or method.</p>
-
-<p>This gives us :</p>
+<p>Program control flow graphs do not inherently exhibit strong connectivity. However, the introduction of a “virtual edge” that connects the exit node to the entry node transforms them into strongly connected graphs. The definition of cyclomatic complexity for program control flow graphs is derived from the cyclomatic number formula by a straightforward addition of one, signifying the impact of the virtual edge. This interpretation aligns cyclomatic complexity with the count of independent paths within the standard control flow graph model, elegantly sidestepping the need for explicit reference to the virtual edge. Since for CFGs, the connected component is 1 as we are considering a single function or method. 
+This gives us :</p>
 
 \[cc = E - N + 1\]
 
@@ -244,13 +234,13 @@ FYI, i like abbreviations :)
 
 \[cc = E - N + 2P\]
 
-<h2 id="intuitive-understanding">Intuitive understanding</h2>
+<h3 id="intuitive-understanding">Intuitive understanding</h3>
 
 <p>Let’s break up the CC formula to 3 segments :</p>
 
-\[cc = E - N + 2\]
-
-\[cc = (E - N) + (1) + (1)\]
+<p>\(cc = E - N + 2\)
+\(\)
+\(cc = (E - N) + (1) + (1)\)</p>
 
 <ul>
   <li><code class="language-plaintext highlighter-rouge">E-N</code> would nullify all the nodes with 1 branch and will render us with the count of extra branches of the nodes,</li>
@@ -258,11 +248,16 @@ FYI, i like abbreviations :)
   <li><code class="language-plaintext highlighter-rouge">1</code> is accounting for the ‘virtual edge’ added for the mathematical convenience</li>
 </ul>
 
-<h1 id="examples-of-some-code-snippets-and-associated-cc">Examples of some code snippets and associated CC</h1>
+<h1 id="examples-of-code-snippets-and-associated-cc">Examples of code snippets and associated CC</h1>
 
 <p>I have included some function snippets below.
-Guess the complexity of these functions and verify them below.</p>
+Guess the complexity of these functions and verify them in the table at the end of the section.</p>
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kt">void</span> <span class="nf">foo0</span><span class="p">(</span> <span class="kt">int</span> <span class="n">a</span> <span class="p">)</span> <span class="p">{</span>
+  <span class="n">a</span><span class="o">--</span><span class="p">;</span>
+  <span class="k">return</span> <span class="p">;</span>
+<span class="p">}</span>
+
 <span class="kt">void</span> <span class="nf">foo1</span><span class="p">(</span> <span class="kt">int</span> <span class="n">a</span> <span class="p">)</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span> <span class="n">a</span> <span class="p">)</span>
      <span class="k">return</span> <span class="p">;</span>
@@ -339,6 +334,10 @@ Guess the complexity of these functions and verify them below.</p>
   </thead>
   <tbody>
     <tr>
+      <td>foo0</td>
+      <td>1</td>
+    </tr>
+    <tr>
       <td>foo1</td>
       <td>2</td>
     </tr>
@@ -381,29 +380,70 @@ Guess the complexity of these functions and verify them below.</p>
   </tbody>
 </table>
 
-<h1 id="how-does-it-help-in-software-quality-">How does it help in software quality ?</h1>
+<h1 id="how-does-it-help-in-software-development-and-processes-">How does it help in software development and processes ?</h1>
 
-<p>There are many good reasons to limit cyclomatic complexity. Overly complex modules are more prone to error, are harder to understand, are harder to test, and are harder to modify. Deliberately limiting complexity at all stages of software development, for example as a departmental standard, helps avoid the pitfalls associated with high complexity software. Many organizations have successfully implemented complexity limits as part of their software programs. The precise number to use as a limit, however, remains somewhat controversial. The original limit of 10 as proposed by McCabe has significant supporting evidence, but limits as high as 15 have been used successfully as well. Limits over 10 should be reserved for projects that have several operational advantages over typical projects, for example experienced staff, formal design, a modern programming language, structured programming, code walkthroughs, and a comprehensive test plan. In other words, an organization can pick a complexity limit greater than 10, but only if it is sure it knows what it is doing and is willing to devote the additional testing effort required by more complex modules.</p>
+<h2 id="source-code-quality-effects">Source-Code Quality effects</h2>
 
-<p>-Reason 1 – It tells us the risk that a function contains undiscovered bugs.</p>
+<p><strong>Error Proneness:</strong>
+    - Overly complex modules are more susceptible to errors.
+    - High cyclomatic complexity increases the likelihood of introducing bugs.</p>
 
-<p>Reason 2 – It tells us the risk that modifying a function will inject a bug</p>
-<ul>
-  <li>
-    <p>or the difficulty of the addition of the</p>
-  </li>
-  <li>
-    <p>mdoularity - short code
-https://www.math.unipd.it/~tullio/IS-1/2004/Approfondimenti/cyclomatic.htm#:~:text=The%20cyclomatic%20number%20in%20graph%20theory%20is%20defined%20as%20e,node%20to%20the%20entry%20node.</p>
-  </li>
-</ul>
+<p><strong>Code Understandability and Modularity:</strong>
+    - Complex modules are less modular, harder to understand, leading to challenges in comprehension.
+    - Lower cyclomatic complexity promotes code readability and ease of understanding.</p>
 
-<h1 id="interesting-use-case-that-i-worked-for">Interesting use case that I worked for</h1>
+<p><strong>Maintainability:</strong>
+	- Modifying highly complex code becomes a daunting task.
+	- Lower cyclomatic complexity supports easier and safer code modifications.</p>
 
-<ul>
-  <li>white box testing</li>
-  <li>NETWORK ROUTING MECHANISMs</li>
-</ul>
+<p><strong>Assessment of undiscovered Bugs:</strong>
+    - Cyclomatic complexity serves as an indicator of the risk that a function contains undiscovered bugs.</p>
+
+<p><strong>Modification Risk:</strong>
+    - It assesses the risk associated with modifying a function, gauging the potential injection of bugs or the difficulty of additions.</p>
+
+<h2 id="wider-infrastructural-effects">Wider infrastructural effects</h2>
+
+<p><strong>Testing infrastructure effects:</strong>
+	- Testing complex modules is inherently more challenging.
+	- Lower cyclomatic complexity facilitates more effective and comprehensive testing.</p>
+
+<p><strong>Departmental Standards:</strong>
+    - Deliberate limits on complexity, established as departmental standards, foster software quality.
+    - Organizations benefit from avoiding pitfalls associated with high complexity software.</p>
+
+<p><strong>Operational Advantages:</strong>
+    - Projects with operational advantages, such as experienced staff, formal design, modern programming language, structured programming, code walkthroughs, and comprehensive test plans, can consider higher complexity limits.</p>
+
+<h2 id="complexity-considerations">Complexity Considerations</h2>
+
+<p><img src="https://www.embedded.com/wp-content/uploads/2022/07/07jb_b1_f1.png" alt="Metrics" /></p>
+
+<p><strong>Optimal Complexity Limit:</strong>
+    - The optimal complexity limit remains somewhat controversial.
+    - McCabe’s original limit of 10 has significant supporting evidence.
+    - Successful use of limits exceeding 10 has been observed, reaching up to 15.</p>
+
+<p><strong>Project-Specific Considerations:</strong>
+    - Limits above 10 should be reserved for projects with operational advantages.
+    - These include experienced staff, formal design, a modern programming language, structured programming, code walkthroughs, and a comprehensive test plan.</p>
+
+<p><strong>Testing Effort:</strong>
+    - Organizations can choose a complexity limit greater than 10 but must be aware of the additional testing effort required for more complex modules.
+    - Requires a clear understanding and willingness to devote resources to thorough testing.</p>
+
+<h1 id="interesting-use-cases-that-i-worked-for">Interesting use cases that I worked for</h1>
+<h3 id="gray-box-testing">Gray box testing</h3>
+
+<p>Previously, while working in the field of clone detection and semantic code search - I got involved in employing gray-box testing to evaluate if a pair of code is similar or not (semantically). The accuracy and precision of this approach solely dependent on the coverage or effectiveness of the gray-box testing. The effectiveness of gray-box testing was improved by the usage of cyclomatic complexity.</p>
+
+<p>Gray-box testers can use cyclomatic complexity to identify critical paths and decision points within the code. It helps a lot in designing test cases that cover different paths through the code.</p>
+
+<h3 id="network-routing-mechanisms">Network routing mechanisms</h3>
+
+<p>A graph characterized by a cyclomatic number (or circuit rank) <code class="language-plaintext highlighter-rouge">r</code> is often referred to as an <strong>r-almost-tree</strong>. This nomenclature stems from the property that merely <code class="language-plaintext highlighter-rouge">r</code> edges need removal to transform the graph into a tree or a forest. Specifically, a 1-almost-tree is termed a near-tree. In the context of connected near-trees, they manifest as pseudotrees—cycles wherein each vertex is associated with a (potentially trivial) tree rooted at that vertex.</p>
+
+<p>In one of my failed experiments, we tried solving a NS2 network simulation problem , where we had to efficient manage a network traffic with appropriate load balancing algorithms. One of the approaches, that were tried out was to find out if we could convert the existing graph into tree and use better and famous tree based routing systems. The circuit rank gives us an interesting estimate on the property of the graph and how we can leverage it for tree conversion.</p>
 
 <h1 id="how-to-use-it-with-tools-">How to use it with tools ?</h1>
 
@@ -413,10 +453,10 @@ Many these tools easily get integrated with your CI/CD pipeline.</p>
 <ul>
   <li>IDE integrated CC checkers :
     <ul>
-      <li><a href="https://visualstudio.microsoft.com/downloads/" title="Go to Visual Studio on visualstudio.microsoft.com">Visual Studio*</a> built-in functionality for cyclomatic complexity out-of-the-box.</li>
-      <li><a href="https://code.visualstudio.com/" title="Go to Visual Studio Code on code.visualstudio.com">Visual Studio Code</a> Various extensions are available like <a href="https://marketplace.visualstudio.com/items?itemName=EF8980CD-E5F2-4113-92AE-5789026D677C.MetricsAnalyzer" title="Go to CodeMetrics on marketplace.visualstudio.com">CodeMetrics</a>.</li>
-      <li><a href="https://www.jetbrains.com/resharper/" title="Go to Resharper on jetbrains.com">JetBrains ReSharper</a></li>
-      <li><a href="https://www.devexpress.com/products/coderush/" title="Go to CodeRush on devexpress.com">CodeRush</a></li>
+      <li><a href="https://visualstudio.microsoft.com/downloads/" title="Go to Visual Studio on visualstudio.microsoft.com"><strong>Visual Studio</strong></a> built-in functionality for cyclomatic complexity out-of-the-box.</li>
+      <li><a href="https://code.visualstudio.com/" title="Go to Visual Studio Code on code.visualstudio.com"><strong>Visual Studio Code</strong></a> Various extensions are available like <a href="https://marketplace.visualstudio.com/items?itemName=EF8980CD-E5F2-4113-92AE-5789026D677C.MetricsAnalyzer" title="Go to CodeMetrics on marketplace.visualstudio.com">CodeMetrics</a>.</li>
+      <li><a href="https://www.jetbrains.com/resharper/" title="Go to Resharper on jetbrains.com"><strong>JetBrains ReSharper</strong></a></li>
+      <li><a href="https://www.devexpress.com/products/coderush/" title="Go to CodeRush on devexpress.com"><strong>CodeRush</strong></a></li>
       <li><a href="https://marketplace.eclipse.org/content/codemr-static-code-analyser">Eclipse Metric Plugin </a></li>
     </ul>
   </li>
@@ -437,84 +477,212 @@ Many these tools easily get integrated with your CI/CD pipeline.</p>
 
 <h1 id="breaking-the-system">Breaking the system</h1>
 
-<p>Special attention here</p>
+<p>The most interesting question of them all is to explore what reduces the CC number afterall ? 
+There are multiple hacks around it and some better coding designs as well. 
+Here we will be exploring some of them :</p>
+
+<h3 id="long-boolean-expression"><strong>Long boolean expression</strong></h3>
 <ul>
-  <li>Boolean long expression
+  <li>Multiple operators in a single if condition.
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">foo</span> <span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">17</span> <span class="o">&amp;&amp;</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="mi">42</span> <span class="o">&amp;&amp;</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="mi">55</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Such code snippets are still generally considered of lower complexity (in this case of 2)
     <ul>
-      <li>
-        <ul>
-          <li>multiple operators in a signle if</li>
-        </ul>
-      </li>
-      <li>https://teamscale.com/blog/en/news/blog/mccabe-cyclomatic-complexity</li>
+      <li>Many people prefer this way of concatenating conditions instead of writing down nested if conditions.</li>
     </ul>
   </li>
-  <li>Exemptions of switch case
-    <ul>
-      <li>https://stackoverflow.com/questions/30240236/cyclomatic-complexity-of-switch-case-statement</li>
-    </ul>
-  </li>
-  <li>Inline Conditional (or <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/conditional-operator" title="Go to Conditional Operators on docs.microsoft.com">Ternary operator</a>)</li>
+  <li>Although its a subjective call, but from testing p.o.v - this code snippet still requires to be tested over atleast 4 decision scenarios.</li>
+  <li>Different tools report different results here : Complexity 2 by the <a href="http://eclipse-metrics.sourceforge.net/">Eclipse Metrics Plugin</a>, with 4 by <a href="http://gmetrics.sourceforge.net/">GMetrics</a>, and with complexity 5 by <a href="http://www.sonarqube.org/">SonarQube</a>:</li>
 </ul>
 
-<p>https://www.danylkoweb.com/Blog/hiding-cyclomatic-complexity-SR</p>
-
+<h3 id="exemptions-around-switch-case"><strong>Exemptions around switch case</strong></h3>
 <ul>
-  <li>OOps
-    <ul>
-      <li>polymorphism</li>
-      <li>https://adavis.info/2015/07/conquering-cyclomatic-complexity.html</li>
-    </ul>
+  <li>CC has known issues with the switch statements.</li>
+  <li>
+    <p>They increment the CC by a lot in some cases as compared to IF ELSE statements.</p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">switch</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">case</span> <span class="mi">1</span><span class="p">:</span> 
+            <span class="n">printf</span><span class="p">(</span><span class="s">"zero or one</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="mi">2</span><span class="p">:</span> 
+            <span class="n">printf</span><span class="p">(</span><span class="s">"two</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">case</span> <span class="mi">4</span><span class="p">:</span> 
+            <span class="n">printf</span><span class="p">(</span><span class="s">"three or four</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="k">else</span> <span class="p">{</span>
+    <span class="n">printf</span> <span class="p">(</span><span class="s">"negative</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
   </li>
+  <li>Depends on how the CC computation is done</li>
+  <li>Some cases are to optimize the switch case code to something better 
+<img src="https://i.stack.imgur.com/cLPKB.jpg" alt="swtich" />
+Ideally, the switch case should have 7 CC count in total.</li>
 </ul>
 
-<h1 id="cons">Cons</h1>
-<ul>
-  <li>Vague idea in original paper
-    <ul>
-      <li>different tools have diff implement</li>
-    </ul>
-  </li>
-  <li>doesnt have the entire picture ?
-    <ul>
-      <li>external functions, API</li>
-    </ul>
-  </li>
-  <li>cheating ?
-    <ul>
-      <li>https://softwareengineering.stackexchange.com/questions/344358/cyclomatic-complexity-spread-over-non-reusable-functions</li>
-      <li>advocating function based cyclomatic ?</li>
-      <li>hide spagetti code</li>
-    </ul>
-  </li>
-</ul>
+<h3 id="inline-conditional-orternary-operator"><strong>Inline Conditional or Ternary operator</strong></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  switch (age)  
+  {  
+      case &lt; 21:  
+          Console.Write(Under21());  
+          break;  
+      case &gt;= 65:  
+          Console.Write(Over65());  
+          break;  
+      default:  
+          Console.Write(Over21());  
+          break;  
+  }
+</code></pre></div></div>
+
+<p>The complexity of the above function is 4 with the switch case but is 3 with the ternary operator.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  Console.Write(age &lt; 21 ? Under21() : age &gt;= 65 ? Over65() : Over21());
+</code></pre></div></div>
+
+<h3 id="code-motion-across-functions"><strong>Code motion across Functions</strong></h3>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">func</span> <span class="nf">cardinal16ToDegree</span><span class="p">(</span><span class="n">dir</span> <span class="n">string</span><span class="p">)</span> <span class="p">(</span><span class="n">float64</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">switch</span> <span class="n">strings</span><span class="p">.</span><span class="n">ToLower</span><span class="p">(</span><span class="n">dir</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="s">"n"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="n">nil</span>
+    <span class="k">case</span> <span class="s">"nne"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">22.5</span><span class="p">,</span> <span class="n">nil</span>
+    <span class="k">case</span> <span class="s">"ne"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">45</span><span class="p">,</span> <span class="n">nil</span>
+    <span class="k">case</span> <span class="s">"ene"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">67.5</span><span class="p">,</span> <span class="n">nil</span>
+    <span class="k">case</span> <span class="s">"e"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">90</span><span class="p">,</span> <span class="n">nil</span>
+    <span class="k">case</span> <span class="s">"ese"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">112.5</span><span class="p">,</span> <span class="n">nil</span>
+    <span class="k">case</span> <span class="s">"se"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">135</span><span class="p">,</span> <span class="n">nil</span>
+    <span class="k">case</span> <span class="s">"sse"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">157.5</span><span class="p">,</span> <span class="n">nil</span>
+    <span class="k">case</span> <span class="s">"s"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">180</span><span class="p">,</span> <span class="n">nil</span>
+    <span class="k">case</span> <span class="s">"ssw"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">202.5</span><span class="p">,</span> <span class="n">nil</span>
+    <span class="k">case</span> <span class="s">"sw"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">225</span><span class="p">,</span> <span class="n">nil</span>
+    <span class="k">case</span> <span class="s">"wsw"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">247.5</span><span class="p">,</span> <span class="n">nil</span>
+    <span class="k">case</span> <span class="s">"w"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">270</span><span class="p">,</span> <span class="n">nil</span>
+    <span class="k">case</span> <span class="s">"wnw"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">292.5</span><span class="p">,</span> <span class="n">nil</span>
+    <span class="k">case</span> <span class="s">"nw"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">315</span><span class="p">,</span> <span class="n">nil</span>
+    <span class="k">case</span> <span class="s">"nnw"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">337.5</span><span class="p">,</span> <span class="n">nil</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="n">errors</span><span class="p">.</span><span class="n">New</span><span class="p">(</span><span class="s">"could not parse cardinal direction"</span><span class="p">)</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+<p>Can be converted into :</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">unc</span> <span class="nf">Cardinal16ToDegree</span><span class="p">(</span><span class="n">dir</span> <span class="n">string</span><span class="p">)</span> <span class="p">(</span><span class="n">float64</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">switch</span> <span class="n">dir</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="s">"n"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="n">nil</span>
+    <span class="k">case</span> <span class="s">"nne"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">22.5</span><span class="p">,</span> <span class="n">nil</span>
+    <span class="k">case</span> <span class="s">"ne"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">45</span><span class="p">,</span> <span class="n">nil</span>
+    <span class="k">case</span> <span class="s">"ene"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">67.5</span><span class="p">,</span> <span class="n">nil</span>
+    <span class="k">case</span> <span class="s">"e"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">90</span><span class="p">,</span> <span class="n">nil</span>
+    <span class="k">case</span> <span class="s">"ese"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">112.5</span><span class="p">,</span> <span class="n">nil</span>
+    <span class="nl">default:</span>
+        <span class="k">return</span> <span class="n">cardinalHelper</span><span class="p">(</span><span class="n">dir</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="n">errors</span><span class="p">.</span><span class="n">New</span><span class="p">(</span><span class="s">"unreachable"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">func</span> <span class="nf">cardinalHelper</span><span class="p">(</span><span class="n">dir</span> <span class="n">string</span><span class="p">)</span> <span class="p">(</span><span class="n">float64</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">switch</span> <span class="n">dir</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="s">"se"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">135</span><span class="p">,</span> <span class="n">nil</span>
+    <span class="k">case</span> <span class="s">"sse"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">157.5</span><span class="p">,</span> <span class="n">nil</span>
+    <span class="k">case</span> <span class="s">"s"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">180</span><span class="p">,</span> <span class="n">nil</span>
+    <span class="k">case</span> <span class="s">"ssw"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">202.5</span><span class="p">,</span> <span class="n">nil</span>
+    <span class="k">case</span> <span class="s">"sw"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">225</span><span class="p">,</span> <span class="n">nil</span>
+    <span class="k">case</span> <span class="s">"wsw"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">247.5</span><span class="p">,</span> <span class="n">nil</span>
+    <span class="k">case</span> <span class="s">"w"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">270</span><span class="p">,</span> <span class="n">nil</span>
+    <span class="k">case</span> <span class="s">"wnw"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">292.5</span><span class="p">,</span> <span class="n">nil</span>
+    <span class="k">case</span> <span class="s">"nw"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">315</span><span class="p">,</span> <span class="n">nil</span>
+    <span class="k">case</span> <span class="s">"nnw"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">337.5</span><span class="p">,</span> <span class="n">nil</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="n">errors</span><span class="p">.</span><span class="n">New</span><span class="p">(</span><span class="s">"could not parse cardinal direction"</span><span class="p">)</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<h3 id="external-api-usage"><strong>External API usage</strong></h3>
+
+<p>Unknown complexity for the tool to detect.</p>
+
+<h3 id="ruling-things-with-oops"><strong>Ruling things with OOPs</strong></h3>
+
+<p>It is known that many a times that conditionals are well eradicated in a robust design system of  Polymorphism. 
+The design pattern that is commonly used to replace switch-case or if-else conditions is the <strong>Strategy Pattern</strong>. The Strategy Pattern is a behavioral design pattern that defines a family of algorithms, encapsulates each algorithm, and makes them interchangeable. It allows the client to choose the appropriate algorithm at runtime without modifying the client code.</p>
+
+<h1 id="shortfalls-of-cyclomatic-complexity">Shortfalls of Cyclomatic Complexity</h1>
+
+<p>Because of its archaic nature, the original paper had some <strong>vague ideas</strong> on most of the specifics of Cyclomatic Complexity. This has led to confusion and differences in the computation of the final value. Due to the vagueness from the origin of the concept, <strong>different tools</strong> built for calculating CC , result in having different implementations (sometimes drastic) causing further confusion and differences in usage. Multiple tools have differences in producing CFGs as well.</p>
+
+<p>Adapting this metric to <strong>newer language constructs</strong> like lamdba or other detailed concepts like multi threading.
+The metric doesn’t scale very well for such cases. This might hold down the organization from exploring new semantics of the language due to clarity issues on its complexity.
+<strong>Granularity of the check</strong> is also very crucial. Decreasing complexity in a function could mean increment of the same metric in other sister function. Such cases are fairly common for the metric being unable to evaluate issues at a holistic level.As we saw in the above section, <strong>“cheating”</strong> the metric is a common practice performed by the developers. There are ways to break the metric’s check causing it to be an illusion of simplicity but the spaghetti code still exists.</p>
 
 <h1 id="alternatives">Alternatives</h1>
+
 <ul>
-  <li>Cognitive complexity
-    <ul>
-      <li>https://www.sonarsource.com/blog/cognitive-complexity-because-testability-understandability/</li>
-    </ul>
-  </li>
-  <li>MISRA</li>
-  <li>https://brainhub.eu/library/measuring-cyclomatic-complexity</li>
+  <li><a href="https://www.sonarsource.com/docs/CognitiveComplexity.pdf">Cognative Complexity</a> - SonarQube’s new complexity measure that deals with some shortfalls of cyclomatic complexity.</li>
+  <li><a href="https://www.securecoding.cert.org/">CERT Secure Coding Standard</a> - Great coding standard for secure coding practices.</li>
+  <li><strong>MISRA C:2012</strong> - Guidelines for the use of the C language in critical systems</li>
 </ul>
 
 <h1 id="personal-opinions">Personal Opinions</h1>
 
-<p>It is a good metric to start evaluating if not already. I consider it more of a sniff test than anything to rigidly adhere to. Usually if my function’s cyclomatic complexity is too high, I know it with or without a sniffer telling me so.</p>
+<p>It is a good metric to start evaluating if not already. I consider it more of a sniff test than anything to rigidly adhere to. Usually if my function’s cyclomatic complexity is too high, I know it with or without a sniffer telling me so. However, the things I think we should be careful about is to not exploit the metric so as to dilute it’s intention.</p>
 
-<p>However, the things I think we should be careful about is to not exploit the metric so as to dilute it’s intention.</p>
+<p>Donald Knuth rightly mentioned the Goodhart’s Law in one of his books. It states that :</p>
+<div class="alert alert-info" role="alert">
+  "A metric that becomes a target ceases to be a good metric."
+</div>
 
-<p>Donald Knuth rightly mentioned the Goodhart’s Law in one of his books. It states that</p>
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"A metric that becomes a target ceases to be a good metric."
-</code></pre></div></div>
-
-<p>What this really means is that with growing dependence on the metrics, the developers might start to optimize the metric itself and loose the sense of real motive behind the target.</p>
+<p>What this really means is that with growing dependence on the metrics, the developers might start to optimize the metric itself and loose the sense of the real motive behind the target.</p>
 
 <h1 id="references">References</h1>
+
 <ul>
-  <li>mccabe paper</li>
+  <li>“A Complexity Measure” by <a href="https://ieeexplore.ieee.org/author/37860859000">T.J. McCabe</a>  -  https://ieeexplore.ieee.org/document/1702388</li>
 </ul>
 
 <hr />

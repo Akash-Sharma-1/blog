@@ -172,7 +172,8 @@
 
 <div class="container">
     <div class="row my-2 my-md-4">
-        <div class="content col-md-8">
+        
+<div class="content col-md-9">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/3.0.1/github-markdown.min.css" integrity="sha256-HbgiGHMLxHZ3kkAiixyvnaaZFNjNWLYKD/QG6PWaQPc=" crossorigin="anonymous" />
 
@@ -200,7 +201,7 @@
 
 <h3 id="surrogate-model">Surrogate model</h3>
 
-<p>A popular surrogate model for Bayesian optimization are <a href="https://en.wikipedia.org/wiki/Gaussian_process">Gaussian processes</a> (GPs). I wrote about Gaussian processes in a <a href="/2018/03/19/gaussian-processes/">previous post</a>. If you are not familiar with GPs I recommend reading it first. GPs define a prior over functions and we can use them to incorporate prior beliefs about the objective function (smoothness, …). The GP posterior is cheap to evaluate and is used to propose points in the search space where sampling is likely to yield an improvement.</p>
+<p>A popular surrogate model for Bayesian optimization are <a href="https://en.wikipedia.org/wiki/Gaussian_process">Gaussian processes</a> (GPs). I will be also writing about Gaussian processes in a separate post. If you are not familiar with GPs I recommend reading it first. GPs define a prior over functions and we can use them to incorporate prior beliefs about the objective function (smoothness, …). The GP posterior is cheap to evaluate and is used to propose points in the search space where sampling is likely to yield an improvement.</p>
 
 <h3 id="acquisition-functions">Acquisition functions</h3>
 
@@ -281,7 +282,7 @@
 <span class="n">plt</span><span class="p">.</span><span class="n">legend</span><span class="p">();</span>
 </code></pre></div></div>
 
-<p><img src="/img/2018-03-21/output_4_0.png" alt="png" /></p>
+<p><img src="/blog/assets/images/bayesian-optimization/output_4_0.png" alt="png" /></p>
 
 <p>Goal is to find the global optimum on the left in a small number of steps. The next step is to implement the acquisition function defined in Equation (2) as <code class="language-plaintext highlighter-rouge">expected_improvement</code> function.</p>
 
@@ -401,7 +402,7 @@
     <span class="n">Y_sample</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">Y_sample</span><span class="p">,</span> <span class="n">Y_next</span><span class="p">))</span>
 </code></pre></div></div>
 
-<p><img src="/img/2018-03-21/output_10_0.png" alt="png" /></p>
+<p><img src="/blog/assets/images/bayesian-optimization/output_10_0.png" alt="png" /></p>
 
 <p>Note how the two initial samples initially drive search into the direction of the local maximum on the right side but exploration allows the algorithm to escape from that local optimum and find the global optimum on the left side. Also note how sampling point proposals often fall within regions of high uncertainty (exploration) and are not only driven by the highest surrogate function values (exploitation).</p>
 
@@ -412,7 +413,7 @@
 <span class="n">plot_convergence</span><span class="p">(</span><span class="n">X_sample</span><span class="p">,</span> <span class="n">Y_sample</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p><img src="/img/2018-03-21/output_12_0.png" alt="png" /></p>
+<p><img src="/blog/assets/images/bayesian-optimization/output_12_0.png" alt="png" /></p>
 
 <h2 id="bayesian-optimization-libraries">Bayesian optimization libraries</h2>
 
@@ -448,12 +449,12 @@
 </span><span class="n">plot_approximation</span><span class="p">(</span><span class="n">gpr</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">r</span><span class="p">.</span><span class="n">x_iters</span><span class="p">,</span> <span class="o">-</span><span class="n">r</span><span class="p">.</span><span class="n">func_vals</span><span class="p">,</span> <span class="n">show_legend</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p><img src="/img/2018-03-21/output_14_0.png" alt="png" /></p>
+<p><img src="/blog/assets/images/bayesian-optimization/output_14_0.png" alt="png" /></p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plot_convergence</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">x_iters</span><span class="p">),</span> <span class="o">-</span><span class="n">r</span><span class="p">.</span><span class="n">func_vals</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p><img src="/img/2018-03-21/output_15_0.png" alt="png" /></p>
+<p><img src="/blog/assets/images/bayesian-optimization/output_15_0.png" alt="png" /></p>
 
 <h2 id="gpyopt">GPyOpt</h2>
 
@@ -484,12 +485,12 @@
 <span class="n">optimizer</span><span class="p">.</span><span class="n">plot_acquisition</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p><img src="/img/2018-03-21/output_17_0.png" alt="png" /></p>
+<p><img src="/blog/assets/images/bayesian-optimization/output_17_0.png" alt="png" /></p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">optimizer</span><span class="p">.</span><span class="n">plot_convergence</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p><img src="/img/2018-03-21/output_18_0.png" alt="png" /></p>
+<p><img src="/blog/assets/images/bayesian-optimization/output_18_0.png" alt="png" /></p>
 
 <h2 id="application">Application</h2>
 
@@ -589,7 +590,7 @@ Random search neg. MSE = -3678.77
 Bayesian optimization neg. MSE = -3185.50
 </code></pre></div></div>
 
-<p><img src="/img/2018-03-21/output_26_1.png" alt="png" /></p>
+<p><img src="/blog/assets/images/bayesian-optimization/output_26_1.png" alt="png" /></p>
 
 <h2 id="references">References</h2>
 <ul>
@@ -666,7 +667,7 @@ Bayesian optimization neg. MSE = -3185.50
 </script>
 
 </div>
-<div class="sidebar col-md-4 mt-2 mt-md-0">
+<div class="sidebar col-md-3 mt-2 mt-md-0">
     
     <!-- https://github.com/christian-fei/Simple-Jekyll-Search -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/simple-jekyll-search/1.7.2/simple-jekyll-search.min.js" integrity="sha256-DsgE6Y6cI5eAZoTg8tJ5VBxFs+rnL8smPwt/u8tyAYo=" crossorigin="anonymous"></script>
@@ -720,6 +721,7 @@ Bayesian optimization neg. MSE = -3185.50
 
 
 </div>
+
 
     </div>
 </div>

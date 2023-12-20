@@ -1,30 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/blog/" rel="alternate" type="text/html" /><updated>2023-12-20T01:07:58+05:30</updated><id>http://localhost:4000/blog/feed.xml</id><title type="html">Akash Sharma’s Blog</title><subtitle>Reading, Learning, Thinking and Writing</subtitle><author><name>Akash Sharma</name></author><entry><title type="html">Understanding Cyclomatic Complexity - is it really worth it ?</title><link href="http://localhost:4000/blog/tech/2023/12/17/Cyclomatic-complexity.html" rel="alternate" type="text/html" title="Understanding Cyclomatic Complexity - is it really worth it ?" /><published>2023-12-17T00:00:00+05:30</published><updated>2023-12-17T00:00:00+05:30</updated><id>http://localhost:4000/blog/tech/2023/12/17/Cyclomatic-complexity</id><content type="html" xml:base="http://localhost:4000/blog/tech/2023/12/17/Cyclomatic-complexity.html">&lt;blockquote&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/blog/" rel="alternate" type="text/html" /><updated>2023-12-21T01:31:03+05:30</updated><id>http://localhost:4000/blog/feed.xml</id><title type="html">Akash Sharma’s Blog</title><subtitle>Reading, Learning, Thinking and Writing</subtitle><author><name>Akash Sharma</name></author><entry><title type="html">Understanding Cyclomatic Complexity - is it really worth it ?</title><link href="http://localhost:4000/blog/tech/2023/12/17/Cyclomatic-complexity.html" rel="alternate" type="text/html" title="Understanding Cyclomatic Complexity - is it really worth it ?" /><published>2023-12-17T00:00:00+05:30</published><updated>2023-12-17T00:00:00+05:30</updated><id>http://localhost:4000/blog/tech/2023/12/17/Cyclomatic-complexity</id><content type="html" xml:base="http://localhost:4000/blog/tech/2023/12/17/Cyclomatic-complexity.html">&lt;blockquote&gt;
   &lt;p&gt;Cyclomatic Complexity serves as a fundamental metric of code complexity and has well known usage in software testing and analyis. While it’s built on a sound and interesting graph-theory concept, it has fair share of problems associated with it.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h1 id=&quot;what-is-cyclomatic-complexity-&quot;&gt;What is Cyclomatic Complexity ?&lt;/h1&gt;
 
-&lt;h2 id=&quot;definition&quot;&gt;Definition&lt;/h2&gt;
+&lt;h3 id=&quot;definition&quot;&gt;Definition&lt;/h3&gt;
 
-&lt;p&gt;Cyclomatic complexity represents the number of linearly independent paths possible in the code. In other words, it symbolises the number of branching existing in the code.&lt;/p&gt;
+&lt;p&gt;Cyclomatic complexity represents the number of &lt;strong&gt;linearly independent paths&lt;/strong&gt; possible in the code. In other words, it symbolises the number of branching existing in the code.&lt;/p&gt;
 
 &lt;p&gt;The intent of this number is to capture the amount of decision logic being performed in the concerned piece of code.&lt;/p&gt;
 
-&lt;h2 id=&quot;a-bit-of-a-history-&quot;&gt;A bit of a history …&lt;/h2&gt;
+&lt;h3 id=&quot;a-bit-of-a-history-&quot;&gt;A bit of a history …&lt;/h3&gt;
 
 &lt;p&gt;Interestingly, this metric was introduced by &lt;em&gt;Thomas McCabe&lt;/em&gt; in 1976 at a theoretical level aiming to measure the structured complexity of programs in a quantitative way during that time. However, even though it might seem that this metric has an old history , it still is relevant and heavily influential in today’s software discussions.&lt;/p&gt;
 
-&lt;h2 id=&quot;what-is-it-computed-for-&quot;&gt;What is it computed for ?&lt;/h2&gt;
-
-&lt;p&gt;The original publication by McCabe, referred to the concept of cyclomatic complexity to be computed for a ‘&lt;em&gt;module&lt;/em&gt;’. It could resemble to a function or a method in modern programming languages. I’ll talk about how a granular level complexity check is beneficial.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Will be referring Cyclomatic Complexity as &quot;CC&quot; from now on 
+&lt;div class=&quot;alert alert-info&quot; role=&quot;alert&quot;&gt;
+  Will be referring Cyclomatic Complexity as &quot;CC&quot; from now on &lt;br /&gt;
 FYI, i like abbreviations :) 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
 
-&lt;h2 id=&quot;how-is-it-computed-&quot;&gt;How is it computed ?&lt;/h2&gt;
+&lt;h3 id=&quot;what-is-it-computed-for-&quot;&gt;What is it computed for ?&lt;/h3&gt;
 
-&lt;p&gt;Cyclomatic complexity is calculated through the program’s &lt;strong&gt;control-flow graph&lt;/strong&gt;, where nodes represent cohesive sets of commands (called as a block) , and directed edges link nodes if the execution of the second command is a potential immediate follow-up to the first one.&lt;/p&gt;
+&lt;p&gt;The original publication by McCabe, referred to the concept of CC to be computed for a ‘&lt;em&gt;module&lt;/em&gt;’. It could resemble to a function or a method in modern programming languages. I’ll talk about how a granular level complexity check is beneficial.&lt;/p&gt;
+
+&lt;h3 id=&quot;how-is-it-computed-&quot;&gt;How is it computed ?&lt;/h3&gt;
+
+&lt;p&gt;CC is calculated through the program’s &lt;strong&gt;control-flow graph&lt;/strong&gt;, where nodes represent cohesive sets of commands (called as a block) , and directed edges link nodes if the execution of the second command is a potential immediate follow-up to the first one.&lt;/p&gt;
 
 &lt;p&gt;Here, a conditional or loop or similar statements (represented as nodes) would have multiple branching (multiple out-edges) which is used in computation the CC number.&lt;/p&gt;
 
@@ -32,31 +33,20 @@ FYI, i like abbreviations :)
 
 &lt;h1 id=&quot;mathematical-foundation&quot;&gt;Mathematical Foundation&lt;/h1&gt;
 
-&lt;h2 id=&quot;graph-theory&quot;&gt;Graph Theory&lt;/h2&gt;
+&lt;h3 id=&quot;graph-theory&quot;&gt;Graph Theory&lt;/h3&gt;
 
-&lt;p&gt;Cyclomatic number is a value in graph theory that tells you the number of the edges required to be remove and break all cycles of the graph i.e the number of independent paths in a graph. Note that its only valid for  for &lt;strong&gt;strongly connected graphs&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;It is also known as a ‘circuit rank’ and  has quite diverse use cases beyond this software analysis.&lt;/p&gt;
+&lt;p&gt;Cyclomatic number is a value in graph theory that tells you the number of the edges required to be remove and break all cycles of the graph i.e the number of independent paths in a graph. Note that its only valid for  for &lt;strong&gt;strongly connected graphs&lt;/strong&gt;. It is also known as a ‘circuit rank’ and  has quite diverse use cases beyond this software analysis.&lt;/p&gt;
 
 &lt;p&gt;The cyclomatic number can be derived by :&lt;/p&gt;
 
 \[rank = E - N + C\]
 
-&lt;p&gt;Here, E represents the number of edges, N represents the number of nodes and C represents the connected components.&lt;/p&gt;
+&lt;p&gt;Here, E represents the number of edges, N represents the number of nodes and C represents the connected components. The derivation of this formula is based on the manipulation of famous Kirchhoff’s Law from the Linear Algebra.&lt;/p&gt;
 
-&lt;p&gt;The derivation of this formula is based on the manipulation of famous Kirchhoff’s Law from the Linear Algebra.&lt;/p&gt;
+&lt;h3 id=&quot;mccabes-derivation&quot;&gt;McCabe’s derivation&lt;/h3&gt;
 
-&lt;h2 id=&quot;mccabes-derivation&quot;&gt;McCabe’s derivation&lt;/h2&gt;
-
-&lt;p&gt;Program control flow graphs do not inherently exhibit strong connectivity. However, the introduction of a “virtual edge” that connects the exit node to the entry node transforms them into strongly connected graphs.&lt;/p&gt;
-
-&lt;p&gt;The definition of cyclomatic complexity for program control flow graphs is derived from the cyclomatic number formula by a straightforward addition of one, signifying the impact of the virtual edge.&lt;/p&gt;
-
-&lt;p&gt;This interpretation aligns cyclomatic complexity with the count of independent paths within the standard control flow graph model, elegantly sidestepping the need for explicit reference to the virtual edge.&lt;/p&gt;
-
-&lt;p&gt;Since for CFGs, the connected component is 1 as we are considering a single function or method.&lt;/p&gt;
-
-&lt;p&gt;This gives us :&lt;/p&gt;
+&lt;p&gt;Program control flow graphs do not inherently exhibit strong connectivity. However, the introduction of a “virtual edge” that connects the exit node to the entry node transforms them into strongly connected graphs. The definition of cyclomatic complexity for program control flow graphs is derived from the cyclomatic number formula by a straightforward addition of one, signifying the impact of the virtual edge. This interpretation aligns cyclomatic complexity with the count of independent paths within the standard control flow graph model, elegantly sidestepping the need for explicit reference to the virtual edge. Since for CFGs, the connected component is 1 as we are considering a single function or method. 
+This gives us :&lt;/p&gt;
 
 \[cc = E - N + 1\]
 
@@ -68,13 +58,13 @@ FYI, i like abbreviations :)
 
 \[cc = E - N + 2P\]
 
-&lt;h2 id=&quot;intuitive-understanding&quot;&gt;Intuitive understanding&lt;/h2&gt;
+&lt;h3 id=&quot;intuitive-understanding&quot;&gt;Intuitive understanding&lt;/h3&gt;
 
 &lt;p&gt;Let’s break up the CC formula to 3 segments :&lt;/p&gt;
 
-\[cc = E - N + 2\]
-
-\[cc = (E - N) + (1) + (1)\]
+&lt;p&gt;\(cc = E - N + 2\)
+\(\)
+\(cc = (E - N) + (1) + (1)\)&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;E-N&lt;/code&gt; would nullify all the nodes with 1 branch and will render us with the count of extra branches of the nodes,&lt;/li&gt;
@@ -82,11 +72,16 @@ FYI, i like abbreviations :)
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1&lt;/code&gt; is accounting for the ‘virtual edge’ added for the mathematical convenience&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&quot;examples-of-some-code-snippets-and-associated-cc&quot;&gt;Examples of some code snippets and associated CC&lt;/h1&gt;
+&lt;h1 id=&quot;examples-of-code-snippets-and-associated-cc&quot;&gt;Examples of code snippets and associated CC&lt;/h1&gt;
 
 &lt;p&gt;I have included some function snippets below.
-Guess the complexity of these functions and verify them below.&lt;/p&gt;
+Guess the complexity of these functions and verify them in the table at the end of the section.&lt;/p&gt;
 &lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;foo0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
 &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;foo1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
@@ -163,6 +158,10 @@ Guess the complexity of these functions and verify them below.&lt;/p&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
+      &lt;td&gt;foo0&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
       &lt;td&gt;foo1&lt;/td&gt;
       &lt;td&gt;2&lt;/td&gt;
     &lt;/tr&gt;
@@ -205,29 +204,70 @@ Guess the complexity of these functions and verify them below.&lt;/p&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;h1 id=&quot;how-does-it-help-in-software-quality-&quot;&gt;How does it help in software quality ?&lt;/h1&gt;
+&lt;h1 id=&quot;how-does-it-help-in-software-development-and-processes-&quot;&gt;How does it help in software development and processes ?&lt;/h1&gt;
 
-&lt;p&gt;There are many good reasons to limit cyclomatic complexity. Overly complex modules are more prone to error, are harder to understand, are harder to test, and are harder to modify. Deliberately limiting complexity at all stages of software development, for example as a departmental standard, helps avoid the pitfalls associated with high complexity software. Many organizations have successfully implemented complexity limits as part of their software programs. The precise number to use as a limit, however, remains somewhat controversial. The original limit of 10 as proposed by McCabe has significant supporting evidence, but limits as high as 15 have been used successfully as well. Limits over 10 should be reserved for projects that have several operational advantages over typical projects, for example experienced staff, formal design, a modern programming language, structured programming, code walkthroughs, and a comprehensive test plan. In other words, an organization can pick a complexity limit greater than 10, but only if it is sure it knows what it is doing and is willing to devote the additional testing effort required by more complex modules.&lt;/p&gt;
+&lt;h2 id=&quot;source-code-quality-effects&quot;&gt;Source-Code Quality effects&lt;/h2&gt;
 
-&lt;p&gt;-Reason 1 – It tells us the risk that a function contains undiscovered bugs.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Error Proneness:&lt;/strong&gt;
+    - Overly complex modules are more susceptible to errors.
+    - High cyclomatic complexity increases the likelihood of introducing bugs.&lt;/p&gt;
 
-&lt;p&gt;Reason 2 – It tells us the risk that modifying a function will inject a bug&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;or the difficulty of the addition of the&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;mdoularity - short code
-https://www.math.unipd.it/~tullio/IS-1/2004/Approfondimenti/cyclomatic.htm#:~:text=The%20cyclomatic%20number%20in%20graph%20theory%20is%20defined%20as%20e,node%20to%20the%20entry%20node.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Code Understandability and Modularity:&lt;/strong&gt;
+    - Complex modules are less modular, harder to understand, leading to challenges in comprehension.
+    - Lower cyclomatic complexity promotes code readability and ease of understanding.&lt;/p&gt;
 
-&lt;h1 id=&quot;interesting-use-case-that-i-worked-for&quot;&gt;Interesting use case that I worked for&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Maintainability:&lt;/strong&gt;
+	- Modifying highly complex code becomes a daunting task.
+	- Lower cyclomatic complexity supports easier and safer code modifications.&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;white box testing&lt;/li&gt;
-  &lt;li&gt;NETWORK ROUTING MECHANISMs&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Assessment of undiscovered Bugs:&lt;/strong&gt;
+    - Cyclomatic complexity serves as an indicator of the risk that a function contains undiscovered bugs.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Modification Risk:&lt;/strong&gt;
+    - It assesses the risk associated with modifying a function, gauging the potential injection of bugs or the difficulty of additions.&lt;/p&gt;
+
+&lt;h2 id=&quot;wider-infrastructural-effects&quot;&gt;Wider infrastructural effects&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Testing infrastructure effects:&lt;/strong&gt;
+	- Testing complex modules is inherently more challenging.
+	- Lower cyclomatic complexity facilitates more effective and comprehensive testing.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Departmental Standards:&lt;/strong&gt;
+    - Deliberate limits on complexity, established as departmental standards, foster software quality.
+    - Organizations benefit from avoiding pitfalls associated with high complexity software.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Operational Advantages:&lt;/strong&gt;
+    - Projects with operational advantages, such as experienced staff, formal design, modern programming language, structured programming, code walkthroughs, and comprehensive test plans, can consider higher complexity limits.&lt;/p&gt;
+
+&lt;h2 id=&quot;complexity-considerations&quot;&gt;Complexity Considerations&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://www.embedded.com/wp-content/uploads/2022/07/07jb_b1_f1.png&quot; alt=&quot;Metrics&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Optimal Complexity Limit:&lt;/strong&gt;
+    - The optimal complexity limit remains somewhat controversial.
+    - McCabe’s original limit of 10 has significant supporting evidence.
+    - Successful use of limits exceeding 10 has been observed, reaching up to 15.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Project-Specific Considerations:&lt;/strong&gt;
+    - Limits above 10 should be reserved for projects with operational advantages.
+    - These include experienced staff, formal design, a modern programming language, structured programming, code walkthroughs, and a comprehensive test plan.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Testing Effort:&lt;/strong&gt;
+    - Organizations can choose a complexity limit greater than 10 but must be aware of the additional testing effort required for more complex modules.
+    - Requires a clear understanding and willingness to devote resources to thorough testing.&lt;/p&gt;
+
+&lt;h1 id=&quot;interesting-use-cases-that-i-worked-for&quot;&gt;Interesting use cases that I worked for&lt;/h1&gt;
+&lt;h3 id=&quot;gray-box-testing&quot;&gt;Gray box testing&lt;/h3&gt;
+
+&lt;p&gt;Previously, while working in the field of clone detection and semantic code search - I got involved in employing gray-box testing to evaluate if a pair of code is similar or not (semantically). The accuracy and precision of this approach solely dependent on the coverage or effectiveness of the gray-box testing. The effectiveness of gray-box testing was improved by the usage of cyclomatic complexity.&lt;/p&gt;
+
+&lt;p&gt;Gray-box testers can use cyclomatic complexity to identify critical paths and decision points within the code. It helps a lot in designing test cases that cover different paths through the code.&lt;/p&gt;
+
+&lt;h3 id=&quot;network-routing-mechanisms&quot;&gt;Network routing mechanisms&lt;/h3&gt;
+
+&lt;p&gt;A graph characterized by a cyclomatic number (or circuit rank) &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;r&lt;/code&gt; is often referred to as an &lt;strong&gt;r-almost-tree&lt;/strong&gt;. This nomenclature stems from the property that merely &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;r&lt;/code&gt; edges need removal to transform the graph into a tree or a forest. Specifically, a 1-almost-tree is termed a near-tree. In the context of connected near-trees, they manifest as pseudotrees—cycles wherein each vertex is associated with a (potentially trivial) tree rooted at that vertex.&lt;/p&gt;
+
+&lt;p&gt;In one of my failed experiments, we tried solving a NS2 network simulation problem , where we had to efficient manage a network traffic with appropriate load balancing algorithms. One of the approaches, that were tried out was to find out if we could convert the existing graph into tree and use better and famous tree based routing systems. The circuit rank gives us an interesting estimate on the property of the graph and how we can leverage it for tree conversion.&lt;/p&gt;
 
 &lt;h1 id=&quot;how-to-use-it-with-tools-&quot;&gt;How to use it with tools ?&lt;/h1&gt;
 
@@ -237,10 +277,10 @@ Many these tools easily get integrated with your CI/CD pipeline.&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;IDE integrated CC checkers :
     &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://visualstudio.microsoft.com/downloads/&quot; title=&quot;Go to Visual Studio on visualstudio.microsoft.com&quot;&gt;Visual Studio*&lt;/a&gt; built-in functionality for cyclomatic complexity out-of-the-box.&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;https://code.visualstudio.com/&quot; title=&quot;Go to Visual Studio Code on code.visualstudio.com&quot;&gt;Visual Studio Code&lt;/a&gt; Various extensions are available like &lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=EF8980CD-E5F2-4113-92AE-5789026D677C.MetricsAnalyzer&quot; title=&quot;Go to CodeMetrics on marketplace.visualstudio.com&quot;&gt;CodeMetrics&lt;/a&gt;.&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;https://www.jetbrains.com/resharper/&quot; title=&quot;Go to Resharper on jetbrains.com&quot;&gt;JetBrains ReSharper&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;https://www.devexpress.com/products/coderush/&quot; title=&quot;Go to CodeRush on devexpress.com&quot;&gt;CodeRush&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://visualstudio.microsoft.com/downloads/&quot; title=&quot;Go to Visual Studio on visualstudio.microsoft.com&quot;&gt;&lt;strong&gt;Visual Studio&lt;/strong&gt;&lt;/a&gt; built-in functionality for cyclomatic complexity out-of-the-box.&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://code.visualstudio.com/&quot; title=&quot;Go to Visual Studio Code on code.visualstudio.com&quot;&gt;&lt;strong&gt;Visual Studio Code&lt;/strong&gt;&lt;/a&gt; Various extensions are available like &lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=EF8980CD-E5F2-4113-92AE-5789026D677C.MetricsAnalyzer&quot; title=&quot;Go to CodeMetrics on marketplace.visualstudio.com&quot;&gt;CodeMetrics&lt;/a&gt;.&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.jetbrains.com/resharper/&quot; title=&quot;Go to Resharper on jetbrains.com&quot;&gt;&lt;strong&gt;JetBrains ReSharper&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.devexpress.com/products/coderush/&quot; title=&quot;Go to CodeRush on devexpress.com&quot;&gt;&lt;strong&gt;CodeRush&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;https://marketplace.eclipse.org/content/codemr-static-code-analyser&quot;&gt;Eclipse Metric Plugin &lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
@@ -261,84 +301,212 @@ Many these tools easily get integrated with your CI/CD pipeline.&lt;/p&gt;
 
 &lt;h1 id=&quot;breaking-the-system&quot;&gt;Breaking the system&lt;/h1&gt;
 
-&lt;p&gt;Special attention here&lt;/p&gt;
+&lt;p&gt;The most interesting question of them all is to explore what reduces the CC number afterall ? 
+There are multiple hacks around it and some better coding designs as well. 
+Here we will be exploring some of them :&lt;/p&gt;
+
+&lt;h3 id=&quot;long-boolean-expression&quot;&gt;&lt;strong&gt;Long boolean expression&lt;/strong&gt;&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;Boolean long expression
+  &lt;li&gt;Multiple operators in a single if condition.
+    &lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;foo&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;17&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;42&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;55&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Such code snippets are still generally considered of lower complexity (in this case of 2)
     &lt;ul&gt;
-      &lt;li&gt;
-        &lt;ul&gt;
-          &lt;li&gt;multiple operators in a signle if&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;https://teamscale.com/blog/en/news/blog/mccabe-cyclomatic-complexity&lt;/li&gt;
+      &lt;li&gt;Many people prefer this way of concatenating conditions instead of writing down nested if conditions.&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;Exemptions of switch case
-    &lt;ul&gt;
-      &lt;li&gt;https://stackoverflow.com/questions/30240236/cyclomatic-complexity-of-switch-case-statement&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Inline Conditional (or &lt;a href=&quot;https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/conditional-operator&quot; title=&quot;Go to Conditional Operators on docs.microsoft.com&quot;&gt;Ternary operator&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Although its a subjective call, but from testing p.o.v - this code snippet still requires to be tested over atleast 4 decision scenarios.&lt;/li&gt;
+  &lt;li&gt;Different tools report different results here : Complexity 2 by the &lt;a href=&quot;http://eclipse-metrics.sourceforge.net/&quot;&gt;Eclipse Metrics Plugin&lt;/a&gt;, with 4 by &lt;a href=&quot;http://gmetrics.sourceforge.net/&quot;&gt;GMetrics&lt;/a&gt;, and with complexity 5 by &lt;a href=&quot;http://www.sonarqube.org/&quot;&gt;SonarQube&lt;/a&gt;:&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;https://www.danylkoweb.com/Blog/hiding-cyclomatic-complexity-SR&lt;/p&gt;
-
+&lt;h3 id=&quot;exemptions-around-switch-case&quot;&gt;&lt;strong&gt;Exemptions around switch case&lt;/strong&gt;&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;OOps
-    &lt;ul&gt;
-      &lt;li&gt;polymorphism&lt;/li&gt;
-      &lt;li&gt;https://adavis.info/2015/07/conquering-cyclomatic-complexity.html&lt;/li&gt;
-    &lt;/ul&gt;
+  &lt;li&gt;CC has known issues with the switch statements.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;They increment the CC by a lot in some cases as compared to IF ELSE statements.&lt;/p&gt;
+
+    &lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; 
+            &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;zero or one&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; 
+            &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;two&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; 
+            &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;three or four&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;negative&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
+  &lt;li&gt;Depends on how the CC computation is done&lt;/li&gt;
+  &lt;li&gt;Some cases are to optimize the switch case code to something better 
+&lt;img src=&quot;https://i.stack.imgur.com/cLPKB.jpg&quot; alt=&quot;swtich&quot; /&gt;
+Ideally, the switch case should have 7 CC count in total.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&quot;cons&quot;&gt;Cons&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;Vague idea in original paper
-    &lt;ul&gt;
-      &lt;li&gt;different tools have diff implement&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;doesnt have the entire picture ?
-    &lt;ul&gt;
-      &lt;li&gt;external functions, API&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;cheating ?
-    &lt;ul&gt;
-      &lt;li&gt;https://softwareengineering.stackexchange.com/questions/344358/cyclomatic-complexity-spread-over-non-reusable-functions&lt;/li&gt;
-      &lt;li&gt;advocating function based cyclomatic ?&lt;/li&gt;
-      &lt;li&gt;hide spagetti code&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h3 id=&quot;inline-conditional-orternary-operator&quot;&gt;&lt;strong&gt;Inline Conditional or Ternary operator&lt;/strong&gt;&lt;/h3&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  switch (age)  
+  {  
+      case &amp;lt; 21:  
+          Console.Write(Under21());  
+          break;  
+      case &amp;gt;= 65:  
+          Console.Write(Over65());  
+          break;  
+      default:  
+          Console.Write(Over21());  
+          break;  
+  }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The complexity of the above function is 4 with the switch case but is 3 with the ternary operator.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  Console.Write(age &amp;lt; 21 ? Under21() : age &amp;gt;= 65 ? Over65() : Over21());
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;code-motion-across-functions&quot;&gt;&lt;strong&gt;Code motion across Functions&lt;/strong&gt;&lt;/h3&gt;
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;cardinal16ToDegree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dir&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;float64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ToLower&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;n&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nil&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;nne&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;22.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nil&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ne&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;45&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nil&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ene&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;67.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nil&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;e&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;90&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nil&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ese&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;112.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nil&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;se&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;135&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nil&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;sse&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;157.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nil&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;s&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;180&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nil&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ssw&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;202.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nil&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;sw&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;225&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nil&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;wsw&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;247.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nil&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;w&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;270&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nil&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;wnw&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;292.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nil&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;nw&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;315&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nil&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;nnw&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;337.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nil&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;errors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;New&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;could not parse cardinal direction&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Can be converted into :&lt;/p&gt;
+
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;unc&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Cardinal16ToDegree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dir&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;float64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dir&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;n&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nil&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;nne&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;22.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nil&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ne&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;45&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nil&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ene&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;67.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nil&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;e&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;90&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nil&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ese&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;112.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nil&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;default:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cardinalHelper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;errors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;New&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;unreachable&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;cardinalHelper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dir&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;float64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dir&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;se&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;135&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nil&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;sse&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;157.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nil&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;s&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;180&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nil&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ssw&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;202.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nil&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;sw&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;225&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nil&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;wsw&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;247.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nil&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;w&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;270&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nil&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;wnw&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;292.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nil&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;nw&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;315&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nil&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;nnw&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;337.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nil&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;errors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;New&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;could not parse cardinal direction&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;external-api-usage&quot;&gt;&lt;strong&gt;External API usage&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;Unknown complexity for the tool to detect.&lt;/p&gt;
+
+&lt;h3 id=&quot;ruling-things-with-oops&quot;&gt;&lt;strong&gt;Ruling things with OOPs&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;It is known that many a times that conditionals are well eradicated in a robust design system of  Polymorphism. 
+The design pattern that is commonly used to replace switch-case or if-else conditions is the &lt;strong&gt;Strategy Pattern&lt;/strong&gt;. The Strategy Pattern is a behavioral design pattern that defines a family of algorithms, encapsulates each algorithm, and makes them interchangeable. It allows the client to choose the appropriate algorithm at runtime without modifying the client code.&lt;/p&gt;
+
+&lt;h1 id=&quot;shortfalls-of-cyclomatic-complexity&quot;&gt;Shortfalls of Cyclomatic Complexity&lt;/h1&gt;
+
+&lt;p&gt;Because of its archaic nature, the original paper had some &lt;strong&gt;vague ideas&lt;/strong&gt; on most of the specifics of Cyclomatic Complexity. This has led to confusion and differences in the computation of the final value. Due to the vagueness from the origin of the concept, &lt;strong&gt;different tools&lt;/strong&gt; built for calculating CC , result in having different implementations (sometimes drastic) causing further confusion and differences in usage. Multiple tools have differences in producing CFGs as well.&lt;/p&gt;
+
+&lt;p&gt;Adapting this metric to &lt;strong&gt;newer language constructs&lt;/strong&gt; like lamdba or other detailed concepts like multi threading.
+The metric doesn’t scale very well for such cases. This might hold down the organization from exploring new semantics of the language due to clarity issues on its complexity.
+&lt;strong&gt;Granularity of the check&lt;/strong&gt; is also very crucial. Decreasing complexity in a function could mean increment of the same metric in other sister function. Such cases are fairly common for the metric being unable to evaluate issues at a holistic level.As we saw in the above section, &lt;strong&gt;“cheating”&lt;/strong&gt; the metric is a common practice performed by the developers. There are ways to break the metric’s check causing it to be an illusion of simplicity but the spaghetti code still exists.&lt;/p&gt;
 
 &lt;h1 id=&quot;alternatives&quot;&gt;Alternatives&lt;/h1&gt;
+
 &lt;ul&gt;
-  &lt;li&gt;Cognitive complexity
-    &lt;ul&gt;
-      &lt;li&gt;https://www.sonarsource.com/blog/cognitive-complexity-because-testability-understandability/&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;MISRA&lt;/li&gt;
-  &lt;li&gt;https://brainhub.eu/library/measuring-cyclomatic-complexity&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.sonarsource.com/docs/CognitiveComplexity.pdf&quot;&gt;Cognative Complexity&lt;/a&gt; - SonarQube’s new complexity measure that deals with some shortfalls of cyclomatic complexity.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.securecoding.cert.org/&quot;&gt;CERT Secure Coding Standard&lt;/a&gt; - Great coding standard for secure coding practices.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;MISRA C:2012&lt;/strong&gt; - Guidelines for the use of the C language in critical systems&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h1 id=&quot;personal-opinions&quot;&gt;Personal Opinions&lt;/h1&gt;
 
-&lt;p&gt;It is a good metric to start evaluating if not already. I consider it more of a sniff test than anything to rigidly adhere to. Usually if my function’s cyclomatic complexity is too high, I know it with or without a sniffer telling me so.&lt;/p&gt;
+&lt;p&gt;It is a good metric to start evaluating if not already. I consider it more of a sniff test than anything to rigidly adhere to. Usually if my function’s cyclomatic complexity is too high, I know it with or without a sniffer telling me so. However, the things I think we should be careful about is to not exploit the metric so as to dilute it’s intention.&lt;/p&gt;
 
-&lt;p&gt;However, the things I think we should be careful about is to not exploit the metric so as to dilute it’s intention.&lt;/p&gt;
+&lt;p&gt;Donald Knuth rightly mentioned the Goodhart’s Law in one of his books. It states that :&lt;/p&gt;
+&lt;div class=&quot;alert alert-info&quot; role=&quot;alert&quot;&gt;
+  &quot;A metric that becomes a target ceases to be a good metric.&quot;
+&lt;/div&gt;
 
-&lt;p&gt;Donald Knuth rightly mentioned the Goodhart’s Law in one of his books. It states that&lt;/p&gt;
-&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;A metric that becomes a target ceases to be a good metric.&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;What this really means is that with growing dependence on the metrics, the developers might start to optimize the metric itself and loose the sense of real motive behind the target.&lt;/p&gt;
+&lt;p&gt;What this really means is that with growing dependence on the metrics, the developers might start to optimize the metric itself and loose the sense of the real motive behind the target.&lt;/p&gt;
 
 &lt;h1 id=&quot;references&quot;&gt;References&lt;/h1&gt;
+
 &lt;ul&gt;
-  &lt;li&gt;mccabe paper&lt;/li&gt;
+  &lt;li&gt;“A Complexity Measure” by &lt;a href=&quot;https://ieeexplore.ieee.org/author/37860859000&quot;&gt;T.J. McCabe&lt;/a&gt;  -  https://ieeexplore.ieee.org/document/1702388&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;hr /&gt;</content><author><name>Akash Sharma</name></author><category term="tech" /><category term="Software Architecture" /><summary type="html">Cyclomatic Complexity serves as a fundamental metric of code complexity and has well known usage in software testing and analyis. While it’s built on a sound and interesting graph-theory concept, it has fair share of problems associated with it.</summary></entry><entry><title type="html">Unraveling the Magic of Fenwick Trees - A Beginner’s Guide</title><link href="http://localhost:4000/blog/algorithms/2023/11/13/Fenwick.html" rel="alternate" type="text/html" title="Unraveling the Magic of Fenwick Trees - A Beginner’s Guide" /><published>2023-11-13T00:00:00+05:30</published><updated>2023-11-13T00:00:00+05:30</updated><id>http://localhost:4000/blog/algorithms/2023/11/13/Fenwick</id><content type="html" xml:base="http://localhost:4000/blog/algorithms/2023/11/13/Fenwick.html">&lt;blockquote&gt;

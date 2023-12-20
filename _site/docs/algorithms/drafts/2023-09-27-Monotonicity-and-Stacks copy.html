@@ -7,9 +7,9 @@
     <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico">
 
     <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>About | Akash Sharma’s Blog</title>
+<title>Monotonicity and Stacks | Akash Sharma’s Blog</title>
 <meta name="generator" content="Jekyll v3.9.2" />
-<meta property="og:title" content="About" />
+<meta property="og:title" content="Monotonicity and Stacks" />
 <meta name="author" content="Akash Sharma" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Reading, Learning, Thinking and Writing" />
@@ -17,9 +17,9 @@
 <meta property="og:site_name" content="Akash Sharma’s Blog" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="About" />
+<meta property="twitter:title" content="Monotonicity and Stacks" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","author":{"@type":"Person","name":"Akash Sharma"},"description":"Reading, Learning, Thinking and Writing","headline":"About","name":"Akash Sharma’s Blog","url":"/blog/about/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Akash Sharma"},"description":"Reading, Learning, Thinking and Writing","headline":"Monotonicity and Stacks","url":"/blog/algorithms/drafts/2023-09-27-Monotonicity-and-Stacks%20copy.html"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link type="application/atom+xml" rel="alternate" href="/blog/feed.xml" title="Akash Sharma&apos;s Blog" />
@@ -115,7 +115,7 @@
 <script>
     
         $(".navbar").addClass("navbar-light");
-        $("a[href$='/blog/about/']").addClass("active");
+        $("a[href$='/blog/algorithms/drafts/2023-09-27-Monotonicity-and-Stacks%20copy.html']").addClass("active");
     
 </script>
 
@@ -123,14 +123,14 @@
     <div class="container">
         
             <!-- Default title -->
-            <div class="title py-2 py-md-3">About</div>
+            <div class="title py-2 py-md-3">Monotonicity and Stacks</div>
         
     </div>
 </div>
 
 <script>
     
-        $(".titlebar").geopattern("About");
+        $(".titlebar").geopattern("Monotonicity and Stacks");
     
 </script>
 
@@ -139,85 +139,208 @@
         
 
 <div class="content col-md-8">
-    <link rel="stylesheet" type="text/css" media="all" href="https://akash-sharma-1.github.io/blog//pages/about_markdown_styles.css" />
+    <blockquote>
+  <p>This post highlights the possible usage of stacks (as a data structure) to resolve problems where monotonicity is of value.</p>
+</blockquote>
 
-<div align="center" class="mb-3"> <h4> Welcome to my Blogs !</h4> </div>
+<h1 id="what-is-monotonicity-">What is Monotonicity ?</h1>
 
-<p>👋  I’m <b>Akash Sharma </b>, a programmer, researcher and a tech-enthusiast. 
-<br />
-I absolutely adore programming and developing new things 👨🏻‍💻
-<br />
-<br />
-I’m passionate about solving problems through code 🚀 helping the world 🌎 and making the lives of people 👨‍👨‍👧 around me easier!  <br />
-<br /></p>
+<h2 id="concept">Concept</h2>
 
-<div align="center">
-<img align="center" alt="GIF" src="http://veronicasicoe.files.wordpress.com/2015/11/f7e0d-nu8baew.gif" />
+<h2 id="types">Types</h2>
+
+<h1 id="a-deeper-dive-on-monotonic-stacks">A deeper dive on Monotonic Stacks</h1>
+
+<h2 id="audience-setting">Audience setting</h2>
+
+<h1 id="implementation-details-and-insights">Implementation Details and Insights</h1>
+
+<h1 id="problems-and-use-case-analysis">Problems and Use Case Analysis</h1>
+
+<h1 id="bonus-section">Bonus Section</h1>
+<div class="alert alert-info" role="alert">
+  I would be covering this topic as well as its applications in some other post in detail. However I just wanted to your ignite the curiousity
 </div>
-<p><br /></p>
 
-<p><strong>Current Status Quo</strong></p>
+<h2 id="monotonic-queues">Monotonic Queues</h2>
 
-<ul>
-  <li>🔭 I’m currently working on few personal projects and contributing to few open source organizations - <a href="https://github.com/CGAL/cgal">CGAL/cgal</a> and <a href="https://github.com/RDFLib/rdflib">RDFLib/rdflib</a>.</li>
-  <li>🌱 I’m currently learning data engineering and designing large, high-performant scalable systems/ cloud-based systems.</li>
-  <li>👯 I’m looking to collaborate on some great research projects based in ML, DL and software engineering.</li>
-</ul>
-
-<p><strong>About me</strong></p>
-<ul>
-  <li>💼 I recently completed undergraduate studies in Computer Science.</li>
-  <li>🤔 My interests spans across Deep Learning, Machine Learning, Application Development, Compilers for now and I’m in pursuit of exploring more domains.</li>
-  <li>💬 Ask me about anything, happy to help !</li>
-  <li>📫 Reach me via twitter, telegram, mail …</li>
-  <li>😄 Pronouns: He/Him/His</li>
-  <li>👀 Check out my <a href="https://akash-sharma-1.github.io/">Website</a> and my <a href="https://akash-sharma-1.github.io/resume/Akash_Sharma_One_Page_CV.pdf">Curriculum Vitae</a> to get more info.</li>
-  <li>⚡ Fun fact: If I were to become a cyborg, that split fingers thing (in the GIF) would be prioritized</li>
-</ul>
+<h2 id="now-what-is-montonic-deque-">Now what is Montonic Deque ?</h2>
 
 </div>
 <div class="sidebar col-md-4 mt-2 mt-md-0">
     
     
-    
-      <!-- http://liberize.github.io/tech/jekyll-tag-cloud.html -->
-<div id="connection" class="mb-2">
-    <div align="center" class="mt-4">
-      <h1 class="name">Connect with me via </h1>
+        <!-- https://github.com/christian-fei/Simple-Jekyll-Search -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/simple-jekyll-search/1.7.2/simple-jekyll-search.min.js" integrity="sha256-DsgE6Y6cI5eAZoTg8tJ5VBxFs+rnL8smPwt/u8tyAYo=" crossorigin="anonymous"></script>
 
-    </div>
-
-    <div align="center" class="mt-4">
-
-    <a href="https://akash-sharma-1.github.io/" target="_blank">
-      <img alt="'Website" width="22px" style="margin-left:5px;margin-right:5px" src="https://icon-library.com/images/website-icon-black/website-icon-black-9.jpg" />
-    </a>
-    <a href="https://github.com/Akash-Sharma-1" target="_blank">
-      <img alt="GitHub" width="22px" style="margin-left:5px;margin-right:5px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/github.svg">
-    </a>
-    <a href="https://twitter.com/AkashTheGreat_1" target="_blank">
-      <img alt="Twitter" width="22px" style="margin-left:5px;margin-right:5px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/twitter.svg">
-    </a>
-    <a href="https://www.linkedin.com/in/akash-sharma-246b67165" target="_blank">
-      <img alt="LinkedIn" width="22px" style="margin-left:5px;margin-right:5px" src="https://cdn.jsdelivr.net/npm/simple-icons@3.1.0/icons/linkedin.svg" />
-    </a>
-    <a href="https://t.me/AkashTheGreat" target="_blank">
-      <img alt="Telegram" width="22px" style="margin-left:5px;margin-right:5px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/telegram.svg" />
-    </a>
-    <a href="mailto:akashthegreatlegend@gmail.com" target="_blank">
-      <img alt="'Gmail" width="22px" style="margin-left:5px;margin-right:5px" src="https://cdn.jsdelivr.net/npm/simple-icons@3.1.0/icons/gmail.svg" />
-    </a>
-    </div>
-    <div align="center" class="mt-4">
-      <p class="name"> (and teach me something new :) </p>
-
-
-    </div>
-
-    <br>
+<div id="search-box" class="mb-2">
+    <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+    <ul class="mb-0"></ul>
 </div>
 
-      <hr/>
+<script type="text/javascript">
+    var search_box = document.getElementById("search-box");
+    SimpleJekyllSearch({
+        searchInput: search_box.getElementsByTagName("input")[0],
+        resultsContainer: search_box.getElementsByTagName("ul")[0],
+        json: '/blog/assets/search.json',
+        searchResultTemplate: '<li><a href="{url}">{title}</a></li>',
+        noResultsText: 'No results found',
+        fuzzy: false
+    });
+</script>
+
+        <!-- http://liberize.github.io/tech/jekyll-tag-cloud.html -->
+<div id="tag-cloud" class="mb-2">
+    <p class="name">Classification Cloud</p>
+    
+    
+    
+
+    
+    
+
+    
+
+    
+        
+        
+        
+
+        
+
+        
+        <a href="/blog/classification/#Jekyll" style="font-size: 9pt; color: #999;">Jekyll</a>
+    
+        
+        
+        
+
+        
+
+        
+        <a href="/blog/classification/#Markdown" style="font-size: 9pt; color: #999;">Markdown</a>
+    
+        
+        
+        
+
+        
+
+        
+        <a href="/blog/classification/#Linux" style="font-size: 9pt; color: #999;">Linux</a>
+    
+        
+        
+        
+
+        
+
+        
+        <a href="/blog/classification/#XPS-15" style="font-size: 9pt; color: #999;">XPS-15</a>
+    
+        
+        
+        
+
+        
+
+        
+        <a href="/blog/classification/#Machine Learning" style="font-size: 9pt; color: #999;">Machine Learning</a>
+    
+        
+        
+        
+
+        
+
+        
+        <a href="/blog/classification/#Optimization" style="font-size: 9pt; color: #999;">Optimization</a>
+    
+        
+        
+        
+
+        
+
+        
+        <a href="/blog/classification/#Probability" style="font-size: 9pt; color: #999;">Probability</a>
+    
+        
+        
+        
+
+        
+
+        
+        <a href="/blog/classification/#Statistics" style="font-size: 9pt; color: #999;">Statistics</a>
+    
+        
+        
+        
+
+        
+
+        
+        <a href="/blog/classification/#Blockchain" style="font-size: 9pt; color: #999;">Blockchain</a>
+    
+        
+        
+        
+
+        
+
+        
+        <a href="/blog/classification/#DevOps" style="font-size: 9pt; color: #999;">DevOps</a>
+    
+        
+        
+        
+
+        
+
+        
+        <a href="/blog/classification/#Kubernetes" style="font-size: 9pt; color: #999;">Kubernetes</a>
+    
+        
+        
+        
+
+        
+
+        
+        <a href="/blog/classification/#Treaps" style="font-size: 9pt; color: #999;">Treaps</a>
+    
+        
+        
+        
+
+        
+
+        
+        <a href="/blog/classification/#Tree" style="font-size: 9pt; color: #999;">Tree</a>
+    
+        
+        
+        
+
+        
+
+        
+        <a href="/blog/classification/#Fenwick" style="font-size: 9pt; color: #999;">Fenwick</a>
+    
+        
+        
+        
+
+        
+
+        
+        <a href="/blog/classification/#Software Architecture" style="font-size: 9pt; color: #999;">Software Architecture</a>
+    
+</div>
+
+        <hr/>
       
           <div class="repository-list">
     <p class="name">My Popular Repositories</p>
@@ -396,8 +519,8 @@ I’m passionate about solving problems through code 🚀 helping the world 🌎
 </div>
 
 
-
       
+    
     
 
 
